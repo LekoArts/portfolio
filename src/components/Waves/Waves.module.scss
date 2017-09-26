@@ -1,0 +1,85 @@
+@import "../../utils/_variables.scss";
+
+.bottom {
+    bottom: 0;
+}
+
+.top {
+    top: 0;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.waveWrapper {
+    position: absolute;
+    width: 100%;
+}
+
+.seperator {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    z-index: 700;
+    svg {
+        display: block;
+    }
+}
+
+.seperatorForm {
+    fill: $nearlyWhite;
+}
+
+.waves, .position {
+    position: relative;
+}
+
+.waves {
+    svg {
+        fill-opacity: 0.25;
+        fill: $blue;
+    }
+}
+
+.waveOne, .waveTwo, .waveThree {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    svg {
+        display: block;
+    }
+}
+
+.waveThree {
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.waveOneAnimate {
+    animation: waveOneAnimation 30s infinite alternate;
+}
+
+.waveTwoAnimate {
+    animation: waveTwoAnimation 20s infinite alternate;
+}
+
+.waveThreeAnimate {
+    animation: waveTwoAnimation 10s infinite alternate;
+}
+
+// Animations
+
+@keyframes waveOneAnimation {
+    0% {
+        d: path("M0,131.26c124.63-52.42,416-201.59,960.5-92,457.07,92,601.06-118,959.5,92Z")
+    }
+    100% {
+        d: path("M0,130.43c361.62-251.91,415.16,13.15,960.5-92,362.57-69.91,586.06-47.41,959.5,92Z")
+    }
+}
+
+@keyframes waveTwoAnimation {
+    0% {
+        d: path("M0,57.31s235.47-44.64,525.11-56c281.77-11,421.39,51,669,66,238.05,14.42,355.48-39,493.48-51C1799.63,6.56,1920,79.81,1920,79.81v28.42H0Z")
+    }
+    100% {
+        d: path("M0,75.78s303.45-133.11,577.61-39c201,69,291.27,119.22,522,28.13,189-74.62,487.48-89.62,588-20.13C1805.63,126.43,1920,98.28,1920,98.28V126.7H0Z")
+    }
+}

@@ -1,0 +1,42 @@
+@import "../../utils/_variables.scss";
+
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 800;
+    padding: 2rem;
+    lost-flex-container: row;
+    justify-content: space-between;
+}
+
+.logoBrand {
+    a {
+        lost-align: middle-left;
+        font-weight: 700;
+    }
+}
+
+.logo {
+    height: 3rem;
+    margin-bottom: 0;
+}
+
+.logoText {
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-left: .75rem;
+    color: $white;
+}
+
+.navigation {
+    lost-align: middle-right;
+    font-family: "Montserrat", sans-serif;
+    a {
+        color: $white;
+        &:hover {
+            color: $blue;
+        }
+        margin-left: 2rem;
+    }
+}

@@ -1,32 +1,32 @@
 import React from "react";
 import Helmet from "react-helmet";
 import PostListing from "../components/PostListing/PostListing";
+import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
-export default class CategoryTemplate extends React.Component {
+class Blog extends React.Component {
   render() {
-    const category = this.props.pathContext.category;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
-      <div className="category-container">
-        <Helmet
-          title={`Beiträge in der Kategorie "${category}" | ${config.siteTitle}`}
-        />
+      <div className="blog-container">
+        <Helmet title={config.siteTitle} />
+        <SEO postEdges={postEdges} />
         <PostListing postEdges={postEdges} />
       </div>
     );
   }
 }
 
+export default Blog;
+
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
-  query CategoryPage($category: String) {
+  query BlogQuery {
     allMarkdownRemark(
-      limit: 1000
+      limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { category: { eq: $category } } }
+      filter: { fields: { sourceInstanceName: { eq: "posts" } } }
     ) {
-      totalCount
       edges {
         node {
           fields {

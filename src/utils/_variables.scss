@@ -1,0 +1,67 @@
+// --------------
+// Farben
+// --------------
+
+$white: #fff;
+$nearlyWhite: #F7F7F7;
+$black: #2A2B2F;
+$blue: #3498DB;
+$blue-light: #57B6FC;
+
+// Gradient
+$gt-blue-light: #373B4D;
+$gt-blue-dark: #1E212B;
+
+// --------------
+// Variablen
+// --------------
+
+// Body
+$body-bg: $nearlyWhite;
+$body-color: $black;
+
+// Link
+$link-color: $blue;
+$link-decoration: none;
+$link-hover-color: $blue-light;
+$link-hover-decoration: none;
+
+$text-muted: #8D91A1;
+$cursor-disabled: not-allowed;
+
+// Tabellen
+$table-bg: $white;
+$table-cell-padding: 1.5rem;
+
+// Transition
+$transition-normal: .5s;
+
+// --------------
+// Allgemeiner Stil
+// --------------
+
+a {
+    transition: color $transition-normal;
+}
+
+::selection {
+    color: $white;
+    background-color: $blue;
+}
+
+// --------------
+// Lost Grid
+// --------------
+
+@lost flexbox flex;
+
+// --------------
+// Mixins
+// --------------
+
+@mixin hover-focus {
+    &:focus,
+    &:hover {
+        @content
+    }
+}
