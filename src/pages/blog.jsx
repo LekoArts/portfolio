@@ -23,7 +23,7 @@ export default Blog;
 export const pageQuery = graphql`
   query BlogQuery {
     allMarkdownRemark(
-      limit: 2000
+      limit: 1000
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { fields: { sourceInstanceName: { eq: "posts" } } }
     ) {
@@ -37,7 +37,6 @@ export const pageQuery = graphql`
           frontmatter {
             title
             tags
-            cover
             date
           }
         }

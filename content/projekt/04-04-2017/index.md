@@ -1,12 +1,14 @@
 ---
+customer: "LekoArts"
 title: "Viertes Projekt"
-cover: "https://unsplash.it/400/300/?random?House"
+cover: "./cover.jpg"
 date: "04/04/2017"
 category: "design"
 tags:
     - programming
     - stuff
     - other
+color: "#F44336"
 ---
 # Quanto et ius coniunctis urbes
 

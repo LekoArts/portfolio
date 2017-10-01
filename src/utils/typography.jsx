@@ -22,7 +22,15 @@ const typography = new Typography({
                 '400'
             ]
         }
-    ]
+    ],
+    overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+        img: {
+            marginBottom: 0
+        },
+        p: {
+            marginBottom: "2rem"
+        }
+    })
 })
 
 export default typography

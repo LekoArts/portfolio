@@ -7,7 +7,6 @@ module.exports = {
   siteUrl: "https://www.lekoarts.de",
   pathPrefix: "/",
   siteDescription: "Hi! Ich heiße Lennart und bin sowohl autodidaktischer als auch leidenschaftlicher Grafikdesigner & Front-End Entwickler. Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus Ihrer Marke herauszuholen.",
-  siteRss: "/rss.xml",
   siteFBAppID: "524021230980198",
   googleAnalyticsID: "UA-47519312-1",
   disqusShortname: "lekoarts",

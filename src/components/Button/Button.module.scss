@@ -1,0 +1,43 @@
+@import "../../utils/_variables.scss";
+
+.button {
+    display: inline-block;
+    background-color: $blue-black-ish;
+    color: $nearlyWhite;
+    min-width: 10rem;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    line-height: 1.25;
+    border: none;
+    padding: 1.15rem 2.25rem;
+    border-radius: 100rem;
+    transition: all .3s ease-in-out-cubic;
+    cursor: pointer;
+    -webkit-appearance: button;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    &:hover {
+        transform: translateY(-8px);
+        background-color: lighten($blue-black-ish, 10%);
+    }
+    box-shadow: 0px 20px 20px rgba(#343848, .4);
+}
+
+.blue {
+    background-image: linear-gradient(30deg, $gt-blue-light 0%, $gt-blue-dark 100%);
+    box-shadow: 0px 15px 20px rgba($blue, .4);
+    &:hover {
+        box-shadow: 0px 23px 25px rgba($blue, .3);
+    }
+}
+
+.orange {
+    background-image: linear-gradient(30deg, $gt-orange-light 0%, $gt-orange-dark 100%);
+    box-shadow: 0px 15px 20px rgba($orange, .4);
+    &:hover {
+        box-shadow: 0px 23px 25px rgba($orange, .3);
+    }
+}

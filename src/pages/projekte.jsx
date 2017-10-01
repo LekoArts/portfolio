@@ -8,7 +8,7 @@ class Projekte extends React.Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
-      <div className="blog-container">
+      <div className="projekte-container">
         <Helmet title={config.siteTitle} />
         <SEO postEdges={postEdges} />
         <PostListing postEdges={postEdges} />
@@ -23,7 +23,7 @@ export default Projekte;
 export const pageQuery = graphql`
   query ProjectsQuery {
     allMarkdownRemark(
-      limit: 2000
+      limit: 1000
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { fields: { sourceInstanceName: { eq: "projects" } } }
     ) {
@@ -37,7 +37,6 @@ export const pageQuery = graphql`
           frontmatter {
             title
             tags
-            cover
             date
           }
         }

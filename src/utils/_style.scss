@@ -1,0 +1,19 @@
+@import "./_variables.scss";
+
+// --------------
+// Allgemeiner Stil
+// --------------
+
+a {
+    transition: color $transition-normal;
+}
+
+::selection {
+    color: $white;
+    background-color: $blue;
+}
+
+html {
+    font-size: responsive 13px 16px;
+    font-range: 420px 1200px;
+}
