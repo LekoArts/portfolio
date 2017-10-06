@@ -6,7 +6,7 @@ const typography = new Typography({
     baseLineHeight: 1.5,
     headerFontFamily: ['Montserrat', 'sans-serif'],
     bodyFontFamily: ['Istok Web', 'sans-serif'],
-    scaleRatio: 3,
+    scaleRatio: 2.5,
     headerWeight: 700,
     googleFonts: [
         {

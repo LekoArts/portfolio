@@ -1,0 +1,24 @@
+@import "../utils/_variables.scss";
+
+.wrapper {
+    height: 50vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero {
+    z-index: 1;
+    @include centerer;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.customer {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-family: "Montserrat", sans-serif;
+}

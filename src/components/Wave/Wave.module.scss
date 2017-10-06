@@ -1,0 +1,56 @@
+@import "../../utils/_variables.scss";
+
+.bottom {
+    bottom: 0;
+}
+
+.top {
+    top: 0;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.waveWrapper {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.waveAnimate {
+    fill: $nearlyWhite;
+    animation: waveAnimation 20s linear infinite alternate;
+}
+
+.position {
+    position: relative;
+}
+
+.wave {
+    position: relative;
+    height: 100%;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+    svg {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 7rem;
+        @include for-phone-only {
+            height: 4rem;
+        }
+    }
+}
+
+// Animations
+
+@keyframes waveAnimation {
+    from {
+        d: path("M 27 10C 21 8 14 3 0 3L 0 0L 54 0L 54 14C 40 14 33 12 27 10Z")
+    }
+
+    50% {
+        d: path("M 27 14C 12 14 5 7 0 7L 0 0L 54 0L 54 7C 49 7 42 14 27 14Z")
+    }
+
+    to {
+        d: path("M 27 10C 21 12 14 14 0 14L 0 0L 54 0L 54 3C 40 3 33 8 27 10Z")
+    }
+}

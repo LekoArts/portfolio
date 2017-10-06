@@ -11,6 +11,15 @@
     }
 }
 
+// Centerer
+
+@mixin centerer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 // Media Queries
 
 @mixin for-phone-only {
@@ -20,7 +29,7 @@
     @media (min-width: 600px) { @content; }
 }
 @mixin for-tablet-landscape-up {
-    @media (min-width: 900px) and (max-width: 1199px) { @content; }
+    @media (min-width: 900px) { @content; }
 }
 @mixin for-desktop-up {
     @media (min-width: 1200px) { @content; }
@@ -35,7 +44,7 @@
 
 $white: #fff;
 $nearlyWhite: #F7F7F7;
-$grey: #8A8A8A;
+$grey: #94A1C9;
 $black: #2A2B2F;
 $blue: #3498DB;
 $orange: #DB8834;

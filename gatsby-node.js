@@ -35,19 +35,29 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
   return new Promise((resolve, reject) => {
     const postPage = path.resolve("src/templates/post.jsx");
+    const projectPage = path.resolve("src/templates/project.jsx");
     const tagPage = path.resolve("src/templates/tag.jsx");
     const categoryPage = path.resolve("src/templates/category.jsx");
     resolve(
       graphql(
         `
         {
-          allMarkdownRemark {
+          posts: allMarkdownRemark(filter: {fields: {sourceInstanceName: {eq: "posts"}}}) {
             edges {
               node {
                 frontmatter {
                   tags
                   category
                 }
+                fields {
+                  slug
+                }
+              }
+            }
+          }
+          projects: allMarkdownRemark(filter: {fields: {sourceInstanceName: {eq: "projects"}}}) {
+            edges {
+              node {
                 fields {
                   slug
                 }
@@ -65,7 +75,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
         const tagSet = new Set();
         const categorySet = new Set();
-        result.data.allMarkdownRemark.edges.forEach(edge => {
+        result.data.posts.edges.forEach(edge => {
           if (edge.node.frontmatter.tags) {
             edge.node.frontmatter.tags.forEach(tag => {
               tagSet.add(tag);
@@ -83,6 +93,16 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               slug: edge.node.fields.slug
             }
           });
+        });
+
+        result.data.projects.edges.forEach(edge => {
+          createPage({
+            path: edge.node.fields.slug,
+            component: projectPage,
+            context: {
+              slug: edge.node.fields.slug
+            }
+          })
         });
 
         const tagList = Array.from(tagSet);
@@ -114,5 +134,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 exports.modifyWebpackConfig = ({ config, stage }) => {
   if (stage === "build-javascript") {
     config.plugin("Lodash", webpackLodashPlugin, null);
+  }
+  if (stage === "build-html") {
+    config.loader('null', {
+      test: /react-disqus-comments/,
+      loader: 'null-loader'
+    })
   }
 };

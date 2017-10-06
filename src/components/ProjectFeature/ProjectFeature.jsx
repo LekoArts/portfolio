@@ -7,9 +7,6 @@ export default class ProjectFeature extends React.Component {
         const bgImage = {
             backgroundImage: `url("${this.props.cover}")`
         }
-        const overlayColor = {
-            backgroundColor: this.props.color
-        }
         return (
             <article className={styles.wrapper} style={bgImage}>
                 <Link to={this.props.path} className={styles.link}>
@@ -20,7 +17,7 @@ export default class ProjectFeature extends React.Component {
                         {this.props.title}
                     </h2>
                 </Link>
-                <div className={styles.imageOverlay} style={overlayColor} />
+                <div className={styles.imageOverlay} />
             </article>
         );
     }

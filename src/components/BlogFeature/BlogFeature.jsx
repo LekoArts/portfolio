@@ -7,20 +7,20 @@ export default class BlogFeature extends React.Component {
         const bgImage = {
             backgroundImage: `url("${this.props.cover}")`
         }
-        const overlayColor = {
-            backgroundColor: this.props.color
-        }
         return (
             <article className={styles.wrapper} style={bgImage}>
                 <Link to={this.props.path} className={styles.link}>
-                    <div className={styles.customer}>
-                        {this.props.customer}
+                    <div className={styles.information}>
+                        <span className={styles.category}>{this.props.category}</span>
+                        <div className={styles.date}>
+                            {this.props.date}
+                        </div>
                     </div>
                     <h2 className={styles.title}>
                         {this.props.title}
                     </h2>
                 </Link>
-                <div className={styles.imageOverlay} style={overlayColor} />
+                <div className={styles.imageOverlay} />
             </article>
         );
     }

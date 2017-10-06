@@ -1,15 +1,12 @@
 ---
 title: "The Butterfly of the Edge"
-cover: "https://unsplash.it/1152/300/?random?TheButterflyoftheEdge"
+cover: "./cover.jpg"
 category: "tech"
-date: "17/03/2017"
+date: "17.03.2017"
 tags:
     - programming
     - more tags
     - testing
-    - another one
-    - stuff
-    - other
 ---
 # Hanc indeploratum seram Amphitryoniadae tremulis pauperque manum
 

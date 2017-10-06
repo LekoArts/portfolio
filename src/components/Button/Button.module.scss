@@ -2,9 +2,11 @@
 
 .button {
     display: inline-block;
+    z-index: 10;
     background-color: $blue-black-ish;
     color: $nearlyWhite;
     min-width: 10rem;
+    margin: 2rem auto;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -32,6 +34,12 @@
     &:hover {
         box-shadow: 0px 23px 25px rgba($blue, .3);
     }
+    &.small {
+        box-shadow: 0px 10px 15px rgba($blue, .4);
+        &:hover {
+            box-shadow: 0px 18px 20px rgba($blue, .3);
+        }
+    }
 }
 
 .orange {
@@ -40,4 +48,19 @@
     &:hover {
         box-shadow: 0px 23px 25px rgba($orange, .3);
     }
+    &.small {
+        box-shadow: 0px 10px 15px rgba($orange, .4);
+        &:hover {
+            box-shadow: 0px 18px 20px rgba($orange, .3);
+        }
+    }
+}
+
+.small {
+    font-size: 1rem;
+    font-weight: 400;
+    padding: .5rem 1.15rem;
+    min-width: 1rem;
+    margin: 0;
+    box-shadow: 0px 10px 15px rgba(#343848, .4);
 }

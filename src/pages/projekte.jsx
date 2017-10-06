@@ -1,23 +1,25 @@
 import React from "react";
-import Helmet from "react-helmet";
-import PostListing from "../components/PostListing/PostListing";
-import SEO from "../components/SEO/SEO";
-import config from "../../data/SiteConfig";
+import ProjectListing from "../components/ProjectListing/ProjectListing";
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
+import Container from "../components/Container/Container";
 
-class Projekte extends React.Component {
+export default class Projekte extends React.Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
-      <div className="projekte-container">
-        <Helmet title={config.siteTitle} />
-        <SEO postEdges={postEdges} />
-        <PostListing postEdges={postEdges} />
+      <div className="container">
+        <Header slim>
+          Projekte
+        </Header>
+        <Container>
+          <ProjectListing postEdges={postEdges} />
+        </Container>
+        <Footer />
       </div>
     );
   }
 }
-
-export default Projekte;
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
@@ -32,12 +34,17 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          excerpt
-          timeToRead
           frontmatter {
             title
-            tags
             date
+            customer
+            cover {
+              childImageSharp {
+                resize(width: 1200) {
+                  src
+                }
+              }
+            }
           }
         }
       }

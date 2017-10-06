@@ -1,45 +1,48 @@
 import React from "react";
-import Helmet from "react-helmet";
-import SEO from "../components/SEO/SEO";
+import Link from "gatsby-link";
+import Footer from "../components/Footer/Footer";
 import Container from "../components/Container/Container";
 import ContainerBig from "../components/Container/ContainerBig";
-import HomeHeader from "../components/Header/HomeHeader";
+import Header from "../components/Header/Header";
 import ProjectFeatureListing from "../components/ProjectFeatureListing/ProjectFeatureListing";
+import BlogFeatureListing from "../components/BlogFeatureListing/BlogFeatureListing";
 import Button from "../components/Button/Button";
-import config from "../../data/SiteConfig";
 import styles from "./index.module.scss";
-import "../utils/_helper.scss";
 
-class Index extends React.Component {
+export default class Index extends React.Component {
   render() {
     const projectEdges = this.props.data.projects.edges;
+    const postEdges = this.props.data.posts.edges;
     return (
-      <div className="index-container">
-        <Helmet title={config.siteTitle} />
-        <SEO />
-        <HomeHeader />
+      <div className="container">
+        <Header>
+          Grafikdesigner & <br /> Front-End Entwickler
+        </Header>
         <ContainerBig>
           <ProjectFeatureListing projectEdges={projectEdges} />
         </ContainerBig>
-        <Container styleName="align-center">
+        <Container>
           <p className={styles.text}>
-            Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus Ihrer Marke herauszuholen.
+            Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus Ihrer Marke herauszuholen. <br />
+            <Link to="/projekte">
+              <Button blue text="Projekte" />
+            </Link>
           </p>
-          <Button blue text="Projekte" />
         </Container>
-        <Container styleName="align-center">
-          <p>Blog Posts</p>
+        <Container>
+          <BlogFeatureListing postEdges={postEdges} />
           <p className={styles.text}>
-            Mit ebenso viel Leidenschaft schreibe ich über Themen, die mich aktuell beschäftigen, und gebe mein Wissen in Form von Tutorials weiter.
+            Mit ebenso viel Leidenschaft schreibe ich über Design- und Coding-Themen und gebe mein Wissen in Form von Tutorials weiter. <br />
+            <Link to="/blog">
+              <Button orange text="Blog" />
+            </Link>
           </p>
-          <Button orange text="Blog" />
         </Container>
+        <Footer />
       </div>
     );
   }
 }
-
-export default Index;
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
@@ -55,17 +58,16 @@ export const pageQuery = graphql`
             title
             cover {
               childImageSharp {
-                resize(height: 700) {
+                resize(width: 1200) {
                   src
                 }
               }
             }
-            color
           }
         }
       }
     }
-    posts: allMarkdownRemark(limit: 3, sort: {fields: [frontmatter___date], order: DESC}, filter: {fields: {sourceInstanceName: {eq: "posts"}}}) {
+    posts: allMarkdownRemark(limit: 2, sort: {fields: [frontmatter___date], order: DESC}, filter: {fields: {sourceInstanceName: {eq: "posts"}}}) {
       edges {
         node {
           fields {
@@ -74,7 +76,11 @@ export const pageQuery = graphql`
           frontmatter {
             title
             cover {
-              absolutePath
+              childImageSharp {
+                resize(width: 800) {
+                  src
+                }
+              }
             }
             date
             category

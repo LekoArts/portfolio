@@ -1,0 +1,20 @@
+@import "../../utils/_variables.scss";
+
+.post-container {
+    .tag {
+        border-radius: 100rem;
+        border: 2px solid $white;
+        font-size: .8rem;
+        padding: .1rem .75rem;
+        display: inline-block;
+        background-color: transparent;
+        color: $white;
+        cursor: pointer;
+        margin-left: .5rem;
+        line-height: 1.6;
+    }
+    
+    .tag[data-id="0"] {
+        margin-left: 0;
+    }
+}

@@ -16,4 +16,92 @@ a {
 html {
     font-size: responsive 13px 16px;
     font-range: 420px 1200px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+h1 {
+    text-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.night {
+    body {
+        color: $body-bg;
+        background-color: $body-color;
+    }
+    table {
+        color: $body-color;
+    }
+    .headroom--pinned, .wave {
+        svg path {
+            fill: $body-color;
+        }
+    }
+    .projekt-container, .post-container {
+        a {
+            svg path {
+                fill: $white;
+            }
+        }
+    }
+    div[data-help="line"] {
+        background-color: $white;
+    }
+} 
+
+.projekt-container, .post-container {
+    p {
+        line-height: 1.58;
+        letter-spacing: -.003em;
+        --baseline-multiplier: 0.179;
+        --x-height-multiplier: 0.35;
+        font-size: 1.25rem;
+    }
+    .gatsby-image-wrapper {
+        height: 50vh;
+        img {
+            animation: projectHeader 30s infinite;
+        }
+    }
+}
+
+.fullwidth {
+    .gatsby-resp-image-wrapper {
+        width: 100vw;
+        margin-left: -50vw !important;
+        left: 50%;
+        max-width: 6000px !important;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+}
+
+.gatsby-highlight {
+    margin-bottom: 2rem;
+}
+
+@keyframes projectHeader {
+    0% {
+        transform: scale(1);
+        animation-timing-function: ease-in
+    }
+
+    25% {
+        animation-timing-function: ease-out;
+        transform: scale(1.05)
+    }
+
+    50% {
+        transform: scale(1.1);
+        animation-timing-function: ease-in
+    }
+
+    to {
+        transform: scale(1);
+        animation-timing-function: ease-out
+    }
 }

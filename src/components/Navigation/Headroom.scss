@@ -1,0 +1,59 @@
+@import "../../utils/_variables.scss";
+
+$transition-headroom: all .5s ease-in-out;
+
+.headroom-wrapper {
+    position: fixed;
+    width: 100%;
+    z-index: 200;
+}
+
+.headroom {
+    lost-flex-container: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 2rem;
+    @include for-phone-only {
+        padding: 1rem 1rem;
+    }
+}
+
+.headroom--unfixed {
+    position: relative;
+    transform: translateY(0);
+    transition: $transition-headroom;
+}
+.headroom--scrolled {
+    transition: $transition-headroom;
+}
+.headroom--unpinned {
+    position: fixed;
+    transform: translateY(-100%);
+    transition: $transition-headroom;
+}
+.headroom--pinned {
+    position: fixed;
+    transform: translateY(0%);
+    transition: $transition-headroom;
+    background-color: $nearlyWhite;
+    box-shadow: 0px 5px 20px rgba(0,0,0,.2);
+    a {
+        color: $black;
+        &:hover {
+            color: $blue;
+        }
+    }
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    svg {
+        height: 2.25rem;
+    }
+    svg g {
+        fill: $black;
+    }
+    span {
+        color: $black;
+        font-size: 1.25rem;
+        margin-left: .5rem;
+    }
+}

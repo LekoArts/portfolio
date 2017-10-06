@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: */tags/
 Disallow: */categories/
+Disallow: 
 
 sitemap: https://www.lekoarts.de/sitemap.xml

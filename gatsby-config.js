@@ -31,8 +31,15 @@ module.exports = {
           {
             resolve: "gatsby-remark-images",
             options: {
-              maxWidth: 1200,
-              linkImagesToOriginal: false
+              maxWidth: 1920,
+              quality: 90
+            }
+          },
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "nofollow noopener noreferrer"
             }
           },
           {

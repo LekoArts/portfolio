@@ -1,0 +1,60 @@
+@import "../../utils/_variables.scss";
+
+.footer {
+    position: relative;
+    background: linear-gradient(-45deg, $gt-bg-dark 0%, $gt-bg-light 100%);
+    padding-top: 10rem;
+    padding-bottom: 2rem;
+}
+
+.wrapper {
+    lost-flex-container: column;
+}
+
+.optional {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    h1, h2 {
+        color: $white;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+.content {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    lost-flex-container: row;
+    justify-content: space-between;
+    a {
+        color: $grey;
+        &:hover {
+            color: $blue;
+        }
+    }
+}
+
+.important, .legal, .socialMedia {
+    lost-flex-container: column;
+    color: $grey;
+    text-shadow: 0px 5px 10px rgba(#000, .13);
+}
+
+.important {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.25rem;
+    a {
+        color: $white;
+        &:hover {
+            color: $blue;
+        }
+    }
+}
+
+.copyright {
+    margin: 1rem 0;
+    text-align: center;
+    color: $grey;
+}

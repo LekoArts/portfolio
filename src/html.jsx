@@ -27,6 +27,7 @@ export default class HTML extends React.Component {
         />
       );
     }
+
     return (
       <html lang="de">
         <head>

@@ -10,8 +10,7 @@ export default class ProjectFeatureListing extends React.Component {
             path: projectEdge.node.fields.slug,
             cover: projectEdge.node.frontmatter.cover.childImageSharp.resize.src,
             customer: projectEdge.node.frontmatter.customer,
-            title: projectEdge.node.frontmatter.title,
-            color: projectEdge.node.frontmatter.color
+            title: projectEdge.node.frontmatter.title
           });
         });
         return projectList;

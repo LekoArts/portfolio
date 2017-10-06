@@ -1,14 +1,8 @@
 ---
 customer: "LekoArts"
-title: "Viertes Projekt"
+title: "Increasing Inbound Enquiries for IT Leaders"
 cover: "./cover.jpg"
 date: "04/04/2017"
-category: "design"
-tags:
-    - programming
-    - stuff
-    - other
-color: "#F44336"
 ---
 # Quanto et ius coniunctis urbes
 
@@ -26,6 +20,10 @@ At securim cautum capitis, creatos sanguinis turbant iam concita videor, edere.
 Alis genas rudis felix quas **longum** suorum manu ante prima **usque**. Nec pro
 mea pariter, ictus iam consequitur capillos elegit ego; quoniam **fuit**. Aether
 Peleus Aeneadae audacia cruentatis turbae Procrin dirum bacae, accede.
+
+<span class="fullwidth">
+<img src="./cover.jpg" alt="cover">
+</span>
 
 ```php
     urlLinkedin.midi_manet -= namespace(backsideKilobitBezel);

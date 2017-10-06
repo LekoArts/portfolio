@@ -1,0 +1,75 @@
+@import "../utils/_variables.scss";
+
+.wrapper {
+    height: 50vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero {
+    z-index: 1;
+    @include centerer;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 2rem;
+    .line {
+        background-color: $white;
+    }
+}
+
+.category {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-family: "Montserrat", sans-serif;
+    color: $white;
+    &:hover {
+        color: $white;
+    }
+}
+
+.categoryRef {
+    span {
+        font-weight: 700;
+    }
+}
+
+.catWrapper {
+    display: inline-block;
+}
+
+.line {
+    height: 2px;
+    width: 100%;
+    background-color: $black;
+    margin-bottom: 1.5rem;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    @include for-phone-only {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.date, .time, .tags {
+    margin-top: .5rem;
+}
+
+.linkIcon path {
+    fill: $white;
+}
+
+.disqus {
+    background-color: $nearlyWhite;
+    padding: 1rem;
+    border-radius: .25rem;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+}

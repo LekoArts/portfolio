@@ -1,14 +1,5 @@
 @import "../../utils/_variables.scss";
 
-.header {
-    position: fixed;
-    width: 100%;
-    z-index: 800;
-    padding: 1.5rem 2rem;
-    lost-flex-container: row;
-    justify-content: space-between;
-}
-
 .logoBrand {
     a {
         lost-align: middle-left;
@@ -19,6 +10,9 @@
 .logo {
     height: 3rem;
     margin-bottom: 0;
+    @include for-phone-only {
+        height: 2.5rem;
+    }
 }
 
 .logoText {
@@ -27,6 +21,9 @@
     font-size: 1.5rem;
     margin-left: .75rem;
     color: $white;
+    @include for-phone-only {
+        font-size: 1.25rem;
+    }
 }
 
 .navigation {
@@ -38,5 +35,8 @@
             color: $blue;
         }
         margin-left: 2rem;
+        @include for-phone-only {
+            margin-left: 1rem;
+        }
     }
 }
