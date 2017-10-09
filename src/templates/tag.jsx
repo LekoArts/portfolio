@@ -1,8 +1,10 @@
 import React from "react";
 import Helmet from "react-helmet";
-import PostListing from "../components/PostListing/PostListing";
 import config from "../../data/SiteConfig";
-import "./tag.scss";
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
+import Container from "../components/Container/Container";
+import CatPostListing from "../components/CatPostListing/CatPostListing";
 
 export default class TagTemplate extends React.Component {
   render() {
@@ -10,8 +12,14 @@ export default class TagTemplate extends React.Component {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <div className="tag-container">
-        <Helmet title={`Mit "${tag}" getaggte Beiträge | ${config.siteTitle}`} />
-        <PostListing postEdges={postEdges} />
+        <Helmet title={`${tag} | ${config.siteTitle}`} />
+        <Header slim subTitle={`Auflistung aller Beiträge, die mit "${tag}" markiert wurden`}>
+          {tag}
+        </Header>
+        <Container>
+          <CatPostListing postEdges={postEdges} />
+        </Container>
+        <Footer />
       </div>
     );
   }
@@ -31,12 +39,13 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          excerpt
+          excerpt (pruneLength: 300)
           timeToRead
           frontmatter {
             title
             tags
             date
+            category
           }
         }
       }

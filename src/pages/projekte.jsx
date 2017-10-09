@@ -1,20 +1,23 @@
 import React from "react";
+import Helmet from "react-helmet";
+import config from "../../data/SiteConfig";
 import ProjectListing from "../components/ProjectListing/ProjectListing";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
-import Container from "../components/Container/Container";
+import ContainerBig from "../components/Container/ContainerBig";
 
 export default class Projekte extends React.Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
-      <div className="container">
-        <Header slim>
+      <div className="container projekte-container">
+        <Helmet title={`Projekte | ${config.siteTitle}`} />
+        <Header slim subTitle="Spezialisiert in Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken">
           Projekte
         </Header>
-        <Container>
+        <ContainerBig>
           <ProjectListing postEdges={postEdges} />
-        </Container>
+        </ContainerBig>
         <Footer />
       </div>
     );
@@ -36,12 +39,17 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            date
             customer
             cover {
               childImageSharp {
-                resize(width: 1200) {
+                sizes(maxWidth: 1200, quality: 95) {
+                  base64
+                  aspectRatio
                   src
+                  srcSet
+                  sizes
+                  originalImg
+                  originalName
                 }
               }
             }

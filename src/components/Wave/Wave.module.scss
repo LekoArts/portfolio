@@ -36,6 +36,9 @@
         @include for-phone-only {
             height: 4rem;
         }
+        @include for-tablet-portrait-only {
+            height: 5rem;
+        }
     }
 }
 

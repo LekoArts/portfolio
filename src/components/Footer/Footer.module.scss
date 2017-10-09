@@ -34,12 +34,24 @@
             color: $blue;
         }
     }
+    @include for-phone-only {
+        lost-flex-container: column;
+    }
 }
 
 .important, .legal, .socialMedia {
     lost-flex-container: column;
     color: $grey;
     text-shadow: 0px 5px 10px rgba(#000, .13);
+    @include for-phone-only {
+        lost-flex-container: row;
+        justify-content: center;
+        margin-bottom: 1rem;
+        a {
+            margin-left: .5rem;
+            margin-right: .5rem;
+        }
+    }
 }
 
 .important {

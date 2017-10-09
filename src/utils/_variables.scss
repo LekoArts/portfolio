@@ -28,8 +28,17 @@
 @mixin for-tablet-portrait-up {
     @media (min-width: 600px) { @content; }
 }
+@mixin for-tablet-portrait-only {
+    @media (min-width: 600px) and (max-width: 899px) { @content; }
+}
+@mixin for-tablet-landscape-down {
+    @media (max-width: 899px) { @content; }
+}
 @mixin for-tablet-landscape-up {
     @media (min-width: 900px) { @content; }
+}
+@mixin for-tablet-landscape-only {
+    @media (min-width: 900px) and (max-width: 1199px) { @content; }
 }
 @mixin for-desktop-up {
     @media (min-width: 1200px) { @content; }
@@ -48,8 +57,14 @@ $grey: #94A1C9;
 $black: #2A2B2F;
 $blue: #3498DB;
 $orange: #DB8834;
+$orange-light: #FFA64D;
 $blue-light: #57B6FC;
 $blue-black-ish: #343848;
+
+// Tints
+
+$black-tint: rgba($black, .5);
+$white-tint: rgba($white, .75);
 
 // Gradient
 $gt-bg-light: #373B4D;

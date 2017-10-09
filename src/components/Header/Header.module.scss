@@ -8,7 +8,7 @@
 }
 
 .slim {
-    height: 30vh;
+    height: 35vh;
     .heroText {
         margin-bottom: 0rem;
     }
@@ -26,4 +26,10 @@
     @include for-phone-only {
         font-size: 2rem;
     }
+}
+
+.subTitle {
+    font-size: 1.25rem;
+    max-width: 650px;
+    color: $white-tint;
 }

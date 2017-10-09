@@ -1,18 +1,25 @@
 import React from "react";
 import Helmet from "react-helmet";
-import PostListing from "../components/PostListing/PostListing";
 import config from "../../data/SiteConfig";
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
+import Container from "../components/Container/Container";
+import CatPostListing from "../components/CatPostListing/CatPostListing";
 
 export default class CategoryTemplate extends React.Component {
   render() {
     const category = this.props.pathContext.category;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
-      <div className="category-container">
-        <Helmet
-          title={`Beiträge in der Kategorie "${category}" | ${config.siteTitle}`}
-        />
-        <PostListing postEdges={postEdges} />
+      <div className="container category-container">
+        <Helmet title={`${category} | ${config.siteTitle}`} />
+        <Header slim subTitle={`Auflistung aller Beiträge, die der Kategorie "${category}" angehören`}>
+          {category}
+        </Header>
+        <Container>
+          <CatPostListing postEdges={postEdges} />
+        </Container>
+        <Footer />
       </div>
     );
   }
@@ -32,15 +39,13 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          excerpt
+          excerpt (pruneLength: 300)
           timeToRead
           frontmatter {
             title
             tags
-            cover {
-              absolutePath
-            }
             date
+            category
           }
         }
       }

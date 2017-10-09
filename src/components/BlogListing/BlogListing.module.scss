@@ -1,0 +1,66 @@
+@import "../../utils/_variables.scss";
+
+.wrapper {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  lost-flex-container: row;
+  @include for-tablet-landscape-down {
+    margin-bottom: 4rem;
+  }
+}
+
+.image {
+  lost-column: 2/5;
+  transition: all .5s ease-out-quart;
+  &:hover {
+    transform: translateY(-10px);
+  }
+  @include for-tablet-landscape-only {
+    lost-column: 3/7;
+  }
+  @include for-tablet-landscape-down {
+    lost-column: 1/1;
+    margin-bottom: 1rem;
+  }
+}
+
+.information {
+  lost-column: 3/5;
+  @include for-tablet-landscape-only {
+    lost-column: 4/7;
+  }
+  @include for-tablet-landscape-down {
+    lost-column: 1/1;
+  }
+}
+
+.data {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  @include for-phone-only {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+}
+
+.dateTime {
+  lost-flex-container: row;
+}
+
+.time {
+  margin-left: .5rem;
+}
+
+.dateTime, .tags {
+  margin-top: .5rem;
+}
+
+.line {
+  height: 2px;
+  width: 100%;
+  background-color: $black-tint;
+  margin-bottom: .5rem;
+}

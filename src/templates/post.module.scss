@@ -58,7 +58,15 @@
     }
 }
 
-.date, .time, .tags {
+.dateTime {
+    lost-flex-container: row;
+}
+
+.time {
+    margin-left: .5rem;
+}
+
+.dateTime, .tags {
     margin-top: .5rem;
 }
 

@@ -28,6 +28,13 @@ h2 {
     text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 }
 
+.active {
+    &:before {
+        visibility: visible !important;
+        transform: scaleX(1) !important;
+    }
+}
+
 .night {
     body {
         color: $body-bg;
@@ -41,19 +48,42 @@ h2 {
             fill: $body-color;
         }
     }
-    .projekt-container, .post-container {
+    .projekt-container, .post-container, .blog-container {
         a {
             svg path {
-                fill: $white;
+                fill: $white-tint;
             }
         }
     }
-    div[data-help="line"] {
-        background-color: $white;
+    .line {
+        background-color: $white-tint;
     }
-} 
+    .tag {
+        border-color: $white;
+        color: $white;
+        &:hover {
+            background-color: $white;
+            color: $blue-black-ish;
+        }
+    }
+}
 
-.projekt-container, .post-container {
+.headroom--pinned {
+    a {
+        color: $black;
+        &:before {
+            background-color: $black;
+        }
+        &:hover, &:focus {
+            color: $black-tint;
+        }
+    }
+    .active {
+        color: $black;
+    }
+}
+
+.projekt-container, .post-container, .kontakt-container {
     p {
         line-height: 1.58;
         letter-spacing: -.003em;
@@ -65,6 +95,23 @@ h2 {
         height: 50vh;
         img {
             animation: projectHeader 30s infinite;
+        }
+    }
+}
+
+.blog-container {
+    .gatsby-image-wrapper {
+        box-shadow: 0px 10px 20px rgba(0,0,0,.2);
+        transition: all .5s ease-in-out-quart;
+        border-radius: .35rem;
+        &:hover {
+            box-shadow: 0px 15px 25px rgba(0,0,0,.1);
+        }
+        img {
+            border-radius: .35rem;
+        }
+        @include for-tablet-landscape-down {
+            max-height: 15rem;
         }
     }
 }
@@ -103,5 +150,21 @@ h2 {
     to {
         transform: scale(1);
         animation-timing-function: ease-out
+    }
+}
+
+@include for-tablet-portrait-only {
+    .projekte-container {
+        .gatsby-image-wrapper {
+            max-height: 30rem;
+        }
+    }
+}
+
+@include for-phone-only {
+    .projekte-container {
+        .gatsby-image-wrapper {
+            max-height: 15rem;
+        }
     }
 }

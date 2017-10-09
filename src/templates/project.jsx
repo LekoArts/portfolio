@@ -2,6 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import Img from "gatsby-image";
 import Link from "gatsby-link";
+import { Fade } from "react-reveal";
 import SEO from "../components/SEO/SEO";
 import Container from "../components/Container/Container";
 import Wave from "../components/Wave/Waves";
@@ -17,7 +18,7 @@ export default class ProjectTemplate extends React.Component {
     const { slug } = this.props.pathContext;
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
-    const responsiveSizes = post.cover.childImageSharp.responsiveSizes;
+    const sizes = post.cover.childImageSharp.sizes;
     if (!post.id) {
       post.id = slug;
     }
@@ -29,20 +30,22 @@ export default class ProjectTemplate extends React.Component {
         <SEO postPath={slug} postNode={postNode} postSEO />
         <div className={styles.wrapper}>
           <div className={styles.hero}>
-            <span className={styles.customer}>{post.customer}</span>
-            <h1>{post.title}</h1>
+            <Fade down className={styles.customer}>{post.customer}</Fade>
+            <Fade down tag="h1">{post.title}</Fade>
           </div>
           <Wave bottom />
-          <Img responsiveSizes={responsiveSizes} />
+          <Img sizes={sizes} />
         </div>
         <Container text>
           <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
         </Container>
         <Footer>
+          <Fade up>
           <h1>Packen wir's an!</h1>
           <Link to="/kontakt">
             <Button text="Projekt starten" blue />
           </Link>
+          </Fade>
         </Footer>
       </div>
     );
@@ -60,7 +63,7 @@ export const pageQuery = graphql`
         customer
         cover {
           childImageSharp {
-            responsiveSizes(maxWidth: 1920, quality: 95, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
+            sizes(maxWidth: 1920, quality: 95, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
               base64
               aspectRatio
               src

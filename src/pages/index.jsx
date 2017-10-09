@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "gatsby-link";
+import { Fade } from "react-reveal";
 import Footer from "../components/Footer/Footer";
 import Container from "../components/Container/Container";
 import ContainerBig from "../components/Container/ContainerBig";
@@ -22,21 +23,25 @@ export default class Index extends React.Component {
           <ProjectFeatureListing projectEdges={projectEdges} />
         </ContainerBig>
         <Container>
+          <Fade up>
           <p className={styles.text}>
-            Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus Ihrer Marke herauszuholen. <br />
+            Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus deiner Marke herauszuholen. <br />
             <Link to="/projekte">
               <Button blue text="Projekte" />
             </Link>
           </p>
+          </Fade>
         </Container>
         <Container>
           <BlogFeatureListing postEdges={postEdges} />
+          <Fade up>
           <p className={styles.text}>
             Mit ebenso viel Leidenschaft schreibe ich über Design- und Coding-Themen und gebe mein Wissen in Form von Tutorials weiter. <br />
             <Link to="/blog">
               <Button orange text="Blog" />
             </Link>
           </p>
+          </Fade>
         </Container>
         <Footer />
       </div>

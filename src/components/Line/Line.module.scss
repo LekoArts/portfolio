@@ -1,0 +1,12 @@
+@import "../../utils/_variables.scss";
+
+.line {
+    height: 2px;
+    width: 100%;
+    background-color: $black;
+    margin-bottom: 1.5rem;
+}
+
+.white {
+    background-color: $white;
+}

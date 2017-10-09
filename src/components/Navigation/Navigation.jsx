@@ -14,13 +14,13 @@ export default class Navigation extends React.Component {
               </Link> 
             </div>
             <nav className={styles.navigation}>
-              <Link to="/projekte">
+              <Link to="/projekte" activeClassName="active">
                 Projekte
               </Link>
-              <Link to="/blog">
+              <Link to="/blog" activeClassName="active">
                 Blog
               </Link>
-              <Link to="/kontakt">
+              <Link to="/kontakt" activeClassName="active">
                 Kontakt
               </Link>
             </nav>
