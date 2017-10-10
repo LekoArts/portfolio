@@ -64,7 +64,7 @@ export default class PostTemplate extends React.Component {
           <Line />
           <div className={styles.categoryRef}>
             <p>
-              <span>Interesse geweckt?</span> Lese alle Beiträge in der Kategorie <Link to={`/categories/${_.kebabCase(post.category)}`}><Button small orange text={post.category} /></Link>
+              <span>Interesse geweckt?</span> Lese alle Beiträge in der Kategorie <Link to={`/categories/${_.kebabCase(post.category)}`}><Button small orange>{post.category}</Button></Link>
             </p>
           </div>
           <div className={styles.disqus}>
@@ -75,7 +75,9 @@ export default class PostTemplate extends React.Component {
           <Fade up>
           <h2>Lust auf mehr Tutorials & Goodies? Werde ein Patron.</h2>
           <a href="https://www.patreon.com/lekoarts" target="_blank" rel="noopener noreferrer">
-            <Button text="Patreon" orange />
+            <Button orange>
+              Patreon
+            </Button>
           </a>
           </Fade>
         </Footer>

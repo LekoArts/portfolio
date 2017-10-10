@@ -9,7 +9,6 @@ module.exports = {
   /* Plugins */
   plugins: [
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-react-next",
     {
       resolve: "gatsby-source-filesystem",
       options: {

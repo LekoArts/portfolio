@@ -38,7 +38,6 @@ class Footer extends Component {
               <div className={styles.socialMedia}>
                 <a href="https://www.instagram.com/lekoarts.de" target="_blank" rel="noopener noreferrer">Instagram</a>
                 <a href="https://www.behance.net/lekoarts" target="_blank" rel="noopener noreferrer">Behance</a>
-                <a href="https://www.facebook.com/lekoarts.de" target="_blank" rel="noopener noreferrer">Facebook</a>
               </div>
             </div>
             <div className={styles.copyright}>

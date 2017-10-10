@@ -4,6 +4,7 @@ import styles from "./Button.module.scss";
 
 export default class Button extends Component {
     render() {
+        const { children } = this.props;
         const color = cx(styles.button, {
             [styles.small]: this.props.small,
             [styles.blue]: this.props.blue,
@@ -11,7 +12,7 @@ export default class Button extends Component {
         });
         return (
         <button className={color}>
-            {this.props.text}
+            {children}
         </button>
         )
   }

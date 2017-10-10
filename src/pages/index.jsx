@@ -17,7 +17,7 @@ export default class Index extends React.Component {
     return (
       <div className="container">
         <Header>
-          Grafikdesigner & <br /> Front-End Entwickler
+          Kommunikationsdesigner & <br /> Front-End Entwickler
         </Header>
         <ContainerBig>
           <ProjectFeatureListing projectEdges={projectEdges} />
@@ -27,7 +27,9 @@ export default class Index extends React.Component {
           <p className={styles.text}>
             Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus deiner Marke herauszuholen. <br />
             <Link to="/projekte">
-              <Button blue text="Projekte" />
+              <Button blue>
+                Projekte
+              </Button>
             </Link>
           </p>
           </Fade>
@@ -38,7 +40,9 @@ export default class Index extends React.Component {
           <p className={styles.text}>
             Mit ebenso viel Leidenschaft schreibe ich über Design- und Coding-Themen und gebe mein Wissen in Form von Tutorials weiter. <br />
             <Link to="/blog">
-              <Button orange text="Blog" />
+              <Button orange>
+                Blog
+              </Button>
             </Link>
           </p>
           </Fade>

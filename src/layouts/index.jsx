@@ -12,7 +12,7 @@ export default class MainLayout extends React.Component {
     function changeTheme() {
         const date = new Date();
         const hr = date.getHours();
-        const morning = 5;
+        const morning = 7;
         const evening = 20;
         if (hr > morning && hr < evening) {
             html.classList.remove("night");

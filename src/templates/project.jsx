@@ -43,7 +43,9 @@ export default class ProjectTemplate extends React.Component {
           <Fade up>
           <h1>Packen wir's an!</h1>
           <Link to="/kontakt">
-            <Button text="Projekt starten" blue />
+            <Button blue>
+              Projekt starten
+            </Button>
           </Link>
           </Fade>
         </Footer>
