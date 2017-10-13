@@ -12,7 +12,7 @@ export default class Projekte extends React.Component {
     return (
       <div className="container projekte-container">
         <Helmet title={`Projekte | ${config.siteTitle}`} />
-        <Header slim subTitle="Spezialisiert in Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken">
+        <Header slim subTitle="Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken">
           Projekte
         </Header>
         <ContainerBig>

@@ -24,6 +24,9 @@
     @include for-phone-only {
         font-size: 1.25rem;
     }
+    @include for-stoneage-only {
+        display: none;
+    }
 }
 
 .navigation {

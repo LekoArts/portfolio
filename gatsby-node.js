@@ -25,6 +25,12 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     ) {
       slug = `/${_.kebabCase(node.frontmatter.title)}`;
     }
+    if (
+      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, "customer")
+    ) {
+      slug = `/${_.kebabCase(node.frontmatter.customer)}-${_.kebabCase(node.frontmatter.title)}`;
+    }
     createNodeField({ node, name: `sourceInstanceName`, value: fileNode.sourceInstanceName });
     createNodeField({ node, name: "slug", value: `${pathPrefix}${slug}` });
   }
@@ -137,7 +143,7 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
   }
   if (stage === "build-html") {
     config.loader('null', {
-      test: /react-disqus-comments/,
+      test: /zooming/,
       loader: 'null-loader'
     })
   }

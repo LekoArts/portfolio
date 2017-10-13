@@ -39,6 +39,9 @@
         @include for-tablet-portrait-only {
             height: 5rem;
         }
+        @include for-tablet-landscape-only {
+            height: 5rem;
+        }
     }
 }
 

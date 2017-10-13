@@ -1,6 +1,7 @@
 User-agent: *
 Disallow: */tags/
 Disallow: */categories/
-Disallow: 
+Disallow: /impressum
+Disallow: /datenschutz
 
 sitemap: https://www.lekoarts.de/sitemap.xml

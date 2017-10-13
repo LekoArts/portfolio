@@ -1,13 +1,12 @@
 @import "../../utils/_variables.scss";
 
 .card {
-    lost-column: 1/4;
     lost-flex-container: column;
     padding: 2rem 2rem;
     align-items: center;
     color: $blue-black-ish;
     font-family: "Montserrat", sans-serif;
-    border-radius: .35rem;
+    border-radius: $global-border-radius;
     box-shadow: 0px 20px 30px rgba(0,0,0,.1);
     position: relative;
     transition: background-color .5s;
@@ -20,7 +19,7 @@
         content: "";
         position: absolute 0;
         z-index: -1;
-        border-radius: .35rem;
+        border-radius: $global-border-radius;
         background-color: $nearlyWhite;
     }
 }

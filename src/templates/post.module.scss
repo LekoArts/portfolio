@@ -4,6 +4,7 @@
     height: 50vh;
     position: relative;
     overflow: hidden;
+    margin-bottom: 3rem;
 }
 
 .hero {
@@ -72,12 +73,4 @@
 
 .linkIcon path {
     fill: $white;
-}
-
-.disqus {
-    background-color: $nearlyWhite;
-    padding: 1rem;
-    border-radius: .25rem;
-    margin-top: 6rem;
-    margin-bottom: 2rem;
 }

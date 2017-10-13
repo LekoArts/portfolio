@@ -22,6 +22,10 @@
 
 // Media Queries
 
+@mixin for-stoneage-only {
+    @media (max-width: 400px) { @content; }
+}
+
 @mixin for-phone-only {
     @media (max-width: 599px) { @content; }
 }
@@ -83,6 +87,9 @@ $gt-orange-dark: #D17C26;
 // Body
 $body-bg: $nearlyWhite;
 $body-color: $black;
+
+// Style
+$global-border-radius: .4rem;
 
 // Link
 $link-color: $blue;

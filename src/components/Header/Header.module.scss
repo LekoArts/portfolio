@@ -8,9 +8,12 @@
 }
 
 .slim {
-    height: 35vh;
+    height: 40vh;
     .heroText {
         margin-bottom: 0rem;
+    }
+    svg {
+        height: 5rem;
     }
 }
 
@@ -23,8 +26,10 @@
     &:hover {
         cursor: default;
     }
-    @include for-phone-only {
-        font-size: 2rem;
+    h1 {
+        @include for-phone-only {
+            font-size: 1.75rem;
+        }
     }
 }
 
@@ -32,4 +37,7 @@
     font-size: 1.25rem;
     max-width: 650px;
     color: $white-tint;
+    @include for-phone-only {
+        font-size: 1rem;
+    }
 }

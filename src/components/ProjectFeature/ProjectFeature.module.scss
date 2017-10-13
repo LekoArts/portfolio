@@ -1,11 +1,9 @@
 @import "../../utils/_variables.scss";
 
-$pfbr: .35rem;
-
 .wrapper {
     position: relative;
     z-index: 100;
-    border-radius: $pfbr;
+    border-radius: $global-border-radius;
     box-shadow: 0px 40px 40px rgba(0,0,0,.2);
     transition: all .5s ease-out-quart;
     background-position: center;
@@ -90,7 +88,7 @@ $pfbr: .35rem;
         bottom: 0;
         background: linear-gradient(to bottom, rgba($black, 0) 0%, rgba($black, 1) 100%);
         z-index: -10;
-        border-radius: $pfbr;
+        border-radius: $global-border-radius;
     }
 }
 
@@ -109,7 +107,7 @@ $pfbr: .35rem;
 }
 
 .imageOverlay {
-    border-radius: $pfbr;
+    border-radius: $global-border-radius;
     position: absolute 0;
     z-index: -10;
     opacity: .1;

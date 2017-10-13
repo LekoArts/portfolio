@@ -72,6 +72,8 @@ export const pageQuery = graphql`
                 }
               }
             }
+            time
+            task
           }
         }
       }

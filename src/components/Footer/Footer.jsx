@@ -32,7 +32,7 @@ class Footer extends Component {
                   Impressum
                 </Link>
                 <Link to="/datenschutz">
-                  Datenschutz
+                  Datenschutzerklärung
                 </Link>
               </div>
               <div className={styles.socialMedia}>

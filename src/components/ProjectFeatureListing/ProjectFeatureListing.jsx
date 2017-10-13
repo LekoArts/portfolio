@@ -22,7 +22,7 @@ export default class ProjectFeatureListing extends React.Component {
         <div className={styles.wrapper}>
             {projectList.map(project => 
                 (
-                    <ProjectFeature key={project.title} customer={project.customer} cover={project.cover} path={project.path} title={project.title} color={project.color} />
+                    <ProjectFeature key={project.title} customer={project.customer} cover={project.cover} path={project.path} title={project.title} />
                 )
             )}
         </div>

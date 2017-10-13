@@ -3,9 +3,14 @@ const autoprefixer = require(`autoprefixer`)
 const rucksackCSS = require(`rucksack-css`)
 const config = require("./data/SiteConfig")
 
+const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
+
 module.exports = {
   /* Allgemeine Informationen */
   pathPrefix: config.pathPrefix,
+  siteMetadata: {
+    siteUrl: config.siteUrl + pathPrefix
+  },
   /* Plugins */
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -30,8 +35,10 @@ module.exports = {
           {
             resolve: "gatsby-remark-images",
             options: {
-              maxWidth: 1920,
-              quality: 90
+              maxWidth: 1600,
+              quality: 90,
+              linkImagesToOriginal: false,
+              lightbox: true
             }
           },
           {

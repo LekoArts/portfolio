@@ -4,7 +4,6 @@ import Img from "gatsby-image";
 import Link from "gatsby-link";
 import _ from "lodash";
 import { Fade } from "react-reveal";
-import Disqus from "../components/Disqus/Disqus";
 import PostTags from "../components/PostTags/PostTags";
 import SEO from "../components/SEO/SEO";
 import Container from "../components/Container/Container";
@@ -67,9 +66,6 @@ export default class PostTemplate extends React.Component {
               <span>Interesse geweckt?</span> Lese alle Beiträge in der Kategorie <Link to={`/categories/${_.kebabCase(post.category)}`}><Button small orange>{post.category}</Button></Link>
             </p>
           </div>
-          <div className={styles.disqus}>
-            <Disqus postNode={postNode} />
-          </div>
         </Container>
         <Footer>
           <Fade up>
@@ -99,7 +95,7 @@ export const pageQuery = graphql`
         tags
         cover {
           childImageSharp {
-            sizes(maxWidth: 1920, quality: 95, duotone: { highlight: "#EE9338", shadow: "#BE7123" }) {
+            sizes(maxWidth: 2560, quality: 90, duotone: { highlight: "#EE9338", shadow: "#BE7123" }) {
               base64
               aspectRatio
               src
