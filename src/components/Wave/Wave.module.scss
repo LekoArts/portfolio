@@ -18,6 +18,7 @@
 .waveAnimate {
     fill: $nearlyWhite;
     animation: waveAnimation 20s linear infinite alternate;
+    width: 100%;
 }
 
 .position {

@@ -104,6 +104,9 @@ blockquote {
         --x-height-multiplier: 0.35;
         font-size: 1.25rem;
     }
+    ul li {
+        font-size: 1.25rem;
+    }
     .gatsby-image-wrapper {
         height: 50vh;
         img {
@@ -167,6 +170,10 @@ blockquote {
 
 .gatsby-resp-image-wrapper {
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.gatsby-resp-iframe-wrapper {
+    margin-bottom: 2rem;
 }
 
 .gatsby-highlight {

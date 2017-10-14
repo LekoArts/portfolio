@@ -26,10 +26,12 @@ Für ein gelungenes Composing müssen mehrere Faktoren stimmen – zwei davon si
 
 Nach Sichtung der benötigten Bilder in meinem Archiv und im Internet, machte ich mich an die Arbeit. Dabei war immer wieder die Vorlage aus der 3D-Software sehr hilfreich, um den einzelnen Bildern die richtige Größe zu verpassen. Der Prozess sah in etwas so aus:
 
-# Lösung
+# Resultat
 
 Abweichend von der Skizze habe ich kein Teleskop im Hintergrund positioniert, da ich den Fokus auf den Kessel und dessen Trank lenken wollte. Das Arbeiten mit dem vorgegebenen Stock-Material war angenehm, da es sich gut in meine Szene einbinden ließ. Das Bild zeigt wie gewünscht einen starken Bezug zu Harry Potter, der sich auch in meiner Super Short Story widerspiegelt:
 
 > Irgendetwas verbarg Professor Snape - das fühlte Hermine. Sie hat viel über Veritaserum, ein Wahrheitselexier, gelesen und schlich sich in den Keller, um heimlich den Zaubertrank herzustellen. Zum Glück konnte Hagrid ihr Jobberknoll-Federn geben. Bald wüsste sie von seinem dunklen Geheimnis...
 
 ![](cover.jpg)
+
+![](stock_photos.jpg)

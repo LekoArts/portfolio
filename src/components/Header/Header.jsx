@@ -11,14 +11,16 @@ export default class Header extends React.Component {
         const classes = cx(styles.wrapper, { [styles.slim] : this.props.slim });
         return (
             <div className={classes}>
-                <Fade down>
                 <div className={styles.heroText}>
-                    <h1>
-                        {children}
-                    </h1>
-                    <p className={styles.subTitle}>{subTitle}</p>
+                    <Fade down>
+                        <h1>
+                            {children}
+                        </h1>
+                    </Fade>
+                    <Fade down>
+                        <p className={styles.subTitle}>{subTitle}</p>
+                    </Fade>
                 </div>
-                </Fade>
                 <Wave bottom />
             </div>
         );
