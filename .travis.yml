@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - stable
+
+branches:
+  only:
+  - master
+
+before_install:
+- npm install -g gatsby-cli
+- npm run clean
+
+install:
+- npm install
+
+script:
+- gatsby build
+
+after_success:
+  'find public -type f -exec curl -u $FTP_USER:$FTP_PASS --ftp-create-dirs -T {} ftp://$FTP_HOST/{} ";"'
