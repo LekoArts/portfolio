@@ -27,7 +27,6 @@ export default class ProjectListing extends React.Component {
           <div key={post.path} className={styles.wrapper}>
             <div className={styles.image}>
               <Img sizes={post.cover} />
-              <div className={styles.imageOverlay} />
             </div>
             <Link to={post.path} key={post.path} className={styles.link}>
               <div className={styles.content} />

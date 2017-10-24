@@ -67,13 +67,17 @@ export const pageQuery = graphql`
             title
             cover {
               childImageSharp {
-                resize(width: 1200) {
+                sizes(maxWidth: 1200, quality: 95) {
+                  base64
+                  aspectRatio
                   src
+                  srcSet
+                  sizes
+                  originalImg
+                  originalName
                 }
               }
             }
-            time
-            task
           }
         }
       }

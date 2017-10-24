@@ -10,7 +10,7 @@ export default class Header extends React.Component {
         const subTitle = this.props.subTitle;
         const classes = cx(styles.wrapper, { [styles.slim] : this.props.slim });
         return (
-            <div className={classes}>
+            <header className={classes}>
                 <div className={styles.heroText}>
                     <Fade down>
                         <h1>
@@ -22,7 +22,7 @@ export default class Header extends React.Component {
                     </Fade>
                 </div>
                 <Wave bottom />
-            </div>
+            </header>
         );
     }
 }

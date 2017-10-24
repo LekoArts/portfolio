@@ -5,7 +5,20 @@
 // --------------
 
 a {
-    transition: color $transition-normal;
+    transition: all $transition-normal;
+}
+
+.active {
+    box-shadow: inset 0 -2px 0px 0px $white;
+    &:focus {
+        color: $white;
+    }
+}
+
+.project-blog-content p a {
+    &:hover {
+        box-shadow: inset 0 -4px 0px 0px $blue;
+    }
 }
 
 ::selection {
@@ -31,13 +44,6 @@ h2 {
     text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 }
 
-.active {
-    &:before {
-        visibility: visible !important;
-        transform: scaleX(1) !important;
-    }
-}
-
 blockquote {
     border-left: 5px solid $blue;
     padding-left: 1rem;
@@ -55,6 +61,12 @@ blockquote {
     }
     table {
         color: $body-color;
+    }
+    header {
+        background: linear-gradient(45deg, $gt-bg-dark-night 0%, $gt-bg-light-night 100%);
+    }
+    footer {
+        background: linear-gradient(-45deg, $gt-bg-dark-night 0%, $gt-bg-light-night 100%);
     }
     .headroom--pinned, .wave {
         svg path {
@@ -81,21 +93,6 @@ blockquote {
     }
 }
 
-.headroom--pinned {
-    a {
-        color: $black;
-        &:before {
-            background-color: $black;
-        }
-        &:hover, &:focus {
-            color: $black-tint;
-        }
-    }
-    .active {
-        color: $black;
-    }
-}
-
 .projekt-container, .post-container, .kontakt-container {
     p {
         line-height: 1.58;
@@ -109,6 +106,9 @@ blockquote {
     }
     .gatsby-image-wrapper {
         height: 50vh;
+        @include for-mobile-landscape {
+            height: 100vh;
+        }
         img {
             animation: projectHeader 30s infinite;
         }
@@ -221,5 +221,14 @@ blockquote {
     }
     h2 {
         font-size: 1.5rem;
+    }
+}
+
+@include for-stoneage-only {
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.25rem;
     }
 }

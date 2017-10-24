@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import Img from "gatsby-image";
 import Link from "gatsby-link";
 import _ from "lodash";
+import Zooming from "zooming";
 import { Fade } from "react-reveal";
 import PostTags from "../components/PostTags/PostTags";
 import SEO from "../components/SEO/SEO";
@@ -17,6 +18,14 @@ import styles from "./post.module.scss";
 require(`prismjs/themes/prism-okaidia.css`);
 
 export default class PostTemplate extends React.Component {
+  componentDidMount() {
+    const zooming = new Zooming(
+    {
+      bgColor: 'rgb(0, 0, 0)',
+      bgOpacity: 0.7,
+    }
+    );
+  }
   render() {
     const { slug } = this.props.pathContext;
     const postNode = this.props.data.markdownRemark;
@@ -59,11 +68,11 @@ export default class PostTemplate extends React.Component {
           <Img sizes={sizes} />
         </div>
         <Container text>
-          <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          <div className="project-blog-content" dangerouslySetInnerHTML={{ __html: postNode.html }} />
           <Line />
           <div className={styles.categoryRef}>
             <p>
-              <span>Interesse geweckt?</span> Lese alle Beiträge in der Kategorie <Link to={`/categories/${_.kebabCase(post.category)}`}><Button small orange>{post.category}</Button></Link>
+              <span>Interesse geweckt?</span> Lies alle Beiträge in der Kategorie <Link to={`/categories/${_.kebabCase(post.category)}`}><Button small orange>{post.category}</Button></Link>
             </p>
           </div>
         </Container>
@@ -88,6 +97,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
+      excerpt
       frontmatter {
         title
         date

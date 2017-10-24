@@ -2,13 +2,25 @@
 
 .wrapper {
     background: linear-gradient(45deg, $gt-bg-dark 0%, $gt-bg-light 100%);
-    height: 60vh;
+    height: 65vh;
     position: relative;
     overflow: hidden;
+    @include for-mobile-landscape {
+        height: 100vh;
+    }
+    @include for-big-desktop-up {
+        height: 60vh;
+    }
 }
 
 .slim {
-    height: 40vh;
+    height: 50vh;
+    @include for-mobile-landscape {
+        height: 75vh;
+    }
+    @include for-big-desktop-up {
+        height: 40vh;
+    }
     .heroText {
         margin-bottom: 0rem;
     }
@@ -35,6 +47,9 @@
     h1 {
         @include for-phone-only {
             font-size: 1.75rem;
+        }
+        @include for-stoneage-only {
+            font-size: 1.5rem;
         }
     }
 }

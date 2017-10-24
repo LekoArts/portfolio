@@ -5,12 +5,12 @@
     z-index: 100;
     border-radius: $global-border-radius;
     box-shadow: 0px 20px 20px rgba(0,0,0,.2);
-    transition: all .5s ease-out-quart;
+    transition: all .5s ease-out-back;
     background-position: center;
     background-size: cover;
     &:hover {
         box-shadow: 0px 40px 40px rgba(0,0,0,.1);
-        transform: translateY(-10px);
+        transform: translateY(-12px);
         .imageOverlay {
             opacity: .9;
         }

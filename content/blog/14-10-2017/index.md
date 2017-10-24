@@ -7,7 +7,7 @@ tags:
     - gatsby
 ---
 
-Gatsby ist ein sog. "Static Site Generator" für React.js, das dem Nutzer es ermöglicht schnelle und dynamische Websiten zu erstellen. Besonderen Fokus legt Gatsby auf die Optimierung für Mobilgeräte und erstellt hierfür automatisch eine PWA (Progressive Web App). Befüllt wird die Website mit Hilfe von verschiedensten Quellen: Markdown, CMSs, APIs, Datenbanken und noch viele mehr.
+Gatsby ist ein sog. "Static Site Generator" für React.js, das dem Nutzer ermöglicht, schnelle und dynamische Websiten zu erstellen. Besonderen Fokus legt Gatsby auf die Optimierung für Mobilgeräte und erstellt hierfür automatisch eine PWA (Progressive Web App). Befüllt wird die Website mit Hilfe von verschiedensten Quellen: Markdown, CMSs, APIs, Datenbanken und noch viele mehr.
 
 # Wieso Gatsby.js?
 
@@ -56,7 +56,7 @@ export const pageQuery = graphql`
 `;
 ```
 
-Mit dieser Query erhalte ich alle Projekte (inklusive der Daten aus der "Frontmatter") für meine [Projekte](/projekte)-Unterseite, sortiert nach dem Datum. Um für jede Bildschirmgröße die passenden Bilder auszugeben, nimmt sich ein weiteres Plugin, das die [Sharp](https://github.com/lovell/sharp) nutzt, das in der Markdown Datei definierte Cover und erstellt weitere Bilder daraus. Sollte man Probleme mit der Query haben, kann man mit dem interaktiven GraphiQL Debugger sich Vorschläge anzeigen lassen und die Query selber testen - der Debugger erstellt seine eigene Dokumentation automatisch von alleine.
+Mit dieser Query erhalte ich alle Projekte (inklusive der Daten aus der "Frontmatter") für meine [Projekte](/projekte)-Unterseite, sortiert nach dem Datum. Um für jede Bildschirmgröße die passenden Bilder auszugeben, nimmt sich ein weiteres Plugin, das die [Sharp](https://github.com/lovell/sharp) Bibliothek nutzt, das in der Markdown Datei definierte Cover und erstellt weitere Bilder daraus. Sollte man Probleme mit der Query haben, kann man mit dem interaktiven *GraphiQL* Debugger sich Vorschläge anzeigen lassen und die Query selber testen - der Debugger erstellt seine eigene Dokumentation automatisch von alleine.
 
 Genutzt werden können diese Daten in den React Komponenten dann so:
 
@@ -73,5 +73,5 @@ Für die Seite wurden folgende Tools genutzt:
 - Webpack, Babel, ESLint, Prettier (Von Gatsby vorkonfiguriert)
 - CSS Modules
 - PostCSS (LostGrid, RucksackCSS, Autoprefixer)
-- React, React Headroom, React Helmet
+- React, React Headroom, React Helmet, React Reveal
 - Zooming

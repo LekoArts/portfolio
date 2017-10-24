@@ -8,7 +8,7 @@ export default class ProjectFeatureListing extends React.Component {
         this.props.projectEdges.forEach(projectEdge => {
           projectList.push({
             path: projectEdge.node.fields.slug,
-            cover: projectEdge.node.frontmatter.cover.childImageSharp.resize.src,
+            cover: projectEdge.node.frontmatter.cover.childImageSharp.sizes,
             customer: projectEdge.node.frontmatter.customer,
             title: projectEdge.node.frontmatter.title
           });

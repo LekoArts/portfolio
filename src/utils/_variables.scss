@@ -25,7 +25,6 @@
 @mixin for-stoneage-only {
     @media (max-width: 400px) { @content; }
 }
-
 @mixin for-phone-only {
     @media (max-width: 599px) { @content; }
 }
@@ -48,7 +47,13 @@
     @media (min-width: 1200px) { @content; }
 }
 @mixin for-big-desktop-up {
-    @media (min-width: 1800px) { @content; }
+    @media (min-width: 1500px) { @content; }
+}
+
+// Custom Media Queries
+
+@mixin for-mobile-landscape {
+    @media (max-width: 900px) and (orientation: landscape) { @content; }
 }
 
 // --------------
@@ -56,7 +61,7 @@
 // --------------
 
 $white: #fff;
-$nearlyWhite: #F7F7F7;
+$nearlyWhite: rgb(240, 240, 240);
 $grey: #94A1C9;
 $black: #2A2B2F;
 $blue: #3498DB;
@@ -73,6 +78,9 @@ $white-tint: rgba($white, .75);
 // Gradient
 $gt-bg-light: #373B4D;
 $gt-bg-dark: #1E212B;
+
+$gt-bg-light-night: rgb(70, 80, 122);
+$gt-bg-dark-night: rgb(38, 44, 65);
 
 $gt-blue-light: #5ABDFF;
 $gt-blue-dark: #3466DB;

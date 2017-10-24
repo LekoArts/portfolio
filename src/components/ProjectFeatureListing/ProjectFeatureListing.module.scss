@@ -2,5 +2,8 @@
 
 .wrapper {
     lost-flex-container: row;
-    margin-top: -9rem;
+    margin-top: -10rem;
+    @include for-big-desktop-up {
+        margin-top: -12rem;
+    }
 }

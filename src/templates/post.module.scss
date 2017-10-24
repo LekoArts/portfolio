@@ -5,6 +5,9 @@
     position: relative;
     overflow: hidden;
     margin-bottom: 3rem;
+    @include for-mobile-landscape {
+        height: 90vh;
+    }
 }
 
 .hero {
