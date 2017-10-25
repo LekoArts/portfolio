@@ -6,6 +6,16 @@ branches:
   only:
   - master
 
+notifications:
+  email:
+    on_success: never
+  webhooks: 
+    urls:
+      - https://www.lekoarts.de/webhook/travis-ci.php
+    on_success: always
+    on_start: always
+
+
 before_install:
 - npm install -g gatsby-cli
 

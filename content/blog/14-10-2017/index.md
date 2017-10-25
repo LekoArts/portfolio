@@ -4,7 +4,7 @@ cover: "./cover.jpg"
 date: "14.10.2017"
 category: "Coding"
 tags:
-    - gatsby
+    - Gatsby
 ---
 
 Gatsby ist ein sog. "Static Site Generator" für React.js, das dem Nutzer ermöglicht, schnelle und dynamische Websiten zu erstellen. Besonderen Fokus legt Gatsby auf die Optimierung für Mobilgeräte und erstellt hierfür automatisch eine PWA (Progressive Web App). Befüllt wird die Website mit Hilfe von verschiedensten Quellen: Markdown, CMSs, APIs, Datenbanken und noch viele mehr.

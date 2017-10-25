@@ -64,7 +64,7 @@ export default class ProjectTemplate extends React.Component {
           </div>
         </Container>
         <Container text>
-          <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          <div className="project-blog-content" dangerouslySetInnerHTML={{ __html: postNode.html }} />
         </Container>
         <Footer>
           <Fade up>
