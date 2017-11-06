@@ -13,23 +13,6 @@ module.exports = {
   userTwitter: "lekoarts_de",
   disqusShortname: "lekoarts",
   postDefaultCategoryID: "Design",
-  userLinks: [
-    {
-      label: 'Facebook',
-      url: 'https://www.facebook.com/lekoarts.de',
-      iconClassName: 'fa fa-facebook',
-    },
-    {
-      label: 'Twitter',
-      url: 'https://www.twitter.com/lekoarts_de',
-      iconClassName: 'fa fa-twitter',
-    },
-    {
-      label: 'Email',
-      url: 'mailto:hello@lekoarts.de',
-      iconClassName: 'fa fa-envelope',
-    },
-  ],
   copyright: "Copyright © 2017. LekoArts. Alle Rechte vorbehalten.",
   themeColor: "#3498DB",
   backgroundColor: "#2b2e3c"
