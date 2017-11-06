@@ -83,7 +83,7 @@ export default class ProjectTemplate extends React.Component {
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
-  query ProjetPostBySlug($slug: String!) {
+  query ProjectPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -95,13 +95,7 @@ export const pageQuery = graphql`
         cover {
           childImageSharp {
             sizes(maxWidth: 2560, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
-              base64
-              aspectRatio
-              src
-              srcSet
-              sizes
-              originalImg
-              originalName
+              ...GatsbyImageSharpSizes_withWebp
             }
           }
         }

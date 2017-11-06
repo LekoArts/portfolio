@@ -67,14 +67,8 @@ export const pageQuery = graphql`
             title
             cover {
               childImageSharp {
-                sizes(maxWidth: 1200, quality: 95) {
-                  base64
-                  aspectRatio
-                  src
-                  srcSet
-                  sizes
-                  originalImg
-                  originalName
+                sizes(maxWidth: 1200, quality: 95, traceSVG: { color: "#2B2B2F" }) {
+                  ...GatsbyImageSharpSizes_withWebp_tracedSVG
                 }
               }
             }

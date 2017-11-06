@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import Img from "gatsby-image";
 import Link from "gatsby-link";
 import _ from "lodash";
+import format from "date-fns/format";
 import Zooming from "zooming";
 import { Fade } from "react-reveal";
 import PostTags from "../components/PostTags/PostTags";
@@ -30,6 +31,7 @@ export default class PostTemplate extends React.Component {
     const { slug } = this.props.pathContext;
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
+    const date = format(post.date, 'DD.MM.YYYY');
     const sizes = post.cover.childImageSharp.sizes;
     if (!post.id) {
       post.id = slug;
@@ -53,7 +55,7 @@ export default class PostTemplate extends React.Component {
             <Fade up className={styles.information}>
               <div className={styles.dateTime}>
                 <div className={styles.date}>
-                  {post.date}
+                  {date}
                 </div>
                 <div className={styles.time}>
                   | Lesezeit: {postNode.timeToRead} Min.
@@ -106,13 +108,7 @@ export const pageQuery = graphql`
         cover {
           childImageSharp {
             sizes(maxWidth: 2560, quality: 90, duotone: { highlight: "#EE9338", shadow: "#BE7123" }) {
-              base64
-              aspectRatio
-              src
-              srcSet
-              sizes
-              originalImg
-              originalName
+              ...GatsbyImageSharpSizes_withWebp
             }
           }
         }
