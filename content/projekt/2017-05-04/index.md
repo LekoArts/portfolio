@@ -1,8 +1,8 @@
 ---
 customer: "DOCMA Award"
 title: ! "Super Short Story Telling: Harry Potter"
-cover: "./cover.jpg"
-date: "04.05.2017"
+cover: "./docma_award.jpg"
+date: "2017-05-04"
 task: "Eine Super Short Story schreiben und ein passendes Composing erstellen"
 time: "1 Woche, Mai 2017"
 ---
@@ -32,6 +32,6 @@ Abweichend von der Skizze habe ich kein Teleskop im Hintergrund positioniert, da
 
 > Irgendetwas verbarg Professor Snape - das fühlte Hermine. Sie hat viel über Veritaserum, ein Wahrheitselexier, gelesen und schlich sich in den Keller, um heimlich den Zaubertrank herzustellen. Zum Glück konnte Hagrid ihr Jobberknoll-Federn geben. Bald wüsste sie von seinem dunklen Geheimnis...
 
-![](cover.jpg)
+![](docma_award.jpg)
 
 ![](stock_photos.jpg)

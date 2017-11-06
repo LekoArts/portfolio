@@ -1,7 +1,7 @@
 ---
 title: "Gatsby.js"
-cover: "./cover.jpg"
-date: "14.10.2017"
+cover: "./gatsby.jpg"
+date: "2017-10-14"
 category: "Coding"
 tags:
     - Gatsby

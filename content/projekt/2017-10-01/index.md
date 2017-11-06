@@ -1,8 +1,8 @@
 ---
 customer: ! "elitecases.org"
 title: "Website für virtuelle Spiele-Gegenstände"
-cover: "./cover.jpg"
-date: "01.10.2017"
+cover: "./elitecases.jpg"
+date: "2017-10-01"
 task: "Konzeption, Design und Front-End Umsetzung"
 time: "4 Monate, Juni - September 2017"
 ---

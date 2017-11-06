@@ -1,4 +1,5 @@
 import React from "react";
+import format from "date-fns/format";
 import BlogFeature from "../BlogFeature/BlogFeature";
 import styles from "./BlogFeatureListing.module.scss";
 
@@ -9,7 +10,7 @@ export default class BlogFeatureListing extends React.Component {
           postList.push({
             path: postEdge.node.fields.slug,
             cover: postEdge.node.frontmatter.cover.childImageSharp.resize.src,
-            date: postEdge.node.frontmatter.date,
+            date: format(postEdge.node.frontmatter.date, 'DD.MM.YYYY'),
             title: postEdge.node.frontmatter.title,
             category: postEdge.node.frontmatter.category
           });

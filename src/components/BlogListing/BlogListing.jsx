@@ -2,6 +2,7 @@ import React from "react";
 import Link from "gatsby-link";
 import Img from "gatsby-image";
 import _ from "lodash";
+import format from "date-fns/format";
 import { Fade } from "react-reveal";
 import styles from "./BlogListing.module.scss";
 import PostTags from "../PostTags/PostTags";
@@ -15,7 +16,7 @@ export default class BlogListing extends React.Component {
         path: postEdge.node.fields.slug,
         cover: postEdge.node.frontmatter.cover.childImageSharp.sizes,
         title: postEdge.node.frontmatter.title,
-        date: postEdge.node.frontmatter.date,
+        date: format(postEdge.node.frontmatter.date, 'DD.MM.YYYY'),
         category: postEdge.node.frontmatter.category,
         timeToRead: postEdge.node.timeToRead,
         excerpt: postEdge.node.excerpt,

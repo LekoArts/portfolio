@@ -1,8 +1,8 @@
 ---
 customer: "Combmaster"
 title: "iOS Spiele-App"
-cover: "./cover.jpg"
-date: "01.01.2017"
+cover: "./combmaster.jpg"
+date: "2017-01-01"
 task: "Erstellung der Assets für iPhone und iPad"
 time: "2 Wochen, Dezember 2015"
 ---

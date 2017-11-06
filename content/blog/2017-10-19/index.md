@@ -1,7 +1,7 @@
 ---
 title: "Proprius Wallpaper 01"
-cover: "./cover.jpg"
-date: "19.10.2017"
+cover: "./proprius_wallpaper_01.jpg"
+date: "2017-10-19"
 category: "Freebie"
 tags:
     - Proprius
@@ -12,7 +12,7 @@ Aus meinem [Proprius](/projekte/privat-instagram-projekt-proprius) Projekt sind 
 
 ## Vorschau
 
-![](cover.jpg)
+![](proprius_wallpaper_01.jpg)
 
 ## Download
 

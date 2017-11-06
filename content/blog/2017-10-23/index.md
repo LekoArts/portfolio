@@ -1,7 +1,7 @@
 ---
 title: "elitepvpers Wallpaper"
-cover: "./cover.jpg"
-date: "23.10.2017"
+cover: "./elitepvpers_wallpaper.jpg"
+date: "2017-10-23"
 category: "Freebie"
 tags:
     - elitepvpers
@@ -10,7 +10,7 @@ tags:
 
 Nachdem ich schon Wallpaper für das Smartphone erstellt hatte, habe ich die alten Bilder in 4K neu aufgelegt und vier weitere in Cinema4D erstellt. Die neuen Bilder sollten minimalistisch sein und die Farben von elitepvpers nutzen.
 
-![](cover.jpg)
+![](elitepvpers_wallpaper.jpg)
 
 ## Download
 

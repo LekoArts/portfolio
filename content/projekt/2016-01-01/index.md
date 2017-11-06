@@ -1,8 +1,8 @@
 ---
 customer: "Privat"
 title: 'Instagram-Projekt "Proprius"'
-cover: "./cover.jpg"
-date: "01.01.2016"
+cover: "./proprius.jpg"
+date: "2016-01-01"
 task: "Konzeption und Umsetzung eines 3D-Bildes"
 time: "1 Jahr, 2016"
 ---
@@ -31,4 +31,4 @@ Rückblickend konnte ich aus der Challenge viel mitnehmen:
 
 Alle Bilder in voller Auflösung sind auf meinem [Behance-Profil](https://www.behance.net/lekoarts) zu finden. Meine persönlichen Favoriten sind diese Bilder:
 
-![](cover.jpg)
+![](proprius.jpg)
