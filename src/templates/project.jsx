@@ -97,6 +97,9 @@ export const pageQuery = graphql`
             sizes(maxWidth: 2560, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
               ...GatsbyImageSharpSizes_withWebp
             }
+            resize(width: 1200) {
+              src
+            }
           }
         }
       }

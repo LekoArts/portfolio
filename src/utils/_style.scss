@@ -59,30 +59,46 @@ blockquote {
         color: $body-bg;
         background-color: $body-color;
     }
+
+    hr {
+        background-color: $body-bg;
+    }
+
     table {
         color: $body-color;
     }
+
     header {
         background: linear-gradient(45deg, $gt-bg-dark-night 0%, $gt-bg-light-night 100%);
     }
+
     footer {
         background: linear-gradient(-45deg, $gt-bg-dark-night 0%, $gt-bg-light-night 100%);
     }
-    .headroom--pinned, .wave {
+
+    .headroom--pinned,
+    .wave {
         svg path {
             fill: $body-color;
         }
     }
-    .projekt-container, .post-container, .blog-container, .tag-container, .category-container {
+
+    .projekt-container,
+    .post-container,
+    .blog-container,
+    .tag-container,
+    .category-container {
         a {
             svg path {
                 fill: $white-tint;
             }
         }
     }
+
     .line {
         background-color: $white-tint;
     }
+
     .tag {
         border-color: $white;
         color: $white;
@@ -93,7 +109,9 @@ blockquote {
     }
 }
 
-.projekt-container, .post-container, .kontakt-container {
+.projekt-container,
+.post-container,
+.kontakt-container {
     p {
         line-height: 1.58;
         letter-spacing: -.003em;
@@ -101,14 +119,17 @@ blockquote {
         --x-height-multiplier: 0.35;
         font-size: 1.25rem;
     }
+
     ul li {
         font-size: 1.25rem;
     }
+
     .gatsby-image-wrapper {
         height: 50vh;
         @include for-mobile-landscape {
             height: 100vh;
         }
+
         img {
             animation: projectHeader 30s infinite;
         }

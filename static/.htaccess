@@ -530,7 +530,7 @@ FileETag None
 # | Expires headers                                                            |
 # ------------------------------------------------------------------------------
 
-<filesMatch "\.(html|htm)$">
+<filesMatch "\.(html|htm|js)$">
 FileETag None
 Header unset ETag
 Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
