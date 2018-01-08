@@ -1,98 +1,100 @@
-const lost = require(`lost`)
-const autoprefixer = require(`autoprefixer`)
-const rucksackCSS = require(`rucksack-css`)
-const config = require("./data/SiteConfig")
+/* eslint import/no-extraneous-dependencies: 0 */
 
-const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
+const lost = require('lost');
+const autoprefixer = require('autoprefixer');
+const rucksackCSS = require('rucksack-css');
+const config = require('./data/SiteConfig');
+
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
 module.exports = {
   /* Allgemeine Informationen */
   pathPrefix: config.pathPrefix,
   siteMetadata: {
-    siteUrl: config.siteUrl + pathPrefix
+    siteUrl: config.siteUrl + pathPrefix,
   },
   /* Plugins */
   plugins: [
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-react-helmet',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "posts",
-        path: `${__dirname}/content/${config.blogPostDir}`
-      }
+        name: 'posts',
+        path: `${__dirname}/content/${config.blogPostDir}`,
+      },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "projects",
-        path: `${__dirname}/content/${config.projectPostDir}`
-      }
+        name: 'projects',
+        path: `${__dirname}/content/${config.projectPostDir}`,
+      },
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: "gatsby-remark-images",
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1600,
               quality: 90,
               linkImagesToOriginal: false,
-              lightbox: true
-            }
+              lightbox: true,
+            },
           },
           {
-            resolve: "gatsby-remark-external-links",
+            resolve: 'gatsby-remark-external-links',
             options: {
-              target: "_blank",
-              rel: "nofollow noopener noreferrer"
-            }
+              target: '_blank',
+              rel: 'nofollow noopener noreferrer',
+            },
           },
           {
-            resolve: "gatsby-remark-responsive-iframe"
+            resolve: 'gatsby-remark-responsive-iframe',
           },
-          "gatsby-remark-prismjs",
-          "gatsby-remark-copy-linked-files",
-          "gatsby-remark-autolink-headers"
-        ]
-      }
+          'gatsby-remark-prismjs',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-autolink-headers',
+        ],
+      },
     },
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: config.googleAnalyticsID,
-        anonymize: true
-      }
+        anonymize: true,
+      },
     },
     {
-      resolve: "gatsby-plugin-nprogress",
+      resolve: 'gatsby-plugin-nprogress',
       options: {
-        color: config.themeColor
-      }
+        color: config.themeColor,
+      },
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: `gatsby-plugin-postcss-sass`,
+      resolve: 'gatsby-plugin-postcss-sass',
       options: {
         postCssPlugins: [
           lost(),
           autoprefixer(),
-          rucksackCSS()
+          rucksackCSS(),
         ],
-        precision: 8
-      }
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography.jsx`,
+        precision: 8,
       },
     },
-    "gatsby-plugin-catch-links",
-    "gatsby-plugin-sitemap",
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/utils/typography.jsx',
+      },
+    },
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: config.siteTitle,
         short_name: config.siteShortName,
@@ -100,21 +102,21 @@ module.exports = {
         start_url: config.pathPrefix,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
-        display: "minimal-ui",
+        display: 'minimal-ui',
         icons: [
           {
-            src: "/logos/logo-192x192.png",
-            sizes: "192x192",
-            type: "image/png"
+            src: '/logos/logo-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
           },
           {
-            src: "/logos/logo-512x512.png",
-            sizes: "512x512",
-            type: "image/png"
-          }
-        ]
-      }
+            src: '/logos/logo-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+      },
     },
-    "gatsby-plugin-offline"
-  ]
+    'gatsby-plugin-offline',
+  ],
 };

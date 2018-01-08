@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import cx from "classnames";
-import styles from "./Button.module.scss";
+import React from 'react';
+import cx from 'classnames';
+import styles from './Button.module.scss';
 
-export default class Button extends Component {
-    render() {
-        const { children } = this.props;
-        const color = cx(styles.button, {
-            [styles.small]: this.props.small,
-            [styles.blue]: this.props.blue,
-            [styles.orange]: this.props.orange
-        });
-        return (
-        <button className={color}>
-            {children}
-        </button>
-        )
-  }
-}
+const Button = (props) => {
+  const { children } = props;
+  const color = cx(styles.button, {
+    [styles.small]: props.small,
+    [styles.blue]: props.blue,
+    [styles.orange]: props.orange,
+  });
+  return (
+    <button className={color}>
+      {children}
+    </button>
+  );
+};
+
+export default Button;

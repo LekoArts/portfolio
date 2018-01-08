@@ -1,29 +1,29 @@
-import React from "react";
-import Helmet from "react-helmet";
-import config from "../../data/SiteConfig";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
-import Container from "../components/Container/Container";
-import CatPostListing from "../components/CatPostListing/CatPostListing";
+import React from 'react';
+import Helmet from 'react-helmet';
+import config from '../../data/SiteConfig';
+import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
+import Container from '../components/Container/Container';
+import CatPostListing from '../components/CatPostListing/CatPostListing';
 
-export default class TagTemplate extends React.Component {
-  render() {
-    const tag = this.props.pathContext.tag;
-    const postEdges = this.props.data.allMarkdownRemark.edges;
-    return (
-      <div className="tag-container">
-        <Helmet title={`${tag} | ${config.siteTitle}`} />
-        <Header slim subTitle={`Auflistung aller Beiträge, die mit "${tag}" markiert wurden`}>
-          {tag}
-        </Header>
-        <Container>
-          <CatPostListing postEdges={postEdges} />
-        </Container>
-        <Footer />
-      </div>
-    );
-  }
-}
+const TagTemplate = (props) => {
+  const { tag } = props.pathContext;
+  const postEdges = props.data.allMarkdownRemark.edges;
+  return (
+    <div className="tag-container">
+      <Helmet title={`${tag} | ${config.siteTitle}`} />
+      <Header slim subTitle={`Auflistung aller Beiträge, die mit "${tag}" markiert wurden`}>
+        {tag}
+      </Header>
+      <Container>
+        <CatPostListing postEdges={postEdges} />
+      </Container>
+      <Footer />
+    </div>
+  );
+};
+
+export default TagTemplate;
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`

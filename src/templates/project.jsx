@@ -1,36 +1,37 @@
-import React from "react";
-import Helmet from "react-helmet";
-import Img from "gatsby-image";
-import Link from "gatsby-link";
-import { Fade } from "react-reveal";
-import Zooming from "zooming";
-import cx from "classnames";
-import SEO from "../components/SEO/SEO";
-import Container from "../components/Container/Container";
-import Wave from "../components/Wave/Waves";
-import Card from "../components/Card/Card";
-import Button from "../components/Button/Button";
-import Footer from "../components/Footer/Footer";
-import config from "../../data/SiteConfig";
-import styles from "./project.module.scss";
+/* eslint max-len: 0 */
+/* eslint react/no-unescaped-entities: 0 */
 
-require('prismjs/themes/prism-okaidia.css');
+import React from 'react';
+import Helmet from 'react-helmet';
+import Img from 'gatsby-image';
+import Link from 'gatsby-link';
+import { Fade } from 'react-reveal';
+import Zooming from 'zooming';
+import cx from 'classnames';
+import SEO from '../components/SEO/SEO';
+import Container from '../components/Container/Container';
+import Wave from '../components/Wave/Waves';
+import Card from '../components/Card/Card';
+import Button from '../components/Button/Button';
+import Footer from '../components/Footer/Footer';
+import config from '../../data/SiteConfig';
+import styles from './project.module.scss';
+
+require('prismjs/themes/prism-okaidia.css'); // eslint-disable-line import/no-extraneous-dependencies
 
 export default class ProjectTemplate extends React.Component {
   componentDidMount() {
-    const zooming = new Zooming(
-    {
+    const zooming = new Zooming({ // eslint-disable-line no-unused-vars
       bgColor: 'rgb(0, 0, 0)',
       bgOpacity: 0.7,
-    }
-    );
+    });
   }
   render() {
-    const wrapper = cx(styles.cardWrapper, "projectCards");
+    const wrapper = cx(styles.cardWrapper, 'projectCards');
     const { slug } = this.props.pathContext;
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
-    const sizes = post.cover.childImageSharp.sizes;
+    const { sizes } = post.cover.childImageSharp;
     if (!post.id) {
       post.id = slug;
     }
@@ -50,16 +51,16 @@ export default class ProjectTemplate extends React.Component {
         <Container>
           <div className={wrapper}>
             <Card>
-                <h2>Kunde</h2>
-                {post.customer}
+              <h2>Kunde</h2>
+              {post.customer}
             </Card>
             <Card>
-                <h2>Aufgabe</h2>
-                {post.task}
+              <h2>Aufgabe</h2>
+              {post.task}
             </Card>
             <Card>
-                <h2>Zeitraum</h2>
-                {post.time}
+              <h2>Zeitraum</h2>
+              {post.time}
             </Card>
           </div>
         </Container>
@@ -68,12 +69,12 @@ export default class ProjectTemplate extends React.Component {
         </Container>
         <Footer>
           <Fade up>
-          <h1>Packen wir's an!</h1>
-          <Link to="/kontakt">
-            <Button blue>
+            <h1>Packen wir's an!</h1>
+            <Link to="/kontakt">
+              <Button blue>
               Projekt starten
-            </Button>
-          </Link>
+              </Button>
+            </Link>
           </Fade>
         </Footer>
       </div>

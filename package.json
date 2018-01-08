@@ -1,6 +1,6 @@
 {
   "name": "lekoarts-portfolio",
-  "description": "Personal Portfolio of LekoArts in 2017.",
+  "description": "Personal Portfolio of LekoArts",
   "repository": {
     "type": "git",
     "url": "https://github.com/LeKoArts/portfolio"
@@ -8,14 +8,13 @@
   "version": "1.0.0",
   "author": "LekoArts <hello@lekoarts.de>",
   "dependencies": {
-    "babel-plugin-lodash": "^3.3.2",
     "classnames": "^2.2.5",
     "date-fns": "^1.29.0",
     "gatsby": "^1.9.149",
     "gatsby-image": "^1.0.31",
     "gatsby-link": "^1.6.32",
     "gatsby-plugin-catch-links": "^1.0.14",
-    "gatsby-plugin-google-analytics": "^1.0.14",
+    "gatsby-plugin-google-analytics": "^1.0.15",
     "gatsby-plugin-manifest": "^1.0.12",
     "gatsby-plugin-nprogress": "^1.0.9",
     "gatsby-plugin-offline": "^1.0.12",
@@ -33,9 +32,7 @@
     "gatsby-source-filesystem": "^1.5.11",
     "gatsby-transformer-remark": "^1.7.26",
     "gatsby-transformer-sharp": "^1.6.16",
-    "interactive": "^0.1.9",
     "lodash": "^4.17.4",
-    "lodash-webpack-plugin": "^0.11.4",
     "lost": "^8.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -43,24 +40,22 @@
     "react-helmet": "^5.2.0",
     "react-icons": "^2.2.7",
     "react-reveal": "^0.7.3",
-    "zooming": "^1.2.6"
+    "zooming": "^1.2.7"
   },
   "devDependencies": {
-    "autoprefixer": "^7.2.3",
+    "autoprefixer": "^7.2.4",
+    "babel-eslint": "^8.1.2",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-preset-env": "^1.6.1",
     "cli-glob": "^0.1.0",
-    "eslint": "^4.10.0",
+    "eslint": "^4.15.0",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.4.0",
-    "prettier": "^1.7.2",
-    "remark-cli": "^4.0.0",
-    "remark-preset-lint-recommended": "^3.0.1",
-    "rucksack-css": "^1.0.2",
-    "stylefmt": "^6.0.0",
-    "stylelint": "^8.2.0",
-    "stylelint-config-standard": "^17.0.0"
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "interactive": "^0.1.9",
+    "lodash-webpack-plugin": "^0.11.4",
+    "rucksack-css": "^1.0.2"
   },
   "keywords": [
     "gatsby",
@@ -71,17 +66,7 @@
   "main": "n/a",
   "scripts": {
     "dev": "gatsby develop -o",
-    "serve": "gatsby serve",
     "build": "gatsby build",
-    "build:pp": "gatsby build --prefix-paths",
-    "clean": "rm -rf public",
-    "lint:js": "eslint --ext .js,.jsx --ignore-pattern public,static .",
-    "lint:md": "remark content/posts/",
-    "format:js": "prettier '**/*.{js,jsx}' --write"
-  },
-  "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-recommended"
-    ]
+    "clean": "rm -rf public"
   }
 }

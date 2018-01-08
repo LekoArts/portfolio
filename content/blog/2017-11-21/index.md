@@ -8,7 +8,7 @@ tags:
     - Photoshop
 ---
 
-Compositing wird gerne als die Königsdisziplin der digitalen Bildbearbeitung bezeichnet – in meinen Augen zurecht. Bis zum fertigen Bild ist es ein mehrstufiger Prozess: Ideenfindung, Sichtung von Material, Skizzen, Komposition und Arrangement der Bilder, Erstellung der Bildcollage und die Fertigstellung als Gesamtkunstwerk. Ziel dieses Tutorials ist es den Punkt „Bildcollage“ genauer zu beleuchten, da sich viele damit am schwersten tun – in Folge dessen ist dies der erste Teil meiner kleinen Compositing Reihe. Die anderen Prozessschritte werden folgen.
+Compositing wird gerne als die Königsdisziplin der digitalen Bildbearbeitung bezeichnet – in meinen Augen zurecht. Bis zum fertigen Bild ist es ein mehrstufiger Prozess: Sichtung von Material, Konzeption (Skizzen & Komposition und Arrangement der Bilder), Erstellung der Bildcollage und die Fertigstellung als Gesamtkunstwerk. Ziel dieses Tutorials ist es den Punkt „Bildcollage“ genauer zu beleuchten, da sich viele damit am schwersten tun – in Folge dessen ist dies der erste Teil meiner kleinen Compositing Reihe. Die anderen Prozessschritte werden folgen.
 
 Dieses und nachfolgende Tutorials der Reihe richten sich an fortgeschrittene Photoshop-Nutzer, d.h. die Basics wie Masken, Pfadwerkzeug, Filter, Transformationswerkzeuge etc. sollten sitzen. Deshalb werde ich im Laufe des Tutorials auch größere Sprünge machen bzw. nicht auf jedes Detail eingehen, um mich besser auf die Kernpunkte fokussieren zu können.
 

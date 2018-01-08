@@ -1,38 +1,36 @@
-import React from "react";
-import Helmet from "react-helmet";
-import Img from "gatsby-image";
-import Link from "gatsby-link";
-import _ from "lodash";
-import format from "date-fns/format";
-import Zooming from "zooming";
-import { Fade } from "react-reveal";
-import PostTags from "../components/PostTags/PostTags";
-import SEO from "../components/SEO/SEO";
-import Container from "../components/Container/Container";
-import Wave from "../components/Wave/Waves";
-import Button from "../components/Button/Button";
-import Footer from "../components/Footer/Footer";
-import Line from "../components/Line/Line";
-import config from "../../data/SiteConfig";
-import styles from "./post.module.scss";
+import React from 'react';
+import Helmet from 'react-helmet';
+import Img from 'gatsby-image';
+import Link from 'gatsby-link';
+import _ from 'lodash';
+import format from 'date-fns/format';
+import Zooming from 'zooming';
+import { Fade } from 'react-reveal';
+import PostTags from '../components/PostTags/PostTags';
+import SEO from '../components/SEO/SEO';
+import Container from '../components/Container/Container';
+import Wave from '../components/Wave/Waves';
+import Button from '../components/Button/Button';
+import Footer from '../components/Footer/Footer';
+import Line from '../components/Line/Line';
+import config from '../../data/SiteConfig';
+import styles from './post.module.scss';
 
-require(`prismjs/themes/prism-okaidia.css`);
+require('prismjs/themes/prism-okaidia.css'); // eslint-disable-line import/no-extraneous-dependencies
 
 export default class PostTemplate extends React.Component {
   componentDidMount() {
-    const zooming = new Zooming(
-    {
+    const zooming = new Zooming({ // eslint-disable-line no-unused-vars
       bgColor: 'rgb(0, 0, 0)',
       bgOpacity: 0.7,
-    }
-    );
+    });
   }
   render() {
     const { slug } = this.props.pathContext;
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
     const date = format(post.date, 'DD.MM.YYYY');
-    const sizes = post.cover.childImageSharp.sizes;
+    const { sizes } = post.cover.childImageSharp;
     if (!post.id) {
       post.id = slug;
     }
@@ -80,12 +78,12 @@ export default class PostTemplate extends React.Component {
         </Container>
         <Footer>
           <Fade up>
-          <h2>Lust auf mehr Tutorials & Goodies? Werde ein Patron.</h2>
-          <a href="https://www.patreon.com/lekoarts" target="_blank" rel="noopener noreferrer">
-            <Button orange>
+            <h2>Lust auf mehr Tutorials & Goodies? Werde ein Patron.</h2>
+            <a href="https://www.patreon.com/lekoarts" target="_blank" rel="noopener noreferrer">
+              <Button orange>
               Patreon
-            </Button>
-          </a>
+              </Button>
+            </a>
           </Fade>
         </Footer>
       </div>
