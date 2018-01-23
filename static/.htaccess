@@ -537,6 +537,9 @@ Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
 Header set Pragma "no-cache"
 Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
 </filesMatch>
+<filesMatch "\\.(ico|pdf|flv|jpg|jpeg|png|gif|swf|webp)$">
+Header set Cache-Control "max-age=2592000, public"
+</filesMatch>
 
 # ------------------------------------------------------------------------------
 # | Filename-based cache busting                                               |
