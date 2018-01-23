@@ -3,6 +3,5 @@
         ["env", {
             "modules": false
         }]
-    ],
-    "plugins": ["lodash"]
+    ]
 }
