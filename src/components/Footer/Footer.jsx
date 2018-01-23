@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import format from 'date-fns/format';
 import Wave from '../Wave/Waves';
 import Container from '../Container/Container';
-import config from '../../../data/SiteConfig';
 import styles from './Footer.module.scss';
 
 const Footer = (props) => {
-  const { copyright } = config;
   const { children } = props;
+  const date = format(new Date(), 'YYYY');
   return (
     <footer className={styles.footer}>
       <Wave top />
@@ -41,7 +41,7 @@ const Footer = (props) => {
             </div>
           </div>
           <div className={styles.copyright}>
-            {copyright}
+            {`Copyright © ${date}. LekoArts. Alle Rechte vorbehalten.`}
           </div>
         </div>
       </Container>
