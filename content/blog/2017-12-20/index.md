@@ -10,7 +10,7 @@ tags:
 ---
 
 Nicht jeder ist in der luxuriösen Position sich Reisen, Kamera und Aufenthalt zu leisten, um die passenden Fotos für das nächste Compositing zu schießen, sodass in den allermeisten Fällen Stockfotos genutzt werden „müssen“. Oft findet man das nahezu perfekte Foto in diesen Bildbibliotheken und immer öfter sind diese Bilder sogar kostenlos!
-Im zweiten Teil dieser Reihe soll es um das Sichten von Material bzw. Stockfotos gehen (Die Erstellung einer Bildcollage aus diesen kannst du [hier](/blog/photoshop-compositing-basics-bildcollage) finden). Die Suche nach passenden Fotos schließt direkt an die Ideenfindung an und ist meistens der längste Prozess in der Vorbereitung.
+Im zweiten Teil dieser Reihe soll es um das Sichten von Material bzw. Stockfotos gehen (Die Erstellung einer Bildcollage aus diesen kannst du [hier](/blog/photoshop-compositing-basics-bildcollage) finden). Die Suche nach passenden Fotos schließt direkt an die [Ideenfindung](/blog/photoshop-compositing-basics-konzeption) an und ist meistens der längste Prozess in der Vorbereitung.
 
 ## Welche Dienste und Websiten gibt es?
 
