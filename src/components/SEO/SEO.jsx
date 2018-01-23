@@ -17,7 +17,7 @@ const SEO = (props) => {
   } else {
     title = config.siteTitle;
     description = config.siteDescription;
-    image = config.siteLogo;
+    image = config.siteBanner;
   }
   const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
   image = config.siteUrl + realPrefix + image;
