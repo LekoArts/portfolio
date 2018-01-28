@@ -1,6 +1,6 @@
 ---
 title: "Top 5: Meine Favoriten in 2017"
-cover: "./top5_2017_von_lekoarts.png"
+cover: "./top5_2017_von_lekoarts.jpg"
 date: "2017-12-25"
 category: "Allgemein"
 tags:

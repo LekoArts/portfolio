@@ -1,6 +1,6 @@
 ---
 title: "Frohe Weihnachten"
-cover: "./Frohe_Weihnachten_2017.png"
+cover: "./Frohe_Weihnachten_2017.jpg"
 date: "2017-12-24"
 category: "Freebie"
 tags:
@@ -14,4 +14,4 @@ Du findest die Projektdateien (Cinema4D und Photoshop) auf meiner [Patreon-Seite
 
 Abschließend wünsche ich dir noch einen guten Rutsch ins neue Jahr und viel Erfolg für 2018!
 
-![](weihnachten_proprius_geschenk.png)
+![](weihnachten_proprius_geschenk.jpg)

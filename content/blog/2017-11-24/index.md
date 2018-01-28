@@ -1,6 +1,6 @@
 ---
 title: "10 Tipps für Photoshop Anfänger"
-cover: "./10_tipps_fuer_photoshop_anfaenger.png"
+cover: "./10_tipps_fuer_photoshop_anfaenger.jpg"
 date: "2017-11-24"
 category: "Tutorial"
 tags:
