@@ -6,8 +6,6 @@
     border-radius: $global-border-radius;
     box-shadow: 0px 20px 20px rgba(0,0,0,.2);
     transition: all .5s ease-out-back;
-    background-position: center;
-    background-size: cover;
     &:hover {
         box-shadow: 0px 40px 40px rgba(0,0,0,.1);
         transform: translateY(-12px);
@@ -24,7 +22,16 @@
             padding: 0 0 50%;
         }
     }
-    @include for-tablet-portrait-up {
+    @include for-tablet-portrait-only {
+        lost-column: 1/1;
+        &:not(:last-child) {
+            margin-bottom: 2.5rem;
+        }
+        &:before {
+            padding: 0 0 35%;
+        }
+    }
+    @include for-tablet-landscape-up {
         lost-column: 1/2;
         &:before {
             padding: 0 0 65%;
@@ -38,11 +45,33 @@
     }
 }
 
+.image {
+    position: absolute 0;
+    z-index: 1;
+    object-fit: cover;
+    border-radius: $global-border-radius;
+    img {
+        border-radius: $global-border-radius;
+    }
+}
+
+.image > div > div {
+    position: absolute !important;
+    top: 0; right: 0; left: 0; bottom: 0;
+    height: 100%;
+}
+
+.image > div {
+    position: static !important;
+    
+}
+
 .link {
     position: absolute 0;
     lost-flex-container: column;
     justify-content: space-between;
     padding: 1rem;
+    z-index: 3;
     &:after {
         content: "";
         position: absolute;
@@ -55,6 +84,12 @@
         background: linear-gradient(to bottom, rgba($black, .75) 0%, rgba($black, 0) 30%,  rgba($black, 0) 70%,  rgba($black, .75) 100%);
         z-index: -10;
         border-radius: $global-border-radius;
+        transition: opacity .5s;
+    }
+    &:hover {
+        &:after {
+            opacity: 0;
+        }
     }
 }
 
@@ -89,7 +124,7 @@
 .imageOverlay {
     border-radius: $global-border-radius;
     position: absolute 0;
-    z-index: -10;
+    z-index: 2;
     opacity: .1;
     transition: opacity .5s;
     background-image: linear-gradient(30deg, $gt-orange-light 0%, $gt-orange-dark 100%);

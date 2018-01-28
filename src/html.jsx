@@ -3,8 +3,6 @@
 /* eslint global-require:"off" */
 /* eslint react/prefer-stateless-function:"off" */
 import React from 'react';
-import favicon from './favicon.png';
-import appleTouchIcon from './apple-touch-icon.png';
 
 let inlinedStyles = '';
 if (process.env.NODE_ENV === 'production') {
@@ -34,10 +32,8 @@ export default class HTML extends React.Component {
         <head>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-          <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           {this.props.headComponents}
-          <link rel="shortcut icon" href={favicon} />
-          <link rel="apple-touch-icon" href={appleTouchIcon} />
           {css}
         </head>
         <body>

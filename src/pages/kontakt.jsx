@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Fade } from 'react-reveal';
 import cx from 'classnames';
 import FaPaperPlane from 'react-icons/lib/fa/paper-plane';
 import FaBehance from 'react-icons/lib/fa/behance';
@@ -25,11 +24,9 @@ const Kontakt = () => {
       </Header>
       <div className={styles.contacts}>
         <Container text>
-          <Fade>
-            <h3>Hi! Ich heiße Lennart und bin autodidaktischer Kommunikationsdesigner & Front-End Entwickler.</h3>
-            <p>Seit über 5 Jahren arbeite ich in den Bereichen Webdesign, Printdesign und Bildbearbeitung. Zusätzlich arbeite ich seit über 3 Jahren als Front-End Entwickler. Seitdem konnte ich viele andere talentierte Menschen kennenlernen und meine Zeit dafür nutzen, mich kontinuierlich weiterzubilden, Dinge auszuprobieren und schlussendlich das Handwerk in meinem Bereich vollends zu erlernen.</p>
-            <p>Für meine Kunden gestalte ich maßgeschneiderte, intuitive und visuell ansprechende Designs und Websiten – von der Konzeption über die Kreation bis zur technischen Umsetzung begleite ich alle Schritte.</p>
-          </Fade>
+          <h3>Hi! Ich heiße Lennart und bin autodidaktischer Kommunikationsdesigner & Front-End Entwickler.</h3>
+          <p>Seit über 5 Jahren arbeite ich in den Bereichen Webdesign, Printdesign und Bildbearbeitung. Zusätzlich arbeite ich seit über 3 Jahren als Front-End Entwickler. Seitdem konnte ich viele andere talentierte Menschen kennenlernen und meine Zeit dafür nutzen, mich kontinuierlich weiterzubilden, Dinge auszuprobieren und schlussendlich das Handwerk in meinem Bereich vollends zu erlernen.</p>
+          <p>Für meine Kunden gestalte ich maßgeschneiderte, intuitive und visuell ansprechende Designs und Websiten – von der Konzeption über die Kreation bis zur technischen Umsetzung begleite ich alle Schritte.</p>
         </Container>
         <Container styleName="align-center">
           <a href="mailto:&#104;&#101;&#108;&#108;&#111;&#064;&#108;&#101;&#107;&#111;&#097;&#114;&#116;&#115;&#046;&#100;&#101;">

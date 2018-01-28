@@ -42,7 +42,7 @@ export const pageQuery = graphql`
             customer
             cover {
               childImageSharp {
-                sizes(maxWidth: 900, quality: 95, traceSVG: { color: "#2B2B2F" }) {
+                sizes(maxWidth: 900, quality: 90, traceSVG: { color: "#2B2B2F" }) {
                   ...GatsbyImageSharpSizes_withWebp_tracedSVG
                 }
               }

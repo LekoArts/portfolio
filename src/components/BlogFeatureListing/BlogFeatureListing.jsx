@@ -9,7 +9,7 @@ export default class BlogFeatureListing extends React.Component {
     this.props.postEdges.forEach((postEdge) => {
       postList.push({
         path: postEdge.node.fields.slug,
-        cover: postEdge.node.frontmatter.cover.childImageSharp.resize.src,
+        cover: postEdge.node.frontmatter.cover.childImageSharp.sizes,
         date: format(postEdge.node.frontmatter.date, 'DD.MM.YYYY'),
         title: postEdge.node.frontmatter.title,
         category: postEdge.node.frontmatter.category,
@@ -23,16 +23,16 @@ export default class BlogFeatureListing extends React.Component {
     return (
       <div className={styles.wrapper}>
         {postList.map(post =>
-                (
-                  <BlogFeature
-                    key={post.title}
-                    date={post.date}
-                    cover={post.cover}
-                    path={post.path}
-                    title={post.title}
-                    category={post.category}
-                  />
-                ))}
+          (
+            <BlogFeature
+              key={post.title}
+              date={post.date}
+              cover={post.cover}
+              path={post.path}
+              title={post.title}
+              category={post.category}
+            />
+          ))}
       </div>
     );
   }

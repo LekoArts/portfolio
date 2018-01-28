@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import { Fade } from 'react-reveal';
 import Wave from '../Wave/Waves';
 import styles from './Header.module.scss';
 
@@ -11,14 +10,10 @@ const Header = (props) => {
   return (
     <header className={classes}>
       <div className={styles.heroText}>
-        <Fade down>
-          <h1>
-            {children}
-          </h1>
-        </Fade>
-        <Fade down>
-          <p className={styles.subTitle}>{subTitle}</p>
-        </Fade>
+        <h1>
+          {children}
+        </h1>
+        <p className={styles.subTitle}>{subTitle}</p>
       </div>
       <Wave bottom />
     </header>

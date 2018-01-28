@@ -3,7 +3,6 @@ import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 import _ from 'lodash';
 import format from 'date-fns/format';
-import { Fade } from 'react-reveal';
 import styles from './BlogListing.module.scss';
 import PostTags from '../PostTags/PostTags';
 import Line from '../Line/Line';
@@ -32,7 +31,7 @@ export default class BlogListing extends React.Component {
       <div className={styles.wrapper}>
         {List.map(post =>
           (
-            <Fade tag="article" key={post.path} className={styles.wrapper}>
+            <article key={post.path} className={styles.wrapper}>
               <div className={styles.image}>
                 <Link to={post.path} key={post.path} className={styles.link}>
                   <Img sizes={post.cover} />
@@ -65,7 +64,7 @@ export default class BlogListing extends React.Component {
                   {post.excerpt}
                 </div>
               </div>
-            </Fade>
+            </article>
           ))}
       </div>
     );
