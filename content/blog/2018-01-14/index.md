@@ -1,6 +1,6 @@
 ---
 title: "Photoshop Compositing Basics - Fertigstellung"
-cover: "./photoshop_compositing_basics_fertigstellung.png"
+cover: "./photoshop_compositing_basics_fertigstellung.jpg"
 date: "2018-01-14"
 category: "Tutorial"
 tags:

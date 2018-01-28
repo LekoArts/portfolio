@@ -1,6 +1,6 @@
 ---
 title: "Photoshop Compositing Basics - Stockfotos"
-cover: "./photoshop_compositing-basics_stockfotos.png"
+cover: "./photoshop_compositing-basics_stockfotos.jpg"
 date: "2017-12-20"
 category: "Tutorial"
 tags:

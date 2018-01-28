@@ -1,6 +1,6 @@
 ---
 title: "Photoshop Compositing Basics - Konzeption"
-cover: "./photoshop_compositing_basics_konzeption.png"
+cover: "./photoshop_compositing_basics_konzeption.jpg"
 date: "2018-01-08"
 category: "Tutorial"
 tags:
@@ -12,7 +12,7 @@ Bevor ein Compositing überhaupt erst entstehen kann, braucht es die zündende I
 
 In diesem Teil der Reihe soll es um die Konzeption gehen, die für mich die Schritte Idee, Skizze und Komposition umfasst. Ich werde hierbei erklären, wie ich persönlich vorgehe wenn ich ein Compositing erstellen will. Ich erkläre die Vorgehensweise anhand meines Bildes *Eagle*:
 
-![](compositing_basics_eagle.png)
+![](compositing_basics_eagle.jpg)
 
 ## Idee
 

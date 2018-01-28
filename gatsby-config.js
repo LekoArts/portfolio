@@ -30,6 +30,7 @@ module.exports = {
         path: `${__dirname}/content/${config.projectPostDir}`,
       },
     },
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -37,10 +38,9 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 1600,
+              maxWidth: 850,
               quality: 90,
               linkImagesToOriginal: false,
-              lightbox: true,
             },
           },
           {
@@ -73,7 +73,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-postcss-sass',
       options: {
@@ -115,6 +114,24 @@ module.exports = {
             type: 'image/png',
           },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-favicon',
+      options: {
+        logo: './src/favicon.png',
+        injectHTML: true,
+        icons: {
+          android: false,
+          appleIcon: true,
+          appleStartup: false,
+          coast: true,
+          favicons: true,
+          firefox: false,
+          twitter: false,
+          yandex: false,
+          windows: true,
+        },
       },
     },
     'gatsby-plugin-offline',

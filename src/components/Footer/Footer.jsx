@@ -35,6 +35,7 @@ const Footer = (props) => {
               </Link>
             </div>
             <div className={styles.socialMedia}>
+              <a href="https://www.behance.net/lekoarts" target="_blank" rel="noopener noreferrer">Behance</a>
               <a href="https://dribbble.com/LekoArts" target="_blank" rel="noopener noreferrer">Dribbble</a>
               <a href="https://www.facebook.com/lekoarts.de" target="_blank" rel="noopener noreferrer">Facebook</a>
               <a href="https://www.instagram.com/lekoarts.de" target="_blank" rel="noopener noreferrer">Instagram</a>
