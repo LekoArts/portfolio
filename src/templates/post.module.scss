@@ -1,79 +1,88 @@
 @import "../utils/_variables.scss";
 
 .wrapper {
-    height: 50vh;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 3rem;
-    @include for-mobile-landscape {
-        height: 90vh;
-    }
+  height: 50vh;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  @include for-mobile-landscape {
+    height: 90vh;
+  }
 }
 
 .hero {
-    z-index: 1;
-    @include centerer;
-    color: $white;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 2rem;
-    .line {
-        background-color: $white;
-    }
+  z-index: 1;
+  @include centerer;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 2rem;
+  .line {
+    background-color: $white;
+  }
 }
 
 .category {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    font-family: "Montserrat", sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-family: "Montserrat", sans-serif;
+  color: $white;
+  &:hover {
     color: $white;
-    &:hover {
-        color: $white;
-    }
+  }
 }
 
 .categoryRef {
-    span {
-        font-weight: 700;
-    }
+  span {
+    font-weight: 700;
+  }
 }
 
 .catWrapper {
-    display: inline-block;
+  display: inline-block;
 }
 
 .line {
-    height: 2px;
-    width: 100%;
-    background-color: $black;
-    margin-bottom: 1.5rem;
+  height: 2px;
+  width: 100%;
+  background-color: $black;
+  margin-bottom: 1.5rem;
 }
 
 .information {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    @include for-phone-only {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  @include for-phone-only {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .dateTime {
-    lost-flex-container: row;
+  lost-flex-container: row;
 }
 
 .time {
-    margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
-.dateTime, .tags {
-    margin-top: .5rem;
+.dateTime,
+.tags {
+  margin-top: 0.5rem;
 }
 
 .linkIcon path {
-    fill: $white;
+  fill: $white;
+}
+
+.Disqus {
+  background: $nearlyWhite;
+  padding: 1rem;
+  border-radius: $global-border-radius;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
 }
