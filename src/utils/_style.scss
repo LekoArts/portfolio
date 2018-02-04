@@ -4,10 +4,6 @@
 // Allgemeiner Stil
 // --------------
 
-a {
-  transition: all $transition-normal;
-}
-
 .active {
   box-shadow: inset 0 -2px 0 0 $white;
 
@@ -36,6 +32,32 @@ html {
   @include for-stoneage-only {
     font-size: 12px;
   }
+}
+
+code {
+  color: #f8f8f2;
+  background: #131316;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
 mark {
@@ -89,7 +111,6 @@ blockquote {
       $gt-bg-light-night 100%
     );
   }
-
   footer {
     background: linear-gradient(
       -45deg,
@@ -97,14 +118,12 @@ blockquote {
       $gt-bg-light-night 100%
     );
   }
-
   .headroom--pinned,
   .wave {
     svg path {
       fill: $body-color;
     }
   }
-
   .projekt-container,
   .post-container,
   .blog-container,
@@ -116,11 +135,9 @@ blockquote {
       }
     }
   }
-
   .line {
     background-color: $white-tint;
   }
-
   .tag {
     border-color: $white;
     color: $white;
@@ -130,7 +147,6 @@ blockquote {
     }
   }
 }
-
 .projekt-container,
 .post-container,
 .kontakt-container {
@@ -141,27 +157,22 @@ blockquote {
     --x-height-multiplier: 0.35;
     font-size: 1.25rem;
   }
-
   ol li {
     font-size: 1.25rem;
   }
-
   ul li {
     font-size: 1.25rem;
   }
-
   .gatsby-image-wrapper {
     height: 50vh;
     @include for-mobile-landscape {
       height: 100vh;
     }
-
     img {
       animation: projectHeader 30s infinite;
     }
   }
 }
-
 .blog-container {
   .gatsby-image-wrapper {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
@@ -178,7 +189,6 @@ blockquote {
     }
   }
 }
-
 .contactCards {
   .card {
     lost-column: 1/4;
@@ -191,7 +201,6 @@ blockquote {
     }
   }
 }
-
 .projectCards {
   .card {
     color: $black !important;
@@ -203,7 +212,6 @@ blockquote {
     }
   }
 }
-
 .fullwidth {
   .gatsby-resp-image-wrapper {
     width: 100vw;
@@ -214,41 +222,33 @@ blockquote {
     margin-bottom: 5rem;
   }
 }
-
 .gatsby-resp-image-wrapper {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
 }
-
 .gatsby-resp-iframe-wrapper {
   margin-bottom: 2rem;
 }
-
 .gatsby-highlight {
   margin-bottom: 2rem;
 }
-
 @keyframes projectHeader {
   0% {
     transform: scale(1);
     animation-timing-function: ease-in;
   }
-
   25% {
     animation-timing-function: ease-out;
     transform: scale(1.05);
   }
-
   50% {
     transform: scale(1.12);
     animation-timing-function: ease-in;
   }
-
   to {
     transform: scale(1);
     animation-timing-function: ease-out;
   }
 }
-
 @include for-tablet-portrait-only {
   .projekte-container {
     .gatsby-image-wrapper {
@@ -256,7 +256,6 @@ blockquote {
     }
   }
 }
-
 @include for-phone-only {
   .projekte-container {
     .gatsby-image-wrapper {
@@ -270,7 +269,6 @@ blockquote {
     font-size: 1.5rem;
   }
 }
-
 @include for-stoneage-only {
   h1 {
     font-size: 1.5rem;

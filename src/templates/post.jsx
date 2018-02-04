@@ -15,7 +15,7 @@ import Line from '../components/Line/Line';
 import config from '../../data/SiteConfig';
 import styles from './post.module.scss';
 
-require('prismjs/themes/prism-okaidia.css'); // eslint-disable-line import/no-extraneous-dependencies
+import '../utils/prism-okaida.scss';
 
 const PostTemplate = (props) => {
   const { slug } = props.pathContext;

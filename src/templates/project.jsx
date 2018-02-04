@@ -15,7 +15,7 @@ import Footer from '../components/Footer/Footer';
 import config from '../../data/SiteConfig';
 import styles from './project.module.scss';
 
-require('prismjs/themes/prism-okaidia.css'); // eslint-disable-line import/no-extraneous-dependencies
+import '../utils/prism-okaida.scss';
 
 const ProjectTemplate = (props) => {
   const wrapper = cx(styles.cardWrapper, 'projectCards');
@@ -61,9 +61,7 @@ const ProjectTemplate = (props) => {
       <Footer>
         <h1>Packen wir's an!</h1>
         <Link to="/kontakt">
-          <Button blue>
-              Projekt starten
-          </Button>
+          <Button blue>Projekt starten</Button>
         </Link>
       </Footer>
     </div>
@@ -85,7 +83,11 @@ export const pageQuery = graphql`
         time
         cover {
           childImageSharp {
-            sizes(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
+            sizes(
+              maxWidth: 1920
+              quality: 90
+              duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }
+            ) {
               ...GatsbyImageSharpSizes_withWebp
             }
             resize(width: 1200) {
