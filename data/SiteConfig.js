@@ -8,12 +8,11 @@ module.exports = {
   siteBanner: '/social/banner.jpg',
   siteUrl: 'https://www.lekoarts.de',
   pathPrefix: '/',
-  siteDescription: 'Hi! Ich heiße Lennart und bin sowohl autodidaktischer als auch leidenschaftlicher Kommunikationsdesigner & Front-End Entwickler. Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus Ihrer Marke herauszuholen.',
-  siteFBAppID: '524021230980198',
+  siteDescription:
+    'Hi! Ich heiße Lennart und bin sowohl autodidaktischer als auch leidenschaftlicher Kommunikationsdesigner & Front-End Entwickler. Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus deiner Marke herauszuholen.',
   googleAnalyticsID: 'UA-47519312-1',
   userTwitter: 'lekoarts_de',
   disqusShortname: 'lekoarts',
-  postDefaultCategoryID: 'Design',
   themeColor: '#3498DB',
   backgroundColor: '#2b2e3c',
 };
