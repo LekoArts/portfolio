@@ -22,13 +22,11 @@
   margin-left: 0;
 }
 
-.post-container {
-  .tag {
-    border-color: $white;
-    color: $white;
-    &:hover {
-      background-color: $white;
-      color: $blue-black-ish;
-    }
+.white {
+  border-color: $white;
+  color: $white;
+  &:hover {
+    background-color: $white;
+    color: $blue-black-ish;
   }
 }

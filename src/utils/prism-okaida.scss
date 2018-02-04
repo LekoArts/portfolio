@@ -4,7 +4,8 @@
  * @author ocodia
  */
 
-p > code {
+p > code,
+li > code {
   color: #f8f8f2;
   background: #131316;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
@@ -73,6 +74,10 @@ pre[class*="language-"] {
   white-space: normal;
 }
 
+.token.operator {
+  color: #bc78d7;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,
@@ -81,7 +86,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-  color: #f8f8f2;
+  color: #56b6c2;
 }
 
 .namespace {
@@ -107,10 +112,9 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #a6e22e;
+  color: #7cc379;
 }
 
-.token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
@@ -121,7 +125,8 @@ pre[class*="language-"] {
 
 .token.atrule,
 .token.attr-value,
-.token.function {
+.token.function,
+.token.class-name {
   color: #e6db74;
 }
 

@@ -69,7 +69,7 @@ const PostTemplate = (props) => {
               <div className={styles.time}>| Lesezeit: {postNode.timeToRead} Min.</div>
             </div>
             <div className={styles.tags}>
-              <PostTags tags={post.tags} />
+              <PostTags tags={post.tags} white />
             </div>
           </div>
         </div>
