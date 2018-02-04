@@ -1,34 +1,34 @@
 @import "../../utils/_variables.scss";
 
 .tag {
-    border-radius: 100rem;
-    border: 2px solid $blue-black-ish;
-    font-size: .8rem;
-    padding: .1rem .75rem;
-    display: inline-block;
-    background-color: transparent;
-    color: $black;
-    cursor: pointer;
-    margin-left: .5rem;
-    line-height: 1.6;
-    transition: all .5s;
-    &:hover {
-        background-color: $blue-black-ish;
-        color: $white;
-    }
+  border-radius: 100rem;
+  border: 2px solid $blue-black-ish;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.75rem;
+  display: inline-block;
+  background-color: transparent;
+  color: $black;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  line-height: 1.6;
+  transition: all 0.5s;
+  &:hover {
+    background-color: $blue-black-ish;
+    color: $white;
+  }
 }
 
 .tag[data-id="0"] {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .post-container {
-    .tag {
-        border-color: $white;
-        color: $white;
-        &:hover {
-            background-color: $white;
-            color: $blue-black-ish;
-        }
+  .tag {
+    border-color: $white;
+    color: $white;
+    &:hover {
+      background-color: $white;
+      color: $blue-black-ish;
     }
+  }
 }

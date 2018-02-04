@@ -1,63 +1,63 @@
 @import "../../utils/_variables.scss";
 
 .bottom {
-    bottom: 0;
+  bottom: 0;
 }
 
 .top {
-    top: 0;
-    transform: matrix(1, 0, 0, -1, 0, 0);
+  top: 0;
+  transform: matrix(1, 0, 0, -1, 0, 0);
 }
 
 .waveWrapper {
-    position: absolute;
-    width: 100%;
-    z-index: 1;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
 
 .waveAnimate {
-    fill: $nearlyWhite;
-    animation: waveAnimation 20s linear infinite alternate;
-    width: 100%;
+  fill: $nearlyWhite;
+  animation: waveAnimation 20s linear infinite alternate;
+  width: 100%;
 }
 
 .position {
-    position: relative;
+  position: relative;
 }
 
 .wave {
-    position: relative;
-    height: 100%;
-    transform: matrix(1, 0, 0, -1, 0, 0);
-    svg {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 6rem;
-        @include for-phone-only {
-            height: 4rem;
-        }
-        @include for-tablet-portrait-only {
-            height: 5rem;
-        }
-        @include for-tablet-landscape-only {
-            height: 5rem;
-        }
+  position: relative;
+  height: 100%;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  svg {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 6rem;
+    @include for-phone-only {
+      height: 4rem;
     }
+    @include for-tablet-portrait-only {
+      height: 5rem;
+    }
+    @include for-tablet-landscape-only {
+      height: 5rem;
+    }
+  }
 }
 
 // Animations
 
 @keyframes waveAnimation {
-    0% {
-        d: path("M 27 10C 21 8 14 3 0 3L 0 0L 54 0L 54 14C 40 14 33 12 27 10Z");
-    }
+  0% {
+    d: path("M 27 10C 21 8 14 3 0 3L 0 0L 54 0L 54 14C 40 14 33 12 27 10Z");
+  }
 
-    50% {
-        d: path("M 27 14C 12 14 5 7 0 7L 0 0L 54 0L 54 7C 49 7 42 14 27 14Z");
-    }
+  50% {
+    d: path("M 27 14C 12 14 5 7 0 7L 0 0L 54 0L 54 7C 49 7 42 14 27 14Z");
+  }
 
-    100% {
-        d: path("M 27 10C 21 12 14 14 0 14L 0 0L 54 0L 54 3C 40 3 33 8 27 10Z");
-    }
+  100% {
+    d: path("M 27 10C 21 12 14 14 0 14L 0 0L 54 0L 54 3C 40 3 33 8 27 10Z");
+  }
 }

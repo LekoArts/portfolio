@@ -5,55 +5,75 @@
 // Hover
 
 @mixin hover-focus {
-    &:focus,
-    &:hover {
-        @content
-    }
+  &:focus,
+  &:hover {
+    @content;
+  }
 }
 
 // Centerer
 
 @mixin centerer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 // Media Queries
 
 @mixin for-stoneage-only {
-    @media (max-width: 400px) { @content; }
+  @media (max-width: 400px) {
+    @content;
+  }
 }
 @mixin for-phone-only {
-    @media (max-width: 599px) { @content; }
+  @media (max-width: 599px) {
+    @content;
+  }
 }
 @mixin for-tablet-portrait-up {
-    @media (min-width: 600px) { @content; }
+  @media (min-width: 600px) {
+    @content;
+  }
 }
 @mixin for-tablet-portrait-only {
-    @media (min-width: 600px) and (max-width: 899px) { @content; }
+  @media (min-width: 600px) and (max-width: 899px) {
+    @content;
+  }
 }
 @mixin for-tablet-landscape-down {
-    @media (max-width: 899px) { @content; }
+  @media (max-width: 899px) {
+    @content;
+  }
 }
 @mixin for-tablet-landscape-up {
-    @media (min-width: 900px) { @content; }
+  @media (min-width: 900px) {
+    @content;
+  }
 }
 @mixin for-tablet-landscape-only {
-    @media (min-width: 900px) and (max-width: 1199px) { @content; }
+  @media (min-width: 900px) and (max-width: 1199px) {
+    @content;
+  }
 }
 @mixin for-desktop-up {
-    @media (min-width: 1200px) { @content; }
+  @media (min-width: 1200px) {
+    @content;
+  }
 }
 @mixin for-big-desktop-up {
-    @media (min-width: 1500px) { @content; }
+  @media (min-width: 1500px) {
+    @content;
+  }
 }
 
 // Custom Media Queries
 
 @mixin for-mobile-landscape {
-    @media (max-width: 900px) and (orientation: landscape) { @content; }
+  @media (max-width: 900px) and (orientation: landscape) {
+    @content;
+  }
 }
 
 // --------------
@@ -62,31 +82,31 @@
 
 $white: #fff;
 $nearlyWhite: rgb(240, 240, 240);
-$grey: #94A1C9;
-$black: #2A2B2F;
-$blue: #3498DB;
-$orange: #DB8834;
-$orange-light: #FFA64D;
-$blue-light: #57B6FC;
-$blue-black-ish: #2E3246;
+$grey: #94a1c9;
+$black: #2a2b2f;
+$blue: #3498db;
+$orange: #db8834;
+$orange-light: #ffa64d;
+$blue-light: #57b6fc;
+$blue-black-ish: #2e3246;
 
 // Tints
 
-$black-tint: rgba($black, .5);
-$white-tint: rgba($white, .75);
+$black-tint: rgba($black, 0.5);
+$white-tint: rgba($white, 0.75);
 
 // Gradient
-$gt-bg-light: #373B4D;
-$gt-bg-dark: #1E212B;
+$gt-bg-light: #373b4d;
+$gt-bg-dark: #1e212b;
 
 $gt-bg-light-night: rgb(70, 80, 122);
 $gt-bg-dark-night: rgb(38, 44, 65);
 
-$gt-blue-light: #5ABDFF;
-$gt-blue-dark: #3466DB;
+$gt-blue-light: #5abdff;
+$gt-blue-dark: #3466db;
 
-$gt-orange-light: #FFAF60;
-$gt-orange-dark: #D17C26;
+$gt-orange-light: #ffaf60;
+$gt-orange-dark: #d17c26;
 
 // --------------
 // Variablen
@@ -97,7 +117,7 @@ $body-bg: $nearlyWhite;
 $body-color: $black;
 
 // Style
-$global-border-radius: .4rem;
+$global-border-radius: 0.4rem;
 
 // Link
 $link-color: $blue;
@@ -105,7 +125,7 @@ $link-decoration: none;
 $link-hover-color: $blue-light;
 $link-hover-decoration: none;
 
-$text-muted: #8D91A1;
+$text-muted: #8d91a1;
 $cursor-disabled: not-allowed;
 
 // Tabellen
@@ -113,7 +133,7 @@ $table-bg: $white;
 $table-cell-padding: 1.5rem;
 
 // Transition
-$transition-normal: .5s;
+$transition-normal: 0.5s;
 
 // --------------
 // Lost Grid

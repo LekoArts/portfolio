@@ -10,40 +10,41 @@
 }
 
 .data {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    @include for-phone-only {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  @include for-phone-only {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
+}
+
 .dateTime {
-    lost-flex-container: row;
+  lost-flex-container: row;
 }
 
 .time {
-    margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
-.dateTime, .tags {
-    margin-top: .5rem;
+.dateTime,
+.tags {
+  margin-top: 0.5rem;
 }
 
 .line {
-    height: 2px;
-    width: 100%;
-    background-color: $black-tint;
-    margin-bottom: .5rem;
+  height: 2px;
+  width: 100%;
+  background-color: $black-tint;
+  margin-bottom: 0.5rem;
 }
 
 .catWrapper {
-    display: inline-block;
+  display: inline-block;
 }
 
 .linkTitle h1 {
-    display: inline-block;
+  display: inline-block;
 }

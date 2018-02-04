@@ -1,47 +1,47 @@
 @import "../../utils/_variables.scss";
 
 .logoBrand {
-    a {
-        lost-align: middle-left;
-        font-weight: 700;
-    }
+  a {
+    lost-align: middle-left;
+    font-weight: 700;
+  }
 }
 
 .logo {
-    height: 3rem;
-    margin-bottom: 0;
-    @include for-phone-only {
-        height: 2.5rem;
-    }
+  height: 3rem;
+  margin-bottom: 0;
+  @include for-phone-only {
+    height: 2.5rem;
+  }
 }
 
 .logoText {
-    font-family: "Montserrat", sans-serif;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    margin-left: .75rem;
-    color: $white;
-    @include for-phone-only {
-        font-size: 1.25rem;
-    }
-    @include for-stoneage-only {
-        display: none;
-    }
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-left: 0.75rem;
+  color: $white;
+  @include for-phone-only {
+    font-size: 1.25rem;
+  }
+  @include for-stoneage-only {
+    display: none;
+  }
 }
 
 .navigation {
-    lost-align: middle-right;
-    font-family: "Montserrat", sans-serif;
-    a {
-        color: $white;
-        position: relative;
-        margin-left: 2rem;
-        @include for-phone-only {
-            margin-left: 1rem;
-        }
-        &:hover {
-            color: $white;
-            box-shadow: inset 0 -2px 0px 0px $white;
-        }
+  lost-align: middle-right;
+  font-family: "Montserrat", sans-serif;
+  a {
+    color: $white;
+    position: relative;
+    margin-left: 2rem;
+    @include for-phone-only {
+      margin-left: 1rem;
     }
+    &:hover {
+      color: $white;
+      box-shadow: inset 0 -2px 0px 0px $white;
+    }
+  }
 }

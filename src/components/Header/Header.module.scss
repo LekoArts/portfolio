@@ -1,64 +1,64 @@
 @import "../../utils/_variables.scss";
 
 .wrapper {
-    background: linear-gradient(45deg, $gt-bg-dark 0%, $gt-bg-light 100%);
-    height: 65vh;
-    position: relative;
-    overflow: hidden;
-    @include for-mobile-landscape {
-        height: 100vh;
-    }
-    @include for-big-desktop-up {
-        height: 60vh;
-    }
+  background: linear-gradient(45deg, $gt-bg-dark 0%, $gt-bg-light 100%);
+  height: 65vh;
+  position: relative;
+  overflow: hidden;
+  @include for-mobile-landscape {
+    height: 100vh;
+  }
+  @include for-big-desktop-up {
+    height: 60vh;
+  }
 }
 
 .slim {
-    height: 50vh;
-    @include for-mobile-landscape {
-        height: 75vh;
-    }
-    @include for-big-desktop-up {
-        height: 40vh;
-    }
-    .heroText {
-        margin-bottom: 0rem;
-    }
-    svg {
-        height: 5rem;
-    }
+  height: 50vh;
+  @include for-mobile-landscape {
+    height: 75vh;
+  }
+  @include for-big-desktop-up {
+    height: 40vh;
+  }
+  .heroText {
+    margin-bottom: 0rem;
+  }
+  svg {
+    height: 5rem;
+  }
 }
 
 .heroText {
-    color: $white;
-    z-index: 1000;
-    @include centerer;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 2rem;
-    margin-bottom: 7rem;
-    align-items: center;
-    &:hover {
-        cursor: default;
+  color: $white;
+  z-index: 1000;
+  @include centerer;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin-bottom: 7rem;
+  align-items: center;
+  &:hover {
+    cursor: default;
+  }
+  h1 {
+    @include for-phone-only {
+      font-size: 1.75rem;
     }
-    h1 {
-        @include for-phone-only {
-            font-size: 1.75rem;
-        }
-        @include for-stoneage-only {
-            font-size: 1.5rem;
-        }
+    @include for-stoneage-only {
+      font-size: 1.5rem;
     }
+  }
 }
 
 .subTitle {
-    font-size: 1.25rem;
-    max-width: 650px;
-    color: $white-tint;
-    @include for-phone-only {
-        font-size: 1rem;
-    }
+  font-size: 1.25rem;
+  max-width: 650px;
+  color: $white-tint;
+  @include for-phone-only {
+    font-size: 1rem;
+  }
 }

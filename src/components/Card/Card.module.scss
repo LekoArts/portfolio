@@ -1,99 +1,102 @@
 @import "../../utils/_variables.scss";
 
 .card {
-    lost-flex-container: column;
-    padding: 2rem 2rem;
-    align-items: center;
-    color: $blue-black-ish;
-    font-family: "Montserrat", sans-serif;
+  lost-flex-container: column;
+  padding: 2rem 2rem;
+  align-items: center;
+  color: $blue-black-ish;
+  font-family: "Montserrat", sans-serif;
+  border-radius: $global-border-radius;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: background-color 0.5s;
+  svg {
+    height: 4rem;
+    fill: $blue-black-ish;
+    margin-bottom: 0.5rem;
+  }
+  &:before {
+    content: "";
+    position: absolute 0;
+    z-index: -1;
     border-radius: $global-border-radius;
-    box-shadow: 0px 20px 30px rgba(0,0,0,.1);
-    position: relative;
-    transition: background-color .5s;
-    svg {
-        height: 4rem;
-        fill: $blue-black-ish;
-        margin-bottom: .5rem;
-    }
-    &:before {
-        content: "";
-        position: absolute 0;
-        z-index: -1;
-        border-radius: $global-border-radius;
-        background-color: $nearlyWhite;
-    }
+    background-color: $nearlyWhite;
+  }
 }
 
 .discord {
+  svg {
+    fill: #7289da;
+  }
+  &:hover {
+    background-color: #7289da;
+    color: $white;
     svg {
-        fill: #7289DA;
+      fill: $white;
     }
-    &:hover {
-        background-color: #7289DA;
-        color: $white;
-        svg {
-            fill: $white;
-        }
-    }
+  }
 }
 
 .instagram {
-    &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: $nearlyWhite;
-        z-index: -1;
-        opacity: 1;
-        border-radius: .35rem;
-        transition: opacity .5s;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $nearlyWhite;
+    z-index: -1;
+    opacity: 1;
+    border-radius: 0.35rem;
+    transition: opacity 0.5s;
+  }
+  &:before {
+    content: "";
+    background-color: $nearlyWhite;
+    background-image: linear-gradient(
+      45deg,
+      #f7eb4c 0%,
+      #ee2a7b 29%,
+      #4c6aff 100%
+    );
+    position: absolute 0;
+    z-index: -1;
+    border-radius: 0.35rem;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  &:hover {
+    color: $white;
+    svg {
+      fill: $white;
     }
     &:before {
-        content: "";
-        background-color: $nearlyWhite;
-        background-image: linear-gradient(45deg, #f7eb4c 0%,#ee2a7b 29%,#4c6aff 100%);
-        position: absolute 0;
-        z-index: -1;
-        border-radius: .35rem;
-        opacity: 0;
-        transition: opacity .5s;
+      opacity: 1;
     }
-    &:hover {
-        color: $white;
-        svg {
-            fill: $white;
-        }
-        &:before {
-            opacity: 1;
-        }
-        &:after {
-            opacity: 0;
-        }
+    &:after {
+      opacity: 0;
     }
+  }
 }
-
 .behance {
-    &:hover {
-        background-color: #191919;
-        color: $white;
-        svg {
-            fill: $white;
-        }
-    }
-}
-
-.youtube {
+  &:hover {
+    background-color: #191919;
+    color: $white;
     svg {
-        fill: #FF0000;
+      fill: $white;
     }
-    &:hover {
-        background-color: #FF0000;
-        color: $white;
-        svg {
-            fill: $white;
-        }
+  }
+}
+.youtube {
+  svg {
+    fill: #ff0000;
+  }
+  &:hover {
+    background-color: #ff0000;
+    color: $white;
+    svg {
+      fill: $white;
     }
+  }
 }

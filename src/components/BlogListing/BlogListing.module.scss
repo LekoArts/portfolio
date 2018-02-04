@@ -11,7 +11,7 @@
 
 .image {
   lost-column: 2/5;
-  transition: all .5s ease-out-back;
+  transition: all 0.5s ease-out-back;
   &:hover {
     transform: translateY(-12px);
   }
@@ -41,8 +41,8 @@
   justify-content: space-between;
   margin-bottom: 2rem;
   @include for-phone-only {
-      flex-direction: column;
-      align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -51,16 +51,17 @@
 }
 
 .time {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
-.dateTime, .tags {
-  margin-top: .5rem;
+.dateTime,
+.tags {
+  margin-top: 0.5rem;
 }
 
 .line {
   height: 2px;
   width: 100%;
   background-color: $black-tint;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }

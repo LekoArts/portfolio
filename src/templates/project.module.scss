@@ -1,27 +1,27 @@
 @import "../utils/_variables.scss";
 
 .wrapper {
-    height: 50vh;
-    position: relative;
-    overflow: hidden;
-    @include for-mobile-landscape {
-        height: 90vh;
-    }
+  height: 50vh;
+  position: relative;
+  overflow: hidden;
+  @include for-mobile-landscape {
+    height: 90vh;
+  }
 }
 
 .hero {
-    z-index: 1000;
-    @include centerer;
-    color: $white;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 2rem;
-    text-align: center;
+  z-index: 1000;
+  @include centerer;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  text-align: center;
 }
 
 .cardWrapper {
-    lost-flex-container: row;
-    margin-bottom: 3rem;
+  lost-flex-container: row;
+  margin-bottom: 3rem;
 }
