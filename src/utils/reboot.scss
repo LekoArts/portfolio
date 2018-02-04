@@ -97,6 +97,7 @@ body {
 a {
   color: $link-color;
   text-decoration: $link-decoration;
+  transition: all $transition-normal;
 
   @include hover-focus {
     color: $link-hover-color;
