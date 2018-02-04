@@ -16,17 +16,17 @@ Wenn möglich solltest du die Nutzung einer Maske **immer** dem Radiergummi-Werk
 
 ## 2. Smartobjekte
 
-Per Rechtsklick und <mark>In Smartobjekt konvertieren</mark> kannst du einzelne/mehrere Ebenen, Gruppen oder andere Smartobjekte in einem neuen Smartobjekt bündeln. Alle Änderungen, die an solchen Smartobjekten durchgeführt werden, sind nicht-destruktiv, d.h. du kannst auch zu einem späteren Zeitpunkt die Parameter ändern oder die Änderung gänzlich entfernen. Dazu zählen beispielsweise Transformationen (z.B. Skalieren) oder Filter (z.B. Gaußscher Weichzeichner).
+Per Rechtsklick und `In Smartobjekt konvertieren` kannst du einzelne/mehrere Ebenen, Gruppen oder andere Smartobjekte in einem neuen Smartobjekt bündeln. Alle Änderungen, die an solchen Smartobjekten durchgeführt werden, sind nicht-destruktiv, d.h. du kannst auch zu einem späteren Zeitpunkt die Parameter ändern oder die Änderung gänzlich entfernen. Dazu zählen beispielsweise Transformationen (z.B. Skalieren) oder Filter (z.B. Gaußscher Weichzeichner).
 Es wäre aber Quatsch jede Ebene in ein Smartobjekt zu konvertieren – hierfür solltest du einen eigenen Workflow finden. Auf [Adobes Hilfeseite](https://helpx.adobe.com/de/photoshop/using/create-smart-objects.html) findest du noch mehr Informationen.
 
 ## 3. Einstellungsebenen
 
-Um Helligkeit/Kontrast eines Bildes zu ändern gibt es zwei Möglichkeiten: Einmal über <mark>Bild → Korrekturen → Helligkeit/Kontrast</mark> oder mit Hilfe von <mark>Ebene → Neue Einstellungsebene → Helligkeit/Kontrast</mark>. Nutze lieber Einstellungsebenen, da diese nicht-destruktiv sind! Zwar könnte man den ersten Befehl auch auf ein Smartobjekt anwenden, hätte hierbei aber bei mehreren Filtern keine Möglichkeit den Effekt separat auszumaskieren. Die Einstellungsebenen (inkl. Schnittmaske) sind also oftmals die bessere Wahl.
+Um Helligkeit/Kontrast eines Bildes zu ändern gibt es zwei Möglichkeiten: Einmal über `Bild → Korrekturen → Helligkeit/Kontrast` oder mit Hilfe von `Ebene → Neue Einstellungsebene → Helligkeit/Kontrast`. Nutze lieber Einstellungsebenen, da diese nicht-destruktiv sind! Zwar könnte man den ersten Befehl auch auf ein Smartobjekt anwenden, hätte hierbei aber bei mehreren Filtern keine Möglichkeit den Effekt separat auszumaskieren. Die Einstellungsebenen (inkl. Schnittmaske) sind also oftmals die bessere Wahl.
 
 ## 4. Organisiere dich
 
 An der Stelle sollte es bestimmt schon angekommen sein: Arbeite nicht auf einer einzelnen Ebene! Erstelle so viele Ebenen wie du magst, ordne diese mit Gruppen und markiere dir wichtige Ebenen/Gruppen mit Farbe – und benenne deine Ebenen/Gruppen! Es mag zwar nach Mehraufwand  klingen seine Ebenen zu benennen, allerdings sparst du dir dann damit später Stress, wenn du in der Datei noch einmal etwas abändern sollst. Wenn du absolut faul bist, solltest du mindestens deine Gruppen benennen …
-Hierzu zählt auch, dass du deine Photoshop Dateien ordentlich benennen solltest. <mark>Bild Final Final Wirklich Final v2 Änderung.psd</mark> ist kein guter Name! Nutze in solchen Fällen einfach eine steigende Versionszahl <mark>Bild_v01.psd</mark>.
+Hierzu zählt auch, dass du deine Photoshop Dateien ordentlich benennen solltest. `Bild Final Final Wirklich Final v2 Änderung.psd` ist kein guter Name! Nutze in solchen Fällen einfach eine steigende Versionszahl `Bild_v01.psd`.
 
 ## 5. Tastenkombinationen
 

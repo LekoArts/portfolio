@@ -20,6 +20,8 @@ Folgende Features hat die Seite:
 - Passende Bildergrößen für jeden Bildschirm (durch [gatsby-image](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-image))
 - Ganz viel SEO und [PWA](https://developers.google.com/web/progressive-web-apps/) Kram!
 
+Eine Live-Vorschau gibts [hier](https://portfolio-emilia.netlify.com)!
+
 Ganz schön viele Buzzwords! Bei genügend Interesse kannst du den Links ja folgen, ansonsten sei dir gesagt: Die Seite ist super schnell auf allen Geräten und eine tolle Möglichkeit, um deine Bilder zu zeigen.
 
 Hinweise zur Installation und Nutzung kannst du dem [Github Repository](https://github.com/LeKoArts/gatsby-starter-portfolio-emilia) entnehmen. Wenn du die [Gatsby CLI](https://www.gatsbyjs.org/docs/) bereits installiert hast, kannst du hiermit den Starter installieren:
