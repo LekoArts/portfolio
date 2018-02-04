@@ -1,3 +1,3 @@
-# LekoArts Portfolio 2017
+# LekoArts Portfolio 2018
 
 Schneller, schöner, schlauer.
