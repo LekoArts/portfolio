@@ -18,6 +18,7 @@
     "gatsby-plugin-google-analytics": "^1.0.17",
     "gatsby-plugin-lodash": "^1.0.8",
     "gatsby-plugin-manifest": "^1.0.13",
+    "gatsby-plugin-netlify": "^1.0.17",
     "gatsby-plugin-nprogress": "^1.0.11",
     "gatsby-plugin-offline": "^1.0.13",
     "gatsby-plugin-postcss-sass": "^1.0.16",

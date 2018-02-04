@@ -76,11 +76,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-postcss-sass',
       options: {
-        postCssPlugins: [
-          lost(),
-          autoprefixer(),
-          rucksackCSS(),
-        ],
+        postCssPlugins: [lost(), autoprefixer(), rucksackCSS()],
         precision: 8,
       },
     },
@@ -135,5 +131,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    'gatsby-plugin-netlify',
   ],
 };
