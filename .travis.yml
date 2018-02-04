@@ -6,15 +6,18 @@ branches:
   only:
   - master
 
+notifications:
+  email: false
+
 cache:
   yarn: true
   directories:
-    - node_modules
+    - $HOME/.npm
     - public
 
 
 install:
-- yarn
+- npm install
 
 script:
 - gatsby build
