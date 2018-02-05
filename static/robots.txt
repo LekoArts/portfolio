@@ -3,8 +3,5 @@ Disallow: */tags/
 Disallow: */categories/
 Disallow: /impressum
 Disallow: /datenschutz
-Disallow: /serie
-Disallow: /film
-Disallow: /wip
 
 sitemap: https://www.lekoarts.de/sitemap.xml
