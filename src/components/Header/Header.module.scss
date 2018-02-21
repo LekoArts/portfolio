@@ -21,6 +21,9 @@
   @include for-mobile-landscape {
     height: 75vh;
   }
+  @include for-tablet-landscape {
+    height: 75vh;
+  }
   @include for-big-desktop-up {
     height: 40vh;
   }
