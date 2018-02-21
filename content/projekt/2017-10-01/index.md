@@ -8,9 +8,9 @@ time: "4 Monate, Juni - September 2017"
 ---
 # Hintergrund
 
-elitepvpers, das größte deutsche Gaming-Forum, bietet neben vielen Foren zum Diskutieren auch einen Marktplatz, um virtuelle Spiele-Gegenstände zu (ver)kaufen. Die User handeln untereinander über die Plattform, die elitepvpers bietet. Als weiteres Zusatzangebot für die User sollte eine sog. „Case-Opening“ Website erstellt werden, die es ermöglicht Items verschiedenster Spiele durch das Öffnen von Kisten zu erlangen. Das hierfür wohl beliebteste Spiel ist Counter Strike: Global Offensive. Als Partnerseite sollte elitecases (auch der Name wurde in Anlehnung an elitepvpers gewählt) dem Design ähneln, allerdings auf Flat 2.0 setzen – da bislang das Design von elitepvpers noch von 2009 und somit nicht mehr zeitgemäß ist.
+[elitepvpers](https://www.elitepvpers.com), das größte deutsche Gaming-Forum, bietet neben vielen Foren zum Diskutieren auch einen Marktplatz, um virtuelle Spiele-Gegenstände zu (ver)kaufen. Die User handeln untereinander über die Plattform, die elitepvpers bietet. Als weiteres Zusatzangebot für die User sollte eine sog. „Case-Opening“ Website erstellt werden, die es ermöglicht Items verschiedenster Spiele durch das Öffnen von Kisten zu erlangen. Das hierfür wohl beliebteste Spiel ist Counter Strike: Global Offensive. Als Partnerseite sollte elitecases (auch der Name wurde in Anlehnung an elitepvpers gewählt) dem Design ähneln, allerdings auf Flat 2.0 setzen – da bislang das Design von elitepvpers noch von 2009 und somit nicht mehr zeitgemäß ist.
 
-elitecases sollte einen schnellen, intuitiven und angenehmen Einstieg bieten und einen störungs- und ablenkungsfreien Aufenthalt garantieren. Außerdem sollte das Design so neutral wie möglich gehalten werden, sodass ein breites Angebot an Spielen in der Zukunft geboten werden kann.
+[elitecases](https://www.elitecases.org) sollte einen schnellen, intuitiven und angenehmen Einstieg bieten und einen störungs- und ablenkungsfreien Aufenthalt garantieren. Außerdem sollte das Design so neutral wie möglich gehalten werden, sodass ein breites Angebot an Spielen in der Zukunft geboten werden kann.
 
 ![](elitepvpers.jpg)
 
@@ -37,5 +37,3 @@ elitecases löst die gestellten Probleme durch ein modernes Flat 2.0 Design, zur
 ![](iPhone_iPad.jpg)
 
 ![](won_item.jpg)
-
-[Zur Website](https://www.elitecases.org)
