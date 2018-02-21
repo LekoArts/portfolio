@@ -15,6 +15,7 @@ $transition-headroom: all 0.25s ease-in-out;
   padding: 1rem 2rem;
   @include for-phone-only {
     padding: 1rem 1rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -56,6 +57,9 @@ $transition-headroom: all 0.25s ease-in-out;
   padding-bottom: 0.5rem;
   svg {
     height: 2.25rem;
+    @include for-phone-only {
+      height: 2.5rem;
+    }
   }
   svg g {
     fill: $black;

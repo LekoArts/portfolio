@@ -7,6 +7,9 @@
   @include for-mobile-landscape {
     height: 90vh;
   }
+  @include for-tablet-landscape {
+    height: 85vh;
+  }
 }
 
 .hero {

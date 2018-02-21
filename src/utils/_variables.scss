@@ -76,6 +76,12 @@
   }
 }
 
+@mixin for-tablet-landscape {
+  @media (max-width: 1199px) and (orientation: landscape) {
+    @content;
+  }
+}
+
 // --------------
 // Farben
 // --------------

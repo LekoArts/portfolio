@@ -8,6 +8,9 @@
   @include for-mobile-landscape {
     height: 100vh;
   }
+  @include for-tablet-landscape {
+    height: 85vh;
+  }
   @include for-big-desktop-up {
     height: 60vh;
   }
