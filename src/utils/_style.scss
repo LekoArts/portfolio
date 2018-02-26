@@ -11,7 +11,8 @@
 }
 
 .project-blog-content p a,
-.project-blog-content ul a {
+.project-blog-content ul a,
+.project-blog-content ol a {
   font-weight: bold;
   border-bottom: 1px solid $blue-tint;
   box-shadow: inset 0 -2px 0px $blue-tint;
@@ -84,7 +85,8 @@ blockquote {
   }
 
   .project-blog-content p a,
-  .project-blog-content ul a {
+  .project-blog-content ul a,
+  .project-blog-content ol a {
     color: $white;
     &:hover {
       color: $white;
