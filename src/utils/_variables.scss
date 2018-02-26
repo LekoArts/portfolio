@@ -87,7 +87,7 @@
 // --------------
 
 $white: #fff;
-$nearlyWhite: rgb(240, 240, 240);
+$nearlyWhite: #f0f0f0;
 $grey: #94a1c9;
 $black: #2a2b2f;
 $blue: #3498db;
@@ -98,8 +98,9 @@ $blue-black-ish: #2e3246;
 
 // Tints
 
-$black-tint: rgba($black, 0.5);
+$black-tint: rgba($black, 0.25);
 $white-tint: rgba($white, 0.75);
+$blue-tint: rgba($blue, 0.35);
 
 // Gradient
 $gt-bg-light: #373b4d;

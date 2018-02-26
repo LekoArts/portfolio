@@ -41,20 +41,14 @@ $transition-headroom: all 0.25s ease-in-out;
   nav {
     a {
       color: $black;
-      &:hover,
-      &:focus {
-        color: $blue;
-        box-shadow: inset 0 -2px 0px 0px $blue;
+      &:hover {
+        border-color: $black;
+        color: $black;
       }
     }
-    .active,
-    .active:focus {
-      box-shadow: inset 0 -2px 0px 0px $blue;
-      color: $blue;
-    }
   }
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   svg {
     height: 2.25rem;
     @include for-phone-only {

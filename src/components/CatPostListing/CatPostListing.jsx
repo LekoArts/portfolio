@@ -38,7 +38,7 @@ export default class CatPostListing extends React.Component {
                     <h1>{post.title}</h1>
                   </Link>
                 </div>
-                <Line />
+                <Line className={styles.line} />
                 <div className={styles.data}>
                   <div className={styles.dateTime}>
                     <div className={styles.date}>

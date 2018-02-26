@@ -3,7 +3,6 @@ import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import _ from 'lodash';
-import format from 'date-fns/format';
 import ReactDisqusComments from 'react-disqus-comments';
 import PostTags from '../components/PostTags/PostTags';
 import SEO from '../components/SEO/SEO';
@@ -21,7 +20,6 @@ const PostTemplate = (props) => {
   const { slug } = props.pathContext;
   const postNode = props.data.markdownRemark;
   const post = postNode.frontmatter;
-  const date = format(post.date, 'DD.MM.YYYY');
   const { sizes } = post.cover.childImageSharp;
   if (!post.id) {
     post.id = slug;
@@ -65,7 +63,7 @@ const PostTemplate = (props) => {
           <Line white />
           <div className={styles.information}>
             <div className={styles.dateTime}>
-              <div className={styles.date}>{date}</div>
+              <div className={styles.date}>{post.date}</div>
               <div className={styles.time}>| Lesezeit: {postNode.timeToRead} Min.</div>
             </div>
             <div className={styles.tags}>
@@ -118,7 +116,7 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        date
+        date(formatString: "DD.MM.YYYY")
         category
         tags
         cover {

@@ -32,16 +32,19 @@
 .navigation {
   lost-align: middle-right;
   font-family: "Montserrat", sans-serif;
+  font-size: 1.15rem;
   a {
     color: $white;
     position: relative;
     margin-left: 2rem;
+    transition: all .5s;
+    border-bottom: 1px solid transparent;
     @include for-phone-only {
       margin-left: 1rem;
     }
     &:hover {
+      border-bottom: 1px solid $white;
       color: $white;
-      box-shadow: inset 0 -2px 0px 0px $white;
     }
   }
 }

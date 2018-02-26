@@ -10,7 +10,6 @@
   color: $black;
   cursor: pointer;
   margin-left: 0.5rem;
-  line-height: 1.6;
   transition: all 0.5s;
   &:hover {
     background-color: $blue-black-ish;
@@ -19,7 +18,10 @@
 }
 
 .tag[data-id="0"] {
-  margin-left: 0;
+  margin-left: 1.5rem;
+  @include for-phone-only {
+    margin-left: 0;
+  }
 }
 
 .white {
