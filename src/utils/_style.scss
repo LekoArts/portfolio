@@ -83,6 +83,14 @@ blockquote {
     color: $body-color;
   }
 
+  .project-blog-content p a,
+  .project-blog-content ul a {
+    color: $white;
+    &:hover {
+      color: $white;
+    }
+}
+
   header {
     background: linear-gradient(
       45deg,
