@@ -35,7 +35,7 @@
     "gatsby-source-filesystem": "^1.5.25",
     "gatsby-transformer-remark": "^1.7.34",
     "gatsby-transformer-sharp": "^1.6.22",
-    "lost": "^8.2.0",
+    "lost": "^8.2.1",
     "react-disqus-comments": "^1.1.1",
     "react-headroom": "^2.2.2",
     "react-helmet": "^5.2.0",
@@ -53,14 +53,9 @@
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "prettier": "^1.11.1",
-    "prettier-eslint": "^8.8.1",
     "rucksack-css": "^1.0.2"
   },
-  "keywords": [
-    "gatsby",
-    "portfolio",
-    "lekoarts"
-  ],
+  "keywords": ["gatsby", "portfolio", "lekoarts"],
   "license": "UNLICENSED",
   "main": "n/a",
   "scripts": {
