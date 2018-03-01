@@ -12,7 +12,7 @@
     height: 85vh;
   }
   @include for-big-desktop-up {
-    height: 60vh;
+    height: 65vh;
   }
 }
 
@@ -25,7 +25,7 @@
     height: 75vh;
   }
   @include for-big-desktop-up {
-    height: 40vh;
+    height: 50vh;
   }
   .heroText {
     margin-bottom: 0rem;
