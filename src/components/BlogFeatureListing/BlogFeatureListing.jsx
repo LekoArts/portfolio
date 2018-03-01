@@ -6,7 +6,7 @@ import styles from './BlogFeatureListing.module.scss';
 export default class BlogFeatureListing extends React.Component {
   getPostList() {
     const postList = [];
-    this.props.postEdges.forEach((postEdge) => {
+    this.props.postEdges.forEach(postEdge => {
       postList.push({
         path: postEdge.node.fields.slug,
         cover: postEdge.node.frontmatter.cover.childImageSharp.sizes,
@@ -22,17 +22,16 @@ export default class BlogFeatureListing extends React.Component {
 
     return (
       <div className={styles.wrapper}>
-        {postList.map(post =>
-          (
-            <BlogFeature
-              key={post.title}
-              date={post.date}
-              cover={post.cover}
-              path={post.path}
-              title={post.title}
-              category={post.category}
-            />
-          ))}
+        {postList.map(post => (
+          <BlogFeature
+            key={post.title}
+            date={post.date}
+            cover={post.cover}
+            path={post.path}
+            title={post.title}
+            category={post.category}
+          />
+        ))}
       </div>
     );
   }

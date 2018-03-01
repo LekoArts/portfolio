@@ -11,35 +11,33 @@ import BlogFeatureListing from '../components/BlogFeatureListing/BlogFeatureList
 import Button from '../components/Button/Button';
 import styles from './index.module.scss';
 
-const Index = (props) => {
+const Index = props => {
   const projectEdges = props.data.projects.edges;
   const postEdges = props.data.posts.edges;
   return (
     <div className="container">
       <Header>
-          Kommunikationsdesigner & <br /> Front-End Entwickler
+        Kommunikationsdesigner & <br /> Front-End Entwickler
       </Header>
       <ContainerBig>
         <ProjectFeatureListing projectEdges={projectEdges} />
       </ContainerBig>
       <Container>
         <p className={styles.text}>
-            Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus deiner Marke herauszuholen. <br />
+          Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus deiner
+          Marke herauszuholen. <br />
           <Link to="/projekte">
-            <Button blue>
-                Projekte
-            </Button>
+            <Button blue>Projekte</Button>
           </Link>
         </p>
       </Container>
       <Container>
         <BlogFeatureListing postEdges={postEdges} />
         <p className={styles.text}>
-            Mit ebenso viel Leidenschaft schreibe ich über Design- und Coding-Themen und gebe mein Wissen in Form von Tutorials weiter. <br />
+          Mit ebenso viel Leidenschaft schreibe ich über Design- und Coding-Themen und gebe mein Wissen in Form von
+          Tutorials weiter. <br />
           <Link to="/blog">
-            <Button orange>
-                Blog
-            </Button>
+            <Button orange>Blog</Button>
           </Link>
         </p>
       </Container>
@@ -53,7 +51,11 @@ export default Index;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query IndexQuery {
-    projects: allMarkdownRemark(limit: 3, sort: {fields: [frontmatter___date], order: DESC}, filter: {fields: {sourceInstanceName: {eq: "projects"}}}) {
+    projects: allMarkdownRemark(
+      limit: 3
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fields: { sourceInstanceName: { eq: "projects" } } }
+    ) {
       edges {
         node {
           fields {
@@ -73,7 +75,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    posts: allMarkdownRemark(limit: 2, sort: {fields: [frontmatter___date], order: DESC}, filter: {fields: {sourceInstanceName: {eq: "posts"}}}) {
+    posts: allMarkdownRemark(
+      limit: 2
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fields: { sourceInstanceName: { eq: "posts" } } }
+    ) {
       edges {
         node {
           fields {

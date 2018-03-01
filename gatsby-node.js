@@ -43,9 +43,10 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     const projectPage = path.resolve('src/templates/project.jsx');
     const tagPage = path.resolve('src/templates/tag.jsx');
     const categoryPage = path.resolve('src/templates/category.jsx');
-    resolve(graphql(`
+    resolve(
+      graphql(`
         {
-          posts: allMarkdownRemark(filter: {fields: {sourceInstanceName: {eq: "posts"}}}) {
+          posts: allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "posts" } } }) {
             edges {
               node {
                 frontmatter {
@@ -58,7 +59,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               }
             }
           }
-          projects: allMarkdownRemark(filter: {fields: {sourceInstanceName: {eq: "projects"}}}) {
+          projects: allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "projects" } } }) {
             edges {
               node {
                 fields {
@@ -68,67 +69,68 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             }
           }
         }
-      `).then((result) => {
-      if (result.errors) {
-        /* eslint no-console: "off" */
-        console.log(result.errors);
-        reject(result.errors);
-      }
+      `).then(result => {
+        if (result.errors) {
+          /* eslint no-console: "off" */
+          console.log(result.errors);
+          reject(result.errors);
+        }
 
-      const tagSet = new Set();
-      const categorySet = new Set();
-      result.data.posts.edges.forEach((edge) => {
-        if (edge.node.frontmatter.tags) {
-          edge.node.frontmatter.tags.forEach((tag) => {
-            tagSet.add(tag);
+        const tagSet = new Set();
+        const categorySet = new Set();
+        result.data.posts.edges.forEach(edge => {
+          if (edge.node.frontmatter.tags) {
+            edge.node.frontmatter.tags.forEach(tag => {
+              tagSet.add(tag);
+            });
+          }
+
+          if (edge.node.frontmatter.category) {
+            categorySet.add(edge.node.frontmatter.category);
+          }
+
+          createPage({
+            path: edge.node.fields.slug,
+            component: postPage,
+            context: {
+              slug: edge.node.fields.slug,
+            },
           });
-        }
-
-        if (edge.node.frontmatter.category) {
-          categorySet.add(edge.node.frontmatter.category);
-        }
-
-        createPage({
-          path: edge.node.fields.slug,
-          component: postPage,
-          context: {
-            slug: edge.node.fields.slug,
-          },
         });
-      });
 
-      result.data.projects.edges.forEach((edge) => {
-        createPage({
-          path: edge.node.fields.slug,
-          component: projectPage,
-          context: {
-            slug: edge.node.fields.slug,
-          },
+        result.data.projects.edges.forEach(edge => {
+          createPage({
+            path: edge.node.fields.slug,
+            component: projectPage,
+            context: {
+              slug: edge.node.fields.slug,
+            },
+          });
         });
-      });
 
-      const tagList = Array.from(tagSet);
-      tagList.forEach((tag) => {
-        createPage({
-          path: `/tags/${_.kebabCase(tag)}/`,
-          component: tagPage,
-          context: {
-            tag,
-          },
+        const tagList = Array.from(tagSet);
+        tagList.forEach(tag => {
+          createPage({
+            path: `/tags/${_.kebabCase(tag)}/`,
+            component: tagPage,
+            context: {
+              tag,
+            },
+          });
         });
-      });
 
-      const categoryList = Array.from(categorySet);
-      categoryList.forEach((category) => {
-        createPage({
-          path: `/categories/${_.kebabCase(category)}/`,
-          component: categoryPage,
-          context: {
-            category,
-          },
+        const categoryList = Array.from(categorySet);
+        categoryList.forEach(category => {
+          createPage({
+            path: `/categories/${_.kebabCase(category)}/`,
+            component: categoryPage,
+            context: {
+              category,
+            },
+          });
         });
-      });
-    }));
+      })
+    );
   });
 };
 

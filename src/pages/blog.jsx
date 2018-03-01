@@ -6,13 +6,13 @@ import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 import ContainerBig from '../components/Container/ContainerBig';
 
-const Blog = (props) => {
+const Blog = props => {
   const postEdges = props.data.allMarkdownRemark.edges;
   return (
     <div className="container blog-container">
       <Helmet title={`Blog | ${config.siteTitle}`} />
       <Header slim subTitle="Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten">
-          Blog
+        Blog
       </Header>
       <ContainerBig>
         <BlogListing postEdges={postEdges} />
@@ -37,7 +37,7 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          excerpt (pruneLength: 300)
+          excerpt(pruneLength: 300)
           timeToRead
           frontmatter {
             title

@@ -16,7 +16,7 @@ import styles from './post.module.scss';
 
 import '../utils/prism-okaida.scss';
 
-const PostTemplate = (props) => {
+const PostTemplate = props => {
   const { slug } = props.pathContext;
   const postNode = props.data.markdownRemark;
   const post = postNode.frontmatter;
@@ -121,11 +121,7 @@ export const pageQuery = graphql`
         tags
         cover {
           childImageSharp {
-            sizes(
-              maxWidth: 1920
-              quality: 90
-              duotone: { highlight: "#EE9338", shadow: "#BE7123" }
-            ) {
+            sizes(maxWidth: 1920, quality: 90, duotone: { highlight: "#EE9338", shadow: "#BE7123" }) {
               ...GatsbyImageSharpSizes_withWebp
             }
             resize(width: 1200) {

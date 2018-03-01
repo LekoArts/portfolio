@@ -17,7 +17,7 @@ import styles from './project.module.scss';
 
 import '../utils/prism-okaida.scss';
 
-const ProjectTemplate = (props) => {
+const ProjectTemplate = props => {
   const wrapper = cx(styles.cardWrapper, 'projectCards');
   const { slug } = props.pathContext;
   const postNode = props.data.markdownRemark;
@@ -83,11 +83,7 @@ export const pageQuery = graphql`
         time
         cover {
           childImageSharp {
-            sizes(
-              maxWidth: 1920
-              quality: 90
-              duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }
-            ) {
+            sizes(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
               ...GatsbyImageSharpSizes_withWebp
             }
             resize(width: 1200) {

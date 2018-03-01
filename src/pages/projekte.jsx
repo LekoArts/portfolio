@@ -6,13 +6,16 @@ import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 import ContainerBig from '../components/Container/ContainerBig';
 
-const Projekte = (props) => {
+const Projekte = props => {
   const postEdges = props.data.allMarkdownRemark.edges;
   return (
     <div className="container projekte-container">
       <Helmet title={`Projekte | ${config.siteTitle}`} />
-      <Header slim subTitle="Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken">
-          Projekte
+      <Header
+        slim
+        subTitle="Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken"
+      >
+        Projekte
       </Header>
       <ContainerBig>
         <ProjectListing postEdges={postEdges} />

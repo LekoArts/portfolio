@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 import Container from '../components/Container/Container';
 import CatPostListing from '../components/CatPostListing/CatPostListing';
 
-const CategoryTemplate = (props) => {
+const CategoryTemplate = props => {
   const { category } = props.pathContext;
   const postEdges = props.data.allMarkdownRemark.edges;
   return (
@@ -39,7 +39,7 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          excerpt (pruneLength: 300)
+          excerpt(pruneLength: 300)
           timeToRead
           frontmatter {
             title

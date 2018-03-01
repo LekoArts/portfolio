@@ -4,7 +4,7 @@ import Link from 'gatsby-link';
 import cx from 'classnames';
 import styles from './PostTags.module.scss';
 
-const PostTags = (props) => {
+const PostTags = props => {
   const { tags } = props;
   const color = cx(styles.tag, {
     [styles.white]: props.white,

@@ -9,12 +9,8 @@ const ProjectFeature = props => (
       <Img sizes={props.cover} />
     </div>
     <Link to={props.path} className={styles.link}>
-      <div className={styles.customer}>
-        {props.customer}
-      </div>
-      <h2 className={styles.title}>
-        {props.title}
-      </h2>
+      <div className={styles.customer}>{props.customer}</div>
+      <h2 className={styles.title}>{props.title}</h2>
     </Link>
     <div className={styles.imageOverlay} />
   </article>

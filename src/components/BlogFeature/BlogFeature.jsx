@@ -11,13 +11,9 @@ const BlogFeature = props => (
     <Link to={props.path} className={styles.link}>
       <div className={styles.information}>
         <span className={styles.category}>{props.category}</span>
-        <div className={styles.date}>
-          {props.date}
-        </div>
+        <div className={styles.date}>{props.date}</div>
       </div>
-      <h2 className={styles.title}>
-        {props.title}
-      </h2>
+      <h2 className={styles.title}>{props.title}</h2>
     </Link>
     <div className={styles.imageOverlay} />
   </article>

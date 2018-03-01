@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import config from '../../../data/SiteConfig';
 
-const SEO = (props) => {
+const SEO = props => {
   const { postNode, postPath, postSEO } = props;
   let title;
   let description;
