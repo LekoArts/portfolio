@@ -28,6 +28,8 @@ Da [Visual Studio Code](https://code.visualstudio.com/) der Editor meiner Wahl i
 * [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 * [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
+**Hinweis:** Die Installation des Prettier Plugins ist **nicht** zwingend notwendig. Wenn du nur deinen React/Javascript Code linten und formatieren lassen willst, reicht die Installation des ESLint Plugins. Die Konfiguration von Visual Studio Code weicht vom unten gezeigten Beispiel nicht ab, da VS Code für `editor.formatOnSave` den eingebauten Formatierer dann nutzt (und wir weiterhin diesen für React/JS deaktivieren wollen). Da ich aber auch CSS, JSON etc. mit Prettier formatieren will, habe ich die Erweiterung installiert.
+
 Die Plugins erklären jeweils wie diese zu nutzen sind, ich persönlich sehe aber zum Beispiel von einer globalen Installation der npm Packages (`eslint` und `prettier`) ab, d.h. wie du später sehen wirst füge ich die Pakete jeweils zum Projekt hinzu.
 Außerdem sind ein paar Anpassungen an VSCode notwendig, die du hier durchführen kannst: `Datei -> Einstellungen -> Einstellungen`.
 
