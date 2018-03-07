@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import config from '../../data/SiteConfig';
 import ProjectListing from '../components/ProjectListing/ProjectListing';
@@ -26,6 +27,14 @@ const Projekte = props => {
 };
 
 export default Projekte;
+
+Projekte.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }),
+  }),
+};
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`

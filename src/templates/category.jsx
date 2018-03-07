@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import config from '../../data/SiteConfig';
 import Footer from '../components/Footer/Footer';
@@ -24,6 +25,17 @@ const CategoryTemplate = props => {
 };
 
 export default CategoryTemplate;
+
+CategoryTemplate.propTypes = {
+  pathContext: PropTypes.shape({
+    tag: PropTypes.string.isRequired,
+  }),
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }),
+  }).isRequired,
+};
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`

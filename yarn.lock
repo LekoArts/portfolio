@@ -3573,6 +3573,10 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
+expand-template@^1.0.2:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/expand-template/-/expand-template-1.1.0.tgz#e09efba977bf98f9ee0ed25abd0c692e02aec3fc"
+
 expand-tilde@^1.2.0, expand-tilde@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/expand-tilde/-/expand-tilde-1.2.2.tgz#0b81eba897e5a3d31d1c3d102f8f01441e559449"
@@ -4050,6 +4054,10 @@ front-matter@^2.1.0:
   dependencies:
     js-yaml "^3.10.0"
 
+fs-copy-file-sync@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/fs-copy-file-sync/-/fs-copy-file-sync-1.0.1.tgz#fc93d25af984ab94b8a751c3e1df055d1afea204"
+
 fs-exists-sync@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/fs-exists-sync/-/fs-exists-sync-0.1.0.tgz#982d6893af918e72d08dec9e8673ff2b5a8d6add"
@@ -4157,8 +4165,13 @@ gatsby-cli@^1.1.45:
     yurnalist "^0.2.1"
 
 gatsby-image@^1.0.40:
+<<<<<<< HEAD
   version "1.0.40"
   resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-1.0.40.tgz#473b77cbabd123d0d988934dd0fd67141310e996"
+=======
+  version "1.0.41"
+  resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-1.0.41.tgz#56e356f54ec70ec5136b7efcce1c71dd18bd47eb"
+>>>>>>> Add PropTypes
   dependencies:
     babel-runtime "^6.26.0"
     prop-types "^15.6.0"
@@ -4181,8 +4194,13 @@ gatsby-module-loader@^1.0.11:
     loader-utils "^0.2.16"
 
 gatsby-plugin-catch-links@^1.0.18:
+<<<<<<< HEAD
   version "1.0.18"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-1.0.18.tgz#37620006648e9618f7495d6ddf931616ec4df4fc"
+=======
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-1.0.19.tgz#5f25b6e9b1b208afd6e177e234c9e483b5a60e2a"
+>>>>>>> Add PropTypes
   dependencies:
     babel-runtime "^6.26.0"
 
@@ -4200,8 +4218,13 @@ gatsby-plugin-google-analytics@^1.0.20:
     babel-runtime "^6.26.0"
 
 gatsby-plugin-lodash@^1.0.10:
+<<<<<<< HEAD
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-lodash/-/gatsby-plugin-lodash-1.0.10.tgz#ea88a507c9dc4c43c9f1a748308179226d2f5715"
+=======
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-lodash/-/gatsby-plugin-lodash-1.0.11.tgz#0377a31df7c6781082c25774f765e07fe9eb7229"
+>>>>>>> Add PropTypes
   dependencies:
     babel-plugin-lodash "^3.2.11"
     babel-runtime "^6.26.0"
@@ -4225,8 +4248,13 @@ gatsby-plugin-netlify@^1.0.19:
     webpack-assets-manifest "^1.0.0"
 
 gatsby-plugin-nprogress@^1.0.13:
+<<<<<<< HEAD
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-nprogress/-/gatsby-plugin-nprogress-1.0.13.tgz#107c866e30d45d2b9e4158958bf2f5b0e5bcd540"
+=======
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-nprogress/-/gatsby-plugin-nprogress-1.0.14.tgz#576f92e0658f1dc66e511b99ff4efe7389bfcc57"
+>>>>>>> Add PropTypes
   dependencies:
     babel-runtime "^6.26.0"
     nprogress "^0.2.0"
@@ -4249,6 +4277,7 @@ gatsby-plugin-postcss-sass@^1.0.18:
     sass-loader "^4.1.1"
 
 gatsby-plugin-react-helmet@^2.0.6:
+<<<<<<< HEAD
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-2.0.6.tgz#974d7450aba01868b4800135120032941668ca51"
   dependencies:
@@ -4257,6 +4286,16 @@ gatsby-plugin-react-helmet@^2.0.6:
 gatsby-plugin-sharp@^1.6.37:
   version "1.6.37"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-1.6.37.tgz#26801f6a7075508b10aaf1a016acf74b7be20aa2"
+=======
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-2.0.7.tgz#f2d7836147f28cd3d3a7eae82b5ac6978c4c5e34"
+  dependencies:
+    babel-runtime "^6.26.0"
+
+gatsby-plugin-sharp@^1.6.37, gatsby-plugin-sharp@^1.6.39:
+  version "1.6.40"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-1.6.40.tgz#6f1fecb09439ba5b9e8ccbeaebc018faf38c5456"
+>>>>>>> Add PropTypes
   dependencies:
     async "^2.1.2"
     babel-runtime "^6.26.0"
@@ -4268,27 +4307,46 @@ gatsby-plugin-sharp@^1.6.37:
     potrace "^2.1.1"
     probe-image-size "^3.2.0"
     progress "^1.1.8"
+<<<<<<< HEAD
     sharp "^0.19.1"
     svgo "^0.7.2"
 
 gatsby-plugin-sitemap@^1.2.14:
   version "1.2.14"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sitemap/-/gatsby-plugin-sitemap-1.2.14.tgz#8543700a79573b43ab3f223aca71c6e5e1af0ffb"
+=======
+    sharp "^0.20.0"
+    svgo "^0.7.2"
+
+gatsby-plugin-sitemap@^1.2.14:
+  version "1.2.15"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sitemap/-/gatsby-plugin-sitemap-1.2.15.tgz#3d74ec1477208c6f340d7d705d41cdacea2e7f23"
+>>>>>>> Add PropTypes
   dependencies:
     babel-runtime "^6.26.0"
     sitemap "^1.12.0"
 
 gatsby-plugin-typography@^1.7.16:
+<<<<<<< HEAD
   version "1.7.16"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-typography/-/gatsby-plugin-typography-1.7.16.tgz#8ad0d187a75a9cd9a4174c3369d03a9e0ea06977"
+=======
+  version "1.7.17"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-typography/-/gatsby-plugin-typography-1.7.17.tgz#e333e03001035f7bd45aff9d88f4b0e42f0ac991"
+>>>>>>> Add PropTypes
   dependencies:
     babel-runtime "^6.26.0"
     react-typography "^0.16.1"
     typography "^0.16.0"
 
 gatsby-react-router-scroll@^1.0.12:
+<<<<<<< HEAD
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-1.0.12.tgz#0fdbea2124f0c2a2496fbc18978a35f1c020b27c"
+=======
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-1.0.13.tgz#d1cfd43c334497ad174ae9409c24bb5d4dcda3aa"
+>>>>>>> Add PropTypes
   dependencies:
     babel-runtime "^6.26.0"
     scroll-behavior "^0.9.9"
@@ -4304,8 +4362,13 @@ gatsby-remark-autolink-headers@^1.4.13:
     unist-util-visit "^1.1.1"
 
 gatsby-remark-copy-linked-files@^1.5.29:
+<<<<<<< HEAD
   version "1.5.29"
   resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-1.5.29.tgz#9e2a1de28dc7f93be784e401ba51703181021790"
+=======
+  version "1.5.30"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-1.5.30.tgz#5834fb6d4a8a50c58e7e91309bd0af396474dd29"
+>>>>>>> Add PropTypes
   dependencies:
     babel-runtime "^6.26.0"
     cheerio "^1.0.0-rc.2"
@@ -4326,20 +4389,34 @@ gatsby-remark-external-links@^0.0.4:
     unist-util-visit "^1.1.3"
 
 gatsby-remark-images@^1.5.53:
+<<<<<<< HEAD
   version "1.5.53"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-1.5.53.tgz#9fb3883748e680c88ad6c42598a7e08b64c27f57"
   dependencies:
     babel-runtime "^6.26.0"
     cheerio "^1.0.0-rc.2"
     gatsby-plugin-sharp "^1.6.37"
+=======
+  version "1.5.56"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-1.5.56.tgz#f3dd9323b6eed803d5388a3a688ae22c82578d97"
+  dependencies:
+    babel-runtime "^6.26.0"
+    cheerio "^1.0.0-rc.2"
+    gatsby-plugin-sharp "^1.6.39"
+>>>>>>> Add PropTypes
     is-relative-url "^2.0.0"
     lodash "^4.17.4"
     slash "^1.0.0"
     unist-util-select "^1.5.0"
 
 gatsby-remark-prismjs@^1.2.16:
+<<<<<<< HEAD
   version "1.2.16"
   resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-1.2.16.tgz#02d3c6a0cf6ebdaae93aef9a28bede5eaee5d268"
+=======
+  version "1.2.17"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-1.2.17.tgz#86ab9dccd6f0952182c4d36cb9290effee6d5dee"
+>>>>>>> Add PropTypes
   dependencies:
     babel-runtime "^6.26.0"
     parse-numeric-range "0.0.2"
@@ -4357,8 +4434,13 @@ gatsby-remark-responsive-iframe@^1.4.18:
     unist-util-visit "^1.1.1"
 
 gatsby-source-filesystem@^1.5.25:
+<<<<<<< HEAD
   version "1.5.25"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-1.5.25.tgz#51c08f9812d3d8554721df4e32a0cdd12eccb0cd"
+=======
+  version "1.5.26"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-1.5.26.tgz#1901649fddf31e8fab35b94aefb9e16af81f01a0"
+>>>>>>> Add PropTypes
   dependencies:
     babel-cli "^6.26.0"
     babel-runtime "^6.26.0"
@@ -4373,8 +4455,13 @@ gatsby-source-filesystem@^1.5.25:
     valid-url "^1.0.9"
 
 gatsby-transformer-remark@^1.7.34:
+<<<<<<< HEAD
   version "1.7.34"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-1.7.34.tgz#b5177080ff39f1e7ee45009d779f18d7baf78cb3"
+=======
+  version "1.7.36"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-1.7.36.tgz#896a1d0fffc624f5a7b75692ba1e92c0347944b5"
+>>>>>>> Add PropTypes
   dependencies:
     babel-runtime "^6.26.0"
     bluebird "^3.5.0"
@@ -4407,8 +4494,13 @@ gatsby-transformer-sharp@^1.6.22:
     probe-image-size "^3.2.0"
 
 gatsby@^1.9.221:
+<<<<<<< HEAD
   version "1.9.221"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-1.9.221.tgz#3e9ce1f93c7bef59d502c79b539e24dea70b6bbd"
+=======
+  version "1.9.225"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-1.9.225.tgz#95d1e7eef1e3bfd9a8335e424b32c472454558d9"
+>>>>>>> Add PropTypes
   dependencies:
     async "^2.1.2"
     babel-code-frame "^6.22.0"
@@ -4600,6 +4692,10 @@ getpass@^0.1.1:
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
   dependencies:
     assert-plus "^1.0.0"
+
+github-from-package@0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/github-from-package/-/github-from-package-0.0.0.tgz#97fb5d96bfde8973313f20e8288ef9a167fa64ce"
 
 github-slugger@^1.1.1:
   version "1.2.0"
@@ -7130,6 +7226,12 @@ nlcst-to-string@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/nlcst-to-string/-/nlcst-to-string-2.0.1.tgz#f90f3cf905c137dc8edd8727fbcde73e73c2a1d9"
 
+node-abi@^2.2.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-2.3.0.tgz#f3d554d6ac72a9ee16f0f4dc9548db7c08de4986"
+  dependencies:
+    semver "^5.4.1"
+
 node-emoji@^1.0.4:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/node-emoji/-/node-emoji-1.8.1.tgz#6eec6bfb07421e2148c75c6bba72421f8530a826"
@@ -7287,6 +7389,10 @@ noms@0.0.0:
     inherits "^2.0.1"
     readable-stream "~1.0.31"
 
+noop-logger@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/noop-logger/-/noop-logger-0.1.1.tgz#94a2b1633c4f1317553007d8966fd0e841b6a4c2"
+
 "nopt@2 || 3":
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-3.0.6.tgz#c6465dbf08abcd4db359317f79ac68a646b28ff9"
@@ -7334,7 +7440,7 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
-"npmlog@0 || 1 || 2 || 3 || 4", npmlog@^4.0.0, npmlog@^4.0.2:
+"npmlog@0 || 1 || 2 || 3 || 4", npmlog@^4.0.0, npmlog@^4.0.1, npmlog@^4.0.2, npmlog@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/npmlog/-/npmlog-4.1.2.tgz#08a7f2a8bf734604779a9efa4ad5cc717abb954b"
   dependencies:
@@ -8572,6 +8678,26 @@ potrace@^2.1.1:
   dependencies:
     jimp "^0.2.24"
 
+prebuild-install@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-2.5.1.tgz#0f234140a73760813657c413cdccdda58296b1da"
+  dependencies:
+    detect-libc "^1.0.3"
+    expand-template "^1.0.2"
+    github-from-package "0.0.0"
+    minimist "^1.2.0"
+    mkdirp "^0.5.1"
+    node-abi "^2.2.0"
+    noop-logger "^0.1.1"
+    npmlog "^4.0.1"
+    os-homedir "^1.0.1"
+    pump "^2.0.1"
+    rc "^1.1.6"
+    simple-get "^2.7.0"
+    tar-fs "^1.13.0"
+    tunnel-agent "^0.6.0"
+    which-pm-runs "^1.0.0"
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -8660,6 +8786,14 @@ prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.6.1:
+  version "15.6.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
 proper-lockfile@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/proper-lockfile/-/proper-lockfile-1.2.0.tgz#ceff5dd89d3e5f10fb75e1e8e76bc75801a59c34"
@@ -8701,6 +8835,13 @@ public-encrypt@^4.0.0:
 pump@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/pump/-/pump-1.0.3.tgz#5dfe8311c33bbf6fc18261f9f34702c47c08a954"
+  dependencies:
+    end-of-stream "^1.1.0"
+    once "^1.3.1"
+
+pump@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/pump/-/pump-2.0.1.tgz#12399add6e4cf7526d973cbc8b5ce2e2908b3909"
   dependencies:
     end-of-stream "^1.1.0"
     once "^1.3.1"
@@ -9802,7 +9943,11 @@ semver-truncate@^1.0.0:
   dependencies:
     semver "^5.3.0"
 
+<<<<<<< HEAD
 "semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.5.0:
+=======
+"semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0:
+>>>>>>> Add PropTypes
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
@@ -9957,6 +10102,7 @@ shallowequal@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.0.2.tgz#1561dbdefb8c01408100319085764da3fcf83f8f"
 
+<<<<<<< HEAD
 sharp@^0.19.1:
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.19.1.tgz#819bf11f5c3f4ff32eb465f255b5fb87e43ceea1"
@@ -9964,6 +10110,18 @@ sharp@^0.19.1:
     color "^3.0.0"
     detect-libc "^1.0.3"
     nan "^2.9.2"
+=======
+sharp@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.20.0.tgz#2ff9f1ae11f068ce7d7591f531cad52c7821d033"
+  dependencies:
+    color "^3.0.0"
+    detect-libc "^1.0.3"
+    fs-copy-file-sync "^1.0.1"
+    nan "^2.9.2"
+    npmlog "^4.1.2"
+    prebuild-install "^2.5.1"
+>>>>>>> Add PropTypes
     semver "^5.5.0"
     simple-get "^2.7.0"
     tar "^4.4.0"
@@ -11595,6 +11753,10 @@ which-module@^1.0.0:
 which-module@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/which-module/-/which-module-2.0.0.tgz#d9ef07dce77b9902b8a3a8fa4b31c3e3f7e6e87a"
+
+which-pm-runs@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/which-pm-runs/-/which-pm-runs-1.0.0.tgz#670b3afbc552e0b55df6b7780ca74615f23ad1cb"
 
 which@1, which@^1.0.9, which@^1.1.1, which@^1.2.10, which@^1.2.12, which@^1.2.14, which@^1.2.9:
   version "1.3.0"

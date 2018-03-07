@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import config from '../../data/SiteConfig';
 import BlogListing from '../components/BlogListing/BlogListing';
@@ -23,6 +24,14 @@ const Blog = props => {
 };
 
 export default Blog;
+
+Blog.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }),
+  }),
+};
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`

@@ -1,6 +1,7 @@
 /* eslint max-len: 0 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Footer from '../components/Footer/Footer';
 import Container from '../components/Container/Container';
@@ -47,6 +48,17 @@ const Index = props => {
 };
 
 export default Index;
+
+Index.propTypes = {
+  data: PropTypes.shape({
+    projects: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }),
+    posts: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }),
+  }),
+};
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import SEO from '../components/SEO/SEO';
 import Navigation from '../components/Navigation/Navigation';
@@ -44,3 +45,7 @@ export default class MainLayout extends React.Component {
     );
   }
 }
+
+MainLayout.propTypes = {
+  children: PropTypes.element.isRequired,
+};

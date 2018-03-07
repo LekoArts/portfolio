@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
@@ -106,6 +107,15 @@ const PostTemplate = props => {
 };
 
 export default PostTemplate;
+
+PostTemplate.propTypes = {
+  pathContext: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+  }),
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.node.isRequired,
+  }),
+};
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
