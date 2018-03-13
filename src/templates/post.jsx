@@ -113,7 +113,7 @@ PostTemplate.propTypes = {
     slug: PropTypes.string.isRequired,
   }),
   data: PropTypes.shape({
-    markdownRemark: PropTypes.node.isRequired,
+    markdownRemark: PropTypes.object.isRequired,
   }),
 };
 

@@ -1,4 +1,4 @@
-@import "../../utils/_variables.scss";
+@import '../../utils/_variables.scss';
 
 .wrapper {
   background: linear-gradient(45deg, $gt-bg-dark 0%, $gt-bg-light 100%);
@@ -17,7 +17,7 @@
 }
 
 .slim {
-  height: 50vh;
+  height: 40vh;
   @include for-mobile-landscape {
     height: 75vh;
   }
@@ -25,7 +25,7 @@
     height: 75vh;
   }
   @include for-big-desktop-up {
-    height: 50vh;
+    height: 40vh;
   }
   .heroText {
     margin-bottom: 0rem;
