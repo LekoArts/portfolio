@@ -6,6 +6,7 @@ category: "Tutorial"
 tags:
     - Compositing
     - Photoshop
+    - PCB-Reihe
 ---
 
 Compositing wird gerne als die Königsdisziplin der digitalen Bildbearbeitung bezeichnet – in meinen Augen zurecht. Bis zum fertigen Bild ist es ein mehrstufiger Prozess: [Sichtung von Material](/blog/photoshop-compositing-basics-stockfotos), [Konzeption](/blog/photoshop-compositing-basics-konzeption) (Skizzen & Komposition und Arrangement der Bilder), Erstellung der Bildcollage und die [Fertigstellung](/blog/photoshop-compositing-basics-fertigstellung) als Gesamtkunstwerk. Ziel dieses Tutorials ist es den Punkt „Bildcollage“ genauer zu beleuchten, da sich viele damit am schwersten tun – in Folge dessen ist dies der erste Teil meiner kleinen Compositing Reihe. Die anderen Prozessschritte werden folgen.

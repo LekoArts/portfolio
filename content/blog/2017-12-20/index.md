@@ -6,7 +6,7 @@ category: "Tutorial"
 tags:
     - Compositing
     - Stockfotos
-    - Linksammlung
+    - PCB-Reihe
 ---
 
 Nicht jeder ist in der luxuriösen Position sich Reisen, Kamera und Aufenthalt zu leisten, um die passenden Fotos für das nächste Compositing zu schießen, sodass in den allermeisten Fällen Stockfotos genutzt werden „müssen“. Oft findet man das nahezu perfekte Foto in diesen Bildbibliotheken und immer öfter sind diese Bilder sogar kostenlos!

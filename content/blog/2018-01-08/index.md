@@ -6,6 +6,7 @@ category: "Tutorial"
 tags:
     - Compositing
     - Konzeption
+    - PCB-Reihe
 ---
 
 Bevor ein Compositing überhaupt erst entstehen kann, braucht es die zündende Idee. Und diese kann auf ganz unterschiedliche Arten entstehen: Mal müssen Rahmenbedingungen (z.B. bei Wettbewerben) eingehalten werden, mal soll ein eine Stimmung/Gefühl transportiert werden, mal soll es ein Geschenk werden – aber meistens kommen die Ideen spontan während man seine Umwelt beobachtet.

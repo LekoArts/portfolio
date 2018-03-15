@@ -5,7 +5,7 @@ date: "2018-01-23"
 category: "Coding"
 tags:
     - Gatsby
-    - Open Source
+    - Gatsby-Starter
 ---
 
 Für den auf React basierenden Static-Site-Generator [Gatsby](https://www.gatsbyjs.org/) habe ich heute meinen zweiten "Starter" veröffentlicht! Nachdem mein [vorheriger](/blog/gatsby-starter-portfolio) Starter ein helles Theme hatte, habe ich mich dieses Mal an dunkle Töne gewagt und den Fokus auf die Fotos gelegt. Das Theme *Emilia* hat hierbei alles, was ein schönes Portfolio für Fotografen braucht: Eine kurze Info inklusive Kontaktdaten zum Fotografen, große Bilder und eine gute Übersicht über eben diese. Wenn du schnell dein Projekt starten willst, ist das die perfekte Wahl für dich. Du kannst das Projekt leicht anpassen und erweitern.

@@ -7,6 +7,7 @@ tags:
     - Gatsby
     - styled-components
     - React
+    - GRB-Reihe
 ---
 
 Nach dem [ersten](/blog/ultra-schnellen-blog-mit-react-und-gatsby-erstellen) und [zweiten](/blog/react-code-styling-mit-es-lint-und-prettier) Teil meiner Gatsby-Reihe soll es nun um [styled-components](https://www.styled-components.com/) gehen. Die CSS-in-JS Library erfreut sich großer Beliebtheit unter React Entwicklern und ist momentan auch mein Favorit.

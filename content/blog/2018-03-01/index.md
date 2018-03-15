@@ -7,6 +7,8 @@ tags:
     - Gatsby
     - React
     - ESLint
+    - Prettier
+    - GRB-Reihe
 ---
 
 Nachdem wir im [ersten Teil](/blog/ultra-schnellen-blog-mit-react-und-gatsby-erstellen) unseren Gatsby Blog erstellt und veröffentlicht haben, wird es in den folgenden Teilen darum gehen diesen mit Funktionen stetig zu erweitern. Im Laufe der Tutorials wirst du einiges an React Code schreiben müssen - und dabei schleichen sich immer wieder gerne Flüchtigkeitsfehler in den Code ein. Schlaue Entwickler haben sich für dieses Problem sog. _Linter_ und _Code Formatter_ ausgedacht, die deinen Code auf Fehler bzw. falsche Formatierung prüfen und dies dann korrigieren. Vor allem bei Teamarbeiten kann so ein konsistenter Stil eingehalten werden.

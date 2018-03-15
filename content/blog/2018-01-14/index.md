@@ -6,6 +6,7 @@ category: "Tutorial"
 tags:
     - Compositing
     - Photoshop
+    - PCB-Reihe
 ---
 
 Um die Compositing Basics Reihe gebührend abzuschließen, geht es in diesem Teil um die Fertigstellung bzw. Vollendung des Compositings. Nachdem du fleißig [skizziert](/blog/photoshop-compositing-basics-konzeption), [gesucht](/blog/photoshop-compositing-basics-stockfotos) und in Photoshop [gearbeitet](/blog/photoshop-compositing-basics-bildcollage) hast, siehst du nun eine fertige Bildcollage vor dir, der aber noch der letzte Schliff fehlt. Immerhin ist es nicht selbstverständlich, dass viele, teils sehr unterschiedliche Bilder sich zu einem Gesamtbild zusammenfügen. Daher gebe ich dir meine Tipps & Tricks mit, um ein stimmungsvolles Endresultat zu erzielen.

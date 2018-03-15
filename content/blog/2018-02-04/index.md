@@ -7,6 +7,7 @@ tags:
     - Gatsby
     - Blog
     - React
+    - GRB-Reihe
 ---
 
 Gatsby ist ein blitzschneller *Static Site Generator* basierend auf [React](https://reactjs.org/). Wer keine Lust auf ein großes CMS wie Wordpress hat, aber dennoch gerne etwas mehr als reine HTML-Seiten bearbeiten will, wird [Gatsby](https://www.gatsbyjs.org/) sicherlich lieben (natürlich muss man auch React mögen). Gatsby erfüllt alle Ansprüche an eine [Progressive Web App](https://developers.google.com/web/progressive-web-apps/) (PWA), gibt per [GraphQL](http://graphql.org/) Zugriff auf verschiedene Datenimporte und hat durch Code-Splitting und Service Worker extrem schnelle Ladezeiten. Durch den Einsatz eines *Headless CMS* wie zum Beispiel [Contentful](https://www.contentful.com/) oder [Netlify CMS](https://www.netlifycms.org/) kann man Wordpress auch komplett ersetzen.
