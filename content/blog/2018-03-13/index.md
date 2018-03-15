@@ -11,9 +11,10 @@ tags:
 
 Nach dem [ersten](/blog/ultra-schnellen-blog-mit-react-und-gatsby-erstellen) und [zweiten](/blog/react-code-styling-mit-es-lint-und-prettier) Teil meiner Gatsby-Reihe soll es nun um [styled-components](https://www.styled-components.com/) gehen. Die CSS-in-JS Library erfreut sich großer Beliebtheit unter React Entwicklern und ist momentan auch mein Favorit.
 
-Aber wieso eine CSS-in-JS Library nutzen und im speziellen styled-components? CSS-in-JS verhindert die Überschneidung von Klassennamen, sprich das CSS Styling ist sehr eng mit den React Komponenten verknüpft, da sich das CSS nur auf diese bezieht - und spinnt somit die Komponenten-Denkweise konsequent weiter. styled-components mag ich persönlich am meisten, da ich normale CSS Syntax nutzen kann und micht nicht umgewöhnen muss.
+Aber wieso eine CSS-in-JS Library nutzen und im speziellen styled-components? CSS-in-JS verhindert unter anderem die Überschneidung von Klassennamen, sprich das CSS Styling ist sehr eng mit den React Komponenten verknüpft, da sich das CSS nur auf diese bezieht - und spinnt somit die Komponenten-Denkweise konsequent weiter. styled-components mag ich persönlich am meisten, da ich normale CSS Syntax nutzen kann und mich nicht umgewöhnen muss.
 
 Ziel dieses Tutorials ist es unseren bestehenden Gatsby-Blog mit styled-components zu erweitern, für unsere Komponenten den `ThemeProvider` für einen einheitlichen Look zu nutzen und die kleine Hilfsbibliothekt `polished` für unsere Farben zu nutzen. Das Endresultat des Tutorials findest du im Branch [tutorial-part-three](https://github.com/LeKoArts/gatsby-starter-minimal-blog/tree/tutorial-part-three).
+Ich möchte mich in diesem Tutorial auf die meiner Meinung nach wichtigsten Dinge, die man zum Einstieg wissen sollte, beschränken und für die unzählig weiteren Features auf die Dokumentation verweisen.
 
 ## Installation
 
@@ -147,7 +148,7 @@ const TemplateWrapper = props => {
 export default TemplateWrapper;
 ```
 
-styled-components nutzt die sog. *tagged template literals*, um innerhalb dieser CSS Syntax zu nutzen. Im Hintergrund erstellt styled-components normale React Komponenten und hängt das Styling dran.
+styled-components nutzt die sog. [tagged template literals](https://wesbos.com/tagged-template-literals/), die einen Funktionsaufruf darstellen und dabei innerhalb des *template literals* die Argumente annimmt. In der Praxis bedeutet das: Nach den Backticks kannst du ganz normales CSS schreiben. Im Hintergrund erstellt styled-components normale React Komponenten und hängt das Styling dran.
 Die [Dokumentation](https://www.styled-components.com/docs/basics#getting-started) bietet hierfür auch einen super Einstieg.
 
 In der Layout Datei nutzen wir zuerst `injectGlobal` um unabhängig von einer Komponente das allgemeine Styling zu definieren. Da `injectGlobal` nicht auf das Theme des `<ThemeProvider>` zugreifen kann, nutzen wir die Variablen im "klassichen" Sinne. In den nächsten Dateien wirst du sehen, wie man normalerweise auf das Theme zugreifen kann. Die bereits mehrfach angesprochene `<ThemeProvider>` Komponente solltest du als äußerste Komponente setzen.
