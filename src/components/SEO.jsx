@@ -53,7 +53,7 @@ const SEO = props => {
         '@type': 'BlogPosting',
         url: blogURL,
         name: title,
-        alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
+        alternateName: config.siteTitleAlt,
         headline: title,
         image: {
           '@type': 'ImageObject',
@@ -65,7 +65,7 @@ const SEO = props => {
   }
   return (
     <Helmet>
-      {/* Allgemeine Tags */}
+      {/* General Tags */}
       <html lang="de" />
       <title>{title}</title>
       <meta name="description" content={description} />

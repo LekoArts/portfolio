@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
-import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer';
 import Container from '../components/Container/Container';
 import ContainerBig from '../components/Container/ContainerBig';
 import Header from '../components/Header/Header';
@@ -48,17 +48,6 @@ const Index = props => {
 };
 
 export default Index;
-
-Index.propTypes = {
-  data: PropTypes.shape({
-    projects: PropTypes.shape({
-      edges: PropTypes.array.isRequired,
-    }),
-    posts: PropTypes.shape({
-      edges: PropTypes.array.isRequired,
-    }),
-  }),
-};
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
@@ -106,7 +95,7 @@ export const pageQuery = graphql`
                 }
               }
             }
-            date
+            date(formatString: "DD.MM.YYYY")
             category
           }
         }

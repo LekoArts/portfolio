@@ -3,7 +3,7 @@ const config = require('./config/website');
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
 module.exports = {
-  /* Allgemeine Informationen */
+  /* General Information */
   pathPrefix: config.pathPrefix,
   siteMetadata: {
     siteUrl: config.siteUrl + pathPrefix,
@@ -72,7 +72,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'config/typography.jsx',
+        pathToConfigModule: 'config/typography.js',
       },
     },
     'gatsby-plugin-catch-links',
@@ -101,6 +101,7 @@ module.exports = {
         ],
       },
     },
+    // Must be placed at the end
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
   ],
