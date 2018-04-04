@@ -1,9 +1,4 @@
-/* eslint import/no-extraneous-dependencies: 0 */
-
-const lost = require('lost');
-const autoprefixer = require('autoprefixer');
-const rucksackCSS = require('rucksack-css');
-const config = require('./data/SiteConfig');
+const config = require('./config/website');
 
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
@@ -16,6 +11,7 @@ module.exports = {
   /* Plugins */
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -74,16 +70,9 @@ module.exports = {
     },
     'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-plugin-postcss-sass',
-      options: {
-        postCssPlugins: [lost(), autoprefixer(), rucksackCSS()],
-        precision: 8,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'src/utils/typography.jsx',
+        pathToConfigModule: 'config/typography.jsx',
       },
     },
     'gatsby-plugin-catch-links',
@@ -97,37 +86,19 @@ module.exports = {
         start_url: config.pathPrefix,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
-        display: 'minimal-ui',
+        display: 'standalone',
         icons: [
           {
-            src: '/logos/logo-192x192.png',
+            src: '/favicons/android-chrome-192x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/logos/logo-512x512.png',
+            src: '/favicons/android-chrome-512x512.png',
             sizes: '512x512',
             type: 'image/png',
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-favicon',
-      options: {
-        logo: './src/favicon.png',
-        injectHTML: true,
-        icons: {
-          android: false,
-          appleIcon: true,
-          appleStartup: false,
-          coast: true,
-          favicons: true,
-          firefox: false,
-          twitter: false,
-          yandex: false,
-          windows: true,
-        },
       },
     },
     'gatsby-plugin-offline',
