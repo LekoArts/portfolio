@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 400;
+  src: url("Inter-UI-Regular.woff2") format("woff2"),
+       url("Inter-UI-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 400;
+  src: url("Inter-UI-Italic.woff2") format("woff2"),
+       url("Inter-UI-Italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 700;
+  src: url("Inter-UI-Bold.woff2") format("woff2"),
+       url("Inter-UI-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 700;
+  src: url("Inter-UI-BoldItalic.woff2") format("woff2"),
+       url("Inter-UI-BoldItalic.woff") format("woff");
+}
