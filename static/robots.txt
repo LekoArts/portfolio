@@ -1,6 +1,4 @@
 User-agent: *
-Disallow: */tags/
-Disallow: */categories/
 Disallow: /impressum
 Disallow: /datenschutz
 
