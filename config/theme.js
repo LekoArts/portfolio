@@ -1,11 +1,5 @@
 import { rgba } from 'polished';
 
-const transition = {
-  easeInOutCubic: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
-  easeOutBack: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-  duration: '0.4s',
-};
-
 const colors = {
   white: {
     base: '#fff',
@@ -43,10 +37,48 @@ const gradient = {
   rightToLeft: `linear-gradient(45deg, ${colors.background.dark} 0%, ${colors.background.light} 100%)`,
 };
 
+const shadow = {
+  button: {
+    default: '0 20px 20px',
+    hover: '0 23px 25px',
+  },
+};
+
+const button = {
+  default: {
+    background: colors.black.blue,
+    boxShadow: `${shadow.button.default} ${rgba(colors.black.blue, 0.4)}`,
+    hover: {
+      boxShadow: `${shadow.button.hover} ${rgba(colors.black.blue, 0.3)}`,
+    },
+  },
+  primary: {
+    background: `linear-gradient(30deg, ${colors.primary.light} 0%, ${colors.primary.dark} 100%)`,
+    boxShadow: `${shadow.button.default} ${rgba(colors.primary.base, 0.4)}`,
+    hover: {
+      boxShadow: `${shadow.button.hover} ${rgba(colors.primary.base, 0.3)}`,
+    },
+  },
+  secondary: {
+    background: `linear-gradient(30deg, ${colors.secondary.light} 0%, ${colors.secondary.dark} 100%)`,
+    boxShadow: `${shadow.button.default} ${rgba(colors.secondary.base, 0.4)}`,
+    hover: {
+      boxShadow: `${shadow.button.hover} ${rgba(colors.secondary.base, 0.3)}`,
+    },
+  },
+};
+
+const transition = {
+  easeInOutCubic: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+  easeOutBack: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+  duration: '0.4s',
+};
+
 const theme = {
   colors,
   tint,
   gradient,
+  button,
   breakpoints: {
     s: '600px',
     m: '1199px',
