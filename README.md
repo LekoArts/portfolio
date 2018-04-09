@@ -1,25 +1,25 @@
 # lekoarts.de
 > ars aurea
 
-Mein persönliches Portfolio & Blog.
+My personal portfolio & blog.
 
-## Entwicklung
+## Development
 
 Installation:
 ```bash
 yarn
 ```
 
-Starten des lokalen Entwicklungsservers:
+Starting the local development server:
 ```bash
 yarn run dev
 ```
 
-Erstellen eines lokalen Buils:
+Creating a local build:
 ```bash
 yarn run build
 ```
 
 ## Deployment
 
-Automatisches Deployment per Webhook zu Netlify. Jeder `push` triggert einen neuen Build-Prozess.
+Automatic deployment via Netlify. Push & pull requests trigger a new build.
