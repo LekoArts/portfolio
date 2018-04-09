@@ -1,9 +1,0 @@
-@import "../../utils/_variables.scss";
-
-.wrapper {
-  lost-flex-container: row;
-  margin-top: -10rem;
-  @include for-big-desktop-up {
-    margin-top: -12rem;
-  }
-}
