@@ -6,22 +6,17 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
-import cx from 'classnames';
-import SEO from '../components/SEO/SEO';
-import Container from '../components/Container/Container';
-import Wave from '../components/Wave/Waves';
-import Card from '../components/Card/Card';
-import Button from '../components/Button/Button';
-import Footer from '../components/Footer/Footer';
-import config from '../../data/SiteConfig';
-import styles from './project.module.scss';
+import SEO from '../components/SEO';
+import Container from '../components/Container';
+import Wave from '../components/Wave';
+import { Card } from '../components/Card';
+import Button from '../components/Button';
+import Footer from '../components/Footer';
+import config from '../../config/website';
 
-import '../utils/prism-okaida.scss';
+import '../utils/prism-okaida.css';
 
-const ProjectTemplate = props => {
-  const wrapper = cx(styles.cardWrapper, 'projectCards');
-  const { slug } = props.pathContext;
-  const postNode = props.data.markdownRemark;
+const Project = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => {
   const post = postNode.frontmatter;
   const { sizes } = post.cover.childImageSharp;
   if (!post.id) {
@@ -29,9 +24,7 @@ const ProjectTemplate = props => {
   }
   return (
     <div className="container projekt-container">
-      <Helmet>
-        <title>{`${post.title} | ${config.siteTitle}`}</title>
-      </Helmet>
+      <Helmet title={`${post.title} | ${config.siteTitle}`} />
       <SEO postPath={slug} postNode={postNode} postSEO />
       <div className={styles.wrapper}>
         <div className={styles.hero}>
@@ -62,16 +55,16 @@ const ProjectTemplate = props => {
       <Footer>
         <h1>Packen wir's an!</h1>
         <Link to="/kontakt">
-          <Button blue>Projekt starten</Button>
+          <Button type="primary">Projekt starten</Button>
         </Link>
       </Footer>
     </div>
   );
 };
 
-export default ProjectTemplate;
+export default Project;
 
-ProjectTemplate.propTypes = {
+Project.propTypes = {
   pathContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
   }),

@@ -1,32 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import config from '../../data/SiteConfig';
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
-import Container from '../components/Container/Container';
-import CatPostListing from '../components/CatPostListing/CatPostListing';
+import config from '../../config/website';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Container from '../components/Container';
+import ItemTagCategory from '../components/ItemTagCategory';
 
-const TagTemplate = props => {
-  const { tag } = props.pathContext;
-  const postEdges = props.data.allMarkdownRemark.edges;
-  return (
-    <div className="tag-container">
-      <Helmet title={`${tag} | ${config.siteTitle}`} />
-      <Header slim subTitle={`Auflistung aller Beiträge, die mit "${tag}" markiert wurden`}>
-        {tag}
-      </Header>
-      <Container>
-        <CatPostListing postEdges={postEdges} />
-      </Container>
-      <Footer />
-    </div>
-  );
-};
+const Tag = ({ pathContext: { tag }, data: { allMarkdownRemark: { edges } } }) => (
+  <div className="tag-container">
+    <Helmet title={`${tag} | ${config.siteTitle}`} />
+    <Header slim subTitle={`Auflistung aller Beiträge, die mit "${tag}" markiert wurden`}>
+      {tag}
+    </Header>
+    <Container>
+      <ItemTagCategory edges={edges} />
+    </Container>
+    <Footer />
+  </div>
+);
 
-export default TagTemplate;
+export default Tag;
 
-TagTemplate.propTypes = {
+Tag.propTypes = {
   pathContext: PropTypes.shape({
     tag: PropTypes.string.isRequired,
   }),
@@ -34,7 +30,7 @@ TagTemplate.propTypes = {
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
-  }).isRequired,
+  }),
 };
 
 /* eslint no-undef: "off" */
