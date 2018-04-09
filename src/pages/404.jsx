@@ -2,12 +2,15 @@
 
 import React from 'react';
 import Link from 'gatsby-link';
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
-import Container from '../components/Container/Container';
+import Helmet from 'react-helmet';
+import config from '../../config/website';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Container from '../components/Container';
 
 const ErrorPage = () => (
   <div className="container">
+    <Helmet title={`404 | ${config.siteTitle}`} />
     <Header slim>404</Header>
     <Container>
       <p />
@@ -49,7 +52,7 @@ const ErrorPage = () => (
             width: '100%',
             height: '100%',
           }}
-          title="videos"
+          title="LekoArts Playlist"
           width="560"
           height="315"
           src="https://www.youtube.com/embed/videoseries?list=PLB-cmN3u7PHJTB_4eeuo6Hy1Ts2HgKD-5"

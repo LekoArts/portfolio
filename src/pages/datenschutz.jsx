@@ -4,10 +4,10 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
-import Footer from '../components/Footer/Footer';
-import Container from '../components/Container/Container';
-import Header from '../components/Header/Header';
-import config from '../../data/SiteConfig';
+import Footer from '../components/Footer';
+import Container from '../components/Container';
+import Header from '../components/Header';
+import config from '../../config/website';
 
 const Datenschutzerklaerung = () => (
   <div className="container datenschutz-container">
