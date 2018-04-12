@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import PropTypes from 'prop-types';
 import format from 'date-fns/format';
 import styled from 'react-emotion';
-import Wave from './Wave/Waves';
-import Container from './Container/Container';
+import Wave from './Wave';
+import Container from './Container';
 
 const Wrapper = styled.footer`
   position: relative;
@@ -18,7 +19,7 @@ const OptionalContent = styled.div`
   text-align: center;
   h1,
   h2 {
-    color: ${p => p.theme.colors.white.base};
+    color: ${p => p.theme.colors.white.light};
     text-align: center;
     margin: 0 auto;
     display: block;
@@ -77,7 +78,7 @@ const Footer = ({ children }) => {
   const date = format(new Date(), 'YYYY');
   return (
     <Wrapper>
-      <Wave top />
+      <Wave orientation="top" />
       <Container>
         <OptionalContent>{children}</OptionalContent>
         <Content>
@@ -114,3 +115,7 @@ const Footer = ({ children }) => {
 };
 
 export default Footer;
+
+Footer.propTypes = {
+  children: PropTypes.node,
+};

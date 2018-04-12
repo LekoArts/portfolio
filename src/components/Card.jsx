@@ -9,9 +9,9 @@ const IconStyle = css`
     }
     &:hover {
       background-color: #7289da;
-      color: white;
+      color: ${p => p.theme.colors.white.light};
       svg {
-        fill: white;
+        fill: ${p => p.theme.colors.white.light};
       }
     }
   }
@@ -23,7 +23,7 @@ const IconStyle = css`
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: ${p => p.theme.colors.white.base};
+      background-color: ${p => p.theme.colors.white.light};
       z-index: -1;
       opacity: 1;
       border-radius: 0.35rem;
@@ -31,7 +31,7 @@ const IconStyle = css`
     }
     &:before {
       content: '';
-      background-color: ${p => p.theme.colors.white.base};
+      background-color: ${p => p.theme.colors.white.light};
       background-image: linear-gradient(45deg, #f7eb4c 0%, #ee2a7b 29%, #4c6aff 100%);
       position: absolute;
       top: 0;
@@ -44,9 +44,9 @@ const IconStyle = css`
       transition: opacity ${p => p.theme.transitions.default.duration};
     }
     &:hover {
-      color: white;
+      color: ${p => p.theme.colors.white.light};
       svg {
-        fill: white;
+        fill: ${p => p.theme.colors.white.light};
       }
       &:before {
         opacity: 1;
@@ -60,9 +60,9 @@ const IconStyle = css`
     font-size: 3rem;
     &:hover {
       background-color: #191919;
-      color: white;
+      color: ${p => p.theme.colors.white.light};
       svg {
-        fill: white;
+        fill: ${p => p.theme.colors.white.light};
       }
     }
   }
@@ -73,9 +73,9 @@ const IconStyle = css`
     }
     &:hover {
       background-color: #ff0000;
-      color: white;
+      color: ${p => p.theme.colors.white.light};
       svg {
-        fill: white;
+        fill: ${p => p.theme.colors.white.light};
       }
     }
   }
@@ -104,7 +104,7 @@ const Wrapper = styled.div`
     top: 0;
     z-index: -1;
     border-radius: ${p => p.theme.borderRadius.default};
-    background-color: ${p => p.theme.colors.white.dark};
+    background-color: ${p => p.theme.colors.white.light};
   }
   ${IconStyle};
 `;

@@ -20,7 +20,7 @@ const styledLink = styled(Link)`
     ${p => p.theme.colors.primary.light} 0%,
     ${p => p.theme.colors.primary.dark} 100%
   );
-  color: ${p => p.theme.colors.white.base};
+  color: ${p => p.theme.colors.white.light};
   opacity: 0;
   visibility: hidden;
   transition: ${p => p.theme.transitions.default.transition};
@@ -28,7 +28,7 @@ const styledLink = styled(Link)`
     margin-bottom: 0;
   }
   &:hover {
-    color: ${p => p.theme.colors.white.base};
+    color: ${p => p.theme.colors.white.light};
   }
 `;
 

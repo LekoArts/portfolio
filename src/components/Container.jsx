@@ -1,11 +1,22 @@
 import React from 'react';
-import cx from 'classnames';
-import styles from './Container.module.scss';
+import PropTypes from 'prop-types';
+import styled from 'react-emotion';
 
-const Container = props => {
-  const { children } = props;
-  const classes = cx(styles.container, props.styleName, { [styles.text]: props.text });
-  return <div className={classes}>{children}</div>;
-};
+const Wrapper = styled.div`
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: ${p => p.theme.layout[p.type]};
+`;
+
+const Container = ({ children, type }) => <Wrapper type={type}>{children}</Wrapper>;
 
 export default Container;
+
+Container.propTypes = {
+  children: PropTypes.node.isRequired,
+  type: PropTypes.oneOf(['article', 'articleHead', 'base', 'big']),
+};
+
+Container.defaultProps = {
+  type: 'base',
+};

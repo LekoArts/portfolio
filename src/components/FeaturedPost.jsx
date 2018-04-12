@@ -100,18 +100,18 @@ const Information = styled.div`
 
 const Category = styled.span`
   color: ${p => p.theme.colors.black.base};
-  background-color: ${p => p.theme.colors.white.base};
+  background-color: ${p => p.theme.colors.white.light};
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
   border-radius: ${p => p.theme.borderRadius.round};
   padding: 0.25rem 1rem;
 `;
 
 const Date = styled.div`
-  color: ${p => p.theme.colors.white.base};
+  color: ${p => p.theme.colors.white.light};
 `;
 
 const Title = styled.h2`
-  color: ${p => p.theme.colors.white.base};
+  color: ${p => p.theme.colors.white.light};
   text-align: left;
   margin-bottom: 0;
 `;

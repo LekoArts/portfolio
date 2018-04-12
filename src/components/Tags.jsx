@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 
 const Tags = ({ tags }) => (
-  <div className="post-tag-container">
+  <div data-name="tags-container">
     {tags &&
       tags.map((tag, index) => (
-        <Link key={tag} style={{ textDecoration: 'none' }} to={`/tags/${kebabCase(tag)}`}>
-          <button className={color} data-id={index}>
-            {tag}
-          </button>
+        <Link key={tag} to={`/tags/${kebabCase(tag)}`}>
+          <button data-id={index}>{tag}</button>
         </Link>
       ))}
   </div>

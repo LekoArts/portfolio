@@ -88,13 +88,13 @@ const Image = styled.div`
 const Customer = styled.div`
   text-align: left;
   margin-bottom: 0.5rem;
-  color: ${p => p.theme.colors.white.base};
+  color: ${p => p.theme.colors.white.light};
 `;
 
 const Title = styled.h2`
   text-align: left;
   margin-bottom: 0;
-  color: ${p => p.theme.colors.white.base};
+  color: ${p => p.theme.colors.white.light};
 `;
 
 const FeaturedProject = props => (
