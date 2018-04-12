@@ -30,7 +30,7 @@ const Project = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) 
         <div className={styles.hero}>
           <h1>{post.title}</h1>
         </div>
-        <Wave bottom />
+        <Wave />
         <Img sizes={sizes} />
       </div>
       <Container>

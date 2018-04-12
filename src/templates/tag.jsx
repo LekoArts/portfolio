@@ -10,7 +10,7 @@ import ItemTagCategory from '../components/ItemTagCategory';
 const Tag = ({ pathContext: { tag }, data: { allMarkdownRemark: { edges } } }) => (
   <div className="tag-container">
     <Helmet title={`${tag} | ${config.siteTitle}`} />
-    <Header slim subTitle={`Auflistung aller Beiträge, die mit "${tag}" markiert wurden`}>
+    <Header slim subtitle={`Auflistung aller Beiträge, die mit "${tag}" markiert wurden`}>
       {tag}
     </Header>
     <Container>
