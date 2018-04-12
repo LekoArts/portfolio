@@ -22,7 +22,7 @@ injectGlobal`
   }
   body {
     color: ${theme.colors.black.base};
-    background-color: ${theme.colors.white.dark};
+    background-color: ${theme.colors.white.light};
   }
   ::selection {
     color: ${theme.colors.white.base};
@@ -103,7 +103,7 @@ injectGlobal`
   caption {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    color: ${theme.colors.white.dark};
+    color: ${theme.colors.white.light};
     text-align: center;
     caption-side: bottom;
   }

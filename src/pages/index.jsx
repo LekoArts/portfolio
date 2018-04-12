@@ -36,11 +36,11 @@ const Text = styled.p`
 `;
 
 const Index = ({ data: { projects: { edges: projectEdges }, posts: { edges: postEdges } } }) => (
-  <div className="container">
+  <div>
     <Header>
       Kommunikationsdesigner & <br /> Front-End Entwickler
     </Header>
-    <Container big>
+    <Container type="big">
       <ProjectsWrapper>
         {projectEdges.map(project => (
           <FeaturedProject

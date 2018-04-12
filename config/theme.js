@@ -3,7 +3,7 @@ import { rgba } from 'polished';
 const colors = {
   white: {
     base: '#fff',
-    dark: '#f0f0f0',
+    light: '#f0f0f0',
     blue: '#94a1c9',
   },
   black: {
