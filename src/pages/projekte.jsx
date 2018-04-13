@@ -14,12 +14,16 @@ const Base = styled.div`
   column-width: 500px;
 `;
 
-const Projekte = ({ data: { allMarkdownRemark: { edges } } }) => (
+const Projekte = ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}) => (
   <div className="projekte">
     <Helmet title={`Projekte | ${config.siteTitle}`} />
     <Header
       slim
-      subTitle="Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken"
+      subtitle="Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken"
     >
       Projekte
     </Header>
@@ -31,6 +35,7 @@ const Projekte = ({ data: { allMarkdownRemark: { edges } } }) => (
             path={project.node.fields.slug}
             cover={project.node.frontmatter.cover.childImageSharp.sizes}
             customer={project.node.frontmatter.customer}
+            title={project.node.frontmatter.title}
           />
         ))}
       </Base>

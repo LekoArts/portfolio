@@ -52,6 +52,6 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  subtitle: false,
+  subtitle: '',
   slim: false,
 };

@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
+import theme from '../../config/theme';
 
-const imageOverlay = styled.div`
+const ImageOverlay = styled.div`
   border-radius: ${props => props.theme.borderRadius.default};
   position: absolute;
   top: 0;
@@ -32,13 +33,13 @@ const Wrapper = styled.article`
   &:hover {
     box-shadow: 0 40px 40px rgba(0, 0, 0, 0.1);
     transform: translateY(-12px);
-    ${imageOverlay} {
+    ${ImageOverlay} {
       opacity: 0.9;
     }
   }
 `;
 
-const styledLink = styled(Link)`
+const styledLink = css`
   position: absolute;
   top: 0;
   left: 0;
@@ -67,8 +68,8 @@ const styledLink = styled(Link)`
       rgba(0, 0, 0, 0.75) 100%
     );
     z-index: -10;
-    border-radius: ${props => props.theme.borderRadius.default};
-    transition: opacity ${props => props.theme.transitions.default.duration};
+    border-radius: ${theme.borderRadius.default};
+    transition: opacity ${theme.transitions.default.duration};
   }
   &:hover {
     &:after {
@@ -116,19 +117,19 @@ const Title = styled.h2`
   margin-bottom: 0;
 `;
 
-const FeaturedPost = props => (
+const FeaturedPost = ({ cover, path, category, date, title }) => (
   <Wrapper>
     <Image>
-      <Img sizes={props.cover} />
+      <Img sizes={cover} />
     </Image>
-    <styledLink to={props.path}>
+    <Link to={path} className={styledLink}>
       <Information>
-        <Category>{props.category}</Category>
-        <Date>{props.date}</Date>
+        <Category>{category}</Category>
+        <Date>{date}</Date>
       </Information>
-      <Title>{props.title}</Title>
-    </styledLink>
-    <imageOverlay />
+      <Title>{title}</Title>
+    </Link>
+    <ImageOverlay />
   </Wrapper>
 );
 

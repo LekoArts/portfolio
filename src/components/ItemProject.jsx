@@ -2,33 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
+import theme from '../../config/theme';
 
-const styledLink = styled(Link)`
+const styledLink = css`
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: ${props => props.theme.borderRadius.default};
+  border-radius: ${theme.borderRadius.default};
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 1rem;
-  background-image: linear-gradient(
-    30deg,
-    ${props => props.theme.colors.primary.light} 0%,
-    ${props => props.theme.colors.primary.dark} 100%
-  );
-  color: ${p => p.theme.colors.white.light};
+  background-image: linear-gradient(30deg, ${theme.colors.primary.light} 0%, ${theme.colors.primary.dark} 100%);
+  color: ${theme.colors.white.light};
   opacity: 0;
   visibility: hidden;
-  transition: ${props => props.theme.transitions.default.transition};
+  transition: ${theme.transitions.default.transition};
   h2 {
     margin-bottom: 0;
   }
   &:hover {
-    color: ${props => props.theme.colors.white.light};
+    color: ${theme.colors.white.light};
   }
 `;
 
@@ -54,13 +51,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const ItemProject = props => (
+const ItemProject = ({ cover, path, customer, title }) => (
   <Wrapper>
-    <Img sizes={props.cover} />
-    <styledLink to={props.path}>
-      <div>{props.customer}</div>
-      <h2>{props.title}</h2>
-    </styledLink>
+    <Img sizes={cover} />
+    <Link to={path} className={styledLink}>
+      <div>{customer}</div>
+      <h2>{title}</h2>
+    </Link>
   </Wrapper>
 );
 

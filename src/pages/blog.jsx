@@ -15,7 +15,11 @@ const Base = styled.div`
   flex-direction: row;
 `;
 
-const Blog = ({ data: { allMarkdownRemark: { edges } } }) => (
+const Blog = ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}) => (
   <div className="container blog-container">
     <Helmet title={`Blog | ${config.siteTitle}`} />
     <Header slim subTitle="Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten">

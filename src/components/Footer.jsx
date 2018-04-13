@@ -36,7 +36,7 @@ const Content = styled.div`
   a {
     color: ${props => props.theme.colors.white.blue};
     &:hover {
-      color: ${props => props.theme.colors.blue.base};
+      color: ${props => props.theme.colors.primary.base};
     }
   }
   @media (max-width: ${props => props.theme.breakpoints.s}) {
@@ -64,7 +64,7 @@ const Important = styled(Item)`
   a {
     color: ${props => props.theme.colors.white.base};
     &:hover {
-      color: ${props => props.theme.colors.blue.base};
+      color: ${props => props.theme.colors.primary.base};
     }
   }
 `;

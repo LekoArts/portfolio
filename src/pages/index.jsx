@@ -35,7 +35,12 @@ const Text = styled.p`
   text-shadow: 0 15px 20px rgba(0, 0, 0, 0.13);
 `;
 
-const Index = ({ data: { projects: { edges: projectEdges }, posts: { edges: postEdges } } }) => (
+const Index = ({
+  data: {
+    projects: { edges: projectEdges },
+    posts: { edges: postEdges },
+  },
+}) => (
   <div>
     <Header>
       Kommunikationsdesigner & <br /> Front-End Entwickler

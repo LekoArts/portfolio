@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
+import theme from '../../config/theme';
 
-const IconStyle = css`
+const iconStyle = css`
   .CardIcon-discord {
     svg {
       fill: #7289da;
     }
     &:hover {
       background-color: #7289da;
-      color: ${props => props.theme.colors.white.light};
+      color: ${theme.colors.white.light};
       svg {
-        fill: ${props => props.theme.colors.white.light};
+        fill: ${theme.colors.white.light};
       }
     }
   }
@@ -23,15 +24,15 @@ const IconStyle = css`
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: ${props => props.theme.colors.white.light};
+      background-color: ${theme.colors.white.light};
       z-index: -1;
       opacity: 1;
       border-radius: 0.35rem;
-      transition: opacity ${props => props.theme.transitions.default.duration};
+      transition: opacity ${theme.transitions.default.duration};
     }
     &:before {
       content: '';
-      background-color: ${props => props.theme.colors.white.light};
+      background-color: ${theme.colors.white.light};
       background-image: linear-gradient(45deg, #f7eb4c 0%, #ee2a7b 29%, #4c6aff 100%);
       position: absolute;
       top: 0;
@@ -41,12 +42,12 @@ const IconStyle = css`
       z-index: -1;
       border-radius: 0.35rem;
       opacity: 0;
-      transition: opacity ${props => props.theme.transitions.default.duration};
+      transition: opacity ${theme.transitions.default.duration};
     }
     &:hover {
-      color: ${props => props.theme.colors.white.light};
+      color: ${theme.colors.white.light};
       svg {
-        fill: ${props => props.theme.colors.white.light};
+        fill: ${theme.colors.white.light};
       }
       &:before {
         opacity: 1;
@@ -60,9 +61,9 @@ const IconStyle = css`
     font-size: 3rem;
     &:hover {
       background-color: #191919;
-      color: ${props => props.theme.colors.white.light};
+      color: ${theme.colors.white.light};
       svg {
-        fill: ${props => props.theme.colors.white.light};
+        fill: ${theme.colors.white.light};
       }
     }
   }
@@ -73,9 +74,9 @@ const IconStyle = css`
     }
     &:hover {
       background-color: #ff0000;
-      color: ${props => props.theme.colors.white.light};
+      color: ${theme.colors.white.light};
       svg {
-        fill: ${props => props.theme.colors.white.light};
+        fill: ${theme.colors.white.light};
       }
     }
   }
@@ -106,7 +107,7 @@ const Wrapper = styled.div`
     border-radius: ${props => props.theme.borderRadius.default};
     background-color: ${props => props.theme.colors.white.light};
   }
-  ${IconStyle};
+  ${iconStyle};
 `;
 
 const LinkWrapper = Wrapper.withComponent('a');

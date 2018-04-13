@@ -18,7 +18,7 @@ injectGlobal`
     overflow-x: hidden;
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
   body {
     color: ${theme.colors.black.base};
@@ -29,15 +29,11 @@ injectGlobal`
     background-color: ${theme.colors.primary.base};
   }
   a {
-    color: ${theme.colors.black.base};
-    box-shadow: inset 0 -2px 0 ${theme.tint.blue};
-    border-bottom: 1px solid ${theme.tint.blue};
-    font-weight: 700;
+    color: ${theme.colors.primary.base};
     transition: ${theme.transitions.default.transition};
     text-decoration: none;
     &:hover, &:focus {
-      background: ${theme.tint.blue};
-      color: ${theme.colors.black.base};
+      color: ${theme.colors.primary.light};
     }
   }
   a:not([href]):not([tabindex]) {
@@ -52,10 +48,10 @@ injectGlobal`
     }
   }
   h1 {
-    text-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   }
   h2 {
-    text-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   }
   blockquote {
     border-left: 5px solid ${theme.colors.primary.base};
@@ -68,7 +64,7 @@ injectGlobal`
     }
   }
   .gatsby-resp-image-wrapper {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   }
   .gatsby-resp-iframe-wrapper {
     margin-bottom: 2rem;
@@ -155,16 +151,15 @@ injectGlobal`
   }
 `;
 
-const MainLayout = props => {
-  const { children } = props;
-  return (
-    <ThemeProvider theme={theme}>
+const MainLayout = ({ children }) => (
+  <ThemeProvider theme={theme}>
+    <div>
       <SEO />
       <Navigation />
       {children()}
-    </ThemeProvider>
-  );
-};
+    </div>
+  </ThemeProvider>
+);
 
 export default MainLayout;
 

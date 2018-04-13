@@ -7,7 +7,12 @@ import Header from '../components/Header';
 import Container from '../components/Container';
 import ItemTagCategory from '../components/ItemTagCategory';
 
-const Category = ({ pathContext: { category }, data: { allMarkdownRemark: { edges } } }) => (
+const Category = ({
+  pathContext: { category },
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}) => (
   <div className="category-container">
     <Helmet title={`${category} | ${config.siteTitle}`} />
     <Header slim subtitle={`Auflistung aller Beiträge, die der Kategorie "${category}" angehören`}>

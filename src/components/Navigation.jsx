@@ -15,10 +15,12 @@ injectGlobal`
   }
   .headroom {
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
     width: 100%;
     padding: 1rem 2rem;
     svg {
+      height: 2.5rem;
       g {
         fill: ${theme.colors.white.base};
       }
@@ -55,7 +57,7 @@ injectGlobal`
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     svg {
-      height: 2.25rem;
+      height: 2.5rem;
       g {
         fill: ${theme.colors.black.base};
       }
@@ -70,11 +72,10 @@ const StyledLink = styled(Link)`
   display: flex;
   font-weight: 700;
   align-items: center;
-`;
-
-const StyledLogo = styled(Logo)`
-  height: 3rem;
-  margin-bottom: 0;
+  svg {
+    height: 2.5rem;
+    margin-bottom: 0;
+  }
 `;
 
 const LogoText = styled.span`
@@ -103,7 +104,7 @@ const Nav = styled.nav`
 const Navigation = () => (
   <Headroom calcHeightOnResize disableInlineStyles>
     <StyledLink to="/">
-      <StyledLogo />
+      <Logo />
       <LogoText>LekoArts</LogoText>
     </StyledLink>
     <Nav>

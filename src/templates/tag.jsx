@@ -7,7 +7,12 @@ import Header from '../components/Header';
 import Container from '../components/Container';
 import ItemTagCategory from '../components/ItemTagCategory';
 
-const Tag = ({ pathContext: { tag }, data: { allMarkdownRemark: { edges } } }) => (
+const Tag = ({
+  pathContext: { tag },
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}) => (
   <div className="tag-container">
     <Helmet title={`${tag} | ${config.siteTitle}`} />
     <Header slim subtitle={`Auflistung aller Beiträge, die mit "${tag}" markiert wurden`}>
