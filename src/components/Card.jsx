@@ -83,18 +83,18 @@ const iconStyle = css`
   }
 `;
 
-const Wrapper = styled.div`
+const generalStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${props => props.theme.colors.black.base};
-  border-radius: ${props => props.theme.borderRadius.default};
+  color: ${theme.colors.black.base};
+  border-radius: ${theme.borderRadius.default};
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
   position: relative;
-  transition: background-color ${props => props.theme.transitions.default.duration};
+  transition: background-color ${theme.transitions.default.duration};
   svg {
     height: 4rem;
-    fill: ${props => props.theme.colors.black.blue};
+    fill: ${theme.colors.black.blue};
     margin-bottom: 0.5rem;
   }
   &:before {
@@ -105,20 +105,26 @@ const Wrapper = styled.div`
     bottom: 0;
     top: 0;
     z-index: -1;
-    border-radius: ${props => props.theme.borderRadius.default};
-    background-color: ${props => props.theme.colors.white.light};
+    border-radius: ${theme.borderRadius.default};
+    background-color: ${theme.colors.white.light};
   }
-  ${iconStyle};
 `;
 
-const LinkWrapper = Wrapper.withComponent('a');
+const Card = styled.div`
+  ${generalStyle};
+`;
 
-export const Card = ({ children }) => <Wrapper>{children}</Wrapper>;
+export { Card };
 
 export const LinkCard = ({ children, link, company }) => (
-  <LinkWrapper className={`CardIcon-${company}`} href={link} rel="noreferrer noopener" target="_blank">
+  <a
+    className={`CardIcon-${company} ${generalStyle} ${iconStyle}`}
+    href={link}
+    rel="noreferrer noopener"
+    target="_blank"
+  >
     {children}
-  </LinkWrapper>
+  </a>
 );
 
 Card.propTypes = {
