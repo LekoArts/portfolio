@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
-import styled, { css } from 'react-emotion';
+import { css } from 'emotion';
+import styled from 'react-emotion';
 import theme from '../../config/theme';
 
 const styledLink = css`
@@ -13,14 +14,14 @@ const styledLink = css`
   left: 0;
   border-radius: ${theme.borderRadius.default};
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
   justify-content: flex-end;
   padding: 1rem;
   background-image: linear-gradient(30deg, ${theme.colors.primary.light} 0%, ${theme.colors.primary.dark} 100%);
   color: ${theme.colors.white.light};
   opacity: 0;
   visibility: hidden;
-  transition: ${theme.transitions.default.transition};
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   h2 {
     margin-bottom: 0;
   }
@@ -37,14 +38,14 @@ const Wrapper = styled.div`
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  transition: ${props => props.theme.transitions.default.transition};
+  transition: ${props => props.theme.transitions.boom.transition};
   img {
     border-radius: ${props => props.theme.borderRadius.default};
   }
   &:hover {
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
     transform: translateY(-12px);
-    ${styledLink} {
+    a {
       visibility: visible;
       opacity: 0.9;
     }

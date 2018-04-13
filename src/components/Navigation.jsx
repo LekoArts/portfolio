@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'gatsby-link';
-import styled, { injectGlobal } from 'react-emotion';
+import { injectGlobal } from 'emotion';
+import styled from 'react-emotion';
 import Headroom from 'react-headroom';
 import Logo from '../icons/Logo';
 import theme from '../../config/theme';

@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
-import styled, { css } from 'react-emotion';
+import { css } from 'emotion';
+import styled from 'react-emotion';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import { LinkCard } from '../components/Card';
@@ -39,7 +40,7 @@ const Kontakt = () => (
     <Helmet title={`Kontakt | ${config.siteTitle}`} />
     <Header
       slim
-      subTitle="Ich freue mich von dir zu hören – egal, ob du eine Projektanfrage hast, Rat brauchst oder einfach quatschen willst"
+      subtitle="Ich freue mich von dir zu hören – egal, ob du eine Projektanfrage hast, Rat brauchst oder einfach quatschen willst"
     >
       Kontakt
     </Header>

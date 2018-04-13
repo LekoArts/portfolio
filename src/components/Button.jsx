@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 
-const StyledButton = styled.button`
+const Button = styled.button`
   background: ${props => props.theme.button[props.type].background};
   border: none;
   border-radius: ${props => props.theme.borderRadius.round};
@@ -28,8 +28,6 @@ const StyledButton = styled.button`
     transform: translateY(-8px);
   }
 `;
-
-const Button = ({ children, type }) => <StyledButton type={type}>{children}</StyledButton>;
 
 export default Button;
 

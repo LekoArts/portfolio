@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'react-emotion';
+import { css } from 'emotion';
+import styled from 'react-emotion';
 import theme from '../../config/theme';
 
 const iconStyle = css`
