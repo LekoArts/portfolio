@@ -105,7 +105,7 @@ const SEO = props => {
 export default SEO;
 
 SEO.propTypes = {
-  postNode: PropTypes.node.isRequired,
-  postPath: PropTypes.string.isRequired,
-  postSEO: PropTypes.bool.isRequired,
+  postNode: PropTypes.node,
+  postPath: PropTypes.string,
+  postSEO: PropTypes.bool,
 };

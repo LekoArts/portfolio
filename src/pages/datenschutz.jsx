@@ -14,7 +14,7 @@ const Datenschutzerklaerung = () => (
     <Helmet title={`Datenschutzerklärung | ${config.siteTitle}`} />
     <Header slim>Datenschutzerklärung</Header>
     <div style={{ marginTop: '3rem' }}>
-      <Container text>
+      <Container type="article">
         <h2>Datenschutz</h2>
         <p>
           Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre

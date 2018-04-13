@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 import styled from 'react-emotion';
 
 const imageOverlay = styled.div`
-  border-radius: ${p => p.theme.borderRadius.default};
+  border-radius: ${props => props.theme.borderRadius.default};
   position: absolute;
   top: 0;
   right: 0;
@@ -13,20 +13,20 @@ const imageOverlay = styled.div`
   left: 0;
   z-index: 2;
   opacity: 0.1;
-  transition: opacity ${p => p.theme.transitions.default.duration};
+  transition: opacity ${props => props.theme.transitions.default.duration};
   background-image: linear-gradient(
     30deg,
-    ${p => p.theme.colors.primary.light} 0%,
-    ${p => p.theme.colors.primary.dark} 100%
+    ${props => props.theme.colors.primary.light} 0%,
+    ${props => props.theme.colors.primary.dark} 100%
   );
 `;
 
 const Wrapper = styled.article`
   position: relative;
   z-index: 100;
-  border-radius: ${p => p.theme.borderRadius.default};
+  border-radius: ${props => props.theme.borderRadius.default};
   box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2);
-  transition: ${p => p.theme.transitions.boom.transition};
+  transition: ${props => props.theme.transitions.boom.transition};
   flex-basis: 33%;
   height: 35rem;
   &:hover {
@@ -61,8 +61,8 @@ const styledLink = styled(Link)`
     top: 0;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
     z-index: -10;
-    border-radius: ${p => p.theme.borderRadius.default};
-    transition: opacity ${p => p.theme.transitions.default.duration};
+    border-radius: ${props => props.theme.borderRadius.default};
+    transition: opacity ${props => props.theme.transitions.default.duration};
   }
   &:hover {
     &:after {
@@ -79,22 +79,22 @@ const Image = styled.div`
   bottom: 0;
   z-index: 1;
   object-fit: cover;
-  border-radius: ${p => p.theme.borderRadius.default};
+  border-radius: ${props => props.theme.borderRadius.default};
   img {
-    border-radius: ${p => p.theme.borderRadius.default};
+    border-radius: ${props => props.theme.borderRadius.default};
   }
 `;
 
 const Customer = styled.div`
   text-align: left;
   margin-bottom: 0.5rem;
-  color: ${p => p.theme.colors.white.light};
+  color: ${props => props.theme.colors.white.light};
 `;
 
 const Title = styled.h2`
   text-align: left;
   margin-bottom: 0;
-  color: ${p => p.theme.colors.white.light};
+  color: ${props => props.theme.colors.white.light};
 `;
 
 const FeaturedProject = props => (

@@ -10,25 +10,25 @@ const styledLink = styled(Link)`
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: ${p => p.theme.borderRadius.default};
+  border-radius: ${props => props.theme.borderRadius.default};
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 1rem;
   background-image: linear-gradient(
     30deg,
-    ${p => p.theme.colors.primary.light} 0%,
-    ${p => p.theme.colors.primary.dark} 100%
+    ${props => props.theme.colors.primary.light} 0%,
+    ${props => props.theme.colors.primary.dark} 100%
   );
   color: ${p => p.theme.colors.white.light};
   opacity: 0;
   visibility: hidden;
-  transition: ${p => p.theme.transitions.default.transition};
+  transition: ${props => props.theme.transitions.default.transition};
   h2 {
     margin-bottom: 0;
   }
   &:hover {
-    color: ${p => p.theme.colors.white.light};
+    color: ${props => props.theme.colors.white.light};
   }
 `;
 
@@ -36,13 +36,13 @@ const Wrapper = styled.div`
   display: inline-block;
   width: 100%;
   position: relative;
-  border-radius: ${p => p.theme.borderRadius.default};
+  border-radius: ${props => props.theme.borderRadius.default};
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  transition: ${p => p.theme.transitions.default.transition};
+  transition: ${props => props.theme.transitions.default.transition};
   img {
-    border-radius: ${p => p.theme.borderRadius.default};
+    border-radius: ${props => props.theme.borderRadius.default};
   }
   &:hover {
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);

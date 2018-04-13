@@ -6,9 +6,9 @@ const Wrapper = styled.div`
   position: absolute;
   width: 100%;
   z-index: 1;
-  ${p => p.orientation === 'top' && 'top: 0'};
-  ${p => p.orientation === 'top' && 'transform: matrix(1, 0, 0, -1, 0, 0)'};
-  ${p => p.orientation === 'bottom' && 'bottom: 0'};
+  ${props => props.orientation === 'top' && 'top: 0'};
+  ${props => props.orientation === 'top' && 'transform: matrix(1, 0, 0, -1, 0, 0)'};
+  ${props => props.orientation === 'bottom' && 'bottom: 0'};
 `;
 
 const InnerWave = styled.div`
@@ -23,7 +23,7 @@ const InnerWave = styled.div`
   }
 `;
 
-const Smoooooth = keyframes`
+const smoooooth = keyframes`
   0% {
     d: path("M 27 10C 21 8 14 3 0 3L 0 0L 54 0L 54 14C 40 14 33 12 27 10Z");
   }
@@ -38,9 +38,9 @@ const Smoooooth = keyframes`
 `;
 
 const Animation = css`
-  fill: ${p => p.theme.colors.white.light};
+  fill: ${props => props.theme.colors.white.light};
   width: 100%;
-  animation: ${Smoooooth} 20s linear infinite alternate;
+  animation: ${smoooooth} 20s linear infinite alternate;
 `;
 
 const Wave = ({ orientation }) => (

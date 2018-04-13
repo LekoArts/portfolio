@@ -86,7 +86,6 @@ const theme = {
   },
   layout: {
     article: '41.111111rem',
-    articleHead: '47.777777rem',
     base: '66.666666rem',
     big: '83.33333rem',
   },
@@ -104,6 +103,9 @@ const theme = {
       duration: transition.duration,
       timing: transition.easeOutBack,
       transition: `all ${transition.duration} ${transition.easeOutBack}`,
+    },
+    headroom: {
+      transition: 'all 0.25s ease-in-out',
     },
   },
 };

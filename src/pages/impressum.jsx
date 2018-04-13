@@ -8,11 +8,11 @@ import Header from '../components/Header';
 import config from '../../config/website';
 
 const Impressum = () => (
-  <div className="container impressum-container">
+  <div className="impressum-container">
     <Helmet title={`Impressum | ${config.siteTitle}`} />
     <Header slim>Impressum</Header>
     <div style={{ marginTop: '3rem' }}>
-      <Container text>
+      <Container type="article">
         <h2>Angaben gemäß § 5 TMG:</h2>
         <p>
           Lennart Jörgens <br />

@@ -9,9 +9,9 @@ const IconStyle = css`
     }
     &:hover {
       background-color: #7289da;
-      color: ${p => p.theme.colors.white.light};
+      color: ${props => props.theme.colors.white.light};
       svg {
-        fill: ${p => p.theme.colors.white.light};
+        fill: ${props => props.theme.colors.white.light};
       }
     }
   }
@@ -23,15 +23,15 @@ const IconStyle = css`
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: ${p => p.theme.colors.white.light};
+      background-color: ${props => props.theme.colors.white.light};
       z-index: -1;
       opacity: 1;
       border-radius: 0.35rem;
-      transition: opacity ${p => p.theme.transitions.default.duration};
+      transition: opacity ${props => props.theme.transitions.default.duration};
     }
     &:before {
       content: '';
-      background-color: ${p => p.theme.colors.white.light};
+      background-color: ${props => props.theme.colors.white.light};
       background-image: linear-gradient(45deg, #f7eb4c 0%, #ee2a7b 29%, #4c6aff 100%);
       position: absolute;
       top: 0;
@@ -41,12 +41,12 @@ const IconStyle = css`
       z-index: -1;
       border-radius: 0.35rem;
       opacity: 0;
-      transition: opacity ${p => p.theme.transitions.default.duration};
+      transition: opacity ${props => props.theme.transitions.default.duration};
     }
     &:hover {
-      color: ${p => p.theme.colors.white.light};
+      color: ${props => props.theme.colors.white.light};
       svg {
-        fill: ${p => p.theme.colors.white.light};
+        fill: ${props => props.theme.colors.white.light};
       }
       &:before {
         opacity: 1;
@@ -60,9 +60,9 @@ const IconStyle = css`
     font-size: 3rem;
     &:hover {
       background-color: #191919;
-      color: ${p => p.theme.colors.white.light};
+      color: ${props => props.theme.colors.white.light};
       svg {
-        fill: ${p => p.theme.colors.white.light};
+        fill: ${props => props.theme.colors.white.light};
       }
     }
   }
@@ -73,9 +73,9 @@ const IconStyle = css`
     }
     &:hover {
       background-color: #ff0000;
-      color: ${p => p.theme.colors.white.light};
+      color: ${props => props.theme.colors.white.light};
       svg {
-        fill: ${p => p.theme.colors.white.light};
+        fill: ${props => props.theme.colors.white.light};
       }
     }
   }
@@ -85,14 +85,14 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${p => p.theme.colors.black.base};
-  border-radius: ${p => p.theme.borderRadius.default};
+  color: ${props => props.theme.colors.black.base};
+  border-radius: ${props => props.theme.borderRadius.default};
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
   position: relative;
-  transition: background-color ${p => p.theme.transitions.default.duration};
+  transition: background-color ${props => props.theme.transitions.default.duration};
   svg {
     height: 4rem;
-    fill: ${p => p.theme.colors.black.blue};
+    fill: ${props => props.theme.colors.black.blue};
     margin-bottom: 0.5rem;
   }
   &:before {
@@ -103,8 +103,8 @@ const Wrapper = styled.div`
     bottom: 0;
     top: 0;
     z-index: -1;
-    border-radius: ${p => p.theme.borderRadius.default};
-    background-color: ${p => p.theme.colors.white.light};
+    border-radius: ${props => props.theme.borderRadius.default};
+    background-color: ${props => props.theme.colors.white.light};
   }
   ${IconStyle};
 `;

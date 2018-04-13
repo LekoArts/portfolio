@@ -5,7 +5,7 @@ import styled from 'react-emotion';
 const Wrapper = styled.div`
   margin: 0 auto;
   padding: 0 2rem;
-  max-width: ${p => p.theme.layout[p.type]};
+  max-width: ${props => props.theme.layout[props.type]};
 `;
 
 const Container = ({ children, type }) => <Wrapper type={type}>{children}</Wrapper>;
@@ -14,7 +14,7 @@ export default Container;
 
 Container.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['article', 'articleHead', 'base', 'big']),
+  type: PropTypes.oneOf(['article', 'base', 'big']),
 };
 
 Container.defaultProps = {

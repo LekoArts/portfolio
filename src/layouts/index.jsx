@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { injectGlobal } from 'emotion';
 import { ThemeProvider } from 'emotion-theming';
 import SEO from '../components/SEO';
-import Navigation from '../components/Navigation/Navigation';
+import Navigation from '../components/Navigation';
 import theme from '../../config/theme';
 import '../fonts/inter-ui.css';
 

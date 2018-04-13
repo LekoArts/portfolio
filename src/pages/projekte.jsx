@@ -23,7 +23,7 @@ const Projekte = ({ data: { allMarkdownRemark: { edges } } }) => (
     >
       Projekte
     </Header>
-    <Container big>
+    <Container type="big">
       <Base>
         {edges.map(project => (
           <ItemProject

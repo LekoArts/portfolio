@@ -21,7 +21,7 @@ const Blog = ({ data: { allMarkdownRemark: { edges } } }) => (
     <Header slim subTitle="Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten">
       Blog
     </Header>
-    <Container big>
+    <Container type="big">
       <Base>
         {edges.map(post => (
           <ItemBlog

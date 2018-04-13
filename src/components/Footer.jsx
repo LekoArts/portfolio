@@ -10,7 +10,7 @@ const Wrapper = styled.footer`
   position: relative;
   padding-top: 10rem;
   padding-bottom: 2rem;
-  background: ${p => p.theme.gradient.leftToRight};
+  background: ${props => props.theme.gradient.leftToRight};
 `;
 
 const OptionalContent = styled.div`
@@ -19,7 +19,7 @@ const OptionalContent = styled.div`
   text-align: center;
   h1,
   h2 {
-    color: ${p => p.theme.colors.white.light};
+    color: ${props => props.theme.colors.white.light};
     text-align: center;
     margin: 0 auto;
     display: block;
@@ -32,14 +32,14 @@ const Content = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: ${p => p.theme.colors.white.blue};
+  color: ${props => props.theme.colors.white.blue};
   a {
-    color: ${p => p.theme.colors.white.blue};
+    color: ${props => props.theme.colors.white.blue};
     &:hover {
-      color: ${p => p.theme.colors.blue.base};
+      color: ${props => props.theme.colors.blue.base};
     }
   }
-  @media (max-width: ${p => p.theme.breakpoints.s}) {
+  @media (max-width: ${props => props.theme.breakpoints.s}) {
     flex-direction: column;
   }
 `;
@@ -48,7 +48,7 @@ const Item = styled.div`
   display: flex;
   flex-direction: column;
   text-shadow: 0 5px 10px rgba(0, 0, 0, 0.13);
-  @media (max-width: ${p => p.theme.breakpoints.s}) {
+  @media (max-width: ${props => props.theme.breakpoints.s}) {
     flex-direction: row;
     justify-content: center;
     margin-bottom: 1rem;
@@ -62,9 +62,9 @@ const Item = styled.div`
 const Important = styled(Item)`
   font-size: 1.2rem;
   a {
-    color: ${p => p.theme.colors.white.base};
+    color: ${props => props.theme.colors.white.base};
     &:hover {
-      color: ${p => p.theme.colors.blue.base};
+      color: ${props => props.theme.colors.blue.base};
     }
   }
 `;

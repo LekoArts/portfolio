@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import { LinkCard } from '../components/Card';
@@ -14,6 +14,10 @@ import Discord from '../icons/Discord';
 import Instagram from '../icons/Instagram';
 import Behance from '../icons/Behance';
 import YouTube from '../icons/YouTube';
+
+const alignCenter = css`
+  text-align: center;
+`;
 
 const Wrapper = styled.div`
   margin-top: 3rem;
@@ -40,7 +44,7 @@ const Kontakt = () => (
       Kontakt
     </Header>
     <Wrapper>
-      <Container text>
+      <Container type="article">
         <h3>Hi! Ich heiße Lennart und bin autodidaktischer Kommunikationsdesigner & Front-End Entwickler.</h3>
         <p>
           Seit über 5 Jahren arbeite ich in den Bereichen Webdesign, Printdesign und Bildbearbeitung. Zusätzlich arbeite
@@ -53,7 +57,7 @@ const Kontakt = () => (
           der Konzeption über die Kreation bis zur technischen Umsetzung begleite ich alle Schritte.
         </p>
       </Container>
-      <Container centered>
+      <Container className={alignCenter}>
         <a href="mailto:&#104;&#101;&#108;&#108;&#111;&#064;&#108;&#101;&#107;&#111;&#097;&#114;&#116;&#115;&#046;&#100;&#101;">
           <Button type="primary">
             <Paperplane /> E-Mail

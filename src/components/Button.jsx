@@ -3,11 +3,11 @@ import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 
 const styledButton = styled.button`
-  background: ${p => p.theme.button[p.type].background};
+  background: ${props => props.theme.button[props.type].background};
   border: none;
-  border-radius: ${p => p.theme.borderRadius.round};
-  box-shadow: ${p => p.theme.button[p.type].boxShadow};
-  color: ${p => p.theme.colors.white.base};
+  border-radius: ${props => props.theme.borderRadius.round};
+  box-shadow: ${props => props.theme.button[props.type].boxShadow};
+  color: ${props => props.theme.colors.white.base};
   cursor: pointer;
   display: inline-block;
   font-size: 1.5rem;
@@ -17,14 +17,14 @@ const styledButton = styled.button`
   min-width: 10rem;
   padding: 1.15rem 2.25rem;
   text-align: center;
-  transition: ${p => p.theme.transitions.default.transition};
+  transition: ${props => props.theme.transitions.default.transition};
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
   z-index: 10;
   -webkit-appearance: button;
   &:hover {
-    box-shadow: ${p => p.theme.button[p.type].hover.boxShadow};
+    box-shadow: ${props => props.theme.button[props.type].hover.boxShadow};
     transform: translateY(-8px);
   }
 `;
