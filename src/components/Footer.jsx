@@ -72,6 +72,7 @@ const Important = styled(Item)`
 const Copyright = styled.div`
   margin: 1rem 0;
   text-align: center;
+  color: ${props => props.theme.colors.white.blue};
 `;
 
 const Footer = ({ children }) => {

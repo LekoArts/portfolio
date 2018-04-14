@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   max-width: ${props => props.theme.layout[props.type]};
 `;
 
-const Container = ({ children, type }) => <Wrapper type={type}>{children}</Wrapper>;
+const Container = ({ children, type, className }) => <Wrapper className={className} type={type}>{children}</Wrapper>;
 
 export default Container;
 
