@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
-import { css } from 'emotion';
 import styled from 'react-emotion';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
@@ -16,8 +15,11 @@ import Instagram from '../icons/Instagram';
 import Behance from '../icons/Behance';
 import YouTube from '../icons/YouTube';
 
-const alignCenter = css`
+const CenteredContainer = styled(Container)`
   text-align: center;
+  svg {
+    fill: white;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -25,18 +27,15 @@ const Wrapper = styled.div`
   margin-bottom: 2rem;
 `;
 
-const CardWrapper = styled.div`
+const CardContainer = styled(Container)`
   display: flex;
   flex-direction: row;
   margin-top: 1rem;
   margin-bottom: 6rem;
-  ${LinkCard} {
-    flex-basis: 25%;
-  }
 `;
 
 const Kontakt = () => (
-  <div className="container kontakt-container">
+  <div className="kontakt-container">
     <Helmet title={`Kontakt | ${config.siteTitle}`} />
     <Header
       slim
@@ -58,33 +57,31 @@ const Kontakt = () => (
           der Konzeption über die Kreation bis zur technischen Umsetzung begleite ich alle Schritte.
         </p>
       </Container>
-      <Container className={alignCenter}>
+      <CenteredContainer>
         <a href="mailto:&#104;&#101;&#108;&#108;&#111;&#064;&#108;&#101;&#107;&#111;&#097;&#114;&#116;&#115;&#046;&#100;&#101;">
           <Button type="primary">
             <Paperplane /> E-Mail
           </Button>
         </a>
-      </Container>
-      <Container>
-        <CardWrapper>
-          <LinkCard link="https://www.discordapp.com" company="discord">
-            <Discord />
-            LekoArts#2495
-          </LinkCard>
-          <LinkCard link="https://www.instagram.com/lekoarts.de" company="instagram">
-            <Instagram />
-            3D & Experimente
-          </LinkCard>
-          <LinkCard link="https://www.behance.net/lekoarts" company="behance">
-            <Behance />
-            Persönliche Projekte
-          </LinkCard>
-          <LinkCard link="https://youtube.de/LekoArtsDE" company="youtube">
-            <YouTube />
-            Speedarts
-          </LinkCard>
-        </CardWrapper>
-      </Container>
+      </CenteredContainer>
+      <CardContainer>
+        <LinkCard link="https://www.discordapp.com" discord>
+          <Discord />
+          LekoArts#2495
+        </LinkCard>
+        <LinkCard link="https://www.instagram.com/lekoarts.de" instagram>
+          <Instagram />
+          3D & Experimente
+        </LinkCard>
+        <LinkCard link="https://www.behance.net/lekoarts" behance>
+          <Behance />
+          Persönliche Projekte
+        </LinkCard>
+        <LinkCard link="https://youtube.de/LekoArtsDE" youtube>
+          <YouTube />
+          Speedarts
+        </LinkCard>
+      </CardContainer>
     </Wrapper>
     <Footer />
   </div>
