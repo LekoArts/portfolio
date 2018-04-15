@@ -1,27 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import config from '../../data/SiteConfig';
-import BlogListing from '../components/BlogListing/BlogListing';
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
-import ContainerBig from '../components/Container/ContainerBig';
+import styled from 'react-emotion';
+import config from '../../config/website';
+import ItemBlog from '../components/ItemBlog';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Container from '../components/Container';
 
-const Blog = props => {
-  const postEdges = props.data.allMarkdownRemark.edges;
-  return (
-    <div className="container blog-container">
-      <Helmet title={`Blog | ${config.siteTitle}`} />
-      <Header slim subTitle="Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten">
-        Blog
-      </Header>
-      <ContainerBig>
-        <BlogListing postEdges={postEdges} />
-      </ContainerBig>
-      <Footer />
-    </div>
-  );
-};
+const Base = styled.div`
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Blog = ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}) => (
+  <div className="container blog-container">
+    <Helmet title={`Blog | ${config.siteTitle}`} />
+    <Header slim subtitle="Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten">
+      Blog
+    </Header>
+    <Container type="big">
+      <Base>
+        {edges.map(post => (
+          <ItemBlog
+            key={post.node.frontmatter.title}
+            path={post.node.fields.slug}
+            cover={post.node.frontmatter.cover.childImageSharp.sizes}
+            title={post.node.frontmatter.title}
+            date={post.node.frontmatter.date}
+            category={post.node.frontmatter.category}
+            timeToRead={post.node.timeToRead}
+            excerpt={post.node.excerpt}
+            tags={post.node.frontmatter.tags}
+          />
+        ))}
+      </Base>
+    </Container>
+    <Footer />
+  </div>
+);
 
 export default Blog;
 
@@ -50,7 +73,7 @@ export const pageQuery = graphql`
           timeToRead
           frontmatter {
             title
-            date
+            date(formatString: "DD. MMMM YYYY", locale: "de")
             category
             tags
             cover {

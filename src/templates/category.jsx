@@ -1,40 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import config from '../../data/SiteConfig';
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
-import Container from '../components/Container/Container';
-import CatPostListing from '../components/CatPostListing/CatPostListing';
+import config from '../../config/website';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Container from '../components/Container';
+import ItemTagCategory from '../components/ItemTagCategory';
 
-const CategoryTemplate = props => {
-  const { category } = props.pathContext;
-  const postEdges = props.data.allMarkdownRemark.edges;
-  return (
-    <div className="container category-container">
-      <Helmet title={`${category} | ${config.siteTitle}`} />
-      <Header slim subTitle={`Auflistung aller Beiträge, die der Kategorie "${category}" angehören`}>
-        {category}
-      </Header>
-      <Container>
-        <CatPostListing postEdges={postEdges} />
-      </Container>
-      <Footer />
-    </div>
-  );
-};
+const Category = ({
+  pathContext: { category },
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}) => (
+  <div className="category-container">
+    <Helmet title={`${category} | ${config.siteTitle}`} />
+    <Header slim subtitle={`Auflistung aller Beiträge, die der Kategorie "${category}" angehören`}>
+      {category}
+    </Header>
+    <Container>
+      {edges.map(edge => (
+        <ItemTagCategory
+          key={edge.node.frontmatter.title}
+          title={edge.node.frontmatter.title}
+          category={edge.node.frontmatter.category}
+          path={edge.node.fields.slug}
+          date={edge.node.frontmatter.date}
+          timeToRead={edge.node.timeToRead}
+          tags={edge.node.frontmatter.tags}
+          excerpt={edge.node.excerpt}
+        />
+      ))}
+    </Container>
+    <Footer />
+  </div>
+);
 
-export default CategoryTemplate;
+export default Category;
 
-CategoryTemplate.propTypes = {
+Category.propTypes = {
   pathContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
   }),
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
-  }).isRequired,
+  }),
 };
 
 /* eslint no-undef: "off" */
@@ -56,7 +68,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             tags
-            date(formatString: "DD.MM.YYYY")
+            date(formatString: "DD. MMMM YYYY", locale: "de")
             category
           }
         }

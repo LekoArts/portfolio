@@ -4,17 +4,17 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
-import Footer from '../components/Footer/Footer';
-import Container from '../components/Container/Container';
-import Header from '../components/Header/Header';
-import config from '../../data/SiteConfig';
+import Footer from '../components/Footer';
+import Container from '../components/Container';
+import Header from '../components/Header';
+import config from '../../config/website';
 
 const Datenschutzerklaerung = () => (
   <div className="container datenschutz-container">
     <Helmet title={`Datenschutzerklärung | ${config.siteTitle}`} />
     <Header slim>Datenschutzerklärung</Header>
     <div style={{ marginTop: '3rem' }}>
-      <Container text>
+      <Container type="article">
         <h2>Datenschutz</h2>
         <p>
           Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre
@@ -105,20 +105,6 @@ const Datenschutzerklaerung = () => (
         <p>
           Wenn die SSL Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten
           mitgelesen werden.
-        </p>
-        <h2>Disqus</h2>
-        <p>
-          Für die Kommentarfunktion auf dieser Seite nutzen wir DISQUS, das von der Firma DISQUS, Inc., 301 Howard St,
-          Floor 3 San Francisco, California- 94105, USA, bereitgestellt wird. Die Datenschutzinformationen von DISQUS
-          sind <a href="https://help.disqus.com/customer/portal/articles/466259-privacy-policy">hier</a> zu finden.
-          DISQUS erlaubt die Anmeldung entweder über ein eigenes DISQUS-Nutzer-Konto (“Account”) oder über bestehende
-          Nutzer-Konten bei Facebook, Twitter und Google Plus. Wenn Sie sich über Ihren Facebook-, Twitter-,
-          Google-Account anmelden, werden auch von diesen Anbietern möglicherweise Daten erhoben, gespeichert und
-          genutzt. Einzelheiten dazu finden sich in den Datenschutzbestimmungen des jeweiligen Anbieters. DISQUS
-          übermittelt die E-Mail-Adresse der Benutzer und die IP-Adresse, die während der Eingabe eines Kommentars
-          verwendet wurde, an LekoArts. Wir benötigen diese Information ausschließlich für den Zweck der Kontaktaufnahme
-          im Zusammenhang mit Ihrer Nutzung von DISQUS, beispielsweise wenn wir Rückfragen zu Ihrem Nutzerkommentar
-          haben. Eine unerlaubte Weitergabe an Dritte erfolgt selbstverständlich nicht.
         </p>
         <p>
           Quelle:{' '}

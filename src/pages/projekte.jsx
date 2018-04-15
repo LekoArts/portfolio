@@ -1,30 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import config from '../../data/SiteConfig';
-import ProjectListing from '../components/ProjectListing/ProjectListing';
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
-import ContainerBig from '../components/Container/ContainerBig';
+import styled from 'react-emotion';
+import config from '../../config/website';
+import ItemProject from '../components/ItemProject';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Container from '../components/Container';
 
-const Projekte = props => {
-  const postEdges = props.data.allMarkdownRemark.edges;
-  return (
-    <div className="container projekte-container">
-      <Helmet title={`Projekte | ${config.siteTitle}`} />
-      <Header
-        slim
-        subTitle="Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken"
-      >
-        Projekte
-      </Header>
-      <ContainerBig>
-        <ProjectListing postEdges={postEdges} />
-      </ContainerBig>
-      <Footer />
-    </div>
-  );
-};
+const Base = styled.div`
+  padding-top: 2rem;
+  column-gap: 2rem;
+  column-width: 500px;
+`;
+
+const Projekte = ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}) => (
+  <div className="projekte">
+    <Helmet title={`Projekte | ${config.siteTitle}`} />
+    <Header
+      slim
+      subtitle="Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken"
+    >
+      Projekte
+    </Header>
+    <Container type="big">
+      <Base>
+        {edges.map(project => (
+          <ItemProject
+            key={project.node.frontmatter.title}
+            path={project.node.fields.slug}
+            cover={project.node.frontmatter.cover.childImageSharp.sizes}
+            customer={project.node.frontmatter.customer}
+            title={project.node.frontmatter.title}
+          />
+        ))}
+      </Base>
+    </Container>
+    <Footer />
+  </div>
+);
 
 export default Projekte;
 
