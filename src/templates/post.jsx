@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import kebabCase from 'lodash/kebabCase';
+import { darken } from 'polished';
 import Tags from '../components/Tags';
 import SEO from '../components/SEO';
 import Container from '../components/Container';
@@ -95,6 +96,14 @@ const fontBold = css`
   font-weight: 700;
 `;
 
+const Line = styled.div`
+  width: 100%;
+  height: 2px;
+  background: ${props => darken(0.25, props.theme.tint.black)};
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
+
 const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => {
   const post = postNode.frontmatter;
   const { sizes } = post.cover.childImageSharp;
@@ -119,6 +128,7 @@ const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => 
       </Wrapper>
       <Container type="article">
         <Content input={postNode.html} />
+        <Line />
         <Tags tags={post.tags} />
         <p>
           <span className={fontBold}>Interesse geweckt?</span> Lies alle Beiträge in der Kategorie{' '}
@@ -155,7 +165,7 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        date(formatString: "do MMMM YYYY", locale: "de")
+        date(formatString: "DD. MMMM YYYY", locale: "de")
         category
         tags
         cover {
