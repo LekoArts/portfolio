@@ -47,6 +47,9 @@ injectGlobal`
         font-size: 1.125rem;
       }
     }
+    @media (max-width: ${theme.breakpoints.xs}) {
+      font-size: 14px;
+    }
   }
   body {
     color: ${theme.colors.black.base};
