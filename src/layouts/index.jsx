@@ -18,8 +18,8 @@ injectGlobal`
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    @media (max-width: ${theme.breakpoints.m}) {
-      font-size: 16px;
+    @media (max-width: ${theme.breakpoints.m}) and (max-device-width: ${theme.breakpoints.m}) {
+      font-size: 16px !important;
       h1 {
         font-size: 2.074rem;
       }
@@ -33,8 +33,8 @@ injectGlobal`
         font-size: 1.2rem;
       }
     }
-    @media (max-width: ${theme.breakpoints.s}) {
-      font-size: 14px;
+    @media (max-width: ${theme.breakpoints.s}) and (max-device-width: ${theme.breakpoints.s}) {
+      font-size: 14px !important;
       h1 {
         font-size: 1.602rem;
       }
