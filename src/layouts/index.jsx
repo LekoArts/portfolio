@@ -76,10 +76,10 @@ injectGlobal`
     }
   }
   h1 {
-    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    text-shadow: ${theme.shadow.text.big};
   }
   h2 {
-    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    text-shadow: ${theme.shadow.text.small};
   }
   blockquote {
     border-left: 5px solid ${theme.colors.primary.base};

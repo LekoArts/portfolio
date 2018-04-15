@@ -44,6 +44,21 @@ const shadow = {
     default: '0 20px 20px',
     hover: '0 23px 25px',
   },
+  card: '0 20px 30px rgba(0, 0, 0, 0.1)',
+  feature: {
+    big: {
+      default: '0 40px 40px rgba(0, 0, 0, 0.2)',
+      hover: '0 50px 50px rgba(0, 0, 0, 0.1)',
+    },
+    small: {
+      default: '0 15px 25px rgba(0, 0, 0, 0.2)',
+      hover: '0 40px 45px rgba(0, 0, 0, 0.1)',
+    },
+  },
+  text: {
+    small: '0 5px 10px rgba(0, 0, 0, 0.13)',
+    big: '0 15px 20px rgba(0, 0, 0, 0.13)',
+  },
 };
 
 const button = {
@@ -81,6 +96,7 @@ const theme = {
   tint,
   gradient,
   button,
+  shadow,
   breakpoints: {
     s: '600px',
     m: '900px',

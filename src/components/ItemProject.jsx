@@ -37,13 +37,13 @@ const Wrapper = styled.div`
   border-radius: ${props => props.theme.borderRadius.default};
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: ${props => props.theme.shadow.feature.small.default};
   transition: ${props => props.theme.transitions.boom.transition};
   img {
     border-radius: ${props => props.theme.borderRadius.default};
   }
   &:hover {
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: ${props => props.theme.shadow.feature.small.hover};
     transform: translateY(-12px);
     a {
       visibility: visible;

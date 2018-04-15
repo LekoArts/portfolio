@@ -28,7 +28,7 @@ const instagram = css`
     background-color: ${theme.colors.white.light};
     z-index: -1;
     opacity: 1;
-    border-radius: 0.35rem;
+    border-radius: ${theme.borderRadius.default};
     transition: opacity ${theme.transitions.default.duration};
   }
   &:before {
@@ -41,7 +41,7 @@ const instagram = css`
     bottom: 0;
     left: 0;
     z-index: -1;
-    border-radius: 0.35rem;
+    border-radius: ${theme.borderRadius.default};
     opacity: 0;
     transition: opacity ${theme.transitions.default.duration};
   }
@@ -93,7 +93,7 @@ const generalStyle = css`
   align-items: center;
   color: ${theme.colors.black.base};
   border-radius: ${theme.borderRadius.default};
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: ${theme.shadow.card};
   position: relative;
   transition: background-color ${theme.transitions.default.duration};
   svg {

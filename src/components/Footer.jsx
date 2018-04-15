@@ -48,7 +48,7 @@ const Content = styled.div`
 const Item = styled.div`
   display: flex;
   flex-direction: column;
-  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.13);
+  text-shadow: ${props => props.theme.shadow.text.small};
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     flex-direction: row;
     justify-content: center;

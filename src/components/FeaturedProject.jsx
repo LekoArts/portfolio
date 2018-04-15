@@ -27,11 +27,11 @@ const Wrapper = styled.article`
   position: relative;
   z-index: 100;
   border-radius: ${props => props.theme.borderRadius.default};
-  box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: ${props => props.theme.shadow.feature.big.default};
   transition: ${props => props.theme.transitions.boom.transition};
   height: 30rem;
   &:hover {
-    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: ${props => props.theme.shadow.feature.big.hover};
     transform: translateY(-20px);
     ${ImageOverlay} {
       opacity: 0.9;

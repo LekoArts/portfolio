@@ -35,7 +35,7 @@ const Text = styled.p`
   line-height: 2.5rem;
   max-width: 850px;
   margin: 5rem auto;
-  text-shadow: 0 15px 20px rgba(0, 0, 0, 0.13);
+  text-shadow: ${props => props.theme.shadow.text.big};
 `;
 
 const Index = ({
