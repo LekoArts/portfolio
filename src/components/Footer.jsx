@@ -11,6 +11,7 @@ const Wrapper = styled.footer`
   padding-top: 10rem;
   padding-bottom: 2rem;
   background: ${props => props.theme.gradient.leftToRight};
+  font-family: ${props => props.theme.fontFamily.heading};
 `;
 
 const OptionalContent = styled.div`

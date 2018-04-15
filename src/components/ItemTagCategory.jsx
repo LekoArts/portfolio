@@ -1,46 +1,61 @@
 import React from 'react';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import kebabCase from 'lodash/kebabCase';
 import Tags from './Tags';
 
-const ItemTagCategory = ({ edges: { category, path, title, date, timeToRead, tags, excerpt } }) => (
-  <article className="wrapper">
-    <div className="information">
-      <div className="catwrapper">
-        <Link to={`/categories/${kebabCase(category)}`}>
-          {category}
-        </Link>
-      </div>
-      <div className="titlewrapper">
-        <Link to={path} className="linktitle">
-          <h1>{title}</h1>
-        </Link>
-      </div>
-      <div className="data">
-        <div className="datetime">
-          <div className="date">{date}</div>
-          <div className="time">| Lesezeit: {timeToRead} Min.</div>
-        </div>
-        <div className="tags">
-          <Tags tags={tags} />
-        </div>
-      </div>
-      <div className="excerpt">{excerpt}</div>
-    </div>
-  </article>
+const Wrapper = styled.article`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+`;
+
+const Information = styled.div`
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    display: inline-block;
+    color: ${props => props.theme.colors.black.base};
+    transition: all ${props => props.theme.transitions.default.duration};
+    &:hover {
+      color: ${props => props.theme.colors.primary.base};
+    }
+  }
+`;
+
+const Statistics = styled.div`
+  color: ${props => props.theme.colors.black.lighter};
+`;
+
+const Excerpt = styled.div`
+  margin-top: 1rem;
+`;
+
+const ItemTagCategory = ({ category, path, title, date, timeToRead, tags, excerpt }) => (
+  <Wrapper>
+    <Information>
+      <Link to={path} className="linktitle">
+        <h1>{title}</h1>
+      </Link>
+      <Statistics>
+        {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; Kategorie: <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
+      </Statistics>
+      <Tags tags={tags} />
+      <Excerpt>{excerpt}</Excerpt>
+    </Information>
+  </Wrapper>
 );
 
 export default ItemTagCategory;
 
 ItemTagCategory.propTypes = {
-  edges: PropTypes.shape({
-    category: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    timeToRead: PropTypes.string.isRequired,
-    tags: PropTypes.array.isRequired,
-    excerpt: PropTypes.string.isRequired,
-  }),
+  category: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  timeToRead: PropTypes.string.isRequired,
+  tags: PropTypes.array.isRequired,
+  excerpt: PropTypes.string.isRequired,
 };

@@ -106,20 +106,6 @@ const Datenschutzerklaerung = () => (
           Wenn die SSL Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten
           mitgelesen werden.
         </p>
-        <h2>Disqus</h2>
-        <p>
-          Für die Kommentarfunktion auf dieser Seite nutzen wir DISQUS, das von der Firma DISQUS, Inc., 301 Howard St,
-          Floor 3 San Francisco, California- 94105, USA, bereitgestellt wird. Die Datenschutzinformationen von DISQUS
-          sind <a href="https://help.disqus.com/customer/portal/articles/466259-privacy-policy">hier</a> zu finden.
-          DISQUS erlaubt die Anmeldung entweder über ein eigenes DISQUS-Nutzer-Konto (“Account”) oder über bestehende
-          Nutzer-Konten bei Facebook, Twitter und Google Plus. Wenn Sie sich über Ihren Facebook-, Twitter-,
-          Google-Account anmelden, werden auch von diesen Anbietern möglicherweise Daten erhoben, gespeichert und
-          genutzt. Einzelheiten dazu finden sich in den Datenschutzbestimmungen des jeweiligen Anbieters. DISQUS
-          übermittelt die E-Mail-Adresse der Benutzer und die IP-Adresse, die während der Eingabe eines Kommentars
-          verwendet wurde, an LekoArts. Wir benötigen diese Information ausschließlich für den Zweck der Kontaktaufnahme
-          im Zusammenhang mit Ihrer Nutzung von DISQUS, beispielsweise wenn wir Rückfragen zu Ihrem Nutzerkommentar
-          haben. Eine unerlaubte Weitergabe an Dritte erfolgt selbstverständlich nicht.
-        </p>
         <p>
           Quelle:{' '}
           <a href="https://www.e-recht24.de/muster-datenschutzerklaerung.html">

@@ -21,7 +21,10 @@ const InnerWave = styled.div`
     display: block;
     position: absolute;
     width: 100%;
-    height: 6rem;
+    height: 5.5rem;
+    @media (max-width: ${props => props.theme.breakpoints.m}) {
+      height: 4.5rem;
+    }
   }
 `;
 

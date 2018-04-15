@@ -7,7 +7,9 @@ const colors = {
     blue: '#94a1c9',
   },
   black: {
-    base: '#2a2b2f',
+    base: '#333438',
+    light: '#52555e',
+    lighter: '#878b94',
     blue: '#2e3246',
   },
   primary: {
@@ -27,7 +29,7 @@ const colors = {
 };
 
 const tint = {
-  black: rgba(colors.black.base, 0.25),
+  black: rgba(colors.black.base, 0.1),
   white: rgba(colors.white.base, 0.75),
   blue: rgba(colors.primary.base, 0.35),
 };
@@ -81,12 +83,16 @@ const theme = {
   button,
   breakpoints: {
     s: '600px',
-    m: '1199px',
+    m: '900px',
     l: '1200px',
   },
+  fontFamily: {
+    body: `'Istok Web', sans-serif`,
+    heading: `'Montserrat', sans-serif`,
+  },
   layout: {
-    article: '41.111111rem',
-    base: '66.666666rem',
+    article: '44.444rem',
+    base: '70rem',
     big: '83.33333rem',
   },
   borderRadius: {

@@ -19,7 +19,18 @@ const Category = ({
       {category}
     </Header>
     <Container>
-      <ItemTagCategory edges={edges} />
+      {edges.map(edge => (
+        <ItemTagCategory
+          key={edge.node.frontmatter.title}
+          title={edge.node.frontmatter.title}
+          category={edge.node.frontmatter.category}
+          path={edge.node.fields.slug}
+          date={edge.node.frontmatter.date}
+          timeToRead={edge.node.timeToRead}
+          tags={edge.node.frontmatter.tags}
+          excerpt={edge.node.excerpt}
+        />
+      ))}
     </Container>
     <Footer />
   </div>
@@ -57,7 +68,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             tags
-            date(formatString: "DD.MM.YYYY")
+            date(formatString: "DD. MMMM YYYY", locale: "de")
             category
           }
         }

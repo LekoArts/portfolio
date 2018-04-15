@@ -12,7 +12,7 @@ const Base = styled.div`
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
 
 const Blog = ({
@@ -22,7 +22,7 @@ const Blog = ({
 }) => (
   <div className="container blog-container">
     <Helmet title={`Blog | ${config.siteTitle}`} />
-    <Header slim subTitle="Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten">
+    <Header slim subtitle="Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten">
       Blog
     </Header>
     <Container type="big">
@@ -73,7 +73,7 @@ export const pageQuery = graphql`
           timeToRead
           frontmatter {
             title
-            date(formatString: "DD.MM.YYYY")
+            date(formatString: "DD. MMMM YYYY", locale: "de")
             category
             tags
             cover {

@@ -7,7 +7,6 @@ import { ThemeProvider } from 'emotion-theming';
 import SEO from '../components/SEO';
 import Navigation from '../components/Navigation';
 import theme from '../../config/theme';
-import '../fonts/inter-ui.css';
 
 injectGlobal`
   *, *:before, *:after {
@@ -19,6 +18,35 @@ injectGlobal`
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    @media (max-width: ${theme.breakpoints.m}) {
+      font-size: 16px;
+      h1 {
+        font-size: 2.074rem;
+      }
+      h2 {
+        font-size: 1.728rem;
+      }
+      h3 {
+        font-size: 1.44rem;
+      }
+      h4 {
+        font-size: 1.2rem;
+      }
+    }
+    @media (max-width: ${theme.breakpoints.s}) {
+      h1 {
+        font-size: 1.602rem;
+      }
+      h2 {
+        font-size: 1.424rem;
+      }
+      h3 {
+        font-size: 1.266rem;
+      }
+      h4 {
+        font-size: 1.125rem;
+      }
+    }
   }
   body {
     color: ${theme.colors.black.base};
@@ -69,7 +97,7 @@ injectGlobal`
   .gatsby-resp-iframe-wrapper {
     margin-bottom: 2rem;
   }
-  .gatsby-hightlight {
+  .gatsby-highlight {
     margin-bottom: 2rem;
   }
   [tabindex="-1"]:focus {

@@ -29,14 +29,28 @@ const Wrapper = styled.article`
   border-radius: ${props => props.theme.borderRadius.default};
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
   transition: ${props => props.theme.transitions.boom.transition};
-  flex-basis: 50%;
-  height: 25rem;
+  height: 20rem;
   &:hover {
     box-shadow: 0 40px 40px rgba(0, 0, 0, 0.1);
     transform: translateY(-12px);
     ${ImageOverlay} {
       opacity: 0.9;
     }
+  }
+  flex-basis: calc(99.9% * 1 / 2 - 1rem);
+  max-width: calc(99.9% * 1 / 2 - 1rem);
+  width: calc(99.9% * 1 / 2 - 1rem);
+  @media (max-width: 800px) {
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: 18rem;
+    &:first-child {
+      margin-bottom: 2rem;
+    }
+  }
+  @media (max-width: ${props => props.theme.breakpoints.s}) {
+    height: 15rem;
   }
 `;
 
@@ -56,17 +70,17 @@ const styledLink = css`
     position: absolute;
     display: block;
     width: 100%;
-    height: 40%;
+    height: 100%;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    top: 0;
     background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.6) 0%,
       rgba(0, 0, 0, 0) 30%,
       rgba(0, 0, 0, 0) 70%,
-      rgba(0, 0, 0, 0.75) 100%
+      rgba(0, 0, 0, 0.6) 100%
     );
     z-index: -10;
     border-radius: ${theme.borderRadius.default};
@@ -82,6 +96,7 @@ const styledLink = css`
 const Image = styled.div`
   position: absolute;
   top: 0;
+  overflow: hidden;
   right: 0;
   left: 0;
   bottom: 0;
@@ -90,6 +105,12 @@ const Image = styled.div`
   border-radius: ${props => props.theme.borderRadius.default};
   img {
     border-radius: ${props => props.theme.borderRadius.default};
+  }
+  > div {
+    position: static !important;
+  }
+  > div > div {
+    position: static !important;
   }
 `;
 

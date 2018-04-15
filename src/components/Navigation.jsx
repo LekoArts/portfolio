@@ -19,7 +19,7 @@ injectGlobal`
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     svg {
       height: 2.5rem;
       g {
@@ -53,6 +53,9 @@ injectGlobal`
           border-color: ${theme.colors.black.base};
           color: ${theme.colors.black.base};
         }
+        &:focus {
+          color: ${theme.colors.black.base};
+        }
       }
     }
     padding-top: 0.75rem;
@@ -81,14 +84,19 @@ const StyledLink = styled(Link)`
 
 const LogoText = styled.span`
   text-transform: uppercase;
+  font-family: ${props => props.theme.fontFamily.heading};
   font-size: 1.25rem;
   margin-left: 0.75rem;
   color: ${props => props.theme.colors.white.base};
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const Nav = styled.nav`
   display: flex;
   justify-content: flex-end;
+  font-family: ${props => props.theme.fontFamily.heading};
   align-items: center;
   a {
     color: ${props => props.theme.colors.white.base};
@@ -97,6 +105,9 @@ const Nav = styled.nav`
     border-bottom: 1px solid transparent;
     &:hover {
       border-bottom: 1px solid white;
+      color: white;
+    }
+    &:focus {
       color: white;
     }
   }

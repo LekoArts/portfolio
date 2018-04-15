@@ -122,7 +122,7 @@ export { Card };
 
 export const LinkCard = props => {
   const { children } = props;
-  const color = cx(generalStyle, {
+  const color = cx(generalStyle, props.className, {
     [discord]: props.discord,
     [instagram]: props.instagram,
     [behance]: props.behance,
@@ -142,6 +142,7 @@ Card.propTypes = {
 LinkCard.propTypes = {
   children: PropTypes.node.isRequired,
   link: PropTypes.string.isRequired,
+  className: PropTypes.string,
   discord: PropTypes.bool,
   instagram: PropTypes.bool,
   behance: PropTypes.bool,

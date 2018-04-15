@@ -13,6 +13,7 @@ import Button from '../components/Button';
 
 const ProjectsWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   flex-direction: row;
   margin-top: -10rem;
@@ -21,14 +22,16 @@ const ProjectsWrapper = styled.div`
 const PostsWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-top: 15rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10rem;
 `;
 
 const Text = styled.p`
   text-align: center;
+  font-family: ${props => props.theme.fontFamily.heading};
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 2.5rem;
   max-width: 850px;
   margin: 5rem auto;

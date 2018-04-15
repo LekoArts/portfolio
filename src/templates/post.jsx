@@ -5,7 +5,6 @@ import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import kebabCase from 'lodash/kebabCase';
-import ReactDisqusComments from 'react-disqus-comments';
 import Tags from '../components/Tags';
 import SEO from '../components/SEO';
 import Container from '../components/Container';
@@ -37,13 +36,25 @@ const pulse = keyframes`
 `;
 
 const Wrapper = styled.div`
-  height: 700px;
+  height: 600px;
   position: relative;
   overflow: hidden;
   .gatsby-image-wrapper {
-    height: 700px;
+    height: 600px;
     img {
       animation: ${pulse} 30s infinite;
+    }
+  }
+  @media (max-width: ${props => props.theme.breakpoints.m}) {
+    height: 500px;
+    .gatsby-image-wrapper {
+      height: 500px;
+    }
+  }
+  @media (max-width: ${props => props.theme.breakpoints.s}) {
+    height: 400px;
+    .gatsby-image-wrapper {
+      height: 400px;
     }
   }
 `;
@@ -65,17 +76,23 @@ const Hero = styled.div`
 
 const Information = styled.div`
   margin-top: 2rem;
+  font-family: ${props => props.theme.fontFamily.heading};
+  a {
+    color: ${props => props.theme.colors.white.base};
+    transition: all 0.4s;
+    border-bottom: 1px solid transparent;
+    &:hover {
+      border-bottom: 1px solid white;
+      color: white;
+    }
+    &:focus {
+      color: white;
+    }
+  }
 `;
 
 const fontBold = css`
   font-weight: 700;
-`;
-
-const DisqusWrapper = styled.div`
-  background: ${props => props.theme.colors.white.light};
-  padding: 1rem;
-  border-radius: ${props => props.theme.borderRadius.default};
-  margin: 6rem -1rem 2rem -1rem;
 `;
 
 const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => {
@@ -85,11 +102,6 @@ const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => 
     post.id = slug;
   }
 
-  const disqusConfig = {
-    identifier: post.id,
-    title: post.title,
-  };
-
   return (
     <div className="post-container">
       <Helmet title={`${post.title} | ${config.siteTitle}`} />
@@ -98,7 +110,7 @@ const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => 
         <Hero>
           <h1>{post.title}</h1>
           <Information>
-            {post.date} &mdash; Lesezeit: {postNode.timeToRead} Min. &mdash;{' '}
+            {post.date} &mdash; Lesezeit: {postNode.timeToRead} Min. &mdash; Kategorie:{' '}
             <Link to={`/categories/${kebabCase(post.category)}`}>{post.category}</Link>
           </Information>
         </Hero>
@@ -112,13 +124,6 @@ const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => 
           <span className={fontBold}>Interesse geweckt?</span> Lies alle Beiträge in der Kategorie{' '}
           <Link to={`/categories/${kebabCase(post.category)}`}>{post.category}</Link>
         </p>
-        <DisqusWrapper>
-          <ReactDisqusComments
-            shortname={config.disqusShortname}
-            identifier={disqusConfig.identifier}
-            title={disqusConfig.title}
-          />
-        </DisqusWrapper>
       </Container>
       <Footer>
         <h2>Lust auf mehr Tutorials & Goodies? Werde ein Patron.</h2>
@@ -150,7 +155,7 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        date(formatString: "DD.MM.YYYY")
+        date(formatString: "do MMMM YYYY", locale: "de")
         category
         tags
         cover {

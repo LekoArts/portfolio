@@ -38,13 +38,25 @@ const pulse = keyframes`
 `;
 
 const Wrapper = styled.div`
-  height: 700px;
+  height: 600px;
   position: relative;
   overflow: hidden;
   .gatsby-image-wrapper {
-    height: 700px;
+    height: 600px;
     img {
       animation: ${pulse} 30s infinite;
+    }
+  }
+  @media (max-width: ${props => props.theme.breakpoints.m}) {
+    height: 500px;
+    .gatsby-image-wrapper {
+      height: 500px;
+    }
+  }
+  @media (max-width: ${props => props.theme.breakpoints.s}) {
+    height: 400px;
+    .gatsby-image-wrapper {
+      height: 400px;
     }
   }
 `;
@@ -67,12 +79,22 @@ const Hero = styled.div`
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-bottom: 3rem;
   ${Card} {
     color: ${props => props.theme.colors.black.base} !important;
-    flex-basis: 33%;
     margin-bottom: 2rem;
     text-align: center;
+    flex-basis: calc(99.9% * 1 / 3 - 1rem);
+    max-width: calc(99.9% * 1 / 3 - 1rem);
+    width: calc(99.9% * 1 / 3 - 1rem);
+    @media (max-width: 750px) {
+      flex-basis: 100%;
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
   }
 `;
 

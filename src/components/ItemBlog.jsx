@@ -4,36 +4,103 @@ import styled from 'react-emotion';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 import kebabCase from 'lodash/kebabCase';
-import Tags from './Tags';
+
+const Wrapper = styled.article`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+`;
+
+const Image = styled.div`
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: ${props => props.theme.transitions.boom.transition};
+  border-radius: ${props => props.theme.borderRadius.default};
+  min-height: 300px;
+  img {
+    border-radius: ${props => props.theme.borderRadius.default};
+  }
+  &:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-12px);
+  }
+  a {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    > div {
+      position: static !important;
+    }
+    > div > div {
+      position: static !important;
+    }
+  }
+  flex-basis: calc(99.9% * 2 / 5 - 1rem);
+  max-width: calc(99.9% * 2 / 5 - 1rem);
+  width: calc(99.9% * 2 / 5 - 1rem);
+  @media (max-width: 800px) {
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 500px) {
+    min-height: 200px;
+  }
+`;
+
+const Information = styled.div`
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    display: inline-block;
+    color: ${props => props.theme.colors.black.base};
+    transition: all ${props => props.theme.transitions.default.duration};
+    &:hover {
+      color: ${props => props.theme.colors.primary.base};
+    }
+  }
+
+  flex-basis: calc(99.9% * 3 / 5 - 1rem);
+  max-width: calc(99.9% * 3 / 5 - 1rem);
+  width: calc(99.9% * 3 / 5 - 1rem);
+  @media (max-width: 800px) {
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+`;
+
+const Statistics = styled.div`
+  color: ${props => props.theme.colors.black.lighter};
+`;
+
+const Excerpt = styled.div`
+  margin-top: 2rem;
+`;
 
 const ItemBlog = ({ path, cover, category, title, date, timeToRead, tags, excerpt }) => (
-  <article className="wrapper">
-    <div className="image">
+  <Wrapper>
+    <Image>
       <Link to={path} className="link">
         <Img sizes={cover} />
       </Link>
-    </div>
-    <div className="information">
-      <div className="hero">
-        <div className="catwrapper">
-          <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
-        </div>
-        <Link to={path} className="linktitle">
-          <h1>{title}</h1>
-        </Link>
-        <div className="data">
-          <div className="datetime">
-            <div className="date">{date}</div>
-            <div className="time">| Lesezeit: {timeToRead} Min.</div>
-          </div>
-          <div className="tags">
-            <Tags tags={tags} />
-          </div>
-        </div>
-      </div>
-      <div className="excerpt">{excerpt}</div>
-    </div>
-  </article>
+    </Image>
+    <Information>
+      <Link to={path}>
+        <h1>{title}</h1>
+      </Link>
+      <Statistics>
+        {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; Kategorie:{' '}
+        <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
+      </Statistics>
+      <Excerpt>{excerpt}</Excerpt>
+    </Information>
+  </Wrapper>
 );
 
 export default ItemBlog;

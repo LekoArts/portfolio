@@ -27,11 +27,29 @@ const Wrapper = styled.div`
   margin-bottom: 2rem;
 `;
 
+const MyLinkCard = styled(LinkCard)`
+  flex-basis: calc(99% * 1 / 4 - 1rem);
+  max-width: calc(99% * 1 / 4 - 1rem);
+  width: calc(99% * 1 / 4 - 1rem);
+  margin-bottom: 2rem;
+  @media (max-width: 1135px) {
+    flex-basis: calc(99% * 1 / 2 - 1rem);
+    max-width: calc(99% * 1 / 2 - 1rem);
+    width: calc(99% * 1 / 2 - 1rem);
+  }
+  @media (max-width: 690px) {
+    flex-basis: calc(99% * 1 / 1);
+    max-width: calc(99% * 1 / 1);
+    width: calc(99% * 1 / 1);
+  }
+`;
+
 const CardContainer = styled(Container)`
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: space-between;
   margin-top: 1rem;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 `;
 
 const Kontakt = () => (
@@ -65,22 +83,22 @@ const Kontakt = () => (
         </a>
       </CenteredContainer>
       <CardContainer>
-        <LinkCard link="https://www.discordapp.com" discord>
+        <MyLinkCard link="https://www.discordapp.com" discord>
           <Discord />
           LekoArts#2495
-        </LinkCard>
-        <LinkCard link="https://www.instagram.com/lekoarts.de" instagram>
+        </MyLinkCard>
+        <MyLinkCard link="https://www.instagram.com/lekoarts.de" instagram>
           <Instagram />
           3D & Experimente
-        </LinkCard>
-        <LinkCard link="https://www.behance.net/lekoarts" behance>
+        </MyLinkCard>
+        <MyLinkCard link="https://www.behance.net/lekoarts" behance>
           <Behance />
           Persönliche Projekte
-        </LinkCard>
-        <LinkCard link="https://youtube.de/LekoArtsDE" youtube>
+        </MyLinkCard>
+        <MyLinkCard link="https://youtube.de/LekoArtsDE" youtube>
           <YouTube />
           Speedarts
-        </LinkCard>
+        </MyLinkCard>
       </CardContainer>
     </Wrapper>
     <Footer />
