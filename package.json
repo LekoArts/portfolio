@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/LeKoArts/portfolio"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "LekoArts <hello@lekoarts.de>",
   "dependencies": {
     "date-fns": "^1.29.0",
@@ -66,7 +66,6 @@
     "dev": "gatsby develop -o",
     "build": "gatsby build",
     "lint": "eslint **/*.js --ignore-pattern node_modules/",
-    "lint:fix": "eslint **/*.js --fix --ignore-pattern node_modules/",
-    "clean": "rm -rf public"
+    "lint:fix": "eslint **/*.js --fix --ignore-pattern node_modules/"
   }
 }
