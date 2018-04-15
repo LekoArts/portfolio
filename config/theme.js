@@ -98,7 +98,6 @@ const theme = {
   button,
   shadow,
   breakpoints: {
-    xs: '400px',
     s: '600px',
     m: '900px',
     l: '1200px',

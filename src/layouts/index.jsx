@@ -34,6 +34,7 @@ injectGlobal`
       }
     }
     @media (max-width: ${theme.breakpoints.s}) {
+      font-size: 14px;
       h1 {
         font-size: 1.602rem;
       }
@@ -46,9 +47,6 @@ injectGlobal`
       h4 {
         font-size: 1.125rem;
       }
-    }
-    @media (max-width: ${theme.breakpoints.xs}) {
-      font-size: 14px;
     }
   }
   body {
