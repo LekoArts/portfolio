@@ -13,6 +13,7 @@ import Content from '../components/Content';
 import Wave from '../components/Wave';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
+import { hideS } from '../utils/hide';
 import config from '../../config/website';
 
 import '../utils/prism-okaida.css';
@@ -119,7 +120,7 @@ const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => 
         <Hero>
           <h1>{post.title}</h1>
           <Information>
-            {post.date} &mdash; Lesezeit: {postNode.timeToRead} Min. &mdash; Kategorie:{' '}
+            {post.date} &mdash; Lesezeit: {postNode.timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
             <Link to={`/categories/${kebabCase(post.category)}`}>{post.category}</Link>
           </Information>
         </Hero>

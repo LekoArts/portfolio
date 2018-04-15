@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import kebabCase from 'lodash/kebabCase';
 import Tags from './Tags';
+import { hideS } from '../utils/hide';
 
 const Wrapper = styled.article`
   display: flex;
@@ -40,7 +41,7 @@ const ItemTagCategory = ({ category, path, title, date, timeToRead, tags, excerp
         <h1>{title}</h1>
       </Link>
       <Statistics>
-        {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; Kategorie:{' '}
+        {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
         <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
       </Statistics>
       <Tags tags={tags} />
