@@ -39,7 +39,6 @@
     "gatsby-transformer-sharp": "^1.6.22",
     "polished": "^1.9.2",
     "prop-types": "^15.6.1",
-    "react-disqus-comments": "^1.1.1",
     "react-emotion": "^9.1.1",
     "react-headroom": "^2.2.2",
     "react-helmet": "^5.2.0"
