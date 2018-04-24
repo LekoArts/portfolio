@@ -66,7 +66,6 @@ const SEO = props => {
   }
   return (
     <Helmet>
-      {/* General Tags */}
       <html lang="de" />
       <title>{title}</title>
       <meta name="description" content={description} />
@@ -74,7 +73,6 @@ const SEO = props => {
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      {/* Favicons */}
       <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
@@ -82,9 +80,7 @@ const SEO = props => {
       <meta name="apple-mobile-web-app-title" content="LekoArts" />
       <meta name="application-name" content="LekoArts" />
       <meta name="msapplication-TileColor" content="#3498db" />
-      {/* Schema.org */}
       <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
-      {/* OpenGraph */}
       <meta property="og:locale" content="de_DE" />
       <meta property="og:site_name" content={config.facebook} />
       <meta property="og:url" content={postSEO ? postURL : blogURL} />
@@ -92,7 +88,6 @@ const SEO = props => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
-      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={config.twitter} />
       <meta name="twitter:title" content={title} />

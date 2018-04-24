@@ -53,7 +53,7 @@ const CardContainer = styled(Container)`
 `;
 
 const Kontakt = () => (
-  <div className="kontakt-container">
+  <React.Fragment>
     <Helmet title={`Kontakt | ${config.siteTitle}`} />
     <Header
       slim
@@ -102,7 +102,7 @@ const Kontakt = () => (
       </CardContainer>
     </Wrapper>
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 export default Kontakt;

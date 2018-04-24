@@ -20,7 +20,7 @@ const Blog = ({
     allMarkdownRemark: { edges },
   },
 }) => (
-  <div className="container blog-container">
+  <React.Fragment>
     <Helmet title={`Blog | ${config.siteTitle}`} />
     <Header slim subtitle="Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten">
       Blog
@@ -43,7 +43,7 @@ const Blog = ({
       </Base>
     </Container>
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 export default Blog;

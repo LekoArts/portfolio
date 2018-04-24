@@ -10,7 +10,7 @@ import Header from '../components/Header';
 import config from '../../config/website';
 
 const Datenschutzerklaerung = () => (
-  <div className="container datenschutz-container">
+  <React.Fragment>
     <Helmet title={`Datenschutzerklärung | ${config.siteTitle}`} />
     <Header slim>Datenschutzerklärung</Header>
     <div style={{ marginTop: '3rem' }}>
@@ -115,7 +115,7 @@ const Datenschutzerklaerung = () => (
       </Container>
     </div>
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 export default Datenschutzerklaerung;

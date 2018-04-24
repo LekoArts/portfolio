@@ -113,7 +113,7 @@ const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => 
   }
 
   return (
-    <div className="post-container">
+    <React.Fragment>
       <Helmet title={`${post.title} | ${config.siteTitle}`} />
       <SEO postPath={slug} postNode={postNode} postSEO />
       <Wrapper>
@@ -142,7 +142,7 @@ const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => 
           <Button type="secondary">Patreon</Button>
         </a>
       </Footer>
-    </div>
+    </React.Fragment>
   );
 };
 

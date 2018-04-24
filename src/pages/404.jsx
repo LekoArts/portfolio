@@ -9,7 +9,7 @@ import Header from '../components/Header';
 import Container from '../components/Container';
 
 const ErrorPage = () => (
-  <div className="container">
+  <React.Fragment>
     <Helmet title={`404 | ${config.siteTitle}`} />
     <Header slim>404</Header>
     <Container>
@@ -62,7 +62,7 @@ const ErrorPage = () => (
       </div>
     </Container>
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 export default ErrorPage;

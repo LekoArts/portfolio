@@ -44,7 +44,7 @@ const Index = ({
     posts: { edges: postEdges },
   },
 }) => (
-  <div>
+  <React.Fragment>
     <Header>
       Kommunikationsdesigner & <br /> Front-End Entwickler
     </Header>
@@ -92,7 +92,7 @@ const Index = ({
       </Text>
     </Container>
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 export default Index;

@@ -105,7 +105,7 @@ const Project = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) 
     post.id = slug;
   }
   return (
-    <div className="container projekt-container">
+    <React.Fragment>
       <Helmet title={`${post.title} | ${config.siteTitle}`} />
       <SEO postPath={slug} postNode={postNode} postSEO />
       <Wrapper>
@@ -140,7 +140,7 @@ const Project = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) 
           <Button type="primary">Projekt starten</Button>
         </Link>
       </Footer>
-    </div>
+    </React.Fragment>
   );
 };
 

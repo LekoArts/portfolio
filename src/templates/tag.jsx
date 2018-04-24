@@ -13,7 +13,7 @@ const Tag = ({
     allMarkdownRemark: { edges },
   },
 }) => (
-  <div className="tag-container">
+  <React.Fragment>
     <Helmet title={`${tag} | ${config.siteTitle}`} />
     <Header slim subtitle={`Auflistung aller Beiträge, die mit "${tag}" markiert wurden`}>
       {tag}
@@ -33,7 +33,7 @@ const Tag = ({
       ))}
     </Container>
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 export default Tag;

@@ -24,6 +24,7 @@
     "gatsby-plugin-nprogress": "^1.0.14",
     "gatsby-plugin-offline": "^1.0.15",
     "gatsby-plugin-react-helmet": "^2.0.7",
+    "gatsby-plugin-react-next": "^1.0.11",
     "gatsby-plugin-sharp": "^1.6.41",
     "gatsby-plugin-sitemap": "^1.2.16",
     "gatsby-plugin-typography": "^1.7.18",

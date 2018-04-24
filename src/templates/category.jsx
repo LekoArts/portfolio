@@ -13,7 +13,7 @@ const Category = ({
     allMarkdownRemark: { edges },
   },
 }) => (
-  <div className="category-container">
+  <React.Fragment>
     <Helmet title={`${category} | ${config.siteTitle}`} />
     <Header slim subtitle={`Auflistung aller Beiträge, die der Kategorie "${category}" angehören`}>
       {category}
@@ -33,7 +33,7 @@ const Category = ({
       ))}
     </Container>
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 export default Category;

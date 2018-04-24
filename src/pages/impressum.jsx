@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import config from '../../config/website';
 
 const Impressum = () => (
-  <div className="impressum-container">
+  <React.Fragment>
     <Helmet title={`Impressum | ${config.siteTitle}`} />
     <Header slim>Impressum</Header>
     <div style={{ marginTop: '3rem' }}>
@@ -85,7 +85,7 @@ const Impressum = () => (
       </Container>
     </div>
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 export default Impressum;

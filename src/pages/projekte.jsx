@@ -19,7 +19,7 @@ const Projekte = ({
     allMarkdownRemark: { edges },
   },
 }) => (
-  <div className="projekte">
+  <React.Fragment>
     <Helmet title={`Projekte | ${config.siteTitle}`} />
     <Header
       slim
@@ -41,7 +41,7 @@ const Projekte = ({
       </Base>
     </Container>
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 export default Projekte;
