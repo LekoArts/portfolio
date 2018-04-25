@@ -21,11 +21,8 @@ const Projekte = ({
 }) => (
   <React.Fragment>
     <Helmet title={`Projekte | ${config.siteTitle}`} />
-    <Header
-      slim
-      subtitle="Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken"
-    >
-      Projekte
+    <Header slim title="Projekte">
+      Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken
     </Header>
     <Container type="big">
       <Base>

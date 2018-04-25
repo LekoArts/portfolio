@@ -35,14 +35,14 @@ const Text = styled.div`
 
 const Subtitle = styled.p`
   max-width: 650px;
-  color: ${props => props.theme.tint.white};
+  color: ${props => props.theme.colors.white.blue};
 `;
 
-const Header = ({ children, subtitle, slim }) => (
+const Header = ({ children, title, slim }) => (
   <Wrapper slim={slim}>
     <Text>
-      <h1>{children}</h1>
-      {subtitle && <Subtitle>{subtitle}</Subtitle>}
+      <h1>{title}</h1>
+      {children && <Subtitle>{children}</Subtitle>}
     </Text>
     <Wave />
   </Wrapper>
@@ -51,12 +51,11 @@ const Header = ({ children, subtitle, slim }) => (
 export default Header;
 
 Header.propTypes = {
-  children: PropTypes.node.isRequired,
-  subtitle: PropTypes.string,
+  children: PropTypes.node,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   slim: PropTypes.bool,
 };
 
 Header.defaultProps = {
-  subtitle: '',
   slim: false,
 };

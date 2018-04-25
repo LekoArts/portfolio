@@ -45,9 +45,7 @@ const Index = ({
   },
 }) => (
   <React.Fragment>
-    <Header>
-      Kommunikationsdesigner & <br /> Front-End Entwickler
-    </Header>
+    <Header title={<React.Fragment>Kommunikationsdesigner & <br /> Front-End Entwickler</React.Fragment>} />
     <Container type="big">
       <ProjectsWrapper>
         {projectEdges.map(project => (

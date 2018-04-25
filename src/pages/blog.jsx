@@ -22,8 +22,8 @@ const Blog = ({
 }) => (
   <React.Fragment>
     <Helmet title={`Blog | ${config.siteTitle}`} />
-    <Header slim subtitle="Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten">
-      Blog
+    <Header slim title="Blog">
+      Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten
     </Header>
     <Container type="big">
       <Base>

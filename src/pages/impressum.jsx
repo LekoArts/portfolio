@@ -10,7 +10,7 @@ import config from '../../config/website';
 const Impressum = () => (
   <React.Fragment>
     <Helmet title={`Impressum | ${config.siteTitle}`} />
-    <Header slim>Impressum</Header>
+    <Header slim title="Impressum" />
     <div style={{ marginTop: '3rem' }}>
       <Container type="article">
         <h2>Angaben gemäß § 5 TMG:</h2>

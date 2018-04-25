@@ -11,7 +11,7 @@ import Container from '../components/Container';
 const ErrorPage = () => (
   <React.Fragment>
     <Helmet title={`404 | ${config.siteTitle}`} />
-    <Header slim>404</Header>
+    <Header slim title="404" />
     <Container>
       <p />
       <h1>

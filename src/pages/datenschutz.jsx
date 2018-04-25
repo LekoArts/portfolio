@@ -12,7 +12,7 @@ import config from '../../config/website';
 const Datenschutzerklaerung = () => (
   <React.Fragment>
     <Helmet title={`Datenschutzerklärung | ${config.siteTitle}`} />
-    <Header slim>Datenschutzerklärung</Header>
+    <Header slim title="Datenschutzerklärung" />
     <div style={{ marginTop: '3rem' }}>
       <Container type="article">
         <h2>Datenschutz</h2>
