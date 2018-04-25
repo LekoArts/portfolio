@@ -45,7 +45,7 @@ const smoooooth = keyframes`
 const animation = css`
   fill: ${theme.colors.white.light};
   width: 100%;
-  animation: ${smoooooth} 20s linear infinite alternate;
+  animation: ${smoooooth} 25s linear infinite alternate;
 `;
 
 const Wave = ({ orientation }) => (
@@ -57,7 +57,7 @@ const Wave = ({ orientation }) => (
             attributeName="d"
             values="M 27 10C 21 8 14 3 0 3L 0 0L 54 0L 54 14C 40 14 33 12 27 10Z;M 27 14C 12 14 5 7 0 7L 0 0L 54 0L 54 7C 49 7 42 14 27 14Z;M 27 10C 21 12 14 14 0 14L 0 0L 54 0L 54 3C 40 3 33 8 27 10Z;M 27 10C 21 12 14 14 0 14L 0 0L 54 0L 54 3C 40 3 33 8 27 10Z;M 27 14C 12 14 5 7 0 7L 0 0L 54 0L 54 7C 49 7 42 14 27 14Z;M 27 10C 21 8 14 3 0 3L 0 0L 54 0L 54 14C 40 14 33 12 27 10Z"
             repeatCount="indefinite"
-            dur="20s"
+            dur="25s"
           />
         </path>
       </svg>
