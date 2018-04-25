@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'gatsby-link';
+import styled from 'react-emotion';
 import Helmet from 'react-helmet';
 import config from '../../config/website';
 import Footer from '../components/Footer';
@@ -7,16 +9,23 @@ import Header from '../components/Header';
 import Container from '../components/Container';
 import ItemTagCategory from '../components/ItemTagCategory';
 
+const StyledLink = styled(Link)`
+  color: ${props => props.theme.colors.white.light};
+`;
+
 const Tag = ({
   pathContext: { tag },
   data: {
-    allMarkdownRemark: { edges },
+    allMarkdownRemark: { edges, totalCount },
   },
 }) => (
   <React.Fragment>
     <Helmet title={`${tag} | ${config.siteTitle}`} />
-    <Header slim subtitle={`Auflistung aller Beiträge, die mit "${tag}" markiert wurden`}>
-      {tag}
+    <Header slim title={tag}>
+      {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} wurde{totalCount === 1 ? '' : 'n'} mit "{
+        tag
+      }" markiert <br />
+      <StyledLink to="/tags">Alle Tags</StyledLink>
     </Header>
     <Container>
       {edges.map(edge => (

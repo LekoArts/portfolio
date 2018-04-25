@@ -19,8 +19,8 @@ const TagsContainer = styled.div`
     margin: 0.3rem 0.6rem 0.3rem 0;
     white-space: nowrap;
     &:hover {
-      background: ${props => darken(0.25, props.theme.tint.black)};
-      color: ${props => darken(0.25, props.theme.colors.black.light)};
+      background: ${props => darken(0.35, props.theme.tint.black)};
+      color: ${props => darken(0.35, props.theme.colors.black.light)};
     }
   }
 `;
@@ -28,9 +28,9 @@ const TagsContainer = styled.div`
 const Tags = ({ tags }) => (
   <TagsContainer data-name="tags-container">
     {tags &&
-      tags.map((tag, index) => (
+      tags.map(tag => (
         <Link key={tag} to={`/tags/${kebabCase(tag)}`}>
-          <span data-id={index}>{tag}</span>
+          <span>{tag}</span>
         </Link>
       ))}
   </TagsContainer>
