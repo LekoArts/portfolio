@@ -4,7 +4,7 @@ const colors = {
   white: {
     base: '#fff',
     light: '#f0f0f0',
-    blue: '#94a1c9',
+    blue: '#a0afd7',
   },
   black: {
     base: '#333438',
@@ -30,7 +30,7 @@ const colors = {
 
 const tint = {
   black: rgba(colors.black.base, 0.1),
-  white: rgba(colors.white.base, 0.75),
+  white: rgba(colors.white.light, 0.85),
   blue: rgba(colors.primary.base, 0.35),
 };
 
