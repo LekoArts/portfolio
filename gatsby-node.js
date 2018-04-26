@@ -46,12 +46,23 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     resolve(
       graphql(`
         {
-          posts: allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "posts" } } }) {
+          posts: allMarkdownRemark(
+            filter: { fields: { sourceInstanceName: { eq: "posts" } } }
+            sort: { fields: [frontmatter___date], order: DESC }
+          ) {
             edges {
               node {
                 frontmatter {
                   tags
                   category
+                  title
+                  cover {
+                    childImageSharp {
+                      resize(width: 400) {
+                        src
+                      }
+                    }
+                  }
                 }
                 fields {
                   slug
@@ -59,11 +70,24 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               }
             }
           }
-          projects: allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "projects" } } }) {
+          projects: allMarkdownRemark(
+            filter: { fields: { sourceInstanceName: { eq: "projects" } } }
+            sort: { fields: [frontmatter___date], order: DESC }
+          ) {
             edges {
               node {
                 fields {
                   slug
+                }
+                frontmatter {
+                  title
+                  cover {
+                    childImageSharp {
+                      resize(width: 400) {
+                        src
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -71,14 +95,17 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
       `).then(result => {
         if (result.errors) {
-          /* eslint no-console: "off" */
           console.log(result.errors);
           reject(result.errors);
         }
 
         const tagSet = new Set();
         const categorySet = new Set();
-        result.data.posts.edges.forEach(edge => {
+
+        const postsList = result.data.posts.edges;
+        const projectsList = result.data.projects.edges;
+
+        postsList.forEach(edge => {
           if (edge.node.frontmatter.tags) {
             edge.node.frontmatter.tags.forEach(tag => {
               tagSet.add(tag);
@@ -89,21 +116,35 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             categorySet.add(edge.node.frontmatter.category);
           }
 
+          const filtered = _.filter(postsList, input => input.node.fields.slug !== edge.node.fields.slug);
+          const sample = _.sampleSize(filtered, 2);
+          const left = sample[0].node;
+          const right = sample[1].node;
+
           createPage({
             path: edge.node.fields.slug,
             component: postPage,
             context: {
               slug: edge.node.fields.slug,
+              left,
+              right,
             },
           });
         });
 
-        result.data.projects.edges.forEach(edge => {
+        projectsList.forEach(edge => {
+          const filtered = _.filter(projectsList, input => input.node.fields.slug !== edge.node.fields.slug);
+          const sample = _.sampleSize(filtered, 2);
+          const left = sample[0].node;
+          const right = sample[1].node;
+
           createPage({
             path: edge.node.fields.slug,
             component: projectPage,
             context: {
               slug: edge.node.fields.slug,
+              left,
+              right,
             },
           });
         });

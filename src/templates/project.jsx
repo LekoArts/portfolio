@@ -10,10 +10,12 @@ import Link from 'gatsby-link';
 import SEO from '../components/SEO';
 import Container from '../components/Container';
 import Content from '../components/Content';
+import Suggestions from '../components/Suggestions';
 import Wave from '../components/Wave';
 import { Card } from '../components/Card';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
+import Line from '../components/Line';
 import config from '../../config/website';
 
 import '../utils/prism-okaida.css';
@@ -98,7 +100,15 @@ const CardWrapper = styled.div`
   }
 `;
 
-const Project = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => {
+const InfoText = styled.p`
+  text-transform: uppercase;
+  font-family: ${props => props.theme.fontFamily.heading};
+  font-weight: 700;
+  text-align: center;
+  color: ${props => props.theme.colors.black.lighter};
+`;
+
+const Project = ({ pathContext: { slug, left, right }, data: { markdownRemark: postNode } }) => {
   const post = postNode.frontmatter;
   const { sizes } = post.cover.childImageSharp;
   if (!post.id) {
@@ -133,6 +143,11 @@ const Project = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) 
       </Container>
       <Container type="article">
         <Content input={postNode.html} />
+      </Container>
+      <Container>
+        <Line />
+        <InfoText>Weitere Projekte</InfoText>
+        <Suggestions left={left} right={right} />
       </Container>
       <Footer>
         <h1>Packen wir's an!</h1>

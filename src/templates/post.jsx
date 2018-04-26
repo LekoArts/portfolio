@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, keyframes } from 'react-emotion';
+import { css } from 'emotion';
+import styled, { keyframes } from 'react-emotion';
 import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import kebabCase from 'lodash/kebabCase';
-import { darken } from 'polished';
 import Tags from '../components/Tags';
+import Suggestions from '../components/Suggestions';
 import SEO from '../components/SEO';
 import Container from '../components/Container';
 import Content from '../components/Content';
 import Wave from '../components/Wave';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
+import Line from '../components/Line';
 import { hideS } from '../utils/hide';
 import config from '../../config/website';
 
@@ -93,19 +95,20 @@ const Information = styled.div`
   }
 `;
 
+const InfoText = styled.p`
+  margin-top: 4rem;
+  text-transform: uppercase;
+  font-family: ${props => props.theme.fontFamily.heading};
+  font-weight: 700;
+  text-align: center;
+  color: ${props => props.theme.colors.black.lighter};
+`;
+
 const fontBold = css`
   font-weight: 700;
 `;
 
-const Line = styled.div`
-  width: 100%;
-  height: 2px;
-  background: ${props => darken(0.25, props.theme.tint.black)};
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-`;
-
-const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => {
+const Post = ({ pathContext: { slug, left, right }, data: { markdownRemark: postNode } }) => {
   const post = postNode.frontmatter;
   const { sizes } = post.cover.childImageSharp;
   if (!post.id) {
@@ -135,6 +138,10 @@ const Post = ({ pathContext: { slug }, data: { markdownRemark: postNode } }) => 
           <span className={fontBold}>Interesse geweckt?</span> Lies alle Beiträge in der Kategorie{' '}
           <Link to={`/categories/${kebabCase(post.category)}`}>{post.category}</Link>
         </p>
+      </Container>
+      <Container>
+        <InfoText>Weitere Blogeinträge</InfoText>
+        <Suggestions left={left} right={right} />
       </Container>
       <Footer>
         <h2>Lust auf mehr Tutorials & Goodies? Werde ein Patron.</h2>

@@ -9,7 +9,7 @@ const colors = {
   black: {
     base: '#333438',
     light: '#52555e',
-    lighter: '#878b94',
+    lighter: '#9ca0a9',
     blue: '#2e3246',
   },
   primary: {
@@ -31,7 +31,7 @@ const colors = {
 const tint = {
   black: rgba(colors.black.base, 0.1),
   white: rgba(colors.white.light, 0.85),
-  blue: rgba(colors.primary.base, 0.35),
+  blue: rgba(colors.primary.base, 0.3),
 };
 
 const gradient = {
@@ -56,7 +56,7 @@ const shadow = {
     },
   },
   text: {
-    small: '0 5px 10px rgba(0, 0, 0, 0.13)',
+    small: '0 5px 10px rgba(0, 0, 0, 0.2)',
     big: '0 15px 20px rgba(0, 0, 0, 0.13)',
   },
 };
