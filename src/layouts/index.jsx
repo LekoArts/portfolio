@@ -84,9 +84,9 @@ injectGlobal`
   }
   blockquote {
     border-left: 5px solid ${theme.colors.primary.base};
-    padding-left: 1rem;
-    margin-left: 0;
-    margin-right: 0;
+    padding-left: 1rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     font-style: italic;
     p {
       line-height: 1.3 !important;
