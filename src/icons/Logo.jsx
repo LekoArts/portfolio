@@ -1,7 +1,8 @@
 import React from 'react';
 
 const Logo = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 493.19 493.19">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 493.19 493.19" role="img" aria-label="LekoArts">
+    <title>LekoArts</title>
     <g className="lekoarts-logo">
       <g className="lekoarts-logo__wrapper">
         <g className="lekoarts-logo__inner">
