@@ -29,13 +29,17 @@ const Wrapper = styled.div`
     }
   }
   h1 {
-    margin-top: 2rem;
+    margin-top: 3rem;
+  }
+  h2 {
+    margin-top: 1rem;
   }
   h1,
   h2,
   h3,
   h4,
   h5 {
+    display: inline-block;
     a {
       box-shadow: none;
       border-bottom: none;
