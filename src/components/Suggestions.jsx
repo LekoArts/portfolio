@@ -115,7 +115,7 @@ const Image = styled.div`
 `;
 
 const Title = styled.h4`
-  color: white;
+  color: ${props => props.theme.colors.white.base};
   text-align: center;
   margin-bottom: 0;
   text-shadow: ${props => props.theme.shadow.text.small};

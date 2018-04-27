@@ -6,10 +6,10 @@ import theme from '../../config/theme';
 
 const discord = css`
   svg {
-    fill: #7289da;
+    fill: ${theme.colors.brands.discord};
   }
   &:hover {
-    background-color: #7289da;
+    background-color: ${theme.colors.brands.discord};
     color: ${theme.colors.white.light};
     svg {
       fill: ${theme.colors.white.light};
@@ -34,7 +34,12 @@ const instagram = css`
   &:before {
     content: '';
     background-color: ${theme.colors.white.light};
-    background-image: linear-gradient(45deg, #f7eb4c 0%, #ee2a7b 29%, #4c6aff 100%);
+    background-image: linear-gradient(
+      45deg,
+      ${theme.colors.brands.instagram.yellow} 0%,
+      ${theme.colors.brands.instagram.pink} 29%,
+      ${theme.colors.brands.instagram.blue} 100%
+    );
     position: absolute;
     top: 0;
     right: 0;
@@ -64,7 +69,7 @@ const behance = css`
     font-size: 3rem;
   }
   &:hover {
-    background-color: #191919;
+    background-color: ${theme.colors.brands.behance};
     color: ${theme.colors.white.light};
     svg {
       fill: ${theme.colors.white.light};
@@ -74,11 +79,11 @@ const behance = css`
 
 const youtube = css`
   svg {
-    fill: #ff0000;
+    fill: ${theme.colors.brands.youtube};
     font-size: 3rem;
   }
   &:hover {
-    background-color: #ff0000;
+    background-color: ${theme.colors.brands.youtube};
     color: ${theme.colors.white.light};
     svg {
       fill: ${theme.colors.white.light};

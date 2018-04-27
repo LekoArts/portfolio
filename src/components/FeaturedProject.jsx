@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
-import { css } from 'emotion';
 import styled from 'react-emotion';
 import theme from '../../config/theme';
 
@@ -79,7 +78,7 @@ const Wrapper = styled.article`
   }
 `;
 
-const styledLink = css`
+const StyledLink = styled(Link)`
   position: absolute;
   top: 0;
   left: 0;
@@ -149,10 +148,10 @@ const FeaturedProject = ({ cover, path, customer, title }) => (
     <Image>
       <Img sizes={cover} />
     </Image>
-    <Link to={path} className={styledLink}>
+    <StyledLink to={path}>
       <Customer>{customer}</Customer>
       <Title>{title}</Title>
-    </Link>
+    </StyledLink>
     <ImageOverlay />
   </Wrapper>
 );

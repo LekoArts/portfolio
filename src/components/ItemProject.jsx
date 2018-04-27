@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
-import { css } from 'emotion';
 import styled from 'react-emotion';
 import theme from '../../config/theme';
 
-const styledLink = css`
+const StyledLink = styled(Link)`
   position: absolute;
   top: 0;
   right: 0;
@@ -55,10 +54,10 @@ const Wrapper = styled.div`
 const ItemProject = ({ cover, path, customer, title }) => (
   <Wrapper>
     <Img sizes={cover} />
-    <Link to={path} className={styledLink}>
+    <StyledLink to={path}>
       <div>{customer}</div>
       <h2>{title}</h2>
-    </Link>
+    </StyledLink>
   </Wrapper>
 );
 

@@ -26,7 +26,7 @@ const TagsContainer = styled.div`
 `;
 
 const Tags = ({ tags }) => (
-  <TagsContainer data-name="tags-container">
+  <TagsContainer>
     {tags &&
       tags.map(tag => (
         <Link key={tag} to={`/tags/${kebabCase(tag)}`}>

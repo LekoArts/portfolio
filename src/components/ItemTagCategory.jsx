@@ -37,7 +37,7 @@ const Excerpt = styled.div`
 const ItemTagCategory = ({ category, path, title, date, timeToRead, tags, excerpt }) => (
   <Wrapper>
     <Information>
-      <Link to={path} className="linktitle">
+      <Link to={path}>
         <h1>{title}</h1>
       </Link>
       <Statistics>

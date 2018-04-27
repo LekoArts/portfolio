@@ -26,6 +26,16 @@ const colors = {
     light: '#46507a',
     dark: '#262c41',
   },
+  brands: {
+    discord: '#7289da',
+    instagram: {
+      yellow: '#f7eb4c',
+      pink: '#ee2a7b',
+      blue: '#4c6aff',
+    },
+    behance: '#191919',
+    youtube: '#ff0000',
+  },
 };
 
 const tint = {

@@ -38,11 +38,11 @@ const Nav = styled.nav`
     transition: all 0.4s;
     border-bottom: 1px solid transparent;
     &:hover {
-      border-bottom: 1px solid white;
-      color: white;
+      border-bottom: 1px solid ${props => props.theme.colors.white.base};
+      color: ${props => props.theme.colors.white.base};
     }
     &:focus {
-      color: white;
+      color: ${props => props.theme.colors.white.base};
     }
   }
 `;
