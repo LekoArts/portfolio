@@ -58,7 +58,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                   title
                   cover {
                     childImageSharp {
-                      resize(width: 400) {
+                      resize(width: 600) {
                         src
                       }
                     }
@@ -83,7 +83,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                   title
                   cover {
                     childImageSharp {
-                      resize(width: 400) {
+                      resize(width: 600) {
                         src
                       }
                     }
