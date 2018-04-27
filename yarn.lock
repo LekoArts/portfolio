@@ -8646,10 +8646,6 @@ react-dev-utils@^4.2.1:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-disqus-comments@^1.1.1:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-disqus-comments/-/react-disqus-comments-1.2.0.tgz#e5aae2ea6cdce998cfc1340aab11df1be68f71f5"
-
 react-dom@^15.6.0:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"
@@ -10684,6 +10680,14 @@ type-of@^2.0.1:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typeface-istok-web@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-istok-web/-/typeface-istok-web-0.0.54.tgz#4441692493c0ffe843eedb6267ffc0a7692f6c36"
+
+typeface-montserrat@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-montserrat/-/typeface-montserrat-0.0.54.tgz#3fc338db6428d73485b75aa7bd2af8c9a55b9ab3"
 
 typography-normalize@^0.14.0:
   version "0.14.0"

@@ -4,6 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectGlobal } from 'emotion';
 import { ThemeProvider } from 'emotion-theming';
+import 'typeface-montserrat';
+import 'typeface-istok-web';
 import SEO from '../components/SEO';
 import Navigation from '../components/Navigation';
 import theme from '../../config/theme';
