@@ -62,7 +62,7 @@ Wie du im nachfolgenden Bild siehst wurden sowohl mehrere Texturen überlagert a
 
 ![](comp_basic_1_06.jpg)
 
-Das gerade Stück Erde kannst du durch <mark>Transformieren → Verzerren</mark> anhand der 3D-Vorlage transformieren und solltest dieses Ergebnis dann sehen:
+Das gerade Stück Erde kannst du durch `Transformieren → Verzerren` anhand der 3D-Vorlage transformieren und solltest dieses Ergebnis dann sehen:
 
 ![](comp_basic_1_07.jpg)
 
