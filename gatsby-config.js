@@ -87,7 +87,7 @@ module.exports = {
         start_url: config.pathPrefix,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
-        display: 'standalone',
+        display: 'fullscreen',
         icons: [
           {
             src: '/favicons/android-chrome-192x192.png',
@@ -102,7 +102,7 @@ module.exports = {
         ],
       },
     },
-    // Must be placed at the end
+    /* Must be placed at the end */
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
   ],

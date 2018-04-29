@@ -2,7 +2,7 @@ module.exports = {
   // Basics
   blogPostDir: 'blog',
   projectPostDir: 'projekt',
-  // Meta Daten
+  // Meta Data
   siteTitle: 'LekoArts - Kommunikationsdesigner & Front-End Entwickler',
   siteTitleAlt: 'LekoArts - Kommunikationsdesigner & Front-End Entwickler',
   siteShortName: 'LekoArts',
@@ -16,7 +16,6 @@ module.exports = {
   googleAnalyticsID: 'UA-47519312-1',
   twitter: 'lekoarts_de',
   facebook: 'lekoarts.de',
-  disqusShortname: 'lekoarts',
   // Manifest
   themeColor: '#3498DB',
   backgroundColor: '#3498DB',
