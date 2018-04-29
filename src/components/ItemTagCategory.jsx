@@ -57,7 +57,7 @@ ItemTagCategory.propTypes = {
   path: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  timeToRead: PropTypes.string.isRequired,
+  timeToRead: PropTypes.number.isRequired,
   tags: PropTypes.array.isRequired,
   excerpt: PropTypes.string.isRequired,
 };

@@ -22,9 +22,8 @@ const Tag = ({
   <React.Fragment>
     <Helmet title={`${tag} | ${config.siteTitle}`} />
     <Header slim title={tag}>
-      {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} wurde{totalCount === 1 ? '' : 'n'} mit "{
-        tag
-      }" markiert <br />
+      {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} wurde{totalCount === 1 ? '' : 'n'} mit "{tag}" markiert{' '}
+      <br />
       <StyledLink to="/tags">Alle Tags</StyledLink>
     </Header>
     <Container>

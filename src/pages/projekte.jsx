@@ -10,6 +10,7 @@ import Container from '../components/Container';
 
 const Base = styled.div`
   padding-top: 2rem;
+  padding-bottom: 2rem;
   column-gap: 2rem;
   column-width: 500px;
 `;

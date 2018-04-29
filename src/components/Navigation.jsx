@@ -35,7 +35,7 @@ const Nav = styled.nav`
   a {
     color: ${props => props.theme.colors.white.base};
     margin-left: 2rem;
-    transition: all 0.4s;
+    transition: all ${props => props.theme.transitions.default.duration};
     border-bottom: 1px solid transparent;
     &:hover {
       border-bottom: 1px solid ${props => props.theme.colors.white.base};

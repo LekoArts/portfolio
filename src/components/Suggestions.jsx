@@ -20,13 +20,22 @@ const ImageOverlay = styled.div`
   bottom: 0;
   left: 0;
   z-index: 2;
-  opacity: 0.1;
+  opacity: 0;
   transition: opacity ${props => props.theme.transitions.default.duration};
-  background-image: linear-gradient(
+  ${props =>
+    props.primary &&
+    `background-image: linear-gradient(
     30deg,
-    ${props => props.theme.colors.primary.light} 0%,
-    ${props => props.theme.colors.primary.dark} 100%
-  );
+    ${props.theme.colors.primary.light} 0%,
+    ${props.theme.colors.primary.dark} 100%
+  )`};
+  ${props =>
+    props.secondary &&
+    `background-image: linear-gradient(
+    30deg,
+    ${props.theme.colors.secondary.light} 0%,
+    ${props.theme.colors.secondary.dark} 100%
+  )`};
 `;
 
 const Wrapper = styled.article`
@@ -81,9 +90,9 @@ const StyledLink = styled(Link)`
     background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.4) 35%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0, 0.4) 65%,
+      rgba(0, 0, 0, 0.42) 35%,
+      rgba(0, 0, 0, 0.55) 50%,
+      rgba(0, 0, 0, 0.42) 65%,
       rgba(0, 0, 0, 0) 100%
     );
     z-index: -10;
@@ -121,7 +130,7 @@ const Title = styled.h4`
   text-shadow: ${props => props.theme.shadow.text.small};
 `;
 
-const Suggestions = ({ left, right }) => (
+const Suggestions = ({ left, right, primary, secondary }) => (
   <Row>
     {left && (
       <Wrapper>
@@ -131,7 +140,7 @@ const Suggestions = ({ left, right }) => (
         <StyledLink to={left.fields.slug}>
           <Title>{left.frontmatter.title}</Title>
         </StyledLink>
-        <ImageOverlay />
+        <ImageOverlay primary={primary} secondary={secondary} />
       </Wrapper>
     )}
 
@@ -143,7 +152,7 @@ const Suggestions = ({ left, right }) => (
         <StyledLink to={right.fields.slug}>
           <Title>{right.frontmatter.title}</Title>
         </StyledLink>
-        <ImageOverlay />
+        <ImageOverlay primary={primary} secondary={secondary} />
       </Wrapper>
     )}
   </Row>
@@ -154,4 +163,11 @@ export default Suggestions;
 Suggestions.propTypes = {
   left: PropTypes.any.isRequired,
   right: PropTypes.any.isRequired,
+  primary: PropTypes.bool,
+  secondary: PropTypes.bool,
+};
+
+Suggestions.defaultProps = {
+  primary: true,
+  secondary: false,
 };

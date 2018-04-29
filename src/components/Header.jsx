@@ -27,7 +27,7 @@ const Text = styled.div`
   flex-direction: column;
   text-align: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: ${props => props.theme.layout.base};
   padding: 0 2rem;
   margin-bottom: 7rem;
   align-items: center;

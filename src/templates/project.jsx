@@ -16,6 +16,8 @@ import { Card } from '../components/Card';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Line from '../components/Line';
+import InfoText from '../utils/InfoText';
+import Hero from '../utils/Hero';
 import config from '../../config/website';
 
 import '../utils/prism-okaida.css';
@@ -63,21 +65,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const Hero = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  color: ${props => props.theme.colors.white.light};
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: ${props => props.theme.layout.base};
-  padding: 0 2rem;
-  text-align: center;
-`;
-
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -97,14 +84,6 @@ const CardWrapper = styled.div`
       margin-bottom: 1.5rem;
     }
   }
-`;
-
-const InfoText = styled.p`
-  text-transform: uppercase;
-  font-family: ${props => props.theme.fontFamily.heading};
-  font-weight: 700;
-  text-align: center;
-  color: ${props => props.theme.colors.black.lighter};
 `;
 
 const Project = ({ pathContext: { slug, left, right }, data: { markdownRemark: postNode } }) => {

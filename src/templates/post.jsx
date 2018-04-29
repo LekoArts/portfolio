@@ -16,6 +16,8 @@ import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Line from '../components/Line';
 import { hideS } from '../utils/hide';
+import Hero from '../utils/Hero';
+import InfoText from '../utils/InfoText';
 import config from '../../config/website';
 
 import '../utils/prism-okaida.css';
@@ -63,21 +65,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const Hero = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  color: ${props => props.theme.colors.white.light};
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: ${props => props.theme.layout.base};
-  padding: 0 2rem;
-  text-align: center;
-`;
-
 const Information = styled.div`
   margin-top: 2rem;
   font-family: ${props => props.theme.fontFamily.heading};
@@ -86,22 +73,17 @@ const Information = styled.div`
     transition: all 0.4s;
     border-bottom: 1px solid transparent;
     &:hover {
-      border-bottom: 1px solid white;
-      color: white;
+      border-bottom: 1px solid ${props => props.theme.colors.white.base};
+      color: ${props => props.theme.colors.white.base};
     }
     &:focus {
-      color: white;
+      color: ${props => props.theme.colors.white.base};
     }
   }
 `;
 
-const InfoText = styled.p`
-  margin-top: 4rem;
-  text-transform: uppercase;
-  font-family: ${props => props.theme.fontFamily.heading};
-  font-weight: 700;
-  text-align: center;
-  color: ${props => props.theme.colors.black.lighter};
+const Note = styled.p`
+  margin-bottom: 4rem;
 `;
 
 const fontBold = css`
@@ -134,14 +116,14 @@ const Post = ({ pathContext: { slug, left, right }, data: { markdownRemark: post
         <Content input={postNode.html} />
         <Line />
         <Tags tags={post.tags} />
-        <p>
+        <Note>
           <span className={fontBold}>Interesse geweckt?</span> Lies alle Beiträge in der Kategorie{' '}
           <Link to={`/categories/${kebabCase(post.category)}`}>{post.category}</Link>
-        </p>
+        </Note>
       </Container>
       <Container>
         <InfoText>Weitere Blogeinträge</InfoText>
-        <Suggestions left={left} right={right} />
+        <Suggestions left={left} right={right} secondary />
       </Container>
       <Footer>
         <h2>Lust auf mehr Tutorials & Goodies? Werde ein Patron.</h2>

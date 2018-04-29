@@ -82,7 +82,7 @@ const Footer = ({ children }) => {
     <Wrapper>
       <Wave orientation="top" />
       <Container>
-        <OptionalContent>{children}</OptionalContent>
+        {children && <OptionalContent>{children}</OptionalContent>}
         <Content>
           <Important>
             <a href="https://www.patreon.com/lekoarts" target="_blank" rel="noopener noreferrer">

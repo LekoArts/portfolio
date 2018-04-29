@@ -52,7 +52,7 @@ const gradient = {
 const shadow = {
   button: {
     default: '0 20px 20px',
-    hover: '0 23px 25px',
+    hover: '0 23px 28px',
   },
   card: '0 20px 30px rgba(0, 0, 0, 0.1)',
   feature: {
@@ -66,7 +66,7 @@ const shadow = {
     },
   },
   text: {
-    small: '0 5px 10px rgba(0, 0, 0, 0.2)',
+    small: '0 5px 10px rgba(0, 0, 0, 0.25)',
     big: '0 15px 20px rgba(0, 0, 0, 0.13)',
   },
 };
@@ -114,8 +114,8 @@ const theme = {
     l: '1200px',
   },
   fontFamily: {
-    body: `'Istok Web', sans-serif`,
-    heading: `'Montserrat', sans-serif`,
+    body: `'Istok Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`,
+    heading: `'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`,
   },
   layout: {
     article: '44.444rem',
