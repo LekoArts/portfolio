@@ -5,12 +5,12 @@ import Wave from './Wave';
 
 const Wrapper = styled.header`
   background: ${props => props.theme.gradient.rightToLeft};
-  height: ${props => (props.slim ? '450px' : '650px')};
+  height: ${props => (props.big ? '650px' : '450px')};
   @media (max-width: ${props => props.theme.breakpoints.m}) {
-    height: ${props => (props.slim ? '400px' : '600px')};
+    height: ${props => (props.big ? '600px' : '400px')};
   }
   @media (max-width: ${props => props.theme.breakpoints.s}) {
-    height: ${props => (props.slim ? '375px' : '500px')};
+    height: ${props => (props.big ? '375px' : '325px')};
   }
   position: relative;
   overflow: hidden;
@@ -38,8 +38,8 @@ const Subtitle = styled.p`
   color: ${props => props.theme.colors.white.blue};
 `;
 
-const Header = ({ children, title, slim }) => (
-  <Wrapper slim={slim}>
+const Header = ({ children, title, big }) => (
+  <Wrapper big={big}>
     <Text>
       <h1>{title}</h1>
       {children && <Subtitle>{children}</Subtitle>}
@@ -53,9 +53,9 @@ export default Header;
 Header.propTypes = {
   children: PropTypes.node,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-  slim: PropTypes.bool,
+  big: PropTypes.bool,
 };
 
 Header.defaultProps = {
-  slim: false,
+  big: false,
 };

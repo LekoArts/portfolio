@@ -3,6 +3,7 @@ import Link from 'gatsby-link';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import kebabCase from 'lodash/kebabCase';
+import size from 'lodash/size';
 import { darken } from 'polished';
 import Helmet from 'react-helmet';
 import config from '../../config/website';
@@ -37,12 +38,14 @@ const Number = styled.span`
 
 const Categories = ({
   data: {
-    allMarkdownRemark: { group },
+    allMarkdownRemark: { group, edges },
   },
 }) => (
   <React.Fragment>
     <Helmet title={`Kategorien | ${config.siteTitle}`} />
-    <Header slim title="Kategorien" />
+    <Header title="Kategorien">
+      {size(edges)} Beiträge wurden in {size(group)} Kategorien eingeteilt
+    </Header>
     <Container>
       <TagsContainer>
         {group.map(category => (
@@ -64,6 +67,7 @@ Categories.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       group: PropTypes.array.isRequired,
+      edges: PropTypes.array.isRequired,
     }),
   }),
 };
@@ -71,10 +75,15 @@ Categories.propTypes = {
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query CategoriesPage {
-    allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "posts" } } }) {
+    allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "blog" } } }) {
       group(field: frontmatter___category) {
         fieldValue
         totalCount
+      }
+      edges {
+        node {
+          id
+        }
       }
     }
   }

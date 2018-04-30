@@ -55,7 +55,7 @@ const CardContainer = styled(Container)`
 const Kontakt = () => (
   <React.Fragment>
     <Helmet title={`Kontakt | ${config.siteTitle}`} />
-    <Header slim title="Kontakt">
+    <Header title="Kontakt">
       Ich freue mich von dir zu hören – egal, ob du eine Projektanfrage hast, Rat brauchst oder einfach quatschen willst
     </Header>
     <Wrapper>

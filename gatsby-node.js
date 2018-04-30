@@ -2,7 +2,7 @@ const path = require('path');
 const _ = require('lodash');
 
 const pathPrefixes = {
-  posts: '/blog',
+  blog: '/blog',
   projects: '/projekte',
 };
 
@@ -47,7 +47,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       graphql(`
         {
           posts: allMarkdownRemark(
-            filter: { fields: { sourceInstanceName: { eq: "posts" } } }
+            filter: { fields: { sourceInstanceName: { eq: "blog" } } }
             sort: { fields: [frontmatter___date], order: DESC }
           ) {
             edges {
@@ -105,44 +105,44 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         const postsList = result.data.posts.edges;
         const projectsList = result.data.projects.edges;
 
-        postsList.forEach(edge => {
-          if (edge.node.frontmatter.tags) {
-            edge.node.frontmatter.tags.forEach(tag => {
+        postsList.forEach(post => {
+          if (post.node.frontmatter.tags) {
+            post.node.frontmatter.tags.forEach(tag => {
               tagSet.add(tag);
             });
           }
 
-          if (edge.node.frontmatter.category) {
-            categorySet.add(edge.node.frontmatter.category);
+          if (post.node.frontmatter.category) {
+            categorySet.add(post.node.frontmatter.category);
           }
 
-          const filtered = _.filter(postsList, input => input.node.fields.slug !== edge.node.fields.slug);
+          const filtered = _.filter(postsList, input => input.node.fields.slug !== post.node.fields.slug);
           const sample = _.sampleSize(filtered, 2);
           const left = sample[0].node;
           const right = sample[1].node;
 
           createPage({
-            path: edge.node.fields.slug,
+            path: post.node.fields.slug,
             component: postPage,
             context: {
-              slug: edge.node.fields.slug,
+              slug: post.node.fields.slug,
               left,
               right,
             },
           });
         });
 
-        projectsList.forEach(edge => {
-          const filtered = _.filter(projectsList, input => input.node.fields.slug !== edge.node.fields.slug);
+        projectsList.forEach(project => {
+          const filtered = _.filter(projectsList, input => input.node.fields.slug !== project.node.fields.slug);
           const sample = _.sampleSize(filtered, 2);
           const left = sample[0].node;
           const right = sample[1].node;
 
           createPage({
-            path: edge.node.fields.slug,
+            path: project.node.fields.slug,
             component: projectPage,
             context: {
-              slug: edge.node.fields.slug,
+              slug: project.node.fields.slug,
               left,
               right,
             },

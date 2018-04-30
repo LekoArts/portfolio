@@ -12,11 +12,14 @@ const Wrapper = styled.footer`
   padding-bottom: 2rem;
   background: ${props => props.theme.gradient.leftToRight};
   font-family: ${props => props.theme.fontFamily.heading};
+  @media (max-width: ${props => props.theme.breakpoints.s}) {
+    padding-top: 7rem;
+  }
 `;
 
 const OptionalContent = styled.div`
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   text-align: center;
   h1,
   h2 {
@@ -28,7 +31,7 @@ const OptionalContent = styled.div`
 `;
 
 const Content = styled.div`
-  margin-top: 4rem;
+  margin-top: 2rem;
   margin-bottom: 4rem;
   display: flex;
   flex-direction: row;

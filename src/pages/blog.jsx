@@ -22,7 +22,7 @@ const Blog = ({
 }) => (
   <React.Fragment>
     <Helmet title={`Blog | ${config.siteTitle}`} />
-    <Header slim title="Blog">
+    <Header title="Blog">
       Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten
     </Header>
     <Container type="big">
@@ -62,7 +62,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "posts" } } }
+      filter: { fields: { sourceInstanceName: { eq: "blog" } } }
     ) {
       edges {
         node {

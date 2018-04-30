@@ -22,7 +22,7 @@ const Projekte = ({
 }) => (
   <React.Fragment>
     <Helmet title={`Projekte | ${config.siteTitle}`} />
-    <Header slim title="Projekte">
+    <Header title="Projekte">
       Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken
     </Header>
     <Container type="big">

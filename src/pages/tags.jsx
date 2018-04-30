@@ -3,6 +3,7 @@ import Link from 'gatsby-link';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import kebabCase from 'lodash/kebabCase';
+import size from 'lodash/size';
 import { darken } from 'polished';
 import Helmet from 'react-helmet';
 import config from '../../config/website';
@@ -37,12 +38,14 @@ const Number = styled.span`
 
 const Tags = ({
   data: {
-    allMarkdownRemark: { group },
+    allMarkdownRemark: { group, edges },
   },
 }) => (
   <React.Fragment>
     <Helmet title={`Tags | ${config.siteTitle}`} />
-    <Header slim title="Tags" />
+    <Header title="Tags">
+      {size(edges)} Beiträge wurden mit {size(group)} Tags markiert
+    </Header>
     <Container>
       <TagsContainer>
         {group.map(tag => (
@@ -64,6 +67,7 @@ Tags.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       group: PropTypes.array.isRequired,
+      edges: PropTypes.array.isRequired,
     }),
   }),
 };
@@ -71,10 +75,15 @@ Tags.propTypes = {
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query TagsPage {
-    allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "posts" } } }) {
+    allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "blog" } } }) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
+      }
+      edges {
+        node {
+          id
+        }
       }
     }
   }

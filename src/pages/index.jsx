@@ -46,6 +46,7 @@ const Index = ({
 }) => (
   <React.Fragment>
     <Header
+      big
       title={
         <React.Fragment>
           Kommunikationsdesigner & <br /> Front-End Entwickler
@@ -142,7 +143,7 @@ export const pageQuery = graphql`
     posts: allMarkdownRemark(
       limit: 2
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "posts" } } }
+      filter: { fields: { sourceInstanceName: { eq: "blog" } } }
     ) {
       edges {
         node {

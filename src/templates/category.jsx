@@ -21,7 +21,7 @@ const Category = ({
 }) => (
   <React.Fragment>
     <Helmet title={`${category} | ${config.siteTitle}`} />
-    <Header slim title={category}>
+    <Header title={category}>
       {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} {totalCount === 1 ? 'gehört' : 'gehören'} der Kategorie "{
         category
       }" an <br />
