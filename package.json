@@ -68,6 +68,6 @@
     "dev": "gatsby develop -o",
     "build": "gatsby build",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lint:fix": "eslint **/*.jsx --fix --ignore-path .gitignore"
+    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore"
   }
 }
