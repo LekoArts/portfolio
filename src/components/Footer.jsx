@@ -50,6 +50,7 @@ const Content = styled.div`
 
 const Item = styled.div`
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   text-shadow: ${props => props.theme.shadow.text.small};
   @media (max-width: ${props => props.theme.breakpoints.s}) {
@@ -108,12 +109,15 @@ const Footer = ({ children }) => {
             <a href="https://www.facebook.com/lekoarts.de" target="_blank" rel="noopener noreferrer">
               Facebook
             </a>
+            <a href="https://github.com/LeKoArts" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
             <a href="https://www.instagram.com/lekoarts.de" target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
           </Item>
         </Content>
-        <Copyright>{`Copyright © ${date}. LekoArts. Alle Rechte vorbehalten.`}</Copyright>
+        <Copyright>Copyright © {date}. LekoArts. Alle Rechte vorbehalten.</Copyright>
       </Container>
     </Wrapper>
   );
