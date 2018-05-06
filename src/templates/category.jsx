@@ -50,12 +50,12 @@ export default Category;
 Category.propTypes = {
   pathContext: PropTypes.shape({
     category: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 /* eslint no-undef: "off" */

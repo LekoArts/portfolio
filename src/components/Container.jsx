@@ -24,4 +24,5 @@ Container.propTypes = {
 
 Container.defaultProps = {
   type: 'base',
+  className: null,
 };

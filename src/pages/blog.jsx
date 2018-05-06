@@ -22,9 +22,7 @@ const Blog = ({
 }) => (
   <React.Fragment>
     <Helmet title={`Blog | ${config.siteTitle}`} />
-    <Header title="Blog">
-      Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten
-    </Header>
+    <Header title="Blog">Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten</Header>
     <Container type="big">
       <Base>
         {edges.map(post => (
@@ -53,7 +51,7 @@ Blog.propTypes = {
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 /* eslint no-undef: "off" */

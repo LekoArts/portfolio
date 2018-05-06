@@ -110,7 +110,7 @@ Index.propTypes = {
     posts: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 /* eslint no-undef: "off" */

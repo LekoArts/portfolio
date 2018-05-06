@@ -1,6 +1,7 @@
 /* eslint max-len: 0 */
 /* eslint react/no-unescaped-entities: 0 */
 /* eslint no-script-url: 0 */
+/* eslint jsx-a11y/anchor-is-valid: 0 */
 
 import React from 'react';
 import Helmet from 'react-helmet';

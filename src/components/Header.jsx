@@ -51,11 +51,12 @@ const Header = ({ children, title, big }) => (
 export default Header;
 
 Header.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.any,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   big: PropTypes.bool,
 };
 
 Header.defaultProps = {
   big: false,
+  children: false,
 };

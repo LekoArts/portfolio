@@ -69,7 +69,7 @@ Categories.propTypes = {
       group: PropTypes.array.isRequired,
       edges: PropTypes.array.isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 /* eslint no-undef: "off" */

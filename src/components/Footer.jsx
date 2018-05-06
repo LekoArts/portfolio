@@ -126,5 +126,9 @@ const Footer = ({ children }) => {
 export default Footer;
 
 Footer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.any,
+};
+
+Footer.defaultProps = {
+  children: false,
 };

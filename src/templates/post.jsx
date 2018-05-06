@@ -140,10 +140,10 @@ export default Post;
 Post.propTypes = {
   pathContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
   data: PropTypes.shape({
     markdownRemark: PropTypes.object.isRequired,
-  }),
+  }).isRequired,
 };
 
 /* eslint no-undef: "off" */

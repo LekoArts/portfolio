@@ -159,4 +159,5 @@ LinkCard.defaultProps = {
   instagram: false,
   behance: false,
   youtube: false,
+  className: 'default',
 };

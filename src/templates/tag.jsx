@@ -49,12 +49,12 @@ export default Tag;
 Tag.propTypes = {
   pathContext: PropTypes.shape({
     tag: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 /* eslint no-undef: "off" */
