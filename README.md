@@ -15,11 +15,8 @@ Starting the local development server:
 yarn run dev
 ```
 
-Creating a local build:
-```bash
-yarn run build
-```
+## License
 
-## Deployment
+Only for educational purposes! You are **not** allowed to use this site publicly and/or commercially. 
 
-Automatic deployment via Netlify. Push & pull requests trigger a new build.
+You are **not** permitted to use, modify, or share the software for any purpose other than for private educational purposes.
