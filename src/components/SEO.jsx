@@ -15,7 +15,7 @@ const SEO = props => {
     title = postMeta.title; // eslint-disable-line prefer-destructuring
     description = postNode.excerpt;
     image = postMeta.cover.childImageSharp.resize.src;
-    postURL = config.siteUrl + config.pathPrefix + postPath;
+    postURL = config.siteUrl + postPath;
   } else {
     title = config.siteTitle;
     description = config.siteDescription;
@@ -34,7 +34,7 @@ const SEO = props => {
     },
   ];
   if (postSEO) {
-    schemaOrgJSONLD.push([
+    schemaOrgJSONLD.push(
       {
         '@context': 'http://schema.org',
         '@type': 'BreadcrumbList',
@@ -62,8 +62,8 @@ const SEO = props => {
           url: image,
         },
         description,
-      },
-    ]);
+      }
+    );
   }
   return (
     <Helmet>
