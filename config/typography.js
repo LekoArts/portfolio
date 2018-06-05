@@ -5,7 +5,7 @@ const typography = new Typography({
   baseFontSize: '18px',
   baseLineHeight: 1.45,
   headerFontFamily: [
-    '"Montserrat"',
+    'Montserrat',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
@@ -18,7 +18,7 @@ const typography = new Typography({
     'Segoe UI Symbol',
   ],
   bodyFontFamily: [
-    '"Istok Web"',
+    'Istok Web',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
