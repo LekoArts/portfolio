@@ -247,7 +247,6 @@ injectGlobal`
     background: #131316;
     font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
     text-align: left;
-    white-space: pre;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
@@ -273,7 +272,6 @@ injectGlobal`
     background: none;
     font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
     text-align: left;
-    white-space: pre;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
