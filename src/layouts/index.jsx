@@ -292,6 +292,16 @@ injectGlobal`
     margin: 0.5em 0;
     overflow: auto;
     border-radius: 0.3em;
+    &::-webkit-scrollbar-thumb {
+      background: ${theme.colors.primary.base};
+    }
+    &::-webkit-scrollbar-track {
+      background: ${theme.colors.black.light};
+    }
+    &::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
   }
 
   :not(pre) > code[class*="language-"],
