@@ -1,4 +1,3 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
 import styled from 'react-emotion';
 import { darken } from 'polished';
 

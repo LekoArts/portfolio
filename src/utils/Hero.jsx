@@ -1,8 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
-const Content = styled.div`
+const Hero = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -17,10 +15,4 @@ const Content = styled.div`
   text-align: center;
 `;
 
-const Hero = ({ children }) => <Content>{children}</Content>;
-
 export default Hero;
-
-Hero.propTypes = {
-  children: PropTypes.node.isRequired,
-};
