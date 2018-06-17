@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
 import styled, { keyframes } from 'react-emotion';
-import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import kebabCase from 'lodash/kebabCase';
@@ -18,7 +17,6 @@ import Line from '../components/Line';
 import { hideS } from '../utils/hide';
 import Hero from '../utils/Hero';
 import InfoText from '../utils/InfoText';
-import config from '../../config/website';
 
 const pulse = keyframes`
   0% {
@@ -97,7 +95,6 @@ const Post = ({ pathContext: { slug, left, right }, data: { markdownRemark: post
 
   return (
     <React.Fragment>
-      <Helmet title={`${post.title} | ${config.siteTitle}`} />
       <SEO postPath={slug} postNode={postNode} postSEO />
       <Wrapper>
         <Hero>
@@ -169,6 +166,7 @@ export const pageQuery = graphql`
       }
       fields {
         slug
+        sourceInstanceName
       }
     }
   }

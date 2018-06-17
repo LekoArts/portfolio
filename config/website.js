@@ -4,7 +4,7 @@ module.exports = {
   projectPostDir: 'projekt',
   // Meta Data
   siteTitle: 'LekoArts - Kommunikationsdesigner & Front-End Entwickler',
-  siteTitleAlt: 'LekoArts - Kommunikationsdesigner & Front-End Entwickler',
+  siteTitleAlt: 'LekoArts',
   siteShortName: 'LekoArts',
   siteLogo: '/social/avatar.png',
   siteBanner: '/social/banner.jpg',

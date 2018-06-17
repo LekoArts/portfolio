@@ -119,7 +119,7 @@ export const pageQuery = graphql`
     projects: allMarkdownRemark(
       limit: 3
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "projects" } } }
+      filter: { fields: { sourceInstanceName: { eq: "projekte" } } }
     ) {
       edges {
         node {

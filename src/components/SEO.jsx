@@ -3,6 +3,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import config from '../../config/website';
+import cfl from '../utils/cfl';
 
 const SEO = props => {
   const { postNode, postPath, postSEO } = props;
@@ -12,7 +13,7 @@ const SEO = props => {
   let postURL;
   if (postSEO) {
     const postMeta = postNode.frontmatter;
-    title = postMeta.title; // eslint-disable-line prefer-destructuring
+    title = `${postMeta.title} | ${config.siteTitleAlt} – ${cfl(postNode.fields.sourceInstanceName)}`;
     description = postNode.excerpt;
     image = postMeta.cover.childImageSharp.resize.src;
     postURL = config.siteUrl + postPath;

@@ -22,7 +22,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'projects',
+        name: 'projekte',
         path: `${__dirname}/content/${config.projectPostDir}`,
       },
     },

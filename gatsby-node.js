@@ -3,7 +3,7 @@ const _ = require('lodash');
 
 const pathPrefixes = {
   blog: '/blog',
-  projects: '/projekte',
+  projekte: '/projekte',
 };
 
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
@@ -71,7 +71,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             }
           }
           projects: allMarkdownRemark(
-            filter: { fields: { sourceInstanceName: { eq: "projects" } } }
+            filter: { fields: { sourceInstanceName: { eq: "projekte" } } }
             sort: { fields: [frontmatter___date], order: DESC }
           ) {
             edges {
