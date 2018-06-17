@@ -20,8 +20,6 @@ import Hero from '../utils/Hero';
 import InfoText from '../utils/InfoText';
 import config from '../../config/website';
 
-import '../utils/prism-okaida.css';
-
 const pulse = keyframes`
   0% {
     transform: scale(1);
@@ -160,10 +158,10 @@ export const pageQuery = graphql`
         tags
         cover {
           childImageSharp {
-            sizes(maxWidth: 1920, quality: 85, duotone: { highlight: "#EE9338", shadow: "#BE7123" }) {
+            sizes(maxWidth: 1920, quality: 90, duotone: { highlight: "#EE9338", shadow: "#BE7123" }) {
               ...GatsbyImageSharpSizes_withWebp
             }
-            resize(width: 1200) {
+            resize(width: 1200, quality: 90) {
               src
             }
           }
