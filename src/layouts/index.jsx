@@ -313,6 +313,8 @@ injectGlobal`
     border-radius: 0.3em;
     background: rgba(52,152,219,0.2);
     color: #2e3246;
+    bottom: 2px;
+    position: relative;
   }
 
   .token.operator {
