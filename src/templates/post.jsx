@@ -1,22 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
-import styled, { keyframes } from 'react-emotion';
+import styled, { keyframes, css } from 'react-emotion';
 import Img from 'gatsby-image';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
+import { SEO, Container, Content, Wave, Line, Layout } from 'elements';
+import { hideS, Hero, InfoText } from 'utilities';
 import Tags from '../components/Tags';
 import Suggestions from '../components/Suggestions';
-import SEO from '../components/SEO';
-import Container from '../components/Container';
-import Content from '../components/Content';
-import Wave from '../components/Wave';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import Line from '../components/Line';
-import { hideS } from '../utils/hide';
-import Hero from '../utils/Hero';
-import InfoText from '../utils/InfoText';
 
 const pulse = keyframes`
   0% {
@@ -86,15 +79,15 @@ const fontBold = css`
   font-weight: 700;
 `;
 
-const Post = ({ pathContext: { slug, left, right }, data: { markdownRemark: postNode } }) => {
+const Post = ({ pageContext: { slug, left, right }, data: { markdownRemark: postNode } }) => {
   const post = postNode.frontmatter;
-  const { sizes } = post.cover.childImageSharp;
+  const { fluid } = post.cover.childImageSharp;
   if (!post.id) {
     post.id = slug;
   }
 
   return (
-    <React.Fragment>
+    <Layout>
       <SEO postPath={slug} postNode={postNode} postSEO />
       <Wrapper>
         <Hero>
@@ -105,7 +98,7 @@ const Post = ({ pathContext: { slug, left, right }, data: { markdownRemark: post
           </Information>
         </Hero>
         <Wave />
-        <Img sizes={sizes} />
+        <Img fluid={fluid} />
       </Wrapper>
       <Container type="article">
         <Content input={postNode.html} />
@@ -126,14 +119,14 @@ const Post = ({ pathContext: { slug, left, right }, data: { markdownRemark: post
           <Button type="secondary">Patreon</Button>
         </a>
       </Footer>
-    </React.Fragment>
+    </Layout>
   );
 };
 
 export default Post;
 
 Post.propTypes = {
-  pathContext: PropTypes.shape({
+  pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
@@ -155,8 +148,8 @@ export const pageQuery = graphql`
         tags
         cover {
           childImageSharp {
-            sizes(maxWidth: 1920, quality: 90, duotone: { highlight: "#EE9338", shadow: "#BE7123" }) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#EE9338", shadow: "#BE7123" }) {
+              ...GatsbyImageSharpFluid_withWebp
             }
             resize(width: 1200, quality: 90) {
               src

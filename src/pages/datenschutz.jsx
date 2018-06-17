@@ -6,12 +6,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import Footer from '../components/Footer';
-import Container from '../components/Container';
+import { Container, Layout } from 'elements';
 import Header from '../components/Header';
 import config from '../../config/website';
 
 const Datenschutzerklaerung = () => (
-  <React.Fragment>
+  <Layout>
     <Helmet title={`Datenschutzerklärung | ${config.siteTitle}`} />
     <Header title="Datenschutzerklärung" />
     <div style={{ marginTop: '3rem' }}>
@@ -359,7 +359,7 @@ const Datenschutzerklaerung = () => (
       </Container>
     </div>
     <Footer />
-  </React.Fragment>
+  </Layout>
 );
 
 export default Datenschutzerklaerung;

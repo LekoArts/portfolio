@@ -1,6 +1,5 @@
 import React from 'react';
-import { css } from 'emotion';
-import styled, { keyframes } from 'react-emotion';
+import styled, { keyframes, css } from 'react-emotion';
 import PropTypes from 'prop-types';
 import theme from '../../config/theme';
 

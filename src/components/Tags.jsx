@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'react-emotion';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import { darken } from 'polished';
 
 const TagsContainer = styled.div`

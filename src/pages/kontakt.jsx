@@ -4,7 +4,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'react-emotion';
 import Footer from '../components/Footer';
-import Container from '../components/Container';
+import { Container, Layout } from 'elements';
 import { LinkCard } from '../components/Card';
 import Header from '../components/Header';
 import Button from '../components/Button';
@@ -53,7 +53,7 @@ const CardContainer = styled(Container)`
 `;
 
 const Kontakt = () => (
-  <React.Fragment>
+  <Layout>
     <Helmet title={`Kontakt | ${config.siteTitle}`} />
     <Header title="Kontakt">
       Ich freue mich von dir zu hören – egal, ob du eine Projektanfrage hast, Rat brauchst oder einfach quatschen willst
@@ -99,7 +99,7 @@ const Kontakt = () => (
       </CardContainer>
     </Wrapper>
     <Footer />
-  </React.Fragment>
+  </Layout>
 );
 
 export default Kontakt;

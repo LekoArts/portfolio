@@ -6,8 +6,8 @@ const pathPrefixes = {
   projekte: '/projekte',
 };
 
-exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
-  const { createNodeField } = boundActionCreators;
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
   let slug;
   if (node.internal.type === 'MarkdownRemark') {
     const fileNode = getNode(node.parent);
@@ -35,8 +35,8 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   }
 };
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
     const postPage = path.resolve('src/templates/post.jsx');
@@ -103,6 +103,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         const categorySet = new Set();
 
         const postsList = result.data.posts.edges;
+        console.log(result.data.projects);
         const projectsList = result.data.projects.edges;
 
         postsList.forEach(post => {
@@ -172,5 +173,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         });
       })
     );
+  });
+};
+
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
   });
 };

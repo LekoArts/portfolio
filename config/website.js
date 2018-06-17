@@ -1,7 +1,7 @@
 module.exports = {
   // Basics
   blogPostDir: 'blog',
-  projectPostDir: 'projekt',
+  projectPostDir: 'projekte',
   // Meta Data
   siteTitle: 'LekoArts - Kommunikationsdesigner & Front-End Entwickler',
   siteTitleAlt: 'LekoArts',

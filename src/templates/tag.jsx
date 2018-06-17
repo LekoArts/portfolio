@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import styled from 'react-emotion';
 import Helmet from 'react-helmet';
+import { Container, Layout } from 'elements';
 import config from '../../config/website';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Container from '../components/Container';
 import ItemTagCategory from '../components/ItemTagCategory';
 
 const StyledLink = styled(Link)`
@@ -14,12 +14,12 @@ const StyledLink = styled(Link)`
 `;
 
 const Tag = ({
-  pathContext: { tag },
+  pageContext: { tag },
   data: {
     allMarkdownRemark: { edges, totalCount },
   },
 }) => (
-  <React.Fragment>
+  <Layout>
     <Helmet title={`${tag} | ${config.siteTitle}`} />
     <Header title={tag}>
       {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} wurde{totalCount === 1 ? '' : 'n'} mit "{tag}" markiert{' '}
@@ -41,13 +41,13 @@ const Tag = ({
       ))}
     </Container>
     <Footer />
-  </React.Fragment>
+  </Layout>
 );
 
 export default Tag;
 
 Tag.propTypes = {
-  pathContext: PropTypes.shape({
+  pageContext: PropTypes.shape({
     tag: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({

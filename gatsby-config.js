@@ -77,7 +77,6 @@ module.exports = {
     },
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-react-next',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

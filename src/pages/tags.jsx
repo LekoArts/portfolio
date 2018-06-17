@@ -1,15 +1,15 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import kebabCase from 'lodash/kebabCase';
 import size from 'lodash/size';
 import { darken } from 'polished';
 import Helmet from 'react-helmet';
+import { Container, Layout } from 'elements';
 import config from '../../config/website';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Container from '../components/Container';
 
 const TagsContainer = styled.div`
   margin: 2rem 0 4rem 0;
@@ -41,7 +41,7 @@ const Tags = ({
     allMarkdownRemark: { group, edges },
   },
 }) => (
-  <React.Fragment>
+  <Layout>
     <Helmet title={`Tags | ${config.siteTitle}`} />
     <Header title="Tags">
       {size(edges)} Beiträge wurden mit {size(group)} Tags markiert
@@ -58,7 +58,7 @@ const Tags = ({
       </TagsContainer>
     </Container>
     <Footer />
-  </React.Fragment>
+  </Layout>
 );
 
 export default Tags;

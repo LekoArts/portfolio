@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'react-emotion';
+import { Container, Layout } from 'elements';
 import config from '../../config/website';
 import ItemBlog from '../components/ItemBlog';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Container from '../components/Container';
 
 const Base = styled.div`
   margin-top: 2.5rem;
@@ -20,7 +20,7 @@ const Blog = ({
     allMarkdownRemark: { edges },
   },
 }) => (
-  <React.Fragment>
+  <Layout>
     <Helmet title={`Blog | ${config.siteTitle}`} />
     <Header title="Blog">Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten</Header>
     <Container type="big">
@@ -29,7 +29,7 @@ const Blog = ({
           <ItemBlog
             key={post.node.frontmatter.title}
             path={post.node.fields.slug}
-            cover={post.node.frontmatter.cover.childImageSharp.sizes}
+            cover={post.node.frontmatter.cover.childImageSharp.fluid}
             title={post.node.frontmatter.title}
             date={post.node.frontmatter.date}
             category={post.node.frontmatter.category}
@@ -41,7 +41,7 @@ const Blog = ({
       </Base>
     </Container>
     <Footer />
-  </React.Fragment>
+  </Layout>
 );
 
 export default Blog;
@@ -76,8 +76,8 @@ export const pageQuery = graphql`
             tags
             cover {
               childImageSharp {
-                sizes(maxWidth: 900, quality: 85, traceSVG: { color: "#2B2B2F" }) {
-                  ...GatsbyImageSharpSizes_withWebp_tracedSVG
+                fluid(maxWidth: 900, quality: 85, traceSVG: { color: "#2B2B2F" }) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
             }

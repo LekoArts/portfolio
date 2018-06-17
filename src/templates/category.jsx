@@ -1,12 +1,12 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import Helmet from 'react-helmet';
+import { Container, Layout } from 'elements';
 import config from '../../config/website';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Container from '../components/Container';
 import ItemTagCategory from '../components/ItemTagCategory';
 
 const StyledLink = styled(Link)`
@@ -14,12 +14,12 @@ const StyledLink = styled(Link)`
 `;
 
 const Category = ({
-  pathContext: { category },
+  pageContext: { category },
   data: {
     allMarkdownRemark: { edges, totalCount },
   },
 }) => (
-  <React.Fragment>
+  <Layout>
     <Helmet title={`${category} | ${config.siteTitle}`} />
     <Header title={category}>
       {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} {totalCount === 1 ? 'gehört' : 'gehören'} der Kategorie "{
@@ -42,13 +42,13 @@ const Category = ({
       ))}
     </Container>
     <Footer />
-  </React.Fragment>
+  </Layout>
 );
 
 export default Category;
 
 Category.propTypes = {
-  pathContext: PropTypes.shape({
+  pageContext: PropTypes.shape({
     category: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({

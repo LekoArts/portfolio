@@ -3,13 +3,13 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
+import { Container, Layout } from 'elements';
 import config from '../../config/website';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Container from '../components/Container';
 
 const ErrorPage = () => (
-  <React.Fragment>
+  <Layout>
     <Helmet title={`404 | ${config.siteTitle}`} />
     <Header title="404" />
     <Container>
@@ -62,7 +62,7 @@ const ErrorPage = () => (
       </div>
     </Container>
     <Footer />
-  </React.Fragment>
+  </Layout>
 );
 
 export default ErrorPage;
