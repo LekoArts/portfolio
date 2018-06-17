@@ -94,6 +94,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       `).then(result => {
+        console.log(result);
         if (result.errors) {
           console.log(result.errors);
           reject(result.errors);
@@ -103,7 +104,6 @@ exports.createPages = ({ graphql, actions }) => {
         const categorySet = new Set();
 
         const postsList = result.data.posts.edges;
-        console.log(result.data.projects);
         const projectsList = result.data.projects.edges;
 
         postsList.forEach(post => {
