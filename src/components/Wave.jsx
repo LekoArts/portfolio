@@ -56,10 +56,8 @@ const Wave = ({ orientation }) => (
         viewBox="0 0 54 14"
         height="70"
         preserveAspectRatio="none"
-        role="img"
-        aria-label="Wave"
+        aria-hidden="true"
       >
-        <title>Wave</title>
         <path className={animation}>
           <animate
             attributeName="d"
