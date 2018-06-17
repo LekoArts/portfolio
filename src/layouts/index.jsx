@@ -96,6 +96,10 @@ injectGlobal`
   }
   .gatsby-resp-image-wrapper {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: ${theme.borderRadius.default};
+    .gatsby-resp-image-background-image, .gatsby-resp-image-image {
+      border-radius: ${theme.borderRadius.default};
+    }
   }
   .gatsby-resp-iframe-wrapper {
     margin-bottom: 2rem;
@@ -255,14 +259,7 @@ injectGlobal`
     margin: 0.5em 0;
     overflow: auto;
     border-radius: 0.3em;
-
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
     tab-size: 4;
-
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
     hyphens: none;
   }
 
@@ -276,14 +273,7 @@ injectGlobal`
     word-break: normal;
     word-wrap: normal;
     line-height: 1.5;
-
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
     tab-size: 4;
-
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
     hyphens: none;
   }
 
@@ -320,22 +310,18 @@ injectGlobal`
   .token.operator {
     color: #bc78d7;
   }
-
   .token.comment,
   .token.prolog,
   .token.doctype,
   .token.cdata {
     color: slategray;
   }
-
   .token.punctuation {
     color: #56b6c2;
   }
-
   .namespace {
     opacity: 0.7;
   }
-
   .token.property,
   .token.tag,
   .token.constant,
@@ -343,12 +329,10 @@ injectGlobal`
   .token.deleted {
     color: #f92672;
   }
-
   .token.boolean,
   .token.number {
     color: #ae81ff;
   }
-
   .token.selector,
   .token.attr-name,
   .token.string,
@@ -357,7 +341,6 @@ injectGlobal`
   .token.inserted {
     color: #7cc379;
   }
-
   .token.entity,
   .token.url,
   .language-css .token.string,
@@ -365,23 +348,19 @@ injectGlobal`
   .token.variable {
     color: #f8f8f2;
   }
-
   .token.atrule,
   .token.attr-value,
   .token.function,
   .token.class-name {
     color: #e6db74;
   }
-
   .token.keyword {
     color: #66d9ef;
   }
-
   .token.regex,
   .token.important {
     color: #fd971f;
   }
-
   .token.important,
   .token.bold {
     font-weight: bold;
@@ -389,7 +368,6 @@ injectGlobal`
   .token.italic {
     font-style: italic;
   }
-
   .token.entity {
     cursor: help;
   }
