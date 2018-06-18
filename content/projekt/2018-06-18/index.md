@@ -8,13 +8,13 @@ time: "4 Monate, September - Dezember 2017"
 ---
 # Hintergrund
 
-[Krotus Computer](https://krotus-computer.de/) bietet seit 2014 seinen Kunden professionelle Beratung und individuell zusammengestellte PCs. Der Kunde kann sich im gemeinsamen Gespräch einen Wunsch-PC zusammenstellen lassen — die persönliche Kundennähe ist eine große Stärke. Im letzten Jahr ergab sich dann die Gelegenheit für den jungen Gründer eine eigene Tastatur produzieren zu lassen. Natürlich bietet es sich an, neben den PCs auch Peripherie anzubieten.
+[Krotus Computer](https://krotus-computer.de/) bietet seit 2014 seinen Kunden professionelle Beratung und individuell zusammengestellte PCs. Der Kunde kann sich im gemeinsamen Gespräch einen Wunsch-PC zusammenstellen lassen — die persönliche Kundennähe ist eine große Stärke. Im letzten Jahr ergab sich dann die Gelegenheit für den jungen Gründer eine eigene Tastatur produzieren zu lassen. Natürlich bietet es sich an, neben den PCs auch Peripherie zu verkaufen.
 
 Die herstellende Firma in China gab an, dass beim Tastenlayout, der Verpackung und der beiliegenden Software ein komplett eigenes Branding möglich sei — und genau das war dann auch meine Aufgabe: Das Branding der Tastatur, sprich die oben erwähnten Punkte, im Einklang mit der Marke Krotus Computer zu erstellen.
 
 # Prozess
 
-Insgesamt sollte die Tastatur und Verpackung modern wirken bzw. nicht wirklich nach außen hin "Gaming" schreien und das Branding die Qualität dieser Tastatur (trotz des geringen Preises) hervorheben.
+Insgesamt sollte die Tastatur und Verpackung modern wirken bzw. nicht wirklich nach außen hin "Gaming" schreien und das Branding die Qualität dieser Tastatur (trotz des geringen Preises) hervorheben. Auch sollte das vorhandene Logo erweitert werden, um die Peripherie-Sparte abzubilden.
 
 Zuerst ging es an das Tastaturlayout, das später in die Keycaps per Laser übertragen werden sollte. Mit der Schriftart *Armata* habe ich eine schlichte Schrift in der richtigen Schriftstärke gefunden gehabt.
 
