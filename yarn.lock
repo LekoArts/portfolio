@@ -5016,8 +5016,8 @@ gatsby-remark-responsive-iframe@^2.0.0-beta.2:
     unist-util-visit "^1.3.0"
 
 gatsby-source-filesystem@^2.0.1-beta.2:
-  version "2.0.1-beta.2"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.0.1-beta.2.tgz#3f670d375945cb24292e63189838dd179b44cab8"
+  version "2.0.1-beta.3"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.0.1-beta.3.tgz#757527d0494261b9e1b632539b11049f6e0dde17"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
     better-queue "^3.8.7"
@@ -5066,8 +5066,8 @@ gatsby-transformer-sharp@^2.1.1-beta.2:
     probe-image-size "^4.0.0"
 
 gatsby@^2.0.0-beta.4:
-  version "2.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.0-beta.4.tgz#3e073c14b6807652338b5c219707b6fce67483cc"
+  version "2.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.0-beta.5.tgz#b99a814066b0e5e4217e23fbf52a97c261b10d50"
   dependencies:
     "@babel/code-frame" "7.0.0-beta.51"
     "@babel/core" "7.0.0-beta.51"
