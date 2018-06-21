@@ -16,7 +16,7 @@ const Wrapper = styled.div`
       margin: 0.5rem 0;
     }
   }
-  a {
+  a:not(.gatsby-resp-image-link):not(.anchor) {
     color: black;
     box-shadow: inset 0 -2px 0 ${props => props.theme.tint.blue};
     border-bottom: 1px solid ${props => props.theme.tint.blue};
@@ -41,6 +41,7 @@ const Wrapper = styled.div`
   h5,
   h6 {
     display: inline-block;
+    position: relative;
     a {
       box-shadow: none;
       border-bottom: none;
@@ -51,22 +52,27 @@ const Wrapper = styled.div`
     }
     &:hover {
       .anchor svg {
-        opacity: 1;
+        opacity: 0.8;
       }
     }
   }
   .anchor {
-    margin-left: -25px !important;
-    padding-right: 9px !important;
+    margin-left: -30px !important;
+    padding: 4px !important;
+    position: absolute;
+    float: none;
+    top: 50%;
+    transform: translateY(-50%);
     @media (max-width: ${props => props.theme.breakpoints.m}) {
-      margin-left: -20px !important;
-      padding-right: 4px !important;
+      margin-left: -24px !important;
     }
     svg {
       fill: ${props => props.theme.colors.black.base};
       visibility: hidden;
       opacity: 0;
       transition: all 0.3s ease-in-out;
+      width: 20px;
+      height: 20px;
       @media (max-width: ${props => props.theme.breakpoints.m}) {
         opacity: 0.2;
         visibility: visible !important;
