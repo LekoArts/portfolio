@@ -6,10 +6,10 @@ import kebabCase from 'lodash/kebabCase';
 import size from 'lodash/size';
 import { darken } from 'polished';
 import Helmet from 'react-helmet';
+import { Container, Layout } from 'elements';
 import config from '../../config/website';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Container from '../components/Container';
 
 const TagsContainer = styled.div`
   margin: 2rem 0 4rem 0;
@@ -41,7 +41,7 @@ const Categories = ({
     allMarkdownRemark: { group, edges },
   },
 }) => (
-  <React.Fragment>
+  <Layout>
     <Helmet title={`Kategorien | ${config.siteTitle}`} />
     <Header title="Kategorien">
       {size(edges)} Beiträge wurden in {size(group)} Kategorien eingeteilt
@@ -58,7 +58,7 @@ const Categories = ({
       </TagsContainer>
     </Container>
     <Footer />
-  </React.Fragment>
+  </Layout>
 );
 
 export default Categories;

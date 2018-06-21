@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import Link from 'gatsby-link';
+import {Link} from 'gatsby';
 import Img from 'gatsby-image';
 import kebabCase from 'lodash/kebabCase';
-import { hideS } from '../utils/hide';
+import { hideS } from 'utilities';
 
 const Wrapper = styled.article`
   display: flex;
@@ -88,7 +88,7 @@ const ItemBlog = ({ path, cover, category, title, date, timeToRead, excerpt }) =
   <Wrapper>
     <Image>
       <Link to={path}>
-        <Img sizes={cover} />
+        <Img fluid={cover} />
       </Link>
     </Image>
     <Information>

@@ -6,7 +6,7 @@ import { injectGlobal } from 'emotion';
 import { ThemeProvider } from 'emotion-theming';
 import 'typeface-montserrat';
 import 'typeface-istok-web';
-import SEO from '../components/SEO';
+import { SEO } from 'elements';
 import Navigation from '../components/Navigation';
 import theme from '../../config/theme';
 
@@ -373,18 +373,18 @@ injectGlobal`
   }
 `;
 
-const MainLayout = ({ children }) => (
+const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <React.Fragment>
       <SEO />
       <Navigation />
-      {children()}
+      {children}
     </React.Fragment>
   </ThemeProvider>
 );
 
-export default MainLayout;
+export default Layout;
 
-MainLayout.propTypes = {
-  children: PropTypes.func.isRequired,
+Layout.propTypes = {
+  children: PropTypes.any.isRequired,
 };

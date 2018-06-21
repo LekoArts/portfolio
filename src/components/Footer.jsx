@@ -1,10 +1,9 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import format from 'date-fns/format';
 import styled from 'react-emotion';
-import Wave from './Wave';
-import Container from './Container';
+import { Wave, Container } from 'elements';
 
 const Wrapper = styled.footer`
   position: relative;

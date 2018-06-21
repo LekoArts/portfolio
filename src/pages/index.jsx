@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import styled from 'react-emotion';
 import Footer from '../components/Footer';
-import Container from '../components/Container';
+import { Container, Layout } from 'elements';
 import FeaturedProject from '../components/FeaturedProject';
 import FeaturedPost from '../components/FeaturedPost';
 import Header from '../components/Header';
@@ -44,7 +44,7 @@ const Index = ({
     posts: { edges: postEdges },
   },
 }) => (
-  <React.Fragment>
+  <Layout>
     <Header
       big
       title={
@@ -58,7 +58,7 @@ const Index = ({
         {projectEdges.map(project => (
           <FeaturedProject
             key={project.node.frontmatter.title}
-            cover={project.node.frontmatter.cover.childImageSharp.sizes}
+            cover={project.node.frontmatter.cover.childImageSharp.fluid}
             customer={project.node.frontmatter.customer}
             path={project.node.fields.slug}
             title={project.node.frontmatter.title}
@@ -80,7 +80,7 @@ const Index = ({
         {postEdges.map(post => (
           <FeaturedPost
             key={post.node.frontmatter.title}
-            cover={post.node.frontmatter.cover.childImageSharp.sizes}
+            cover={post.node.frontmatter.cover.childImageSharp.fluid}
             date={post.node.frontmatter.date}
             path={post.node.fields.slug}
             title={post.node.frontmatter.title}
@@ -97,7 +97,7 @@ const Index = ({
       </Text>
     </Container>
     <Footer />
-  </React.Fragment>
+  </Layout>
 );
 
 export default Index;
@@ -131,8 +131,8 @@ export const pageQuery = graphql`
             title
             cover {
               childImageSharp {
-                sizes(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                  ...GatsbyImageSharpSizes_withWebp_tracedSVG
+                fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
             }
@@ -154,8 +154,8 @@ export const pageQuery = graphql`
             title
             cover {
               childImageSharp {
-                sizes(maxWidth: 800, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                  ...GatsbyImageSharpSizes_withWebp_tracedSVG
+                fluid(maxWidth: 800, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
             }

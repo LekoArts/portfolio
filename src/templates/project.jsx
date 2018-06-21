@@ -5,18 +5,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'react-emotion';
 import Img from 'gatsby-image';
-import Link from 'gatsby-link';
-import SEO from '../components/SEO';
-import Container from '../components/Container';
-import Content from '../components/Content';
+import { Link } from 'gatsby';
+import { SEO, Container, Content, Line, Wave, Layout } from 'elements';
+import { Hero, InfoText } from 'utilities';
 import Suggestions from '../components/Suggestions';
-import Wave from '../components/Wave';
 import { Card } from '../components/Card';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import Line from '../components/Line';
-import InfoText from '../utils/InfoText';
-import Hero from '../utils/Hero';
 
 const pulse = keyframes`
   0% {
@@ -82,21 +77,21 @@ const CardWrapper = styled.div`
   }
 `;
 
-const Project = ({ pathContext: { slug, left, right }, data: { markdownRemark: postNode } }) => {
+const Project = ({ pageContext: { slug, left, right }, data: { markdownRemark: postNode } }) => {
   const post = postNode.frontmatter;
-  const { sizes } = post.cover.childImageSharp;
+  const { fluid } = post.cover.childImageSharp;
   if (!post.id) {
     post.id = slug;
   }
   return (
-    <React.Fragment>
+    <Layout>
       <SEO postPath={slug} postNode={postNode} postSEO />
       <Wrapper>
         <Hero>
           <h1>{post.title}</h1>
         </Hero>
         <Wave />
-        <Img sizes={sizes} />
+        <Img fluid={fluid} />
       </Wrapper>
       <Container>
         <CardWrapper>
@@ -118,7 +113,7 @@ const Project = ({ pathContext: { slug, left, right }, data: { markdownRemark: p
         <Content input={postNode.html} />
       </Container>
       <Container>
-        <Line />
+        <Line aria-hidden="true" />
         <InfoText>Weitere Projekte</InfoText>
         <Suggestions left={left} right={right} />
       </Container>
@@ -128,14 +123,14 @@ const Project = ({ pathContext: { slug, left, right }, data: { markdownRemark: p
           <Button type="primary">Projekt starten</Button>
         </Link>
       </Footer>
-    </React.Fragment>
+    </Layout>
   );
 };
 
 export default Project;
 
 Project.propTypes = {
-  pathContext: PropTypes.shape({
+  pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
@@ -156,8 +151,8 @@ export const pageQuery = graphql`
         time
         cover {
           childImageSharp {
-            sizes(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
+              ...GatsbyImageSharpFluid_withWebp
             }
             resize(width: 1200, quality: 90) {
               src
@@ -169,7 +164,6 @@ export const pageQuery = graphql`
         slug
         sourceInstanceName
       }
-      excerpt
     }
   }
 `;

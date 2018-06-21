@@ -9,6 +9,13 @@
       "classes": true
     }
   },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  },
   "env": {
     "browser": true,
     "node": true,

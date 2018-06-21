@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'react-emotion';
 import theme from '../../config/theme';
@@ -53,7 +53,7 @@ const Wrapper = styled.div`
 
 const ItemProject = ({ cover, path, customer, title }) => (
   <Wrapper>
-    <Img sizes={cover} />
+    <Img fluid={cover} />
     <StyledLink to={path}>
       <div>{customer}</div>
       <h2>{title}</h2>

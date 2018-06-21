@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'react-emotion';
+import { Container, Layout } from 'elements';
 import config from '../../config/website';
 import ItemProject from '../components/ItemProject';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Container from '../components/Container';
 
 const Base = styled.div`
   padding-top: 2rem;
@@ -20,7 +20,7 @@ const Projekte = ({
     allMarkdownRemark: { edges },
   },
 }) => (
-  <React.Fragment>
+  <Layout>
     <Helmet title={`Projekte | ${config.siteTitle}`} />
     <Header title="Projekte">
       Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken
@@ -31,7 +31,7 @@ const Projekte = ({
           <ItemProject
             key={project.node.frontmatter.title}
             path={project.node.fields.slug}
-            cover={project.node.frontmatter.cover.childImageSharp.sizes}
+            cover={project.node.frontmatter.cover.childImageSharp.fluid}
             customer={project.node.frontmatter.customer}
             title={project.node.frontmatter.title}
           />
@@ -39,7 +39,7 @@ const Projekte = ({
       </Base>
     </Container>
     <Footer />
-  </React.Fragment>
+  </Layout>
 );
 
 export default Projekte;
@@ -70,8 +70,8 @@ export const pageQuery = graphql`
             customer
             cover {
               childImageSharp {
-                sizes(maxWidth: 900, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                  ...GatsbyImageSharpSizes_withWebp_tracedSVG
+                fluid(maxWidth: 900, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
             }

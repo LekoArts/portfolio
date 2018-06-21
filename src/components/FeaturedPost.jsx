@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'react-emotion';
 import theme from '../../config/theme';
@@ -141,7 +141,7 @@ const Title = styled.h2`
 const FeaturedPost = ({ cover, path, category, date, title }) => (
   <Wrapper>
     <Image>
-      <Img sizes={cover} />
+      <Img fluid={cover} />
     </Image>
     <StyledLink to={path}>
       <Information>
