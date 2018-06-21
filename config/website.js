@@ -18,5 +18,5 @@ module.exports = {
   facebook: 'lekoarts.de',
   // Manifest
   themeColor: '#3498DB',
-  backgroundColor: '#3498DB',
+  backgroundColor: '#2e3246',
 };
