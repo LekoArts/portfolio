@@ -58,14 +58,20 @@ const Wrapper = styled.div`
   .anchor {
     margin-left: -25px !important;
     padding-right: 9px !important;
+    @media (max-width: ${props => props.theme.breakpoints.m}) {
+      margin-left: -20px !important;
+      padding-right: 4px !important;
+    }
     svg {
       fill: ${props => props.theme.colors.black.base};
       visibility: hidden;
       opacity: 0;
       transition: all 0.3s ease-in-out;
       @media (max-width: ${props => props.theme.breakpoints.m}) {
-        opacity: 0.25;
+        opacity: 0.2;
         visibility: visible !important;
+        height: 16px;
+        width: 16px;
       }
     }
   }

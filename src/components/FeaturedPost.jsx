@@ -76,10 +76,10 @@ const StyledLink = styled(Link)`
     bottom: 0;
     background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.5) 0%,
       rgba(0, 0, 0, 0) 30%,
       rgba(0, 0, 0, 0) 70%,
-      rgba(0, 0, 0, 0.6) 100%
+      rgba(0, 0, 0, 0.5) 100%
     );
     z-index: -10;
     border-radius: ${theme.borderRadius.default};

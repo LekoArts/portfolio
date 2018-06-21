@@ -91,7 +91,7 @@ const StyledLink = styled(Link)`
       to bottom,
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.42) 35%,
-      rgba(0, 0, 0, 0.55) 50%,
+      rgba(0, 0, 0, 0.52) 50%,
       rgba(0, 0, 0, 0.42) 65%,
       rgba(0, 0, 0, 0) 100%
     );
