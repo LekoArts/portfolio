@@ -38,12 +38,15 @@
     "gatsby-transformer-remark": "^1.7.44",
     "gatsby-transformer-sharp": "^1.6.27",
     "polished": "^1.9.2",
+    "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react-emotion": "^9.2.3",
     "react-headroom": "^2.2.2",
     "react-helmet": "^5.2.0",
+    "react-typography": "^0.16.13",
     "typeface-istok-web": "^0.0.54",
-    "typeface-montserrat": "^0.0.54"
+    "typeface-montserrat": "^0.0.54",
+    "typography": "^0.16.17"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
