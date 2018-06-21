@@ -3799,19 +3799,19 @@ emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
 
-emotion-server@^9.1.1:
+emotion-server@^9.2.3:
   version "9.2.3"
   resolved "https://registry.yarnpkg.com/emotion-server/-/emotion-server-9.2.3.tgz#57d5b4b6f71314c823621d2f7cc0f4bcb28ed962"
   dependencies:
     create-emotion-server "^9.2.3"
 
-emotion-theming@^9.0.0:
+emotion-theming@^9.2.3:
   version "9.2.3"
   resolved "https://registry.yarnpkg.com/emotion-theming/-/emotion-theming-9.2.3.tgz#a851f66615aeb8a7a02891e201da3b56fddf9a46"
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
-emotion@^9.1.1:
+emotion@^9.2.3:
   version "9.2.3"
   resolved "https://registry.yarnpkg.com/emotion/-/emotion-9.2.3.tgz#c93b9a222df92e6281036afa02b3b5b8cfb9e049"
   dependencies:
@@ -4821,7 +4821,7 @@ gatsby-cli@^2.0.0-beta.2:
     yargs "^11.1.0"
     yurnalist "^0.2.1"
 
-gatsby-image@next:
+gatsby-image@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.0.0-beta.2.tgz#2f5b8b777d931c437667b2558a91094fba62b62a"
   dependencies:
@@ -4839,25 +4839,25 @@ gatsby-link@^2.0.0-beta.2:
     react-lifecycles-compat "^3.0.2"
     ric "^1.3.0"
 
-gatsby-plugin-catch-links@next:
+gatsby-plugin-catch-links@^2.0.2-beta.2:
   version "2.0.2-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.0.2-beta.2.tgz#f9e9f1ccc1e9138aabf1318e5f00286b02c3088f"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
 
-gatsby-plugin-emotion@next:
+gatsby-plugin-emotion@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-emotion/-/gatsby-plugin-emotion-2.0.0-beta.2.tgz#a2df2e1f8af514e5674c0fc75bc17387e23f49d7"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
 
-gatsby-plugin-google-analytics@next:
+gatsby-plugin-google-analytics@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.0.0-beta.2.tgz#39a455aa5b864dc1e8c39dedd9c87d23177e50cb"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
 
-gatsby-plugin-lodash@next:
+gatsby-plugin-lodash@^3.0.1-beta.2:
   version "3.0.1-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-lodash/-/gatsby-plugin-lodash-3.0.1-beta.2.tgz#3bfbcacc46d51858f619ab41079fa79d1c4a8f65"
   dependencies:
@@ -4865,7 +4865,7 @@ gatsby-plugin-lodash@next:
     babel-plugin-lodash "^3.2.11"
     lodash-webpack-plugin "^0.11.5"
 
-gatsby-plugin-manifest@next:
+gatsby-plugin-manifest@^2.0.2-beta.2:
   version "2.0.2-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.2-beta.2.tgz#118fd00b22aa6abd64ccaf9a99c1205e5be9c15f"
   dependencies:
@@ -4873,7 +4873,7 @@ gatsby-plugin-manifest@next:
     bluebird "^3.5.0"
     sharp "^0.20.2"
 
-gatsby-plugin-netlify@next:
+gatsby-plugin-netlify@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify/-/gatsby-plugin-netlify-2.0.0-beta.2.tgz#5d9f64939da0a679f30bba8bd9dfbdc2b2e56231"
   dependencies:
@@ -4883,14 +4883,14 @@ gatsby-plugin-netlify@next:
     lodash "^4.17.4"
     webpack-assets-manifest "^1.0.0"
 
-gatsby-plugin-nprogress@next:
+gatsby-plugin-nprogress@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-nprogress/-/gatsby-plugin-nprogress-2.0.0-beta.2.tgz#f48e6997c77ea42a612832d43d143fcf36d83994"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
     nprogress "^0.2.0"
 
-gatsby-plugin-offline@next:
+gatsby-plugin-offline@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-2.0.0-beta.2.tgz#84a12df3e6a432183c16ca9974a2df601c3c3195"
   dependencies:
@@ -4909,13 +4909,13 @@ gatsby-plugin-page-creator@^2.0.0-beta.2:
     parse-filepath "^1.0.1"
     slash "^1.0.0"
 
-gatsby-plugin-react-helmet@next:
+gatsby-plugin-react-helmet@^3.0.0-beta.2:
   version "3.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.0.0-beta.2.tgz#27a8de12d989bd9c08c93bf25716a25c021a22ee"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
 
-gatsby-plugin-sharp@^2.0.0-beta.2, gatsby-plugin-sharp@next:
+gatsby-plugin-sharp@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.0.0-beta.2.tgz#ea7e42d1ba7adbeebeeffe3ddafc675d6eb2fc33"
   dependencies:
@@ -4933,14 +4933,14 @@ gatsby-plugin-sharp@^2.0.0-beta.2, gatsby-plugin-sharp@next:
     sharp "^0.20.2"
     svgo "^0.7.2"
 
-gatsby-plugin-sitemap@next:
+gatsby-plugin-sitemap@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sitemap/-/gatsby-plugin-sitemap-2.0.0-beta.2.tgz#0c648f9c3aaa04aace916436d7d696435572ac89"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
     sitemap "^1.12.0"
 
-gatsby-plugin-typography@next:
+gatsby-plugin-typography@^2.2.0-beta.2:
   version "2.2.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-typography/-/gatsby-plugin-typography-2.2.0-beta.2.tgz#69030daefa9b8d3bf06b26e8fdbcc723652c3677"
   dependencies:
@@ -4954,7 +4954,7 @@ gatsby-react-router-scroll@^2.0.0-beta.2:
     scroll-behavior "^0.9.9"
     warning "^3.0.0"
 
-gatsby-remark-autolink-headers@next:
+gatsby-remark-autolink-headers@^2.0.0-beta.3:
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/gatsby-remark-autolink-headers/-/gatsby-remark-autolink-headers-2.0.0-beta.3.tgz#59deddc641000058d34d96e0d6ff71e94204ab87"
   dependencies:
@@ -4963,7 +4963,7 @@ gatsby-remark-autolink-headers@next:
     mdast-util-to-string "^1.0.2"
     unist-util-visit "^1.3.0"
 
-gatsby-remark-copy-linked-files@next:
+gatsby-remark-copy-linked-files@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-2.0.0-beta.2.tgz#233025bcbfec08d06f5d6e047e53893d7cbf7a0d"
   dependencies:
@@ -4985,7 +4985,7 @@ gatsby-remark-external-links@^0.0.4:
     unist-util-find "^1.0.1"
     unist-util-visit "^1.1.3"
 
-gatsby-remark-images@next:
+gatsby-remark-images@^2.0.1-beta.3:
   version "2.0.1-beta.3"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-2.0.1-beta.3.tgz#e797285ab0c48eaf85f057c81ba8b732623ce6b7"
   dependencies:
@@ -4997,7 +4997,7 @@ gatsby-remark-images@next:
     slash "^1.0.0"
     unist-util-select "^1.5.0"
 
-gatsby-remark-prismjs@next:
+gatsby-remark-prismjs@^3.0.0-beta.2:
   version "3.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.0.0-beta.2.tgz#ff26bd9182770ef3128bc374ad9f05b683acd4d2"
   dependencies:
@@ -5005,7 +5005,7 @@ gatsby-remark-prismjs@next:
     parse-numeric-range "^0.0.2"
     unist-util-visit "^1.3.0"
 
-gatsby-remark-responsive-iframe@next:
+gatsby-remark-responsive-iframe@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-remark-responsive-iframe/-/gatsby-remark-responsive-iframe-2.0.0-beta.2.tgz#2dfa1a97248671869a0b217b0bf44971e204949e"
   dependencies:
@@ -5015,7 +5015,7 @@ gatsby-remark-responsive-iframe@next:
     lodash "^4.17.4"
     unist-util-visit "^1.3.0"
 
-gatsby-source-filesystem@next:
+gatsby-source-filesystem@^2.0.1-beta.2:
   version "2.0.1-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.0.1-beta.2.tgz#3f670d375945cb24292e63189838dd179b44cab8"
   dependencies:
@@ -5032,7 +5032,7 @@ gatsby-source-filesystem@next:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-transformer-remark@next:
+gatsby-transformer-remark@^2.1.1-beta.2:
   version "2.1.1-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.1.1-beta.2.tgz#8cd2eb855a0bd64c495625c2cbba3b1a48d26e93"
   dependencies:
@@ -5056,7 +5056,7 @@ gatsby-transformer-remark@next:
     unist-util-select "^1.5.0"
     unist-util-visit "^1.3.0"
 
-gatsby-transformer-sharp@next:
+gatsby-transformer-sharp@^2.1.1-beta.2:
   version "2.1.1-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-2.1.1-beta.2.tgz#08fed34914de0f7645643eb52377563d93dc19da"
   dependencies:
@@ -5065,7 +5065,7 @@ gatsby-transformer-sharp@next:
     fs-extra "^4.0.2"
     probe-image-size "^4.0.0"
 
-gatsby@next:
+gatsby@^2.0.0-beta.4:
   version "2.0.0-beta.4"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.0-beta.4.tgz#3e073c14b6807652338b5c219707b6fce67483cc"
   dependencies:
@@ -8697,7 +8697,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
+prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -8896,7 +8896,7 @@ react-dom@^16.4.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-emotion@^9.1.1:
+react-emotion@^9.2.3:
   version "9.2.3"
   resolved "https://registry.yarnpkg.com/react-emotion/-/react-emotion-9.2.3.tgz#03c3b9dc9ad282c2d50b8137f3a6f72eee5095f3"
   dependencies:
