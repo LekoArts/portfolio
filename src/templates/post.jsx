@@ -102,7 +102,7 @@ const Post = ({ pageContext: { slug, left, right }, data: { markdownRemark: post
       </Wrapper>
       <Container type="article">
         <Content input={postNode.html} />
-        <Line />
+        <Line aria-hidden="true" />
         <Tags tags={post.tags} />
         <Note>
           <span className={fontBold}>Interesse geweckt?</span> Lies alle Beiträge in der Kategorie{' '}

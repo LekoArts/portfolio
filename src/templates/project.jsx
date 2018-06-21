@@ -113,7 +113,7 @@ const Project = ({ pageContext: { slug, left, right }, data: { markdownRemark: p
         <Content input={postNode.html} />
       </Container>
       <Container>
-        <Line />
+        <Line aria-hidden="true" />
         <InfoText>Weitere Projekte</InfoText>
         <Suggestions left={left} right={right} />
       </Container>

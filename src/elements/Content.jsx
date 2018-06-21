@@ -38,7 +38,8 @@ const Wrapper = styled.div`
   h2,
   h3,
   h4,
-  h5 {
+  h5,
+  h6 {
     display: inline-block;
     a {
       box-shadow: none;
@@ -46,6 +47,25 @@ const Wrapper = styled.div`
       &:hover,
       &:focus {
         background: none;
+      }
+    }
+    &:hover {
+      .anchor svg {
+        opacity: 1;
+      }
+    }
+  }
+  .anchor {
+    margin-left: -25px !important;
+    padding-right: 9px !important;
+    svg {
+      fill: ${props => props.theme.colors.black.base};
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+      @media (max-width: ${props => props.theme.breakpoints.m}) {
+        opacity: 0.25;
+        visibility: visible !important;
       }
     }
   }
