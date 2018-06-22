@@ -3,8 +3,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'react-emotion';
-import Footer from '../components/Footer';
 import { Container, Layout } from 'elements';
+import Footer from '../components/Footer';
 import { LinkCard } from '../components/Card';
 import Header from '../components/Header';
 import Button from '../components/Button';

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import styled from 'react-emotion';
 import { Container, Layout } from 'elements';
@@ -54,7 +55,6 @@ Blog.propTypes = {
   }).isRequired,
 };
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query BlogQuery {
     allMarkdownRemark(

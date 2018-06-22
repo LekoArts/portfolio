@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import styled from 'react-emotion';
 import Helmet from 'react-helmet';
 import { Container, Layout } from 'elements';
@@ -57,7 +57,6 @@ Tag.propTypes = {
   }).isRequired,
 };
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query TagPage($tag: String) {
     allMarkdownRemark(

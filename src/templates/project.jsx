@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'react-emotion';
 import Img from 'gatsby-image';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import { SEO, Container, Content, Line, Wave, Layout } from 'elements';
 import { Hero, InfoText } from 'utilities';
 import Suggestions from '../components/Suggestions';
@@ -138,7 +138,6 @@ Project.propTypes = {
   }).isRequired,
 };
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query ProjectPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {

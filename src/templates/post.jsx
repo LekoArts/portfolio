@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes, css } from 'react-emotion';
 import Img from 'gatsby-image';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import { SEO, Container, Content, Wave, Line, Layout } from 'elements';
 import { hideS, Hero, InfoText } from 'utilities';
@@ -134,7 +134,6 @@ Post.propTypes = {
   }).isRequired,
 };
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {

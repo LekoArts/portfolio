@@ -2,10 +2,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+import { Link, graphql } from 'gatsby';
 import styled from 'react-emotion';
-import Footer from '../components/Footer';
 import { Container, Layout } from 'elements';
+import Footer from '../components/Footer';
 import FeaturedProject from '../components/FeaturedProject';
 import FeaturedPost from '../components/FeaturedPost';
 import Header from '../components/Header';
@@ -113,7 +113,6 @@ Index.propTypes = {
   }).isRequired,
 };
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query IndexQuery {
     projects: allMarkdownRemark(

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import Helmet from 'react-helmet';
@@ -58,7 +58,6 @@ Category.propTypes = {
   }).isRequired,
 };
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query CategoryPage($category: String) {
     allMarkdownRemark(

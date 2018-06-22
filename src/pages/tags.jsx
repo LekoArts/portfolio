@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import kebabCase from 'lodash/kebabCase';
@@ -72,7 +72,6 @@ Tags.propTypes = {
   }).isRequired,
 };
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query TagsPage {
     allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "blog" } } }) {
