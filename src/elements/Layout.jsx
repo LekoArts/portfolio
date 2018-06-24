@@ -178,8 +178,8 @@ injectGlobal`
   output {
     display: inline-block;
   }
-  svg {
-    display: block;
+  svg:not(:root) {
+    overflow: hidden;
     vertical-align: middle;
   }
   [hidden] {

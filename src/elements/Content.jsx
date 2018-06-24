@@ -69,6 +69,7 @@ const Wrapper = styled.div`
     svg {
       fill: ${props => props.theme.colors.black.base};
       visibility: hidden;
+      display: block;
       opacity: 0;
       transition: all 0.3s ease-in-out;
       width: 20px;
