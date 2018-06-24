@@ -36,10 +36,8 @@ const Nav = styled.nav`
     color: ${props => props.theme.colors.white.base};
     margin-left: 2rem;
     transition: all ${props => props.theme.transitions.default.duration};
-    border-bottom: 1px solid transparent;
     &:hover {
-      border-bottom: 1px solid ${props => props.theme.colors.white.base};
-      color: ${props => props.theme.colors.white.base};
+      color: ${props => props.theme.colors.white.blueish};
     }
     &:focus {
       color: ${props => props.theme.colors.white.base};
@@ -54,15 +52,9 @@ const Navigation = () => (
       <LogoText>LekoArts</LogoText>
     </StyledLink>
     <Nav>
-      <Link to="/projekte" activeClassName="active">
-        Projekte
-      </Link>
-      <Link to="/blog" activeClassName="active">
-        Blog
-      </Link>
-      <Link to="/kontakt" activeClassName="active">
-        Kontakt
-      </Link>
+      <Link to="/projekte">Projekte</Link>
+      <Link to="/blog">Blog</Link>
+      <Link to="/kontakt">Kontakt</Link>
     </Nav>
   </Headroom>
 );
