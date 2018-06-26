@@ -1,3 +1,6 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 const config = require('./config/website');
 
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
@@ -12,6 +15,17 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
+    {
+      resolve: 'gatsby-source-prismic',
+      options: {
+        repositoryName: 'lekoarts',
+        accessToken: `${process.env.API_KEY}`,
+        linkResolver: ({ node, key, value }) => doc => `/${doc.uid}`,
+        htmlSerializer: ({ node, key, value }) => (type, element, content, children) => {
+          // Your HTML serializer
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
