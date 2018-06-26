@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/LeKoArts/portfolio"
   },
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": "LekoArts <hello@lekoarts.de>",
   "dependencies": {
     "date-fns": "^1.29.0",
@@ -27,6 +27,7 @@
     "gatsby-plugin-sitemap": "^2.0.0-beta.2",
     "gatsby-plugin-typography": "^2.2.0-beta.2",
     "gatsby-source-filesystem": "^2.0.1-beta.3",
+    "gatsby-source-prismic": "^2.0.0-alpha.2",
     "gatsby-transformer-sharp": "^2.1.1-beta.2",
     "lodash": "^4.17.10",
     "polished": "^1.9.2",
@@ -45,6 +46,7 @@
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "babel-preset-env": "^1.7.0",
+    "dotenv": "^6.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
