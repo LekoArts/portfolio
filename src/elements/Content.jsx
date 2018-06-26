@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'react-emotion';
-import { prism } from 'styles';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'react-emotion'
+import { prism } from 'styles'
+import { BodyText, CodeBlock, Image, Quote } from 'slices'
 
-const Wrapper = styled.div`
-  padding: 2rem 0 1rem 0;
+const Wrapper = styled.main`
+  padding: 5rem 0 1rem 0;
   ${prism};
   p,
   li {
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
       margin: 0.5rem 0;
     }
   }
-  a:not(.gatsby-resp-image-link):not(.anchor) {
+  a:not(.gatsby-resp-image-link) {
     color: black;
     box-shadow: inset 0 -2px 0 ${props => props.theme.tint.blue};
     border-bottom: 1px solid ${props => props.theme.tint.blue};
@@ -31,65 +32,55 @@ const Wrapper = styled.div`
     }
   }
   h1 {
-    margin-top: 3rem;
+    margin-top: 4rem;
   }
   h2 {
-    margin-top: 1rem;
+    margin-top: 3rem;
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    display: inline-block;
+  .block-img {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    img {
+      border-radius: ${props => props.theme.borderRadius.default};
+      box-shadow: ${props => props.theme.shadow.image};
+    }
+  }
+  [data-oembed-type='video'] {
     position: relative;
-    a {
-      box-shadow: none;
-      border-bottom: none;
-      &:hover,
-      &:focus {
-        background: none;
-      }
-    }
-    &:hover {
-      .anchor svg {
-        opacity: 0.8;
-      }
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   }
-  .anchor {
-    margin-left: -30px !important;
-    padding: 4px !important;
-    position: absolute;
-    float: none;
-    top: 50%;
-    transform: translateY(-50%);
-    @media (max-width: ${props => props.theme.breakpoints.m}) {
-      margin-left: -24px !important;
-    }
-    svg {
-      fill: ${props => props.theme.colors.black.base};
-      visibility: hidden;
-      display: block;
-      opacity: 0;
-      transition: all 0.3s ease-in-out;
-      width: 20px;
-      height: 20px;
-      @media (max-width: ${props => props.theme.breakpoints.m}) {
-        opacity: 0.2;
-        visibility: visible !important;
-        height: 16px;
-        width: 16px;
-      }
-    }
-  }
-`;
+`
 
-const Content = ({ input }) => <Wrapper dangerouslySetInnerHTML={{ __html: input }} />;
+const Content = ({ sliceZone }) => {
+  const slices = sliceZone.map(s => {
+    switch (s.slice_type) {
+      case 'text':
+        return <BodyText key={s.id} input={s} />
+      case 'code_block':
+        return <CodeBlock key={s.id} input={s} />
+      case 'bild':
+        return <Image key={s.id} input={s} />
+      case 'quote':
+        return <Quote key={s.id} input={s} />
+      default:
+        return null
+    }
+  })
+  return <Wrapper>{slices}</Wrapper>
+}
 
-export default Content;
+export default Content
 
 Content.propTypes = {
-  input: PropTypes.any.isRequired,
-};
+  sliceZone: PropTypes.array.isRequired,
+}

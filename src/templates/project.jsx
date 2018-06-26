@@ -1,17 +1,16 @@
 /* eslint max-len: 0 */
 /* eslint react/no-unescaped-entities: 0 */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { keyframes } from 'react-emotion';
-import Img from 'gatsby-image';
-import { Link, graphql } from 'gatsby';
-import { SEO, Container, Content, Line, Wave, Layout } from 'elements';
-import { Hero, InfoText } from 'utilities';
-import Suggestions from '../components/Suggestions';
-import { Card } from '../components/Card';
-import Button from '../components/Button';
-import Footer from '../components/Footer';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled, { keyframes } from 'react-emotion'
+import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
+import { SEO, Container, Content, Line, Wave, Layout, Hero, InfoText } from 'elements'
+import Suggestions from '../components/Suggestions'
+import { Card } from '../components/Card'
+import Button from '../components/Button'
+import Footer from '../components/Footer'
 
 const pulse = keyframes`
   0% {
@@ -30,9 +29,9 @@ const pulse = keyframes`
     transform: scale(1);
     animation-timing-function: ease-out;
   }
-`;
+`
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   height: 600px;
   position: relative;
   overflow: hidden;
@@ -54,13 +53,14 @@ const Wrapper = styled.div`
       height: 400px;
     }
   }
-`;
+`
 
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 4rem;
   ${Card} {
     color: ${props => props.theme.colors.black.base} !important;
     margin-bottom: 2rem;
@@ -75,20 +75,17 @@ const CardWrapper = styled.div`
       margin-bottom: 1.5rem;
     }
   }
-`;
+`
 
-const Project = ({ pageContext: { slug, left, right }, data: { markdownRemark: postNode } }) => {
-  const post = postNode.frontmatter;
-  const { fluid } = post.cover.childImageSharp;
-  if (!post.id) {
-    post.id = slug;
-  }
+const Project = ({ pageContext: { slug, left, right }, data: { prismicProjekt: projektNode } }) => {
+  const projekt = projektNode.data
+  const { fluid } = projekt.cover.localFile.childImageSharp
   return (
     <Layout>
-      <SEO postPath={slug} postNode={postNode} postSEO />
+      <SEO postPath={slug} postNode={projektNode} postSEO />
       <Wrapper>
         <Hero>
-          <h1>{post.title}</h1>
+          <h1>{projekt.title.text}</h1>
         </Hero>
         <Wave />
         <Img fluid={fluid} />
@@ -97,21 +94,19 @@ const Project = ({ pageContext: { slug, left, right }, data: { markdownRemark: p
         <CardWrapper>
           <Card>
             <h2>Kunde</h2>
-            {post.customer}
+            {projekt.customer}
           </Card>
           <Card>
             <h2>Aufgabe</h2>
-            {post.task}
+            {projekt.task}
           </Card>
           <Card>
             <h2>Zeitraum</h2>
-            {post.time}
+            {projekt.time}
           </Card>
         </CardWrapper>
       </Container>
-      <Container type="article">
-        <Content input={postNode.html} />
-      </Container>
+      <Content sliceZone={projektNode.data.body} />
       <Container>
         <Line aria-hidden="true" />
         <InfoText>Weitere Projekte</InfoText>
@@ -119,50 +114,93 @@ const Project = ({ pageContext: { slug, left, right }, data: { markdownRemark: p
       </Container>
       <Footer>
         <h1>Packen wir's an!</h1>
-        <Link to="/kontakt">
-          <Button type="primary">Projekt starten</Button>
-        </Link>
+        <Button to="/kontakt" type="primary" role="button">
+          Projekt starten
+        </Button>
       </Footer>
     </Layout>
-  );
-};
+  )
+}
 
-export default Project;
+export default Project
 
 Project.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
+    left: PropTypes.object.isRequired,
+    right: PropTypes.object.isRequired,
   }).isRequired,
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object.isRequired,
+    prismicProjekt: PropTypes.object.isRequired,
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query ProjectPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        date(formatString: "DD.MM.YYYY")
+    prismicProjekt(fields: { slug: { eq: $slug } }) {
+      fields {
+        slug
+        sourceType
+        excerpt
+      }
+      first_publication_date
+      last_publication_date
+      data {
+        title {
+          text
+        }
         customer
         task
         time
+        date(formatString: "DD. MMMM YYYY", locale: "de")
         cover {
-          childImageSharp {
-            fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
-              ...GatsbyImageSharpFluid_withWebp
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+              resize(width: 1200, quality: 90) {
+                src
+              }
             }
-            resize(width: 1200, quality: 90) {
-              src
+          }
+        }
+        body {
+          ... on PrismicProjektBodyText {
+            slice_type
+            id
+            primary {
+              text {
+                html
+              }
+            }
+          }
+          ... on PrismicProjektBodyQuote {
+            slice_type
+            id
+            primary {
+              quote {
+                html
+              }
+            }
+          }
+          ... on PrismicProjektBodyBild {
+            slice_type
+            id
+            primary {
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 90) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
-      fields {
-        slug
-        sourceInstanceName
-      }
     }
   }
-`;
+`

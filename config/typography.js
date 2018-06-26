@@ -1,9 +1,10 @@
-import Typography from 'typography';
+import Typography from 'typography'
 
 const typography = new Typography({
   title: 'LekoArts',
   baseFontSize: '18px',
   baseLineHeight: 1.45,
+  /* Use the system font stack as fallback */
   headerFontFamily: [
     'Montserrat',
     '-apple-system',
@@ -37,6 +38,6 @@ const typography = new Typography({
       marginBottom: 0,
     },
   }),
-});
+})
 
-export default typography;
+export default typography

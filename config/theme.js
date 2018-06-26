@@ -1,4 +1,4 @@
-import { rgba } from 'polished';
+import { rgba } from 'polished'
 
 const colors = {
   white: {
@@ -9,14 +9,14 @@ const colors = {
   },
   black: {
     base: '#333438',
-    light: '#52555e',
-    lighter: '#9ca0a9',
+    light: '#4b4e57',
+    lighter: '#696d77',
     blue: '#2e3246',
   },
   primary: {
     base: '#3498db',
     light: '#5abdff',
-    dark: '#3466db',
+    dark: '#4768b4',
   },
   secondary: {
     base: '#db8834',
@@ -37,18 +37,19 @@ const colors = {
     behance: '#191919',
     youtube: '#ff0000',
   },
-};
+}
 
 const tint = {
   black: rgba(colors.black.base, 0.1),
   white: rgba(colors.white.light, 0.85),
-  blue: rgba(colors.primary.base, 0.3),
-};
+  blue: rgba(colors.primary.base, 0.35),
+  orange: rgba(colors.secondary.base, 0.35),
+}
 
 const gradient = {
   leftToRight: `linear-gradient(-45deg, ${colors.background.dark} 0%, ${colors.background.light} 100%)`,
   rightToLeft: `linear-gradient(45deg, ${colors.background.dark} 0%, ${colors.background.light} 100%)`,
-};
+}
 
 const shadow = {
   button: {
@@ -56,6 +57,7 @@ const shadow = {
     hover: '0 23px 28px',
   },
   card: '0 20px 30px rgba(0, 0, 0, 0.1)',
+  image: '0 15px 25px rgba(0, 0, 0, 0.1)',
   feature: {
     big: {
       default: '0 40px 40px rgba(0, 0, 0, 0.2)',
@@ -70,7 +72,7 @@ const shadow = {
     small: '0 5px 10px rgba(0, 0, 0, 0.25)',
     big: '0 15px 20px rgba(0, 0, 0, 0.13)',
   },
-};
+}
 
 const button = {
   default: {
@@ -86,6 +88,7 @@ const button = {
     hover: {
       boxShadow: `${shadow.button.hover} ${rgba(colors.primary.base, 0.3)}`,
     },
+    focus: tint.blue,
   },
   secondary: {
     background: `linear-gradient(30deg, ${colors.secondary.light} 0%, ${colors.secondary.dark} 100%)`,
@@ -93,14 +96,15 @@ const button = {
     hover: {
       boxShadow: `${shadow.button.hover} ${rgba(colors.secondary.base, 0.3)}`,
     },
+    focus: tint.orange,
   },
-};
+}
 
 const transition = {
   easeInOutCubic: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
   easeOutBack: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
   duration: '0.4s',
-};
+}
 
 const theme = {
   colors,
@@ -119,7 +123,7 @@ const theme = {
     heading: `Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`,
   },
   layout: {
-    article: '44.444rem',
+    article: '46rem',
     base: '70rem',
     big: '83.33333rem',
   },
@@ -142,6 +146,6 @@ const theme = {
       transition: 'all 0.25s ease-in-out',
     },
   },
-};
+}
 
-export default theme;
+export default theme

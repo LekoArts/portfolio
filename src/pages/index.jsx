@@ -1,15 +1,15 @@
 /* eslint max-len: 0 */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
-import styled from 'react-emotion';
-import { Container, Layout } from 'elements';
-import Footer from '../components/Footer';
-import FeaturedProject from '../components/FeaturedProject';
-import FeaturedPost from '../components/FeaturedPost';
-import Header from '../components/Header';
-import Button from '../components/Button';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
+import styled from 'react-emotion'
+import { Container, Layout } from 'elements'
+import Footer from '../components/Footer'
+import FeaturedProject from '../components/FeaturedProject'
+import FeaturedPost from '../components/FeaturedPost'
+import Header from '../components/Header'
+import Button from '../components/Button'
 
 const ProjectsWrapper = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const ProjectsWrapper = styled.div`
   justify-content: space-between;
   flex-direction: row;
   margin-top: -10rem;
-`;
+`
 
 const PostsWrapper = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const PostsWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 10rem;
-`;
+`
 
 const Text = styled.p`
   text-align: center;
@@ -36,74 +36,69 @@ const Text = styled.p`
   max-width: 850px;
   margin: 5rem auto;
   text-shadow: ${props => props.theme.shadow.text.big};
-`;
+`
 
 const Index = ({
   data: {
+    content: { data: home },
     projects: { edges: projectEdges },
     posts: { edges: postEdges },
   },
 }) => (
   <Layout>
-    <Header
-      big
-      title={
-        <React.Fragment>
-          Kommunikationsdesigner & <br /> Front-End Entwickler
-        </React.Fragment>
-      }
-    />
+    <Header big html={`<h1>${home.hero_title}</h1>`} />
     <Container type="big">
       <ProjectsWrapper>
-        {projectEdges.map(project => (
+        {projectEdges.map((project, index) => (
           <FeaturedProject
-            key={project.node.frontmatter.title}
-            cover={project.node.frontmatter.cover.childImageSharp.fluid}
-            customer={project.node.frontmatter.customer}
+            key={project.node.uid}
+            cover={project.node.data.cover.localFile.childImageSharp.fluid}
+            customer={project.node.data.customer}
             path={project.node.fields.slug}
-            title={project.node.frontmatter.title}
+            title={project.node.data.title.text}
+            testid={`featured-project-${index}`}
           />
         ))}
       </ProjectsWrapper>
     </Container>
     <Container>
       <Text>
-        Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus deiner
-        Marke herauszuholen. <br />
-        <Link to="/projekte">
-          <Button type="primary">Projekte</Button>
-        </Link>
+        {home.teaser_projects.text} <br />
+        <Button to="/projekte" type="primary" role="button">
+          Projekte
+        </Button>
       </Text>
     </Container>
     <Container>
       <PostsWrapper>
-        {postEdges.map(post => (
+        {postEdges.map((post, index) => (
           <FeaturedPost
-            key={post.node.frontmatter.title}
-            cover={post.node.frontmatter.cover.childImageSharp.fluid}
-            date={post.node.frontmatter.date}
+            key={post.node.uid}
+            cover={post.node.data.cover.localFile.childImageSharp.fluid}
+            date={post.node.data.date}
             path={post.node.fields.slug}
-            title={post.node.frontmatter.title}
-            category={post.node.frontmatter.category}
+            title={post.node.data.title.text}
+            category={post.node.data.category.document[0].data.kategorie}
+            testid={`featured-post-${index}`}
           />
         ))}
       </PostsWrapper>
       <Text>
-        Mit ebenso viel Leidenschaft schreibe ich über Design- und Coding-Themen und gebe mein Wissen in Form von
-        Tutorials weiter. <br />
-        <Link to="/blog">
-          <Button type="secondary">Blog</Button>
-        </Link>
+        {home.teaser_blog.text} <br />
+        <Button to="/blog" type="secondary" role="button">
+          Blog
+        </Button>
       </Text>
     </Container>
     <Footer />
   </Layout>
-);
+)
 
-export default Index;
+export default Index
 
 Index.propTypes = {
   data: PropTypes.shape({
+    content: PropTypes.object.isRequired,
     projects: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
@@ -111,27 +106,39 @@ Index.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query IndexQuery {
-    projects: allMarkdownRemark(
-      limit: 3
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "projekte" } } }
-    ) {
+    content: prismicHome {
+      data {
+        hero_title
+        teaser_projects {
+          text
+        }
+        teaser_blog {
+          text
+        }
+      }
+    }
+    projects: allPrismicProjekt(limit: 3, sort: { fields: [data___date], order: DESC }) {
       edges {
         node {
+          uid
           fields {
             slug
           }
-          frontmatter {
+          data {
+            title {
+              text
+            }
             customer
-            title
             cover {
-              childImageSharp {
-                fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
                 }
               }
             }
@@ -139,30 +146,37 @@ export const pageQuery = graphql`
         }
       }
     }
-    posts: allMarkdownRemark(
-      limit: 2
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "blog" } } }
-    ) {
+    posts: allPrismicBlogpost(limit: 2, sort: { fields: [data___date], order: DESC }) {
       edges {
         node {
+          uid
           fields {
             slug
           }
-          frontmatter {
-            title
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 800, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          data {
+            title {
+              text
+            }
+            date(formatString: "DD.MM.YYYY")
+            category {
+              document {
+                data {
+                  kategorie
                 }
               }
             }
-            date(formatString: "DD.MM.YYYY")
-            category
+            cover {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
   }
-`;
+`

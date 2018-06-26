@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import Img from 'gatsby-image';
-import styled from 'react-emotion';
-import theme from '../../config/theme';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import Img from 'gatsby-image'
+import styled from 'react-emotion'
+import theme from '../../config/theme'
 
 const ImageOverlay = styled.div`
   border-radius: ${props => props.theme.borderRadius.default};
@@ -20,7 +20,7 @@ const ImageOverlay = styled.div`
     ${props => props.theme.colors.secondary.light} 0%,
     ${props => props.theme.colors.secondary.dark} 100%
   );
-`;
+`
 
 const Wrapper = styled.article`
   position: relative;
@@ -51,7 +51,7 @@ const Wrapper = styled.article`
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     height: 15rem;
   }
-`;
+`
 
 const StyledLink = styled(Link)`
   position: absolute;
@@ -64,6 +64,11 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   padding: 1rem;
   z-index: 3;
+  border-radius: ${props => props.theme.borderRadius.default};
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px ${props => props.theme.tint.orange};
+  }
   &:after {
     content: '';
     position: absolute;
@@ -90,7 +95,7 @@ const StyledLink = styled(Link)`
       opacity: 0;
     }
   }
-`;
+`
 
 const Image = styled.div`
   position: absolute;
@@ -111,14 +116,14 @@ const Image = styled.div`
   > div > div {
     position: static !important;
   }
-`;
+`
 
 const Information = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-`;
+`
 
 const Category = styled.span`
   color: ${props => props.theme.colors.black.base};
@@ -126,20 +131,20 @@ const Category = styled.span`
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
   border-radius: ${props => props.theme.borderRadius.round};
   padding: 0.25rem 1rem;
-`;
+`
 
 const Date = styled.div`
   color: ${props => props.theme.colors.white.light};
-`;
+`
 
 const Title = styled.h2`
   color: ${props => props.theme.colors.white.light};
   text-align: left;
   margin-bottom: 0;
-`;
+`
 
-const FeaturedPost = ({ cover, path, category, date, title }) => (
-  <Wrapper>
+const FeaturedPost = ({ cover, path, category, date, title, testid }) => (
+  <Wrapper data-testid={testid}>
     <Image>
       <Img fluid={cover} />
     </Image>
@@ -152,18 +157,19 @@ const FeaturedPost = ({ cover, path, category, date, title }) => (
     </StyledLink>
     <ImageOverlay />
   </Wrapper>
-);
+)
 
-export default FeaturedPost;
+export default FeaturedPost
 
 FeaturedPost.propTypes = {
-  cover: PropTypes.any.isRequired,
+  cover: PropTypes.object.isRequired,
   path: PropTypes.string.isRequired,
   category: PropTypes.string,
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-};
+  testid: PropTypes.string.isRequired,
+}
 
 FeaturedPost.defaultProps = {
   category: 'Keine',
-};
+}

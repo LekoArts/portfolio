@@ -1,17 +1,17 @@
-import React from 'react';
-import styled from 'react-emotion';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import kebabCase from 'lodash/kebabCase';
-import { hideS } from 'utilities';
-import Tags from './Tags';
+import React from 'react'
+import styled from 'react-emotion'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import kebabCase from 'lodash/kebabCase'
+import { hideS } from 'elements'
+import Tags from './Tags'
 
 const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   margin-bottom: 4rem;
   margin-top: 2rem;
-`;
+`
 
 const Information = styled.div`
   h1 {
@@ -24,33 +24,39 @@ const Information = styled.div`
       color: ${props => props.theme.colors.primary.base};
     }
   }
-`;
+`
 
 const Statistics = styled.div`
   color: ${props => props.theme.colors.black.lighter};
-`;
+`
 
 const Excerpt = styled.div`
   margin-top: 1rem;
-`;
+`
 
-const ItemTagCategory = ({ category, path, title, date, timeToRead, tags, excerpt }) => (
-  <Wrapper>
-    <Information>
-      <Link to={path}>
-        <h1>{title}</h1>
-      </Link>
-      <Statistics>
-        {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
-        <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
-      </Statistics>
-      <Tags tags={tags} />
-      <Excerpt>{excerpt}</Excerpt>
-    </Information>
-  </Wrapper>
-);
+const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, excerpt }) => {
+  let tags = false
+  if (inputTags[0].tag) {
+    tags = inputTags.map(tag => tag.tag.document[0].data.tag)
+  }
+  return (
+    <Wrapper>
+      <Information>
+        <Link to={path}>
+          <h1>{title}</h1>
+        </Link>
+        <Statistics>
+          {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
+          <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
+        </Statistics>
+        {tags && <Tags tags={tags} />}
+        <Excerpt>{`${excerpt}...`}</Excerpt>
+      </Information>
+    </Wrapper>
+  )
+}
 
-export default ItemTagCategory;
+export default ItemTagCategory
 
 ItemTagCategory.propTypes = {
   category: PropTypes.string.isRequired,
@@ -58,6 +64,6 @@ ItemTagCategory.propTypes = {
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   timeToRead: PropTypes.number.isRequired,
-  tags: PropTypes.array.isRequired,
+  inputTags: PropTypes.array.isRequired,
   excerpt: PropTypes.string.isRequired,
-};
+}

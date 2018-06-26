@@ -1,90 +1,106 @@
-const path = require('path');
-const _ = require('lodash');
+const path = require('path')
+const _ = require('lodash')
+const { ex, fullText, timeToRead } = require('./src/utilities')
 
-const pathPrefixes = {
-  blog: '/blog',
-  projekte: '/projekte',
-};
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
-  let slug;
-  if (node.internal.type === 'MarkdownRemark') {
-    const fileNode = getNode(node.parent);
-    const pathPrefix = pathPrefixes[fileNode.sourceInstanceName];
-    if (
-      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
-    ) {
-      slug = `/${_.kebabCase(node.frontmatter.slug)}`;
-    }
-    if (
-      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
-    ) {
-      slug = `/${_.kebabCase(node.frontmatter.title)}`;
-    }
-    if (
-      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, 'customer')
-    ) {
-      slug = `/${_.kebabCase(node.frontmatter.customer)}-${_.kebabCase(node.frontmatter.title)}`;
-    }
-    createNodeField({ node, name: 'sourceInstanceName', value: fileNode.sourceInstanceName });
-    createNodeField({ node, name: 'slug', value: `${pathPrefix}${slug}` });
+  let slug
+  let excerpt
+  let TTR
+
+  /* node.dataString is the original response from the API which indluces all informaiton */
+
+  if (node.internal.type === 'PrismicProjekt') {
+    const data = JSON.parse(node.dataString)
+    slug = `/projekte/${node.uid}`
+    /* Since every project starts with a heading the element to extract from is the second item in the array */
+    excerpt = ex(data.body[0].primary.text[1].text)
+    createNodeField({ node, name: 'slug', value: slug })
+    createNodeField({ node, name: 'excerpt', value: excerpt })
+    createNodeField({ node, name: 'sourceType', value: 'Projekte' })
   }
-};
+  if (node.internal.type === 'PrismicBlogpost') {
+    const data = JSON.parse(node.dataString)
+    const allText = fullText(data).toString()
+    slug = `/blog/${node.uid}`
+    excerpt = ex(data.body[0].primary.text[0].text) // Use the first text block for the excerpt
+    TTR = timeToRead(allText)
+    createNodeField({ node, name: 'slug', value: slug })
+    createNodeField({ node, name: 'excerpt', value: excerpt })
+    createNodeField({ node, name: 'timeToRead', value: TTR })
+    createNodeField({ node, name: 'sourceType', value: 'Blog' })
+  }
+}
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
 
   return new Promise((resolve, reject) => {
-    const postPage = path.resolve('src/templates/post.jsx');
-    const projectPage = path.resolve('src/templates/project.jsx');
-    const tagPage = path.resolve('src/templates/tag.jsx');
-    const categoryPage = path.resolve('src/templates/category.jsx');
+    /* Path to templates */
+    const postPage = path.resolve('src/templates/post.jsx')
+    const projectPage = path.resolve('src/templates/project.jsx')
+    const categoryPage = path.resolve('src/templates/category.jsx')
+    const tagPage = path.resolve('src/templates/tag.jsx')
+
     resolve(
       graphql(`
         {
-          posts: allMarkdownRemark(
-            filter: { fields: { sourceInstanceName: { eq: "blog" } } }
-            sort: { fields: [frontmatter___date], order: DESC }
-          ) {
+          posts: allPrismicBlogpost(sort: { fields: [data___date], order: DESC }) {
             edges {
               node {
-                frontmatter {
-                  tags
-                  category
-                  title
+                fields {
+                  slug
+                }
+                data {
+                  title {
+                    text
+                  }
+                  category {
+                    document {
+                      data {
+                        kategorie
+                      }
+                    }
+                  }
                   cover {
-                    childImageSharp {
-                      resize(width: 600) {
-                        src
+                    localFile {
+                      childImageSharp {
+                        resize(width: 600) {
+                          src
+                        }
+                      }
+                    }
+                  }
+                  tags {
+                    tag {
+                      document {
+                        data {
+                          tag
+                        }
                       }
                     }
                   }
                 }
-                fields {
-                  slug
-                }
               }
             }
           }
-          projects: allMarkdownRemark(
-            filter: { fields: { sourceInstanceName: { eq: "projekte" } } }
-            sort: { fields: [frontmatter___date], order: DESC }
-          ) {
+          projects: allPrismicProjekt(sort: { fields: [data___date], order: DESC }) {
             edges {
               node {
                 fields {
                   slug
                 }
-                frontmatter {
-                  title
+                data {
+                  title {
+                    text
+                  }
                   cover {
-                    childImageSharp {
-                      resize(width: 600) {
-                        src
+                    localFile {
+                      childImageSharp {
+                        resize(width: 600) {
+                          src
+                        }
                       }
                     }
                   }
@@ -95,31 +111,33 @@ exports.createPages = ({ graphql, actions }) => {
         }
       `).then(result => {
         if (result.errors) {
-          console.log(result.errors);
-          reject(result.errors);
+          console.log(result.errors)
+          reject(result.errors)
         }
 
-        const tagSet = new Set();
-        const categorySet = new Set();
+        const categorySet = new Set()
+        const tagSet = new Set()
 
-        const postsList = result.data.posts.edges;
-        const projectsList = result.data.projects.edges;
+        const postsList = result.data.posts.edges
+        const projectsList = result.data.projects.edges
 
         postsList.forEach(post => {
-          if (post.node.frontmatter.tags) {
-            post.node.frontmatter.tags.forEach(tag => {
-              tagSet.add(tag);
-            });
+          if (post.node.data.category.document[0].data.kategorie) {
+            categorySet.add(post.node.data.category.document[0].data.kategorie)
           }
 
-          if (post.node.frontmatter.category) {
-            categorySet.add(post.node.frontmatter.category);
+          // Double-check if tags exist
+          if (post.node.data.tags[0].tag) {
+            post.node.data.tags.forEach(tag => {
+              tagSet.add(tag.tag.document[0].data.tag)
+            })
           }
 
-          const filtered = _.filter(postsList, input => input.node.fields.slug !== post.node.fields.slug);
-          const sample = _.sampleSize(filtered, 2);
-          const left = sample[0].node;
-          const right = sample[1].node;
+          /* Create a random selection of the other posts (excluding the current post) */
+          const filtered = _.filter(postsList, input => input.node.fields.slug !== post.node.fields.slug)
+          const sample = _.sampleSize(filtered, 2)
+          const left = sample[0].node
+          const right = sample[1].node
 
           createPage({
             path: post.node.fields.slug,
@@ -129,14 +147,15 @@ exports.createPages = ({ graphql, actions }) => {
               left,
               right,
             },
-          });
-        });
+          })
+        })
 
         projectsList.forEach(project => {
-          const filtered = _.filter(projectsList, input => input.node.fields.slug !== project.node.fields.slug);
-          const sample = _.sampleSize(filtered, 2);
-          const left = sample[0].node;
-          const right = sample[1].node;
+          /* Create a random selection of the other posts (excluding the current post) */
+          const filtered = _.filter(projectsList, input => input.node.fields.slug !== project.node.fields.slug)
+          const sample = _.sampleSize(filtered, 2)
+          const left = sample[0].node
+          const right = sample[1].node
 
           createPage({
             path: project.node.fields.slug,
@@ -146,21 +165,10 @@ exports.createPages = ({ graphql, actions }) => {
               left,
               right,
             },
-          });
-        });
+          })
+        })
 
-        const tagList = Array.from(tagSet);
-        tagList.forEach(tag => {
-          createPage({
-            path: `/tags/${_.kebabCase(tag)}/`,
-            component: tagPage,
-            context: {
-              tag,
-            },
-          });
-        });
-
-        const categoryList = Array.from(categorySet);
+        const categoryList = Array.from(categorySet)
         categoryList.forEach(category => {
           createPage({
             path: `/categories/${_.kebabCase(category)}/`,
@@ -168,17 +176,29 @@ exports.createPages = ({ graphql, actions }) => {
             context: {
               category,
             },
-          });
-        });
-      })
-    );
-  });
-};
+          })
+        })
 
+        const tagList = Array.from(tagSet)
+        tagList.forEach(tag => {
+          createPage({
+            path: `/tags/${_.kebabCase(tag)}/`,
+            component: tagPage,
+            context: {
+              tag,
+            },
+          })
+        })
+      })
+    )
+  })
+}
+
+/* Allow us to use something like: import { X } from 'directory' instead of '../../folder/directory' */
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     },
-  });
-};
+  })
+}
