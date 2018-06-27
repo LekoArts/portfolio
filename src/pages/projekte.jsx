@@ -18,7 +18,7 @@ const Base = styled.div`
 
 const Projekte = ({
   data: {
-    allMarkdownRemark: { edges },
+    allPrismicProjekt: { edges },
   },
 }) => (
   <Layout>
@@ -30,11 +30,11 @@ const Projekte = ({
       <Base>
         {edges.map(project => (
           <ItemProject
-            key={project.node.frontmatter.title}
+            key={project.node.uid}
             path={project.node.fields.slug}
-            cover={project.node.frontmatter.cover.childImageSharp.fluid}
-            customer={project.node.frontmatter.customer}
-            title={project.node.frontmatter.title}
+            cover={project.node.data.cover.localFile.childImageSharp.fluid}
+            customer={project.node.data.customer}
+            title={project.node.data.title.text}
           />
         ))}
       </Base>
@@ -47,7 +47,7 @@ export default Projekte;
 
 Projekte.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allPrismicProjekt: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
@@ -55,23 +55,24 @@ Projekte.propTypes = {
 
 export const pageQuery = graphql`
   query ProjectsQuery {
-    allMarkdownRemark(
-      limit: 1000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "projekte" } } }
-    ) {
+    allPrismicProjekt(sort: { fields: [data___date], order: DESC }) {
       edges {
         node {
+          uid
           fields {
             slug
           }
-          frontmatter {
-            title
+          data {
+            title {
+              text
+            }
             customer
             cover {
-              childImageSharp {
-                fluid(maxWidth: 900, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 900, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
                 }
               }
             }

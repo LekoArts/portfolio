@@ -38,11 +38,12 @@ const Subtitle = styled.p`
   color: ${props => props.theme.colors.white.blue};
 `;
 
-const Header = ({ children, title, big }) => (
+const Header = ({ children, title, big, html }) => (
   <Wrapper big={big}>
     <Text>
-      <h1>{title}</h1>
+      {title && <h1>{title}</h1>}
       {children && <Subtitle>{children}</Subtitle>}
+      {html && <div dangerouslySetInnerHTML={{ __html: html }} />}
     </Text>
     <Wave />
   </Wrapper>
@@ -52,11 +53,14 @@ export default Header;
 
 Header.propTypes = {
   children: PropTypes.any,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  html: PropTypes.any,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.bool]),
   big: PropTypes.bool,
 };
 
 Header.defaultProps = {
   big: false,
+  title: false,
   children: false,
+  html: false,
 };

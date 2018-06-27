@@ -36,25 +36,15 @@ const Number = styled.span`
   color: ${props => props.theme.colors.black.lighter};
 `;
 
-const Tags = ({
-  data: {
-    allMarkdownRemark: { group, edges },
-  },
-}) => (
+const Tags = () => (
   <Layout>
     <Helmet title={`Tags | ${config.siteTitle}`} />
     <Header title="Tags">
-      {size(edges)} Beiträge wurden mit {size(group)} Tags markiert
+      test
     </Header>
     <Container>
       <TagsContainer>
-        {group.map(tag => (
-          <Link key={tag.fieldValue} to={`/tags/${kebabCase(tag.fieldValue)}`}>
-            <span>
-              {tag.fieldValue} <Number>{tag.totalCount}</Number>
-            </span>
-          </Link>
-        ))}
+        test
       </TagsContainer>
     </Container>
     <Footer />
@@ -71,19 +61,3 @@ Tags.propTypes = {
     }),
   }).isRequired,
 };
-
-export const pageQuery = graphql`
-  query TagsPage {
-    allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "blog" } } }) {
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
-      }
-      edges {
-        node {
-          id
-        }
-      }
-    }
-  }
-`;

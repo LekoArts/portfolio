@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Container, Layout } from 'elements';
 import Footer from '../components/Footer';
@@ -52,54 +54,80 @@ const CardContainer = styled(Container)`
   margin-bottom: 4rem;
 `;
 
-const Kontakt = () => (
-  <Layout>
-    <Helmet title={`Kontakt | ${config.siteTitle}`} />
-    <Header title="Kontakt">
-      Ich freue mich von dir zu hören – egal, ob du eine Projektanfrage hast, Rat brauchst oder einfach quatschen willst
-    </Header>
-    <Wrapper>
-      <Container type="article">
-        <h3>Hi! Ich heiße Lennart und bin autodidaktischer Kommunikationsdesigner & Front-End Entwickler.</h3>
-        <p>
-          Seit über 5 Jahren arbeite ich in den Bereichen Webdesign, Printdesign und Bildbearbeitung. Zusätzlich arbeite
-          ich seit über 3 Jahren als Front-End Entwickler. Seitdem konnte ich viele andere talentierte Menschen
-          kennenlernen und meine Zeit dafür nutzen, mich kontinuierlich weiterzubilden, Dinge auszuprobieren und
-          schlussendlich das Handwerk in meinem Bereich vollends zu erlernen.
-        </p>
-        <p>
-          Für meine Kunden gestalte ich maßgeschneiderte, intuitive und visuell ansprechende Designs und Websiten – von
-          der Konzeption über die Kreation bis zur technischen Umsetzung begleite ich alle Schritte.
-        </p>
-      </Container>
-      <CenteredContainer>
-        <a href="mailto:&#104;&#101;&#108;&#108;&#111;&#064;&#108;&#101;&#107;&#111;&#097;&#114;&#116;&#115;&#046;&#100;&#101;">
-          <Button type="primary">
-            <Paperplane /> E-Mail
-          </Button>
-        </a>
-      </CenteredContainer>
-      <CardContainer>
-        <MyLinkCard link="https://www.discordapp.com" discord>
-          <Discord />
-          LekoArts#2495
-        </MyLinkCard>
-        <MyLinkCard link="https://www.instagram.com/lekoarts.de" instagram>
-          <Instagram />
-          3D & Experimente
-        </MyLinkCard>
-        <MyLinkCard link="https://www.behance.net/lekoarts" behance>
-          <Behance />
-          Persönliche Projekte
-        </MyLinkCard>
-        <MyLinkCard link="https://youtube.de/LekoArtsDE" youtube>
-          <YouTube />
-          Speedarts
-        </MyLinkCard>
-      </CardContainer>
-    </Wrapper>
-    <Footer />
-  </Layout>
-);
+const Kontakt = ({
+  data: {
+    allPrismicSeite: { edges },
+  },
+}) => {
+  const k = edges[0].node.data;
+  return (
+    <Layout>
+      <Helmet title={`${k.title.text} | ${config.siteTitle}`} />
+      <Header title={k.title.text}>{k.description.text}</Header>
+      <Wrapper>
+        <Container type="article">
+          <div dangerouslySetInnerHTML={{ __html: k.content.html }} />
+        </Container>
+        <CenteredContainer>
+          <a href="mailto:&#104;&#101;&#108;&#108;&#111;&#064;&#108;&#101;&#107;&#111;&#097;&#114;&#116;&#115;&#046;&#100;&#101;">
+            <Button type="primary">
+              <Paperplane /> E-Mail
+            </Button>
+          </a>
+        </CenteredContainer>
+        <CardContainer>
+          <MyLinkCard link="https://www.discordapp.com" discord>
+            <Discord />
+            LekoArts#2495
+          </MyLinkCard>
+          <MyLinkCard link="https://www.instagram.com/lekoarts.de" instagram>
+            <Instagram />
+            3D & Experimente
+          </MyLinkCard>
+          <MyLinkCard link="https://www.behance.net/lekoarts" behance>
+            <Behance />
+            Persönliche Projekte
+          </MyLinkCard>
+          <MyLinkCard link="https://youtube.de/LekoArtsDE" youtube>
+            <YouTube />
+            Speedarts
+          </MyLinkCard>
+        </CardContainer>
+      </Wrapper>
+      <Footer />
+    </Layout>
+  );
+};
 
 export default Kontakt;
+
+Kontakt.propTypes = {
+  data: PropTypes.shape({
+    allPrismicSeite: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }),
+  }).isRequired,
+};
+
+export const pageQuery = graphql`
+  query KontaktQuery {
+    allPrismicSeite(filter: { uid: { eq: "kontakt" } }) {
+      edges {
+        node {
+          uid
+          data {
+            title {
+              text
+            }
+            description {
+              text
+            }
+            content {
+              html
+            }
+          }
+        }
+      }
+    }
+  }
+`;

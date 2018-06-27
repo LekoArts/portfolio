@@ -20,7 +20,12 @@ module.exports = {
       options: {
         repositoryName: 'lekoarts',
         accessToken: `${process.env.API_KEY}`,
-        linkResolver: ({ node, key, value }) => doc => `/${doc.uid}`,
+        linkResolver: ({ node, key, value }) => doc => {
+          if (doc.type === 'projekt') return `/projekt/${doc.uid}`;
+          if (doc.type === 'blogpost') return `/blog/${doc.uid}`;
+
+          return `/${doc.uid}`;
+        },
         htmlSerializer: ({ node, key, value }) => (type, element, content, children) => {
           // Your HTML serializer
         },

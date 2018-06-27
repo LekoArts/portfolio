@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import styled from 'react-emotion';
+import { timeToRead, fullText } from 'utilities';
 import { Container, Layout } from 'elements';
 import config from '../../config/website';
 import ItemBlog from '../components/ItemBlog';
@@ -18,7 +19,7 @@ const Base = styled.div`
 
 const Blog = ({
   data: {
-    allMarkdownRemark: { edges },
+    allPrismicBlogpost: { edges },
   },
 }) => (
   <Layout>
@@ -28,15 +29,14 @@ const Blog = ({
       <Base>
         {edges.map(post => (
           <ItemBlog
-            key={post.node.frontmatter.title}
+            key={post.node.uid}
             path={post.node.fields.slug}
-            cover={post.node.frontmatter.cover.childImageSharp.fluid}
-            title={post.node.frontmatter.title}
-            date={post.node.frontmatter.date}
-            category={post.node.frontmatter.category}
-            timeToRead={post.node.timeToRead}
-            excerpt={post.node.excerpt}
-            tags={post.node.frontmatter.tags}
+            cover={post.node.data.cover.localFile.childImageSharp.fluid}
+            title={post.node.data.title.text}
+            date={post.node.data.date}
+            category={post.node.data.category.document[0].data.kategorie}
+            timeToRead={timeToRead(fullText(post))}
+            excerpt={post.node.data.body[0].primary.text.text}
           />
         ))}
       </Base>
@@ -57,27 +57,41 @@ Blog.propTypes = {
 
 export const pageQuery = graphql`
   query BlogQuery {
-    allMarkdownRemark(
-      limit: 1000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "blog" } } }
-    ) {
+    allPrismicBlogpost(sort: { fields: [data___date], order: DESC }) {
       edges {
         node {
+          uid
           fields {
             slug
           }
-          excerpt(pruneLength: 300)
-          timeToRead
-          frontmatter {
-            title
-            date(formatString: "DD. MMMM YYYY", locale: "de")
-            category
-            tags
+          data {
+            body {
+              ... on PrismicBlogpostBodyText {
+                primary {
+                  text {
+                    text
+                  }
+                }
+                slice_type
+              }
+            }
+            title {
+              text
+            }
+            date(formatString: "DD.MM.YYYY", locale: "de")
+            category {
+              document {
+                data {
+                  kategorie
+                }
+              }
+            }
             cover {
-              childImageSharp {
-                fluid(maxWidth: 900, quality: 85, traceSVG: { color: "#2B2B2F" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 900, quality: 85, traceSVG: { color: "#2B2B2F" }) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
                 }
               }
             }

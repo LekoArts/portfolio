@@ -40,36 +40,29 @@ const Text = styled.p`
 
 const Index = ({
   data: {
+    content: { data: home },
     projects: { edges: projectEdges },
     posts: { edges: postEdges },
   },
 }) => (
   <Layout>
-    <Header
-      big
-      title={
-        <React.Fragment>
-          Kommunikationsdesigner & <br /> Front-End Entwickler
-        </React.Fragment>
-      }
-    />
+    <Header big html={`<h1>${home.hero_title}</h1>`} />
     <Container type="big">
       <ProjectsWrapper>
         {projectEdges.map(project => (
           <FeaturedProject
-            key={project.node.frontmatter.title}
-            cover={project.node.frontmatter.cover.childImageSharp.fluid}
-            customer={project.node.frontmatter.customer}
+            key={project.node.uid}
+            cover={project.node.data.cover.localFile.childImageSharp.fluid}
+            customer={project.node.data.customer}
             path={project.node.fields.slug}
-            title={project.node.frontmatter.title}
+            title={project.node.data.title.text}
           />
         ))}
       </ProjectsWrapper>
     </Container>
     <Container>
       <Text>
-        Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus deiner
-        Marke herauszuholen. <br />
+        {home.teaser_projects.text} <br />
         <Link to="/projekte">
           <Button type="primary">Projekte</Button>
         </Link>
@@ -79,18 +72,17 @@ const Index = ({
       <PostsWrapper>
         {postEdges.map(post => (
           <FeaturedPost
-            key={post.node.frontmatter.title}
-            cover={post.node.frontmatter.cover.childImageSharp.fluid}
-            date={post.node.frontmatter.date}
+            key={post.node.uid}
+            cover={post.node.data.cover.localFile.childImageSharp.fluid}
+            date={post.node.data.date}
             path={post.node.fields.slug}
-            title={post.node.frontmatter.title}
-            category={post.node.frontmatter.category}
+            title={post.node.data.title.text}
+            category={post.node.data.category.document[0].data.kategorie}
           />
         ))}
       </PostsWrapper>
       <Text>
-        Mit ebenso viel Leidenschaft schreibe ich über Design- und Coding-Themen und gebe mein Wissen in Form von
-        Tutorials weiter. <br />
+        {home.teaser_blog.text} <br />
         <Link to="/blog">
           <Button type="secondary">Blog</Button>
         </Link>
@@ -104,6 +96,7 @@ export default Index;
 
 Index.propTypes = {
   data: PropTypes.shape({
+    content: PropTypes.object.isRequired,
     projects: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
@@ -115,23 +108,35 @@ Index.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    projects: allMarkdownRemark(
-      limit: 3
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "projekte" } } }
-    ) {
+    content: prismicHome {
+      data {
+        hero_title
+        teaser_projects {
+          text
+        }
+        teaser_blog {
+          text
+        }
+      }
+    }
+    projects: allPrismicProjekt(limit: 3, sort: { fields: [data___date], order: DESC }) {
       edges {
         node {
+          uid
           fields {
             slug
           }
-          frontmatter {
+          data {
+            title {
+              text
+            }
             customer
-            title
             cover {
-              childImageSharp {
-                fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
                 }
               }
             }
@@ -139,27 +144,34 @@ export const pageQuery = graphql`
         }
       }
     }
-    posts: allMarkdownRemark(
-      limit: 2
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceInstanceName: { eq: "blog" } } }
-    ) {
+    posts: allPrismicBlogpost(limit: 2, sort: { fields: [data___date], order: DESC }) {
       edges {
         node {
+          uid
           fields {
             slug
           }
-          frontmatter {
-            title
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 800, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          data {
+            title {
+              text
+            }
+            date(formatString: "DD.MM.YYYY")
+            category {
+              document {
+                data {
+                  kategorie
                 }
               }
             }
-            date(formatString: "DD.MM.YYYY")
-            category
+            cover {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
+                }
+              }
+            }
           }
         }
       }

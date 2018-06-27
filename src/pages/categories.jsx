@@ -36,26 +36,12 @@ const Number = styled.span`
   color: ${props => props.theme.colors.black.lighter};
 `;
 
-const Categories = ({
-  data: {
-    allMarkdownRemark: { group, edges },
-  },
-}) => (
+const Categories = () => (
   <Layout>
     <Helmet title={`Kategorien | ${config.siteTitle}`} />
-    <Header title="Kategorien">
-      {size(edges)} Beiträge wurden in {size(group)} Kategorien eingeteilt
-    </Header>
+    <Header title="Kategorien">test</Header>
     <Container>
-      <TagsContainer>
-        {group.map(category => (
-          <Link key={category.fieldValue} to={`/categories/${kebabCase(category.fieldValue)}`}>
-            <span>
-              {category.fieldValue} <Number>{category.totalCount}</Number>
-            </span>
-          </Link>
-        ))}
-      </TagsContainer>
+      <TagsContainer>test</TagsContainer>
     </Container>
     <Footer />
   </Layout>
@@ -71,19 +57,3 @@ Categories.propTypes = {
     }),
   }).isRequired,
 };
-
-export const pageQuery = graphql`
-  query CategoriesPage {
-    allMarkdownRemark(filter: { fields: { sourceInstanceName: { eq: "blog" } } }) {
-      group(field: frontmatter___category) {
-        fieldValue
-        totalCount
-      }
-      edges {
-        node {
-          id
-        }
-      }
-    }
-  }
-`;

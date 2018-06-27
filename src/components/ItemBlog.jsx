@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import {Link} from 'gatsby';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import kebabCase from 'lodash/kebabCase';
-import { hideS } from 'utilities';
+import { hideS, ex } from 'utilities';
 
 const Wrapper = styled.article`
   display: flex;
@@ -99,7 +99,7 @@ const ItemBlog = ({ path, cover, category, title, date, timeToRead, excerpt }) =
         {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
         <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
       </Statistics>
-      <Excerpt>{excerpt}</Excerpt>
+      <Excerpt>{ex(excerpt)}</Excerpt>
     </Information>
   </Wrapper>
 );
