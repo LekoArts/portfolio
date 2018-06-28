@@ -8,4 +8,4 @@ const fullText = n =>
     return null;
   });
 
-export default fullText;
+module.exports = fullText;

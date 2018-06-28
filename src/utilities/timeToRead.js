@@ -1,5 +1,5 @@
 // Time to read a text :)
-import words from 'lodash/words';
+const words = require('lodash/words');
 
 const timeToRead = content => {
   let TTR;
@@ -12,4 +12,4 @@ const timeToRead = content => {
   return TTR;
 };
 
-export default timeToRead;
+module.exports = timeToRead;
