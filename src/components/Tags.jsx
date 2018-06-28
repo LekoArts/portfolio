@@ -27,12 +27,11 @@ const TagsContainer = styled.div`
 
 const Tags = ({ tags }) => (
   <TagsContainer>
-    {tags &&
-      tags.map(tag => (
-        <Link key={tag} to={`/tags/${kebabCase(tag)}`}>
-          <span>{tag}</span>
-        </Link>
-      ))}
+    {tags.map(tag => (
+      <Link key={tag} to={`/tags/${kebabCase(tag)}`}>
+        <span>{tag}</span>
+      </Link>
+    ))}
   </TagsContainer>
 );
 

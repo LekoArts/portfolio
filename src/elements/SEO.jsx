@@ -3,19 +3,18 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import config from '../../config/website';
-import { cfl } from 'utilities';
 
 const SEO = props => {
-  const { postNode, postPath, postSEO } = props;
+  const { postNode, postPath, postSEO, desc } = props;
   let title;
   let description;
   let image;
   let postURL;
   if (postSEO) {
-    const postMeta = postNode.frontmatter;
-    title = `${postMeta.title} | ${config.siteTitleAlt} – ${cfl(postNode.fields.sourceInstanceName)}`;
-    description = postNode.excerpt;
-    image = postMeta.cover.childImageSharp.resize.src;
+    const postMeta = postNode.data;
+    title = `${postMeta.title.text} | ${config.siteTitleAlt} – ${postNode.fields.sourceType}`;
+    description = desc;
+    image = postMeta.cover.localFile.childImageSharp.resize.src;
     postURL = config.siteUrl + postPath;
   } else {
     title = config.siteTitle;
@@ -105,4 +104,5 @@ SEO.propTypes = {
   postNode: PropTypes.object,
   postPath: PropTypes.string,
   postSEO: PropTypes.bool,
+  desc: PropTypes.string,
 };

@@ -135,10 +135,10 @@ const Suggestions = ({ left, right, primary, secondary }) => (
     {left && (
       <Wrapper>
         <Image>
-          <img src={left.frontmatter.cover.childImageSharp.resize.src} alt={left.frontmatter.title} />
+          <img src={left.data.cover.localFile.childImageSharp.resize.src} alt={left.data.title.text} />
         </Image>
         <StyledLink to={left.fields.slug}>
-          <Title>{left.frontmatter.title}</Title>
+          <Title>{left.data.title.text}</Title>
         </StyledLink>
         <ImageOverlay primary={primary} secondary={secondary} />
       </Wrapper>
@@ -147,10 +147,10 @@ const Suggestions = ({ left, right, primary, secondary }) => (
     {right && (
       <Wrapper>
         <Image>
-          <img src={right.frontmatter.cover.childImageSharp.resize.src} alt={right.frontmatter.title} />
+          <img src={right.data.cover.localFile.childImageSharp.resize.src} alt={right.data.title.text} />
         </Image>
         <StyledLink to={right.fields.slug}>
-          <Title>{right.frontmatter.title}</Title>
+          <Title>{right.data.title.text}</Title>
         </StyledLink>
         <ImageOverlay primary={primary} secondary={secondary} />
       </Wrapper>
