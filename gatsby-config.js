@@ -2,7 +2,19 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 const config = require('./config/website');
+const { RichText } = require('prismic-reactjs');
+const Prism = require('prismjs');
+require('prismjs/components/prism-javascript');
+require('prismjs/components/prism-css');
+require('prismjs/components/prism-scss');
+require('prismjs/components/prism-jsx');
+require('prismjs/components/prism-bash');
+require('prismjs/components/prism-json');
+require('prismjs/components/prism-diff');
+require('prismjs/components/prism-markdown');
+require('prismjs/components/prism-graphql');
 
+const { Elements } = RichText;
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
 module.exports = {
@@ -21,13 +33,20 @@ module.exports = {
         repositoryName: 'lekoarts',
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => doc => {
-          if (doc.type === 'projekt') return `/projekt/${doc.uid}`;
+          if (doc.type === 'projekt') return `/projekte/${doc.uid}`;
           if (doc.type === 'blogpost') return `/blog/${doc.uid}`;
 
           return `/${doc.uid}`;
         },
         htmlSerializer: ({ node, key, value }) => (type, element, content, children) => {
-          // Your HTML serializer
+          switch (type) {
+          case Elements.label:
+            return `<code class="${element.data.label}">${content}</code>`;
+          case Elements.preformatted:
+            return `<pre class="language-${element.label}"><code class="language-${element.label}">${Prism.highlight(element.text, Prism.languages[element.label])}</code></pre>`;
+          default:
+            return null;
+          }
         },
       },
     },

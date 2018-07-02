@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes, css } from 'react-emotion';
 import Img from 'gatsby-image';
 import { Link, graphql } from 'gatsby';
+import Prism from 'prismjs';
 import kebabCase from 'lodash/kebabCase';
 import { SEO, Container, Content, Wave, Line, Layout, hideS, Hero, InfoText } from 'elements';
 import Tags from '../components/Tags';
@@ -86,7 +87,6 @@ const Post = ({ pageContext: { slug, left, right, timeToRead, excerpt }, data: {
   if (post.tags[0].tag !== null) {
     tags = post.tags.map(tag => tag.tag.document[0].data.tag);
   }
-
   return (
     <Layout>
       <SEO postPath={slug} postNode={postNode} desc={excerpt} postSEO />
@@ -101,8 +101,8 @@ const Post = ({ pageContext: { slug, left, right, timeToRead, excerpt }, data: {
         <Wave />
         <Img fluid={fluid} />
       </Wrapper>
+      <Content sliceZone={postNode.data.body} />
       <Container type="article">
-        <p>Content kommt hier hin!</p>
         <Line aria-hidden="true" />
         {tags && <Tags tags={tags} />}
         <Note>
@@ -170,6 +170,41 @@ export const pageQuery = graphql`
               }
               resize(width: 1200, quality: 90) {
                 src
+              }
+            }
+          }
+        }
+        body {
+          ... on PrismicBlogpostBodyText {
+            slice_type
+            id
+            primary {
+              text {
+                html
+              }
+            }
+          }
+          ... on PrismicBlogpostBodyCodeBlock {
+            slice_type
+            id
+            primary {
+              code_block {
+                html
+              }
+            }
+          }
+          ... on PrismicBlogpostBodyBild {
+            slice_type
+            id
+            primary {
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 90) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
               }
             }
           }

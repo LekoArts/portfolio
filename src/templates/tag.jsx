@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby';
 import styled from 'react-emotion';
 import Helmet from 'react-helmet';
 import { Container, Layout } from 'elements';
+import { fullText, timeToRead } from 'utilities';
 import config from '../../config/website';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -16,7 +17,7 @@ const StyledLink = styled(Link)`
 const Tag = ({
   pageContext: { tag },
   data: {
-    allMarkdownRemark: { edges, totalCount },
+    allPrismicBlogpost: { edges, totalCount },
   },
 }) => (
   <Layout>
@@ -29,14 +30,14 @@ const Tag = ({
     <Container>
       {edges.map(edge => (
         <ItemTagCategory
-          key={edge.node.frontmatter.title}
-          title={edge.node.frontmatter.title}
-          category={edge.node.frontmatter.category}
+          key={edge.node.uid}
+          title={edge.node.data.title.text}
+          category={edge.node.data.category.document[0].data.kategorie}
           path={edge.node.fields.slug}
-          date={edge.node.frontmatter.date}
-          timeToRead={edge.node.timeToRead}
-          tags={edge.node.frontmatter.tags}
-          excerpt={edge.node.excerpt}
+          date={edge.node.data.date}
+          timeToRead={timeToRead(fullText(edge))}
+          inputTags={edge.node.data.tags}
+          excerpt={edge.node.data.body[0].primary.text.text}
         />
       ))}
     </Container>
@@ -51,32 +52,52 @@ Tag.propTypes = {
     tag: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allPrismicBlogpost: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
 };
 
 export const pageQuery = graphql`
-  query TagPage($tag: String) {
-    allMarkdownRemark(
-      limit: 1000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
-    ) {
+  query TagPage {
+    allPrismicBlogpost(sort: { fields: [data___date], order: DESC }) {
       totalCount
       edges {
         node {
+          uid
           fields {
             slug
           }
-          excerpt(pruneLength: 300)
-          timeToRead
-          frontmatter {
-            title
-            tags
+          data {
+            title {
+              text
+            }
             date(formatString: "DD. MMMM YYYY", locale: "de")
-            category
+            category {
+              document {
+                data {
+                  kategorie
+                }
+              }
+            }
+            tags {
+              tag {
+                document {
+                  data {
+                    tag
+                  }
+                }
+              }
+            }
+            body {
+              ... on PrismicBlogpostBodyText {
+                primary {
+                  text {
+                    text
+                  }
+                }
+              }
+            }
           }
         }
       }

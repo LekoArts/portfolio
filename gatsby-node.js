@@ -7,7 +7,7 @@ exports.onCreateNode = ({ node, actions }) => {
 
   let slug;
   if (node.internal.type === 'PrismicProjekt') {
-    slug = `/projekt/${node.uid}`;
+    slug = `/projekte/${node.uid}`;
     createNodeField({ node, name: 'slug', value: slug });
     createNodeField({ node, name: 'sourceType', value: 'Projekte' });
   }
@@ -23,6 +23,8 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     const postPage = path.resolve('src/templates/post.jsx');
+    const projectPage = path.resolve('src/templates/project.jsx');
+    const categoryPage = path.resolve('src/templates/category.jsx');
 
     resolve(
       graphql(`
@@ -44,13 +46,44 @@ exports.createPages = ({ graphql, actions }) => {
                           text
                         }
                       }
-                      slice_type
                     }
                   }
                   category {
                     document {
                       data {
                         kategorie
+                      }
+                    }
+                  }
+                  cover {
+                    localFile {
+                      childImageSharp {
+                        resize(width: 600) {
+                          src
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          projects: allPrismicProjekt(sort: { fields: [data___date], order: DESC }) {
+            edges {
+              node {
+                fields {
+                  slug
+                }
+                data {
+                  title {
+                    text
+                  }
+                  body {
+                    ... on PrismicProjektBodyText {
+                      primary {
+                        text {
+                          text
+                        }
                       }
                     }
                   }
@@ -77,6 +110,7 @@ exports.createPages = ({ graphql, actions }) => {
         const categorySet = new Set();
 
         const postsList = result.data.posts.edges;
+        const projectsList = result.data.projects.edges;
 
         let TTR;
         let excerpt;
@@ -103,6 +137,37 @@ exports.createPages = ({ graphql, actions }) => {
               right,
               timeToRead: TTR,
               excerpt,
+            },
+          });
+        });
+
+        projectsList.forEach(project => {
+          const filtered = _.filter(projectsList, input => input.node.fields.slug !== project.node.fields.slug);
+          const sample = _.sampleSize(filtered, 2);
+          const left = sample[0].node;
+          const right = sample[1].node;
+
+          excerpt = ex(project.node.data.body[0].primary.text.text);
+
+          createPage({
+            path: project.node.fields.slug,
+            component: projectPage,
+            context: {
+              slug: project.node.fields.slug,
+              left,
+              right,
+              excerpt,
+            },
+          });
+        });
+
+        const categoryList = Array.from(categorySet);
+        categoryList.forEach(category => {
+          createPage({
+            path: `/categories/${_.kebabCase(category)}/`,
+            component: categoryPage,
+            context: {
+              category,
             },
           });
         });

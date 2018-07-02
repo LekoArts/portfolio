@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import { hideS } from 'elements';
+import { ex } from 'utilities';
 import Tags from './Tags';
 
 const Wrapper = styled.article`
@@ -34,21 +35,27 @@ const Excerpt = styled.div`
   margin-top: 1rem;
 `;
 
-const ItemTagCategory = ({ category, path, title, date, timeToRead, tags, excerpt }) => (
-  <Wrapper>
-    <Information>
-      <Link to={path}>
-        <h1>{title}</h1>
-      </Link>
-      <Statistics>
-        {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
-        <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
-      </Statistics>
-      <Tags tags={tags} />
-      <Excerpt>{excerpt}</Excerpt>
-    </Information>
-  </Wrapper>
-);
+const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, excerpt }) => {
+  let tags = false;
+  if (inputTags[0].tag !== null) {
+    tags = inputTags.map(tag => tag.tag.document[0].data.tag);
+  }
+  return (
+    <Wrapper>
+      <Information>
+        <Link to={path}>
+          <h1>{title}</h1>
+        </Link>
+        <Statistics>
+          {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
+          <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
+        </Statistics>
+        {tags && <Tags tags={tags} />}
+        <Excerpt>{`${ex(excerpt)}...`}</Excerpt>
+      </Information>
+    </Wrapper>
+  );
+};
 
 export default ItemTagCategory;
 
@@ -58,6 +65,6 @@ ItemTagCategory.propTypes = {
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   timeToRead: PropTypes.number.isRequired,
-  tags: PropTypes.array.isRequired,
+  inputTags: PropTypes.array.isRequired,
   excerpt: PropTypes.string.isRequired,
 };

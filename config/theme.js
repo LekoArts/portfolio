@@ -56,6 +56,7 @@ const shadow = {
     hover: '0 23px 28px',
   },
   card: '0 20px 30px rgba(0, 0, 0, 0.1)',
+  image: '0 15px 25px rgba(0, 0, 0, 0.1)',
   feature: {
     big: {
       default: '0 40px 40px rgba(0, 0, 0, 0.2)',
@@ -119,7 +120,7 @@ const theme = {
     heading: `Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`,
   },
   layout: {
-    article: '44.444rem',
+    article: '46rem',
     base: '70rem',
     big: '83.33333rem',
   },
