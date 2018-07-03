@@ -17,6 +17,9 @@ require('prismjs/components/prism-graphql');
 const { Elements } = RichText;
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
+const codeInline = ['text'];
+const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql'];
+
 module.exports = {
   /* General Information */
   pathPrefix: config.pathPrefix,
@@ -32,23 +35,31 @@ module.exports = {
       options: {
         repositoryName: 'lekoarts',
         accessToken: `${process.env.API_KEY}`,
-        linkResolver: ({ node, key, value }) => doc => {
+        linkResolver: () => doc => {
           if (doc.type === 'projekt') return `/projekte/${doc.uid}`;
           if (doc.type === 'blogpost') return `/blog/${doc.uid}`;
 
           return `/${doc.uid}`;
         },
-        htmlSerializer: ({ node, key, value }) => (type, element, content, children) => {
+        htmlSerializer: () => (type, element, content) => {
           switch (type) {
-            case Elements.label:
-              return `<code class="language-${element.data.label}">${content}</code>`;
-            case Elements.preformatted:
-              return `<pre class="language-${element.label}"><code class="language-${element.label}">${Prism.highlight(
-              element.text,
-              Prism.languages[element.label]
-            )}</code></pre>`;
-            default:
+            case Elements.label: {
+              if (codeInline.includes(element.data.label)) {
+                return `<code class="language-${element.data.label}">${content}</code>`;
+              }
               return null;
+            }
+            case Elements.preformatted: {
+              if (codeBlock.includes(element.label)) {
+                return `<pre class="language-${element.label}"><code class="language-${
+                  element.label
+                }">${Prism.highlight(element.text, Prism.languages[element.label])}</code></pre>`;
+              }
+              return null;
+            }
+            default: {
+              return null;
+            }
           }
         },
       },
@@ -93,7 +104,7 @@ module.exports = {
         start_url: config.pathPrefix,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
-        display: 'fullscreen',
+        display: 'standalone',
         icons: [
           {
             src: '/favicons/android-chrome-192x192.png',
