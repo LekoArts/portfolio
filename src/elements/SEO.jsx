@@ -62,6 +62,24 @@ const SEO = props => {
           url: image,
         },
         description,
+        datePublished: postNode.first_publication_date,
+        dateModified: postNode.last_publication_date,
+        author: {
+          '@type': 'Person',
+          name: 'LekoArts',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'LekoArts',
+          logo: {
+            '@type': 'ImageObject',
+            url: config.siteUrl + realPrefix + config.siteLogo,
+          },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebSite',
+          '@id': blogURL,
+        },
       }
     );
   }
