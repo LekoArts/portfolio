@@ -25,7 +25,7 @@
     "no-unused-vars": [
       1,
       {
-        "argsIgnorePattern": "res|next|^err"
+        "argsIgnorePattern": "res|next|stage|^err"
       }
     ],
     "arrow-body-style": [2, "as-needed"],
