@@ -37,7 +37,7 @@ const Excerpt = styled.div`
 
 const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, excerpt }) => {
   let tags = false;
-  if (inputTags[0].tag !== null) {
+  if (inputTags[0].tag) {
     tags = inputTags.map(tag => tag.tag.document[0].data.tag);
   }
   return (

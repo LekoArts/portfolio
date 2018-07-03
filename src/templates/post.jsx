@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes, css } from 'react-emotion';
 import Img from 'gatsby-image';
 import { Link, graphql } from 'gatsby';
-import Prism from 'prismjs';
 import kebabCase from 'lodash/kebabCase';
 import { SEO, Container, Content, Wave, Line, Layout, hideS, Hero, InfoText } from 'elements';
 import Tags from '../components/Tags';
@@ -84,7 +83,7 @@ const Post = ({ pageContext: { slug, left, right, timeToRead, excerpt }, data: {
   const { kategorie } = post.category.document[0].data;
   const { fluid } = post.cover.localFile.childImageSharp;
   let tags = false;
-  if (post.tags[0].tag !== null) {
+  if (post.tags[0].tag) {
     tags = post.tags.map(tag => tag.tag.document[0].data.tag);
   }
   return (
@@ -141,6 +140,8 @@ export const pageQuery = graphql`
       fields {
         slug
       }
+      first_publication_date
+      last_publication_date
       data {
         title {
           text

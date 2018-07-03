@@ -40,12 +40,15 @@ module.exports = {
         },
         htmlSerializer: ({ node, key, value }) => (type, element, content, children) => {
           switch (type) {
-          case Elements.label:
-            return `<code class="${element.data.label}">${content}</code>`;
-          case Elements.preformatted:
-            return `<pre class="language-${element.label}"><code class="language-${element.label}">${Prism.highlight(element.text, Prism.languages[element.label])}</code></pre>`;
-          default:
-            return null;
+            case Elements.label:
+              return `<code class="language-${element.data.label}">${content}</code>`;
+            case Elements.preformatted:
+              return `<pre class="language-${element.label}"><code class="language-${element.label}">${Prism.highlight(
+              element.text,
+              Prism.languages[element.label]
+            )}</code></pre>`;
+            default:
+              return null;
           }
         },
       },

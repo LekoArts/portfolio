@@ -40,6 +40,7 @@ const Wrapper = styled.div`
   .block-img {
     margin-top: 0.5rem;
     margin-bottom: 2rem;
+    text-align: center;
     img {
       border-radius: ${props => props.theme.borderRadius.default};
       box-shadow: ${props => props.theme.shadow.image};
@@ -63,14 +64,14 @@ const Wrapper = styled.div`
 const Content = ({ sliceZone }) => {
   const slices = sliceZone.map(s => {
     switch (s.slice_type) {
-    case 'text':
-      return <BodyText key={s.id} input={s} />;
-    case 'code_block':
-      return <CodeBlock key={s.id} input={s} />;
-    case 'bild':
-      return <Image key={s.id} input={s} />;
-    default:
-      return null;
+      case 'text':
+        return <BodyText key={s.id} input={s} />;
+      case 'code_block':
+        return <CodeBlock key={s.id} input={s} />;
+      case 'bild':
+        return <Image key={s.id} input={s} />;
+      default:
+        return null;
     }
   });
   return <Wrapper>{slices}</Wrapper>;

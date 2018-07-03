@@ -138,6 +138,8 @@ export const pageQuery = graphql`
       fields {
         slug
       }
+      first_publication_date
+      last_publication_date
       data {
         title {
           text
