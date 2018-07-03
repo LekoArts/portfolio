@@ -53,20 +53,7 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'blog',
-        path: `${__dirname}/content/${config.blogPostDir}`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'projekte',
-        path: `${__dirname}/content/${config.projectPostDir}`,
-      },
-    },
+    'gatsby-source-filesystem',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-google-analytics',
