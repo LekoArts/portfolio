@@ -53,7 +53,13 @@ module.exports = {
         },
       },
     },
-    'gatsby-source-filesystem',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: 'src',
+        path: `${__dirname}/src/`,
+      },
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-google-analytics',
