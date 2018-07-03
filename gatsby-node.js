@@ -25,6 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
     const postPage = path.resolve('src/templates/post.jsx');
     const projectPage = path.resolve('src/templates/project.jsx');
     const categoryPage = path.resolve('src/templates/category.jsx');
+    const tagPage = path.resolve('src/templates/tag.jsx');
 
     resolve(
       graphql(`
@@ -60,6 +61,15 @@ exports.createPages = ({ graphql, actions }) => {
                       childImageSharp {
                         resize(width: 600) {
                           src
+                        }
+                      }
+                    }
+                  }
+                  tags {
+                    tag {
+                      document {
+                        data {
+                          tag
                         }
                       }
                     }
@@ -108,6 +118,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const categorySet = new Set();
+        const tagSet = new Set();
 
         const postsList = result.data.posts.edges;
         const projectsList = result.data.projects.edges;
@@ -118,6 +129,12 @@ exports.createPages = ({ graphql, actions }) => {
         postsList.forEach(post => {
           if (post.node.data.category.document[0].data.kategorie) {
             categorySet.add(post.node.data.category.document[0].data.kategorie);
+          }
+
+          if (post.node.data.tags[0].tag) {
+            post.node.data.tags.forEach(tag => {
+              tagSet.add(tag.tag.document[0].data.tag);
+            });
           }
 
           const filtered = _.filter(postsList, input => input.node.fields.slug !== post.node.fields.slug);
@@ -168,6 +185,17 @@ exports.createPages = ({ graphql, actions }) => {
             component: categoryPage,
             context: {
               category,
+            },
+          });
+        });
+
+        const tagList = Array.from(tagSet);
+        tagList.forEach(tag => {
+          createPage({
+            path: `/tags/${_.kebabCase(tag)}/`,
+            component: tagPage,
+            context: {
+              tag,
             },
           });
         });
