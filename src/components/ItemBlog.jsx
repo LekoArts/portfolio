@@ -109,7 +109,7 @@ export default ItemBlog;
 
 ItemBlog.propTypes = {
   path: PropTypes.string.isRequired,
-  cover: PropTypes.any.isRequired,
+  cover: PropTypes.object.isRequired,
   category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,

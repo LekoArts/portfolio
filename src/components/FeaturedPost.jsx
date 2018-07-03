@@ -157,7 +157,7 @@ const FeaturedPost = ({ cover, path, category, date, title }) => (
 export default FeaturedPost;
 
 FeaturedPost.propTypes = {
-  cover: PropTypes.any.isRequired,
+  cover: PropTypes.object.isRequired,
   path: PropTypes.string.isRequired,
   category: PropTypes.string,
   date: PropTypes.string.isRequired,

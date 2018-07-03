@@ -52,8 +52,8 @@ const Header = ({ children, title, big, html }) => (
 export default Header;
 
 Header.propTypes = {
-  children: PropTypes.any,
-  html: PropTypes.any,
+  children: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  html: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.bool]),
   big: PropTypes.bool,
 };

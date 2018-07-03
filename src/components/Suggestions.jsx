@@ -161,8 +161,8 @@ const Suggestions = ({ left, right, primary, secondary }) => (
 export default Suggestions;
 
 Suggestions.propTypes = {
-  left: PropTypes.any.isRequired,
-  right: PropTypes.any.isRequired,
+  left: PropTypes.object.isRequired,
+  right: PropTypes.object.isRequired,
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
 };

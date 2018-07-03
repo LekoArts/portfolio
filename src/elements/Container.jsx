@@ -19,7 +19,7 @@ export default Container;
 Container.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf(['article', 'base', 'big']),
-  className: PropTypes.any,
+  className: PropTypes.string,
 };
 
 Container.defaultProps = {

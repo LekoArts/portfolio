@@ -64,7 +64,7 @@ const ItemProject = ({ cover, path, customer, title }) => (
 export default ItemProject;
 
 ItemProject.propTypes = {
-  cover: PropTypes.any.isRequired,
+  cover: PropTypes.object.isRequired,
   path: PropTypes.string.isRequired,
   customer: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

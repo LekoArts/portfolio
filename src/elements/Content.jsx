@@ -80,5 +80,5 @@ const Content = ({ sliceZone }) => {
 export default Content;
 
 Content.propTypes = {
-  sliceZone: PropTypes.any.isRequired,
+  sliceZone: PropTypes.array.isRequired,
 };

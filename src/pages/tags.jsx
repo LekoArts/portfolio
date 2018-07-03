@@ -39,13 +39,9 @@ const Number = styled.span`
 const Tags = () => (
   <Layout>
     <Helmet title={`Tags | ${config.siteTitle}`} />
-    <Header title="Tags">
-      test
-    </Header>
+    <Header title="Tags">test</Header>
     <Container>
-      <TagsContainer>
-        test
-      </TagsContainer>
+      <TagsContainer>test</TagsContainer>
     </Container>
     <Footer />
   </Layout>

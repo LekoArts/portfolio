@@ -16,5 +16,5 @@ const CodeBlock = ({ input }) => (
 export default CodeBlock;
 
 CodeBlock.propTypes = {
-  input: PropTypes.any.isRequired,
+  input: PropTypes.object.isRequired,
 };

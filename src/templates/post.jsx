@@ -128,6 +128,10 @@ export default Post;
 Post.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
+    left: PropTypes.object.isRequired,
+    right: PropTypes.object.isRequired,
+    timeToRead: PropTypes.number.isRequired,
+    excerpt: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     prismicBlogpost: PropTypes.object.isRequired,

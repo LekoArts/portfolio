@@ -25,5 +25,5 @@ const Image = ({ input }) => (
 export default Image;
 
 Image.propTypes = {
-  input: PropTypes.any.isRequired,
+  input: PropTypes.object.isRequired,
 };

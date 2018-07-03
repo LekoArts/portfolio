@@ -11,5 +11,5 @@ const BodyText = ({ input }) => (
 export default BodyText;
 
 BodyText.propTypes = {
-  input: PropTypes.any.isRequired,
+  input: PropTypes.object.isRequired,
 };

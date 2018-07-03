@@ -159,7 +159,7 @@ const FeaturedProject = ({ cover, path, customer, title }) => (
 export default FeaturedProject;
 
 FeaturedProject.propTypes = {
-  cover: PropTypes.any.isRequired,
+  cover: PropTypes.object.isRequired,
   path: PropTypes.string.isRequired,
   customer: PropTypes.string,
   title: PropTypes.string.isRequired,

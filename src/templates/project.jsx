@@ -126,6 +126,9 @@ export default Project;
 Project.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
+    left: PropTypes.object.isRequired,
+    right: PropTypes.object.isRequired,
+    excerpt: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     prismicProjekt: PropTypes.object.isRequired,
