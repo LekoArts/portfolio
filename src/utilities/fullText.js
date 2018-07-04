@@ -1,3 +1,9 @@
+/**
+ * Fulltext - Get the complete content of a post to e.g. use it for wordCount or a timeToRead feature
+ * @param input
+ * @returns {string} - The content of the slice in text form
+ */
+
 const fullText = input =>
   input.data.body.map(slice => {
     if (slice.slice_type === 'text') {
