@@ -53,6 +53,9 @@ module.exports = {
               if (codeInline.includes(element.data.label)) {
                 return `<code class="language-${element.data.label}">${content}</code>`;
               }
+              if (element.data.label === 'quote') {
+                return `<blockquote><p>${content}</p></blockquote>`;
+              }
               return null;
             }
             case Elements.preformatted: {

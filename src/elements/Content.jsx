@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { prism } from 'styles';
-import { BodyText, CodeBlock, Image } from 'slices';
+import { BodyText, CodeBlock, Image, Quote } from 'slices';
 
 const Wrapper = styled.div`
   padding: 2rem 0 1rem 0;
@@ -70,6 +70,8 @@ const Content = ({ sliceZone }) => {
         return <CodeBlock key={s.id} input={s} />;
       case 'bild':
         return <Image key={s.id} input={s} />;
+      case 'quote':
+        return <Quote key={s.id} input={s} />;
       default:
         return null;
     }

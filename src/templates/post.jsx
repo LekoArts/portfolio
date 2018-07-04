@@ -143,6 +143,7 @@ export const pageQuery = graphql`
     prismicBlogpost(fields: { slug: { eq: $slug } }) {
       fields {
         slug
+        sourceType
       }
       first_publication_date
       last_publication_date
@@ -194,6 +195,15 @@ export const pageQuery = graphql`
             id
             primary {
               code_block {
+                html
+              }
+            }
+          }
+          ... on PrismicBlogpostBodyQuote {
+            slice_type
+            id
+            primary {
+              quote {
                 html
               }
             }

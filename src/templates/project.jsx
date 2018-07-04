@@ -140,6 +140,7 @@ export const pageQuery = graphql`
     prismicProjekt(fields: { slug: { eq: $slug } }) {
       fields {
         slug
+        sourceType
       }
       first_publication_date
       last_publication_date
@@ -169,6 +170,15 @@ export const pageQuery = graphql`
             id
             primary {
               text {
+                html
+              }
+            }
+          }
+          ... on PrismicProjektBodyQuote {
+            slice_type
+            id
+            primary {
+              quote {
                 html
               }
             }
