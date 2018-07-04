@@ -5,7 +5,7 @@ import { prism } from 'styles';
 import { BodyText, CodeBlock, Image, Quote } from 'slices';
 
 const Wrapper = styled.div`
-  padding: 2rem 0 1rem 0;
+  padding: 5rem 0 1rem 0;
   ${prism};
   p,
   li {

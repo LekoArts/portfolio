@@ -11,8 +11,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 const Base = styled.div`
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   display: flex;
   flex-direction: column;
 `;

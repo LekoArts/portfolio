@@ -60,6 +60,7 @@ const CardWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 4rem;
   ${Card} {
     color: ${props => props.theme.colors.black.base} !important;
     margin-bottom: 2rem;

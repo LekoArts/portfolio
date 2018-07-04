@@ -10,8 +10,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 const Base = styled.div`
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   column-gap: 2rem;
   column-width: 500px;
 `;

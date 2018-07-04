@@ -9,7 +9,7 @@ const Row = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 `;
 
 const ImageOverlay = styled.div`
