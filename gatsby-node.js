@@ -1,6 +1,6 @@
 const path = require('path');
 const _ = require('lodash');
-const { timeToRead, fullText, ex } = require('./src/utilities');
+const { ex } = require('./src/utilities');
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
@@ -142,8 +142,7 @@ exports.createPages = ({ graphql, actions }) => {
           const left = sample[0].node;
           const right = sample[1].node;
 
-          TTR = timeToRead(fullText(post));
-          excerpt = ex(post.node.data.body[0].primary.text.text);
+          excerpt = `${ex(post.node.data.body[0].primary.text.text)}...`;
 
           createPage({
             path: post.node.fields.slug,
@@ -152,7 +151,6 @@ exports.createPages = ({ graphql, actions }) => {
               slug: post.node.fields.slug,
               left,
               right,
-              timeToRead: TTR,
               excerpt,
             },
           });
@@ -164,7 +162,7 @@ exports.createPages = ({ graphql, actions }) => {
           const left = sample[0].node;
           const right = sample[1].node;
 
-          excerpt = ex(project.node.data.body[0].primary.text.text);
+          excerpt = `${ex(project.node.data.body[0].primary.text.text)}...`;
 
           createPage({
             path: project.node.fields.slug,

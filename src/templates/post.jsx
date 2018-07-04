@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import { Link, graphql } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import { SEO, Container, Content, Wave, Line, Layout, hideS, Hero, InfoText } from 'elements';
+import { timeToRead, fullText } from 'utilities';
 import Tags from '../components/Tags';
 import Suggestions from '../components/Suggestions';
 import Button from '../components/Button';
@@ -78,7 +79,7 @@ const fontBold = css`
   font-weight: 700;
 `;
 
-const Post = ({ pageContext: { slug, left, right, timeToRead, excerpt }, data: { prismicBlogpost: postNode } }) => {
+const Post = ({ pageContext: { slug, left, right, excerpt }, data: { prismicBlogpost: postNode } }) => {
   const post = postNode.data;
   const { kategorie } = post.category.document[0].data;
   const { fluid } = post.cover.localFile.childImageSharp;
@@ -86,6 +87,7 @@ const Post = ({ pageContext: { slug, left, right, timeToRead, excerpt }, data: {
   if (post.tags[0].tag) {
     tags = post.tags.map(tag => tag.tag.document[0].data.tag);
   }
+  const TTR = timeToRead(fullText(postNode));
   return (
     <Layout>
       <SEO postPath={slug} postNode={postNode} desc={excerpt} postSEO />
@@ -93,7 +95,7 @@ const Post = ({ pageContext: { slug, left, right, timeToRead, excerpt }, data: {
         <Hero>
           <h1>{post.title.text}</h1>
           <Information>
-            {post.date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
+            {post.date} &mdash; Lesezeit: {TTR} Min. &mdash; <span className={hideS}>Kategorie: </span>
             <Link to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</Link>
           </Information>
         </Hero>
@@ -130,7 +132,6 @@ Post.propTypes = {
     slug: PropTypes.string.isRequired,
     left: PropTypes.object.isRequired,
     right: PropTypes.object.isRequired,
-    timeToRead: PropTypes.number.isRequired,
     excerpt: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
@@ -187,6 +188,7 @@ export const pageQuery = graphql`
             primary {
               text {
                 html
+                text
               }
             }
           }
@@ -196,6 +198,7 @@ export const pageQuery = graphql`
             primary {
               code_block {
                 html
+                text
               }
             }
           }
@@ -205,6 +208,7 @@ export const pageQuery = graphql`
             primary {
               quote {
                 html
+                text
               }
             }
           }

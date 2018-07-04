@@ -35,7 +35,7 @@ const Blog = ({
             title={post.node.data.title.text}
             date={post.node.data.date}
             category={post.node.data.category.document[0].data.kategorie}
-            timeToRead={timeToRead(fullText(post))}
+            timeToRead={timeToRead(fullText(post.node))}
             excerpt={post.node.data.body[0].primary.text.text}
           />
         ))}
@@ -73,6 +73,24 @@ export const pageQuery = graphql`
                   }
                 }
                 slice_type
+              }
+              ... on PrismicBlogpostBodyCodeBlock {
+                slice_type
+                id
+                primary {
+                  code_block {
+                    text
+                  }
+                }
+              }
+              ... on PrismicBlogpostBodyQuote {
+                slice_type
+                id
+                primary {
+                  quote {
+                    text
+                  }
+                }
               }
             }
             title {

@@ -36,7 +36,8 @@ const Category = ({
           category={edge.node.data.category.document[0].data.kategorie}
           path={edge.node.fields.slug}
           date={edge.node.data.date}
-          timeToRead={timeToRead(fullText(edge))}
+          timeToRead={timeToRead(fullText(edge.node))}
+          test123={fullText(edge.node)}
           inputTags={edge.node.data.tags}
           excerpt={edge.node.data.body[0].primary.text.text}
         />
@@ -95,8 +96,28 @@ export const pageQuery = graphql`
             }
             body {
               ... on PrismicBlogpostBodyText {
+                slice_type
+                id
                 primary {
                   text {
+                    text
+                  }
+                }
+              }
+              ... on PrismicBlogpostBodyCodeBlock {
+                slice_type
+                id
+                primary {
+                  code_block {
+                    text
+                  }
+                }
+              }
+              ... on PrismicBlogpostBodyQuote {
+                slice_type
+                id
+                primary {
+                  quote {
                     text
                   }
                 }
