@@ -20,6 +20,7 @@
     "gatsby-plugin-lodash": "^3.0.1-beta.2",
     "gatsby-plugin-manifest": "^2.0.2-beta.2",
     "gatsby-plugin-netlify": "^2.0.0-beta.2",
+    "gatsby-plugin-netlify-cache": "^0.1.0",
     "gatsby-plugin-nprogress": "^2.0.0-beta.2",
     "gatsby-plugin-offline": "^2.0.0-beta.2",
     "gatsby-plugin-react-helmet": "^3.0.0-beta.2",
