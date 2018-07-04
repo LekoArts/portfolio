@@ -29,7 +29,13 @@ module.exports = {
   /* Plugins */
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-emotion',
+    {
+      resolve: 'gatsby-plugin-emotion',
+      options: {
+        autoLabel: process.env.NODE_ENV !== 'production',
+        labelFormat: '[filename]--[local]',
+      },
+    },
     {
       resolve: 'gatsby-source-prismic',
       options: {
