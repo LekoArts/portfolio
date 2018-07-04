@@ -2,9 +2,6 @@ import { css } from 'react-emotion';
 import theme from '../../config/theme';
 
 const prism = css`
-  .gatsby-highlight {
-    margin: 1.5rem -1rem;
-  }
   p > code,
   li > code {
     color: #f8f8f2;
@@ -39,7 +36,7 @@ const prism = css`
 
   pre[class*='language-'] {
     padding: 1em;
-    margin: 0.5em 0;
+    margin: 1.5rem 0;
     overflow: auto;
     border-radius: 0.3em;
     &::-webkit-scrollbar-thumb {

@@ -32,10 +32,10 @@ const Wrapper = styled.div`
     }
   }
   h1 {
-    margin-top: 3rem;
+    margin-top: 4rem;
   }
   h2 {
-    margin-top: 1rem;
+    margin-top: 3rem;
   }
   .block-img {
     margin-top: 0.5rem;
