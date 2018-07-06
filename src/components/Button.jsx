@@ -27,6 +27,11 @@ const Button = styled(Link)`
     box-shadow: ${props => props.theme.button[props.type].hover.boxShadow};
     transform: translateY(-8px);
   }
+  &:focus {
+    outline: none;
+    box-shadow: ${props => props.theme.button[props.type].hover.boxShadow},
+      0 0 0 5px ${props => props.theme.button[props.type].focus};
+  }
 `;
 
 export default Button;

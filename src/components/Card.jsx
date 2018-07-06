@@ -16,6 +16,9 @@ const discord = css`
       fill: ${theme.colors.white.light};
     }
   }
+  &:focus {
+    outline: none;
+  }
 `;
 
 const instagram = css`
@@ -64,6 +67,9 @@ const instagram = css`
       opacity: 0;
     }
   }
+  &:focus {
+    outline: none;
+  }
 `;
 
 const behance = css`
@@ -77,6 +83,9 @@ const behance = css`
     svg {
       fill: ${theme.colors.white.light};
     }
+  }
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -92,6 +101,9 @@ const youtube = css`
     svg {
       fill: ${theme.colors.white.light};
     }
+  }
+  &:focus {
+    outline: none;
   }
 `;
 

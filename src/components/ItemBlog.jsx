@@ -33,11 +33,16 @@ const Image = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
+    border-radius: ${props => props.theme.borderRadius.default};
     > div {
       position: static !important;
     }
     > div > div {
       position: static !important;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 5px ${props => props.theme.tint.blue};
     }
   }
   flex-basis: calc(99.9% * 2 / 5 - 1rem);

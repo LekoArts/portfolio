@@ -49,6 +49,10 @@ const Wrapper = styled(Link)`
       opacity: 0.9;
     }
   }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px ${props => props.theme.tint.blue};
+  }
 `;
 
 const ItemProject = ({ cover, path, customer, title }) => (

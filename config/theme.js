@@ -42,7 +42,8 @@ const colors = {
 const tint = {
   black: rgba(colors.black.base, 0.1),
   white: rgba(colors.white.light, 0.85),
-  blue: rgba(colors.primary.base, 0.3),
+  blue: rgba(colors.primary.base, 0.35),
+  orange: rgba(colors.secondary.base, 0.35),
 };
 
 const gradient = {
@@ -87,6 +88,7 @@ const button = {
     hover: {
       boxShadow: `${shadow.button.hover} ${rgba(colors.primary.base, 0.3)}`,
     },
+    focus: tint.blue,
   },
   secondary: {
     background: `linear-gradient(30deg, ${colors.secondary.light} 0%, ${colors.secondary.dark} 100%)`,
@@ -94,6 +96,7 @@ const button = {
     hover: {
       boxShadow: `${shadow.button.hover} ${rgba(colors.secondary.base, 0.3)}`,
     },
+    focus: tint.orange,
   },
 };
 

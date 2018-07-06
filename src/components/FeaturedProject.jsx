@@ -89,6 +89,11 @@ const StyledLink = styled(Link)`
   justify-content: flex-end;
   padding: 1rem;
   z-index: 3;
+  border-radius: ${props => props.theme.borderRadius.default};
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px ${props => props.theme.tint.blue};
+  }
   &:after {
     content: '';
     position: absolute;
