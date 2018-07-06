@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import styled from 'react-emotion';
-import { timeToRead, fullText } from 'utilities';
 import { Container, Layout } from 'elements';
 import config from '../../config/website';
 import ItemBlog from '../components/ItemBlog';
@@ -35,8 +34,8 @@ const Blog = ({
             title={post.node.data.title.text}
             date={post.node.data.date}
             category={post.node.data.category.document[0].data.kategorie}
-            timeToRead={timeToRead(fullText(post.node))}
-            excerpt={post.node.data.body[0].primary.text.text}
+            timeToRead={post.node.fields.timeToRead}
+            excerpt={post.node.fields.excerpt}
           />
         ))}
       </Base>
@@ -63,36 +62,10 @@ export const pageQuery = graphql`
           uid
           fields {
             slug
+            timeToRead
+            excerpt
           }
           data {
-            body {
-              ... on PrismicBlogpostBodyText {
-                primary {
-                  text {
-                    text
-                  }
-                }
-                slice_type
-              }
-              ... on PrismicBlogpostBodyCodeBlock {
-                slice_type
-                id
-                primary {
-                  code_block {
-                    text
-                  }
-                }
-              }
-              ... on PrismicBlogpostBodyQuote {
-                slice_type
-                id
-                primary {
-                  quote {
-                    text
-                  }
-                }
-              }
-            }
             title {
               text
             }

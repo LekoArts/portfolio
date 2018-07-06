@@ -5,7 +5,6 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import kebabCase from 'lodash/kebabCase';
 import { hideS } from 'elements';
-import { ex } from 'utilities';
 
 const Wrapper = styled.article`
   display: flex;
@@ -100,7 +99,7 @@ const ItemBlog = ({ path, cover, category, title, date, timeToRead, excerpt }) =
         {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
         <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
       </Statistics>
-      <Excerpt>{`${ex(excerpt)}...`}</Excerpt>
+      <Excerpt>{`${excerpt}...`}</Excerpt>
     </Information>
   </Wrapper>
 );

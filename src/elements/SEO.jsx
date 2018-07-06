@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import config from '../../config/website';
 
 const SEO = props => {
-  const { postNode, postPath, postSEO, desc } = props;
+  const { postNode, postPath, postSEO } = props;
   let title;
   let description;
   let image;
@@ -13,7 +13,7 @@ const SEO = props => {
   if (postSEO) {
     const postMeta = postNode.data;
     title = `${postMeta.title.text} | ${config.siteTitleAlt} – ${postNode.fields.sourceType}`;
-    description = desc;
+    description = `${postNode.fields.excerpt}...`;
     image = postMeta.cover.localFile.childImageSharp.resize.src;
     postURL = config.siteUrl + postPath;
   } else {
@@ -122,5 +122,4 @@ SEO.propTypes = {
   postNode: PropTypes.object,
   postPath: PropTypes.string,
   postSEO: PropTypes.bool,
-  desc: PropTypes.string,
 };

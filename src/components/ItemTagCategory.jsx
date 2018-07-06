@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import { hideS } from 'elements';
-import { ex } from 'utilities';
 import Tags from './Tags';
 
 const Wrapper = styled.article`
@@ -51,7 +50,7 @@ const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, e
           <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
         </Statistics>
         {tags && <Tags tags={tags} />}
-        <Excerpt>{`${ex(excerpt)}...`}</Excerpt>
+        <Excerpt>{`${excerpt}...`}</Excerpt>
       </Information>
     </Wrapper>
   );

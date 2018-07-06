@@ -77,12 +77,12 @@ const CardWrapper = styled.div`
   }
 `;
 
-const Project = ({ pageContext: { slug, left, right, excerpt }, data: { prismicProjekt: projektNode } }) => {
+const Project = ({ pageContext: { slug, left, right }, data: { prismicProjekt: projektNode } }) => {
   const projekt = projektNode.data;
   const { fluid } = projekt.cover.localFile.childImageSharp;
   return (
     <Layout>
-      <SEO postPath={slug} postNode={projektNode} desc={excerpt} postSEO />
+      <SEO postPath={slug} postNode={projektNode} postSEO />
       <Wrapper>
         <Hero>
           <h1>{projekt.title.text}</h1>
@@ -129,7 +129,6 @@ Project.propTypes = {
     slug: PropTypes.string.isRequired,
     left: PropTypes.object.isRequired,
     right: PropTypes.object.isRequired,
-    excerpt: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     prismicProjekt: PropTypes.object.isRequired,
@@ -142,6 +141,7 @@ export const pageQuery = graphql`
       fields {
         slug
         sourceType
+        excerpt
       }
       first_publication_date
       last_publication_date

@@ -1,3 +1,5 @@
+const join = require('lodash/join');
+
 /**
  * Fulltext - Get the complete content of a post to e.g. use it for wordCount or a timeToRead feature
  * @param input
@@ -5,15 +7,15 @@
  */
 
 const fullText = input =>
-  input.data.body.map(slice => {
+  input.body.map(slice => {
     if (slice.slice_type === 'text') {
-      return slice.primary.text.text;
+      if (slice.primary.text) {
+        const content = slice.primary.text.map(t => t.text);
+        return join(content);
+      }
     }
     if (slice.slice_type === 'code_block') {
-      return slice.primary.code_block.text;
-    }
-    if (slice.slice_type === 'quote') {
-      return slice.primary.quote.text;
+      return slice.primary['code-block'][0].text;
     }
     return null;
   });

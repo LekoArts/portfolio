@@ -1,19 +1,31 @@
 const path = require('path');
 const _ = require('lodash');
-const { ex } = require('./src/utilities');
+const { ex, fullText, timeToRead } = require('./src/utilities');
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
   let slug;
+  let excerpt;
+  let TTR;
+
   if (node.internal.type === 'PrismicProjekt') {
+    const data = JSON.parse(node.dataString);
     slug = `/projekte/${node.uid}`;
+    excerpt = ex(data.body[0].primary.text[1].text);
     createNodeField({ node, name: 'slug', value: slug });
+    createNodeField({ node, name: 'excerpt', value: excerpt });
     createNodeField({ node, name: 'sourceType', value: 'Projekte' });
   }
   if (node.internal.type === 'PrismicBlogpost') {
+    const data = JSON.parse(node.dataString);
+    const allText = fullText(data).toString();
     slug = `/blog/${node.uid}`;
+    excerpt = ex(data.body[0].primary.text[0].text);
+    TTR = timeToRead(allText);
     createNodeField({ node, name: 'slug', value: slug });
+    createNodeField({ node, name: 'excerpt', value: excerpt });
+    createNodeField({ node, name: 'timeToRead', value: TTR });
     createNodeField({ node, name: 'sourceType', value: 'Blog' });
   }
 };
@@ -39,15 +51,6 @@ exports.createPages = ({ graphql, actions }) => {
                 data {
                   title {
                     text
-                  }
-                  body {
-                    ... on PrismicBlogpostBodyText {
-                      primary {
-                        text {
-                          text
-                        }
-                      }
-                    }
                   }
                   category {
                     document {
@@ -88,15 +91,6 @@ exports.createPages = ({ graphql, actions }) => {
                   title {
                     text
                   }
-                  body {
-                    ... on PrismicProjektBodyText {
-                      primary {
-                        text {
-                          text
-                        }
-                      }
-                    }
-                  }
                   cover {
                     localFile {
                       childImageSharp {
@@ -123,9 +117,6 @@ exports.createPages = ({ graphql, actions }) => {
         const postsList = result.data.posts.edges;
         const projectsList = result.data.projects.edges;
 
-        let TTR;
-        let excerpt;
-
         postsList.forEach(post => {
           if (post.node.data.category.document[0].data.kategorie) {
             categorySet.add(post.node.data.category.document[0].data.kategorie);
@@ -142,8 +133,6 @@ exports.createPages = ({ graphql, actions }) => {
           const left = sample[0].node;
           const right = sample[1].node;
 
-          excerpt = `${ex(post.node.data.body[0].primary.text.text)}...`;
-
           createPage({
             path: post.node.fields.slug,
             component: postPage,
@@ -151,7 +140,6 @@ exports.createPages = ({ graphql, actions }) => {
               slug: post.node.fields.slug,
               left,
               right,
-              excerpt,
             },
           });
         });
@@ -162,8 +150,6 @@ exports.createPages = ({ graphql, actions }) => {
           const left = sample[0].node;
           const right = sample[1].node;
 
-          excerpt = `${ex(project.node.data.body[0].primary.text.text)}...`;
-
           createPage({
             path: project.node.fields.slug,
             component: projectPage,
@@ -171,7 +157,6 @@ exports.createPages = ({ graphql, actions }) => {
               slug: project.node.fields.slug,
               left,
               right,
-              excerpt,
             },
           });
         });

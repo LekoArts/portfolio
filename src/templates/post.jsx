@@ -79,7 +79,7 @@ const fontBold = css`
   font-weight: 700;
 `;
 
-const Post = ({ pageContext: { slug, left, right, excerpt }, data: { prismicBlogpost: postNode } }) => {
+const Post = ({ pageContext: { slug, left, right }, data: { prismicBlogpost: postNode } }) => {
   const post = postNode.data;
   const { kategorie } = post.category.document[0].data;
   const { fluid } = post.cover.localFile.childImageSharp;
@@ -87,15 +87,15 @@ const Post = ({ pageContext: { slug, left, right, excerpt }, data: { prismicBlog
   if (post.tags[0].tag) {
     tags = post.tags.map(tag => tag.tag.document[0].data.tag);
   }
-  const TTR = timeToRead(fullText(postNode));
   return (
     <Layout>
-      <SEO postPath={slug} postNode={postNode} desc={excerpt} postSEO />
-      <Wrapper>
+      <SEO postPath={slug} postNode={postNode} postSEO />
+      <Wrapper test={postNode.fields.test}>
         <Hero>
           <h1>{post.title.text}</h1>
           <Information>
-            {post.date} &mdash; Lesezeit: {TTR} Min. &mdash; <span className={hideS}>Kategorie: </span>
+            {post.date} &mdash; Lesezeit: {postNode.fields.timeToRead} Min. &mdash;{' '}
+            <span className={hideS}>Kategorie: </span>
             <Link to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</Link>
           </Information>
         </Hero>
@@ -132,7 +132,6 @@ Post.propTypes = {
     slug: PropTypes.string.isRequired,
     left: PropTypes.object.isRequired,
     right: PropTypes.object.isRequired,
-    excerpt: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     prismicBlogpost: PropTypes.object.isRequired,
@@ -145,6 +144,8 @@ export const pageQuery = graphql`
       fields {
         slug
         sourceType
+        timeToRead
+        excerpt
       }
       first_publication_date
       last_publication_date

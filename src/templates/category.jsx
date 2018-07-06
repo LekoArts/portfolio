@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import Helmet from 'react-helmet';
 import { Container, Layout } from 'elements';
-import { fullText, timeToRead } from 'utilities';
 import config from '../../config/website';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -36,10 +35,9 @@ const Category = ({
           category={edge.node.data.category.document[0].data.kategorie}
           path={edge.node.fields.slug}
           date={edge.node.data.date}
-          timeToRead={timeToRead(fullText(edge.node))}
-          test123={fullText(edge.node)}
+          timeToRead={edge.node.fields.timeToRead}
           inputTags={edge.node.data.tags}
-          excerpt={edge.node.data.body[0].primary.text.text}
+          excerpt={edge.node.fields.excerpt}
         />
       ))}
     </Container>
@@ -72,6 +70,8 @@ export const pageQuery = graphql`
           uid
           fields {
             slug
+            timeToRead
+            excerpt
           }
           data {
             title {
@@ -90,35 +90,6 @@ export const pageQuery = graphql`
                 document {
                   data {
                     tag
-                  }
-                }
-              }
-            }
-            body {
-              ... on PrismicBlogpostBodyText {
-                slice_type
-                id
-                primary {
-                  text {
-                    text
-                  }
-                }
-              }
-              ... on PrismicBlogpostBodyCodeBlock {
-                slice_type
-                id
-                primary {
-                  code_block {
-                    text
-                  }
-                }
-              }
-              ... on PrismicBlogpostBodyQuote {
-                slice_type
-                id
-                primary {
-                  quote {
-                    text
                   }
                 }
               }

@@ -35,9 +35,9 @@ const Tag = ({
           category={edge.node.data.category.document[0].data.kategorie}
           path={edge.node.fields.slug}
           date={edge.node.data.date}
-          timeToRead={timeToRead(fullText(edge.node))}
+          timeToRead={edge.node.fields.timeToRead}
           inputTags={edge.node.data.tags}
-          excerpt={edge.node.data.body[0].primary.text.text}
+          excerpt={edge.node.fields.excerpt}
         />
       ))}
     </Container>
@@ -67,6 +67,8 @@ export const pageQuery = graphql`
           uid
           fields {
             slug
+            excerpt
+            timeToRead
           }
           data {
             title {
@@ -85,35 +87,6 @@ export const pageQuery = graphql`
                 document {
                   data {
                     tag
-                  }
-                }
-              }
-            }
-            body {
-              ... on PrismicBlogpostBodyText {
-                slice_type
-                id
-                primary {
-                  text {
-                    text
-                  }
-                }
-              }
-              ... on PrismicBlogpostBodyCodeBlock {
-                slice_type
-                id
-                primary {
-                  code_block {
-                    text
-                  }
-                }
-              }
-              ... on PrismicBlogpostBodyQuote {
-                slice_type
-                id
-                primary {
-                  quote {
-                    text
                   }
                 }
               }
