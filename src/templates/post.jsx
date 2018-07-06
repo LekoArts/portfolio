@@ -90,7 +90,7 @@ const Post = ({ pageContext: { slug, left, right }, data: { prismicBlogpost: pos
   return (
     <Layout>
       <SEO postPath={slug} postNode={postNode} postSEO />
-      <Wrapper test={postNode.fields.test}>
+      <Wrapper>
         <Hero>
           <h1>{post.title.text}</h1>
           <Information>
