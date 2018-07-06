@@ -8,7 +8,8 @@ const discord = css`
   svg {
     fill: ${theme.colors.brands.discord};
   }
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: ${theme.colors.brands.discord};
     color: ${theme.colors.white.light};
     svg {
@@ -50,7 +51,8 @@ const instagram = css`
     opacity: 0;
     transition: opacity ${theme.transitions.default.duration};
   }
-  &:hover {
+  &:hover,
+  &:focus {
     color: ${theme.colors.white.light};
     svg {
       fill: ${theme.colors.white.light};
@@ -68,7 +70,8 @@ const behance = css`
   svg {
     font-size: 3rem;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: ${theme.colors.brands.behance};
     color: ${theme.colors.white.light};
     svg {
@@ -82,7 +85,8 @@ const youtube = css`
     fill: ${theme.colors.brands.youtube};
     font-size: 3rem;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: ${theme.colors.brands.youtube};
     color: ${theme.colors.white.light};
     svg {

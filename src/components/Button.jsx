@@ -1,12 +1,13 @@
 import styled from 'react-emotion';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 
-const Button = styled.button`
+const Button = styled(Link)`
   background: ${props => props.theme.button[props.type].background};
   border: none;
   border-radius: ${props => props.theme.borderRadius.round};
   box-shadow: ${props => props.theme.button[props.type].boxShadow};
-  color: ${props => props.theme.colors.white.base};
+  color: ${props => props.theme.colors.white.base} !important;
   cursor: pointer;
   font-family: ${props => props.theme.fontFamily.heading};
   display: inline-block;
@@ -22,7 +23,6 @@ const Button = styled.button`
   vertical-align: middle;
   white-space: nowrap;
   z-index: 10;
-  -webkit-appearance: button;
   &:hover {
     box-shadow: ${props => props.theme.button[props.type].hover.boxShadow};
     transform: translateY(-8px);

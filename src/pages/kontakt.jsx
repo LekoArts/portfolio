@@ -54,6 +54,8 @@ const CardContainer = styled(Container)`
   margin-bottom: 4rem;
 `;
 
+const OutboundLink = Button.withComponent('a');
+
 const Kontakt = ({
   data: {
     allPrismicSeite: { edges },
@@ -69,11 +71,13 @@ const Kontakt = ({
           <div dangerouslySetInnerHTML={{ __html: k.content.html }} />
         </Container>
         <CenteredContainer>
-          <a href="mailto:&#104;&#101;&#108;&#108;&#111;&#064;&#108;&#101;&#107;&#111;&#097;&#114;&#116;&#115;&#046;&#100;&#101;">
-            <Button type="primary">
-              <Paperplane /> E-Mail
-            </Button>
-          </a>
+          <OutboundLink
+            href="mailto:&#104;&#101;&#108;&#108;&#111;&#064;&#108;&#101;&#107;&#111;&#097;&#114;&#116;&#115;&#046;&#100;&#101;"
+            type="primary"
+            role="button"
+          >
+            <Paperplane /> E-Mail
+          </OutboundLink>
         </CenteredContainer>
         <CardContainer>
           <MyLinkCard link="https://www.discordapp.com" discord>

@@ -5,7 +5,6 @@ import Img from 'gatsby-image';
 import { Link, graphql } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import { SEO, Container, Content, Wave, Line, Layout, hideS, Hero, InfoText } from 'elements';
-import { timeToRead, fullText } from 'utilities';
 import Tags from '../components/Tags';
 import Suggestions from '../components/Suggestions';
 import Button from '../components/Button';
@@ -79,6 +78,8 @@ const fontBold = css`
   font-weight: 700;
 `;
 
+const OutboundLink = Button.withComponent('a');
+
 const Post = ({ pageContext: { slug, left, right }, data: { prismicBlogpost: postNode } }) => {
   const post = postNode.data;
   const { kategorie } = post.category.document[0].data;
@@ -117,9 +118,15 @@ const Post = ({ pageContext: { slug, left, right }, data: { prismicBlogpost: pos
       </Container>
       <Footer>
         <h2>Lust auf mehr Tutorials & Goodies? Werde ein Patron.</h2>
-        <a href="https://www.patreon.com/lekoarts" target="_blank" rel="noopener noreferrer">
-          <Button type="secondary">Patreon</Button>
-        </a>
+        <OutboundLink
+          href="https://www.patreon.com/lekoarts"
+          target="_blank"
+          rel="noopener noreferrer"
+          type="secondary"
+          role="button"
+        >
+          Patreon
+        </OutboundLink>
       </Footer>
     </Layout>
   );

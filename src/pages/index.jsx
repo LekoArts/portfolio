@@ -63,9 +63,9 @@ const Index = ({
     <Container>
       <Text>
         {home.teaser_projects.text} <br />
-        <Link to="/projekte">
-          <Button type="primary">Projekte</Button>
-        </Link>
+        <Button to="/projekte" type="primary" role="button">
+          Projekte
+        </Button>
       </Text>
     </Container>
     <Container>
@@ -83,9 +83,9 @@ const Index = ({
       </PostsWrapper>
       <Text>
         {home.teaser_blog.text} <br />
-        <Link to="/blog">
-          <Button type="secondary">Blog</Button>
-        </Link>
+        <Button to="/blog" type="secondary" role="button">
+          Blog
+        </Button>
       </Text>
     </Container>
     <Footer />

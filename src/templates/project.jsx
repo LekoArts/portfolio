@@ -114,9 +114,9 @@ const Project = ({ pageContext: { slug, left, right }, data: { prismicProjekt: p
       </Container>
       <Footer>
         <h1>Packen wir's an!</h1>
-        <Link to="/kontakt">
-          <Button type="primary">Projekt starten</Button>
-        </Link>
+        <Button to="/kontakt" type="primary" role="button">
+          Projekt starten
+        </Button>
       </Footer>
     </Layout>
   );
