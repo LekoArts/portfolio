@@ -9,9 +9,12 @@ exports.onCreateNode = ({ node, actions }) => {
   let excerpt;
   let TTR;
 
+  /* node.dataString is the original response from the API which indluces all informaiton */
+
   if (node.internal.type === 'PrismicProjekt') {
     const data = JSON.parse(node.dataString);
     slug = `/projekte/${node.uid}`;
+    /* Since every project starts with a heading the element to extract from is the second item in the array */
     excerpt = ex(data.body[0].primary.text[1].text);
     createNodeField({ node, name: 'slug', value: slug });
     createNodeField({ node, name: 'excerpt', value: excerpt });
@@ -34,6 +37,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
+    /* Path to templates */
     const postPage = path.resolve('src/templates/post.jsx');
     const projectPage = path.resolve('src/templates/project.jsx');
     const categoryPage = path.resolve('src/templates/category.jsx');
@@ -128,6 +132,7 @@ exports.createPages = ({ graphql, actions }) => {
             });
           }
 
+          /* Create a random selection of the other posts (excluding the current post) */
           const filtered = _.filter(postsList, input => input.node.fields.slug !== post.node.fields.slug);
           const sample = _.sampleSize(filtered, 2);
           const left = sample[0].node;
@@ -145,6 +150,7 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         projectsList.forEach(project => {
+          /* Create a random selection of the other posts (excluding the current post) */
           const filtered = _.filter(projectsList, input => input.node.fields.slug !== project.node.fields.slug);
           const sample = _.sampleSize(filtered, 2);
           const left = sample[0].node;
@@ -187,6 +193,7 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
+/* Allow us to use something like: import { X } from 'directory' instead of '../../folder/directory' */
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
     resolve: {

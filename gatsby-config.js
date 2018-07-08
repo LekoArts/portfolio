@@ -47,6 +47,7 @@ module.exports = {
 
           return `/${doc.uid}`;
         },
+        /* PrismJS highlighting for labels and slices */
         htmlSerializer: () => (type, element, content) => {
           switch (type) {
             case Elements.label: {
