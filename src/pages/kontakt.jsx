@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { Container, Layout } from 'elements';
 import Footer from '../components/Footer';
 import { LinkCard } from '../components/Card';
@@ -54,7 +55,7 @@ const CardContainer = styled(Container)`
   margin-bottom: 4rem;
 `;
 
-const OutboundLink = Button.withComponent('a');
+const Outbound = Button.withComponent(OutboundLink);
 
 const Kontakt = ({
   data: {
@@ -71,13 +72,13 @@ const Kontakt = ({
           <div dangerouslySetInnerHTML={{ __html: k.content.html }} />
         </Container>
         <CenteredContainer>
-          <OutboundLink
+          <Outbound
             href="mailto:&#104;&#101;&#108;&#108;&#111;&#064;&#108;&#101;&#107;&#111;&#097;&#114;&#116;&#115;&#046;&#100;&#101;"
             type="primary"
             role="button"
           >
             <Paperplane /> E-Mail
-          </OutboundLink>
+          </Outbound>
         </CenteredContainer>
         <CardContainer>
           <MyLinkCard link="https://www.discordapp.com" discord>

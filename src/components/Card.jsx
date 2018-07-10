@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css, cx } from 'emotion';
 import styled from 'react-emotion';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import theme from '../../config/theme';
 
 const discord = css`
@@ -150,9 +151,9 @@ export const LinkCard = props => {
     [youtube]: props.youtube,
   });
   return (
-    <a href={props.link} rel="noreferrer noopener" target="_blank" className={color}>
+    <OutboundLink href={props.link} className={color}>
       {children}
-    </a>
+    </OutboundLink>
   );
 };
 
