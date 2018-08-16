@@ -53,12 +53,12 @@ const reset = css`
     background-color: ${theme.colors.primary.base};
   }
   a {
-    color: ${theme.colors.primary.base};
+    color: ${theme.colors.primary.dark};
     transition: ${theme.transitions.default.transition};
     text-decoration: none;
     &:hover,
     &:focus {
-      color: ${theme.colors.primary.light};
+      color: ${theme.colors.primary.base};
     }
   }
   a:not([href]):not([tabindex]) {

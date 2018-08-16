@@ -9,14 +9,14 @@ const colors = {
   },
   black: {
     base: '#333438',
-    light: '#52555e',
-    lighter: '#9ca0a9',
+    light: '#4b4e57',
+    lighter: '#696d77',
     blue: '#2e3246',
   },
   primary: {
     base: '#3498db',
     light: '#5abdff',
-    dark: '#3466db',
+    dark: '#4768b4',
   },
   secondary: {
     base: '#db8834',
