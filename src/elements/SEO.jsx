@@ -24,7 +24,7 @@ const SEO = props => {
   const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
   image = config.siteUrl + realPrefix + image;
   const blogURL = config.siteUrl + config.pathPrefix;
-  const schemaOrgJSONLD = [
+  let schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
       '@type': 'WebSite',
@@ -35,26 +35,12 @@ const SEO = props => {
     },
   ];
   if (postSEO) {
-    schemaOrgJSONLD.push(
-      {
-        '@context': 'http://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            item: {
-              '@id': postURL,
-              name: title,
-              image,
-            },
-          },
-        ],
-      },
+    schemaOrgJSONLD = [
       {
         '@context': 'http://schema.org',
         '@type': 'BlogPosting',
-        url: blogURL,
+        '@id': postURL,
+        url: postURL,
         name: title,
         alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
         headline: title,
@@ -77,12 +63,9 @@ const SEO = props => {
             url: config.siteUrl + realPrefix + config.siteLogo,
           },
         },
-        mainEntityOfPage: {
-          '@type': 'WebSite',
-          '@id': blogURL,
-        },
-      }
-    );
+        isPartOf: blogURL,
+      },
+    ];
   }
   return (
     <Helmet>
