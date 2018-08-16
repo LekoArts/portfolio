@@ -64,6 +64,10 @@ const SEO = props => {
           },
         },
         isPartOf: blogURL,
+        mainEntityOfPage: {
+          '@type': 'WebSite',
+          '@id': blogURL,
+        },
       },
     ];
   }
