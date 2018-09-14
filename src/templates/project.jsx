@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'react-emotion';
 import Img from 'gatsby-image';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import { SEO, Container, Content, Line, Wave, Layout, Hero, InfoText } from 'elements';
 import Suggestions from '../components/Suggestions';
 import { Card } from '../components/Card';
@@ -31,7 +31,7 @@ const pulse = keyframes`
   }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   height: 600px;
   position: relative;
   overflow: hidden;

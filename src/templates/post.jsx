@@ -30,7 +30,7 @@ const pulse = keyframes`
   }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   height: 600px;
   position: relative;
   overflow: hidden;

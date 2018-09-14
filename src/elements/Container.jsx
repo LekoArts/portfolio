@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   margin: 0 auto;
   padding: 0 1.5rem;
   max-width: ${props => props.theme.layout[props.type]};

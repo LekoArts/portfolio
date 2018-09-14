@@ -9,7 +9,7 @@ import ItemBlog from '../components/ItemBlog';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-const Base = styled.div`
+const Base = styled.main`
   margin-top: 5rem;
   margin-bottom: 5rem;
   display: flex;

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'react-emotion';
 import { Container, Layout } from 'elements';
 import Footer from '../components/Footer';

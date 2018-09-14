@@ -4,7 +4,7 @@ import styled from 'react-emotion';
 import { prism } from 'styles';
 import { BodyText, CodeBlock, Image, Quote } from 'slices';
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   padding: 5rem 0 1rem 0;
   ${prism};
   p,
