@@ -1,7 +1,6 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-const config = require('./config/website');
 const { RichText } = require('prismic-reactjs');
 const Prism = require('prismjs');
 require('prismjs/components/prism-javascript');
@@ -13,10 +12,12 @@ require('prismjs/components/prism-json');
 require('prismjs/components/prism-diff');
 require('prismjs/components/prism-markdown');
 require('prismjs/components/prism-graphql');
+const config = require('./config/website');
 
 const { Elements } = RichText;
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
+/* Arrays of the labels I use on Prismic.io */
 const codeInline = ['text'];
 const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql'];
 
@@ -121,7 +122,7 @@ module.exports = {
         start_url: config.pathPrefix,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
-        display: 'standalone',
+        display: 'standalone', // standalone is the right choice here!
         icons: [
           {
             src: '/favicons/android-chrome-192x192.png',

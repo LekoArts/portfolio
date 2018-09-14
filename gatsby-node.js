@@ -24,7 +24,7 @@ exports.onCreateNode = ({ node, actions }) => {
     const data = JSON.parse(node.dataString);
     const allText = fullText(data).toString();
     slug = `/blog/${node.uid}`;
-    excerpt = ex(data.body[0].primary.text[0].text);
+    excerpt = ex(data.body[0].primary.text[0].text); // Use the first text block for the excerpt
     TTR = timeToRead(allText);
     createNodeField({ node, name: 'slug', value: slug });
     createNodeField({ node, name: 'excerpt', value: excerpt });
@@ -126,6 +126,7 @@ exports.createPages = ({ graphql, actions }) => {
             categorySet.add(post.node.data.category.document[0].data.kategorie);
           }
 
+          // Double-check if tags exist
           if (post.node.data.tags[0].tag) {
             post.node.data.tags.forEach(tag => {
               tagSet.add(tag.tag.document[0].data.tag);
