@@ -34,6 +34,8 @@ module.exports = {
       options: {
         autoLabel: process.env.NODE_ENV !== 'production',
         labelFormat: '[filename]--[local]',
+        sourceMap: process.env.NODE_ENV !== `production`,
+        hoist: process.env.NODE_ENV === `production`,
       },
     },
     {
