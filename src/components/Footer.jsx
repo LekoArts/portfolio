@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import format from 'date-fns/format';
 import styled from 'react-emotion';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { Wave, Container } from 'elements';
 
 const Wrapper = styled.footer`
@@ -89,7 +88,9 @@ const Footer = ({ children }) => {
         {children && <OptionalContent>{children}</OptionalContent>}
         <Content>
           <Important>
-            <OutboundLink href="https://www.patreon.com/lekoarts">Patreon</OutboundLink>
+            <a href="https://www.patreon.com/lekoarts" target="_blank" rel="noopener noreferrer">
+              Patreon
+            </a>
             <Link to="/categories/tutorial">Tutorials</Link>
             <Link to="/categories/freebie">Freebies</Link>
           </Important>
@@ -102,11 +103,21 @@ const Footer = ({ children }) => {
             </Link>
           </Item>
           <Item>
-            <OutboundLink href="https://www.behance.net/lekoarts">Behance</OutboundLink>
-            <OutboundLink href="https://dribbble.com/LekoArts">Dribbble</OutboundLink>
-            <OutboundLink href="https://www.facebook.com/lekoarts.de">Facebook</OutboundLink>
-            <OutboundLink href="https://github.com/LeKoArts">GitHub</OutboundLink>
-            <OutboundLink href="https://www.instagram.com/lekoarts.de">Instagram</OutboundLink>
+            <a href="https://www.behance.net/lekoarts" target="_blank" rel="noopener noreferrer">
+              Behance
+            </a>
+            <a href="https://dribbble.com/LekoArts" target="_blank" rel="noopener noreferrer">
+              Dribbble
+            </a>
+            <a href="https://www.facebook.com/lekoarts.de" target="_blank" rel="noopener noreferrer">
+              Facebook
+            </a>
+            <a href="https://github.com/LeKoArts" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+            <a href="https://www.instagram.com/lekoarts.de" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
           </Item>
         </Content>
         <Copyright>Copyright © {date}. LekoArts. Alle Rechte vorbehalten.</Copyright>

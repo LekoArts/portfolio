@@ -5,7 +5,6 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { Container, Layout } from 'elements';
 import Footer from '../components/Footer';
 import { LinkCard } from '../components/Card';
@@ -55,7 +54,7 @@ const CardContainer = styled(Container)`
   margin-bottom: 4rem;
 `;
 
-const Outbound = Button.withComponent(OutboundLink);
+const Outbound = Button.withComponent('a');
 
 const Kontakt = ({
   data: {

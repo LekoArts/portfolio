@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css, cx } from 'emotion';
 import styled from 'react-emotion';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import theme from '../../config/theme';
 
-const discord = css`
+const discordStyle = css`
   svg {
     fill: ${theme.colors.brands.discord};
   }
@@ -22,7 +21,7 @@ const discord = css`
   }
 `;
 
-const instagram = css`
+const instagramStyle = css`
   &:after {
     content: '';
     position: absolute;
@@ -73,7 +72,7 @@ const instagram = css`
   }
 `;
 
-const behance = css`
+const behanceStyle = css`
   svg {
     font-size: 3rem;
   }
@@ -90,7 +89,7 @@ const behance = css`
   }
 `;
 
-const youtube = css`
+const youtubeStyle = css`
   svg {
     fill: ${theme.colors.brands.youtube};
     font-size: 3rem;
@@ -142,18 +141,17 @@ const Card = styled.div`
 
 export { Card };
 
-export const LinkCard = props => {
-  const { children } = props;
-  const color = cx(generalStyle, props.className, {
-    [discord]: props.discord,
-    [instagram]: props.instagram,
-    [behance]: props.behance,
-    [youtube]: props.youtube,
+export const LinkCard = ({ children, className, discord, instagram, behance, youtube, link }) => {
+  const color = cx(generalStyle, className, {
+    [discordStyle]: discord,
+    [instagramStyle]: instagram,
+    [behanceStyle]: behance,
+    [youtubeStyle]: youtube,
   });
   return (
-    <OutboundLink href={props.link} className={color}>
+    <a href={link} target="_blank" rel="noopener noreferrer" className={color}>
       {children}
-    </OutboundLink>
+    </a>
   );
 };
 
