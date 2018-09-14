@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import kebabCase from 'lodash/kebabCase';
-import size from 'lodash/size';
 import { darken } from 'polished';
 import Helmet from 'react-helmet';
 import { Container, Layout } from 'elements';
@@ -30,18 +29,20 @@ const TagsContainer = styled.div`
   }
 `;
 
-const Number = styled.span`
-  margin-left: 0.75rem;
-  font-size: 0.9rem;
-  color: ${props => props.theme.colors.black.lighter};
-`;
-
-const Tags = () => (
+const Tags = ({ data: { tags, posts } }) => (
   <Layout>
     <Helmet title={`Tags | ${config.siteTitle}`} />
-    <Header title="Tags">test</Header>
+    <Header title="Tags">
+      {posts.totalCount} Beiträge wurden mit {tags.totalCount} Tags markiert
+    </Header>
     <Container>
-      <TagsContainer>test</TagsContainer>
+      <TagsContainer>
+        {tags.edges.map(tag => (
+          <Link key={tag.node.data.tag} to={`/tags/${kebabCase(tag.node.data.tag)}`}>
+            <span>{tag.node.data.tag}</span>
+          </Link>
+        ))}
+      </TagsContainer>
     </Container>
     <Footer />
   </Layout>
@@ -57,3 +58,21 @@ Tags.propTypes = {
     }),
   }).isRequired,
 };
+
+export const pageQuery = graphql`
+  query TagsPage {
+    tags: allPrismicTag(sort: { fields: data___tag, order: ASC }) {
+      totalCount
+      edges {
+        node {
+          data {
+            tag
+          }
+        }
+      }
+    }
+    posts: allPrismicBlogpost {
+      totalCount
+    }
+  }
+`;

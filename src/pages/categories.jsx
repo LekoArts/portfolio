@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import kebabCase from 'lodash/kebabCase';
-import size from 'lodash/size';
 import { darken } from 'polished';
 import Helmet from 'react-helmet';
 import { Container, Layout } from 'elements';
@@ -11,7 +10,7 @@ import config from '../../config/website';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-const TagsContainer = styled.div`
+const CategoriesContainer = styled.div`
   margin: 2rem 0 4rem 0;
   display: flex;
   flex-direction: row;
@@ -30,18 +29,20 @@ const TagsContainer = styled.div`
   }
 `;
 
-const Number = styled.span`
-  margin-left: 0.75rem;
-  font-size: 0.9rem;
-  color: ${props => props.theme.colors.black.lighter};
-`;
-
-const Categories = () => (
+const Categories = ({ data: { categories, posts } }) => (
   <Layout>
     <Helmet title={`Kategorien | ${config.siteTitle}`} />
-    <Header title="Kategorien">test</Header>
+    <Header title="Kategorien">
+      {posts.totalCount} Beiträge wurden in {categories.totalCount} Kategorien eingeteilt
+    </Header>
     <Container>
-      <TagsContainer>test</TagsContainer>
+      <CategoriesContainer>
+        {categories.edges.map(category => (
+          <Link key={category.node.data.kategorie} to={`/tags/${kebabCase(category.node.data.kategorie)}`}>
+            <span>{category.node.data.kategorie}</span>
+          </Link>
+        ))}
+      </CategoriesContainer>
     </Container>
     <Footer />
   </Layout>
@@ -57,3 +58,21 @@ Categories.propTypes = {
     }),
   }).isRequired,
 };
+
+export const pageQuery = graphql`
+  query CategoriesPage {
+    categories: allPrismicKategorie(sort: { fields: data___kategorie, order: ASC }) {
+      totalCount
+      edges {
+        node {
+          data {
+            kategorie
+          }
+        }
+      }
+    }
+    posts: allPrismicBlogpost {
+      totalCount
+    }
+  }
+`;
