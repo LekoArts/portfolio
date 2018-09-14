@@ -4,7 +4,6 @@ import { Link, graphql } from 'gatsby';
 import styled from 'react-emotion';
 import Helmet from 'react-helmet';
 import { Container, Layout } from 'elements';
-import { fullText, timeToRead } from 'utilities';
 import config from '../../config/website';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -23,8 +22,8 @@ const Tag = ({
   <Layout>
     <Helmet title={`${tag} | ${config.siteTitle}`} />
     <Header title={tag}>
-      {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} wurde{totalCount === 1 ? '' : 'n'} mit "{tag}" markiert{' '}
-      <br />
+      {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} wurde
+      {totalCount === 1 ? '' : 'n'} mit "{tag}" markiert <br />
       <StyledLink to="/tags">Alle Tags</StyledLink>
     </Header>
     <Container>
@@ -59,8 +58,11 @@ Tag.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query TagPage {
-    allPrismicBlogpost(sort: { fields: [data___date], order: DESC }) {
+  query TagPage($tag: String) {
+    allPrismicBlogpost(
+      sort: { fields: [data___date], order: DESC }
+      filter: { data: { tags: { elemMatch: { tag: { document: { elemMatch: { data: { tag: { eq: $tag } } } } } } } } }
+    ) {
       totalCount
       edges {
         node {

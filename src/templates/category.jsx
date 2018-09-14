@@ -22,9 +22,8 @@ const Category = ({
   <Layout>
     <Helmet title={`${category} | ${config.siteTitle}`} />
     <Header title={category}>
-      {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} {totalCount === 1 ? 'gehört' : 'gehören'} der Kategorie "{
-        category
-      }" an <br />
+      {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} {totalCount === 1 ? 'gehört' : 'gehören'} der Kategorie "
+      {category}" an <br />
       <StyledLink to="/categories">Alle Kategorien</StyledLink>
     </Header>
     <Container>
@@ -62,7 +61,7 @@ export const pageQuery = graphql`
   query CategoryPage($category: String) {
     allPrismicBlogpost(
       sort: { fields: [data___date], order: DESC }
-      filter: { data: { category: { document: { data: { kategorie: { eq: $category } } } } } }
+      filter: { data: { category: { document: { elemMatch: { data: { kategorie: { eq: $category } } } } } } }
     ) {
       totalCount
       edges {
