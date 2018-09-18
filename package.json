@@ -48,6 +48,8 @@
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "babel-preset-env": "^1.7.0",
+    "cypress": "^3.1.0",
+    "cypress-testing-library": "^2.2.1",
     "dotenv": "^6.0.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -56,7 +58,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.9.1",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "start-server-and-test": "^1.7.1"
   },
   "keywords": [
     "gatsby",
@@ -67,8 +70,14 @@
   "main": "n/a",
   "scripts": {
     "dev": "gatsby develop -o",
+    "develop": "gatsby develop",
     "build": "gatsby build",
+    "serve": "gatsby serve",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore"
+    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
+    "test:e2e:dev": "start-server-and-test dev http://localhost:8000 cy:open",
+    "test:e2e:run": "start-server-and-test develop http://localhost:8000 cy:run"
   }
 }
