@@ -38,7 +38,7 @@ const Categories = ({ data: { categories, posts } }) => (
     <Container>
       <CategoriesContainer>
         {categories.edges.map(category => (
-          <Link key={category.node.data.kategorie} to={`/tags/${kebabCase(category.node.data.kategorie)}`}>
+          <Link key={category.node.data.kategorie} to={`/categories/${kebabCase(category.node.data.kategorie)}`}>
             <span>{category.node.data.kategorie}</span>
           </Link>
         ))}
