@@ -28,7 +28,7 @@ const TagsContainer = styled.div`
 const Tags = ({ tags }) => (
   <TagsContainer>
     {tags.map(tag => (
-      <Link key={tag} to={`/tags/${kebabCase(tag)}`}>
+      <Link key={tag} to={`/tags/${kebabCase(tag)}`} data-testid={`tag-${tag}`}>
         <span>{tag}</span>
       </Link>
     ))}

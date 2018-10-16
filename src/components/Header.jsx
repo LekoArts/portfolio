@@ -41,7 +41,7 @@ const Subtitle = styled.p`
 const Header = ({ children, title, big, html }) => (
   <Wrapper big={big}>
     <Text>
-      {title && <h1>{title}</h1>}
+      {title && <h1 data-testid="header-title">{title}</h1>}
       {children && <Subtitle>{children}</Subtitle>}
       {html && <div dangerouslySetInnerHTML={{ __html: html }} />}
     </Text>
