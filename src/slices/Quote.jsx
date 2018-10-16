@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Container } from 'elements';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Container } from 'elements'
 
 const Quote = ({ input }) => (
   <Container type="article">
@@ -8,10 +8,10 @@ const Quote = ({ input }) => (
       <div dangerouslySetInnerHTML={{ __html: input.primary.quote.html }} />
     </blockquote>
   </Container>
-);
+)
 
-export default Quote;
+export default Quote
 
 Quote.propTypes = {
   input: PropTypes.object.isRequired,
-};
+}

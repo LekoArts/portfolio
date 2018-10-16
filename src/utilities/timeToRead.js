@@ -1,4 +1,4 @@
-const words = require('lodash/words');
+const words = require('lodash/words')
 
 /**
  * timeToRead - Gives the amount of time (in minutes) to read a text at average speed
@@ -7,14 +7,14 @@ const words = require('lodash/words');
  */
 
 const timeToRead = content => {
-  let TTR;
-  const avgWPM = 245;
-  const wordCount = words(content).length;
-  TTR = Math.round(wordCount / avgWPM);
+  let TTR
+  const avgWPM = 245
+  const wordCount = words(content).length
+  TTR = Math.round(wordCount / avgWPM)
   if (TTR === 0) {
-    TTR = 1;
+    TTR = 1
   }
-  return TTR;
-};
+  return TTR
+}
 
-module.exports = timeToRead;
+module.exports = timeToRead

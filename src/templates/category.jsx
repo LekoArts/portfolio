@@ -1,17 +1,17 @@
-import React from 'react';
-import { Link, graphql } from 'gatsby';
-import PropTypes from 'prop-types';
-import styled from 'react-emotion';
-import Helmet from 'react-helmet';
-import { Container, Layout } from 'elements';
-import config from '../../config/website';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import ItemTagCategory from '../components/ItemTagCategory';
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import styled from 'react-emotion'
+import Helmet from 'react-helmet'
+import { Container, Layout } from 'elements'
+import config from '../../config/website'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import ItemTagCategory from '../components/ItemTagCategory'
 
 const StyledLink = styled(Link)`
   color: ${props => props.theme.colors.white.light};
-`;
+`
 
 const Category = ({
   pageContext: { category },
@@ -42,9 +42,9 @@ const Category = ({
     </Container>
     <Footer />
   </Layout>
-);
+)
 
-export default Category;
+export default Category
 
 Category.propTypes = {
   pageContext: PropTypes.shape({
@@ -55,7 +55,7 @@ Category.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query CategoryPage($category: String) {
@@ -98,4 +98,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

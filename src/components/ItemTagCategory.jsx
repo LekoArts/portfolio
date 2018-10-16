@@ -1,17 +1,17 @@
-import React from 'react';
-import styled from 'react-emotion';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import kebabCase from 'lodash/kebabCase';
-import { hideS } from 'elements';
-import Tags from './Tags';
+import React from 'react'
+import styled from 'react-emotion'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import kebabCase from 'lodash/kebabCase'
+import { hideS } from 'elements'
+import Tags from './Tags'
 
 const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   margin-bottom: 4rem;
   margin-top: 2rem;
-`;
+`
 
 const Information = styled.div`
   h1 {
@@ -24,20 +24,20 @@ const Information = styled.div`
       color: ${props => props.theme.colors.primary.base};
     }
   }
-`;
+`
 
 const Statistics = styled.div`
   color: ${props => props.theme.colors.black.lighter};
-`;
+`
 
 const Excerpt = styled.div`
   margin-top: 1rem;
-`;
+`
 
 const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, excerpt }) => {
-  let tags = false;
+  let tags = false
   if (inputTags[0].tag) {
-    tags = inputTags.map(tag => tag.tag.document[0].data.tag);
+    tags = inputTags.map(tag => tag.tag.document[0].data.tag)
   }
   return (
     <Wrapper>
@@ -53,10 +53,10 @@ const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, e
         <Excerpt>{`${excerpt}...`}</Excerpt>
       </Information>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default ItemTagCategory;
+export default ItemTagCategory
 
 ItemTagCategory.propTypes = {
   category: PropTypes.string.isRequired,
@@ -66,4 +66,4 @@ ItemTagCategory.propTypes = {
   timeToRead: PropTypes.number.isRequired,
   inputTags: PropTypes.array.isRequired,
   excerpt: PropTypes.string.isRequired,
-};
+}

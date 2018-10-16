@@ -1,15 +1,15 @@
 /* eslint max-len: 0 */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import styled from 'react-emotion';
-import { Container, Layout } from 'elements';
-import Footer from '../components/Footer';
-import FeaturedProject from '../components/FeaturedProject';
-import FeaturedPost from '../components/FeaturedPost';
-import Header from '../components/Header';
-import Button from '../components/Button';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
+import styled from 'react-emotion'
+import { Container, Layout } from 'elements'
+import Footer from '../components/Footer'
+import FeaturedProject from '../components/FeaturedProject'
+import FeaturedPost from '../components/FeaturedPost'
+import Header from '../components/Header'
+import Button from '../components/Button'
 
 const ProjectsWrapper = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const ProjectsWrapper = styled.div`
   justify-content: space-between;
   flex-direction: row;
   margin-top: -10rem;
-`;
+`
 
 const PostsWrapper = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const PostsWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 10rem;
-`;
+`
 
 const Text = styled.p`
   text-align: center;
@@ -36,7 +36,7 @@ const Text = styled.p`
   max-width: 850px;
   margin: 5rem auto;
   text-shadow: ${props => props.theme.shadow.text.big};
-`;
+`
 
 const Index = ({
   data: {
@@ -49,13 +49,14 @@ const Index = ({
     <Header big html={`<h1>${home.hero_title}</h1>`} />
     <Container type="big">
       <ProjectsWrapper>
-        {projectEdges.map(project => (
+        {projectEdges.map((project, index) => (
           <FeaturedProject
             key={project.node.uid}
             cover={project.node.data.cover.localFile.childImageSharp.fluid}
             customer={project.node.data.customer}
             path={project.node.fields.slug}
             title={project.node.data.title.text}
+            testid={`featured-project-${index}`}
           />
         ))}
       </ProjectsWrapper>
@@ -70,7 +71,7 @@ const Index = ({
     </Container>
     <Container>
       <PostsWrapper>
-        {postEdges.map(post => (
+        {postEdges.map((post, index) => (
           <FeaturedPost
             key={post.node.uid}
             cover={post.node.data.cover.localFile.childImageSharp.fluid}
@@ -78,6 +79,7 @@ const Index = ({
             path={post.node.fields.slug}
             title={post.node.data.title.text}
             category={post.node.data.category.document[0].data.kategorie}
+            testid={`featured-post-${index}`}
           />
         ))}
       </PostsWrapper>
@@ -90,9 +92,9 @@ const Index = ({
     </Container>
     <Footer />
   </Layout>
-);
+)
 
-export default Index;
+export default Index
 
 Index.propTypes = {
   data: PropTypes.shape({
@@ -104,7 +106,7 @@ Index.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -177,4 +179,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'react-emotion';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import theme from '../../config/theme';
+import React from 'react'
+import styled from 'react-emotion'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import theme from '../../config/theme'
 
 const Row = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const Row = styled.div`
   justify-content: space-between;
   margin-top: 2rem;
   margin-bottom: 5rem;
-`;
+`
 
 const ImageOverlay = styled.div`
   border-radius: ${props => props.theme.borderRadius.default};
@@ -36,7 +36,7 @@ const ImageOverlay = styled.div`
     ${props.theme.colors.secondary.light} 0%,
     ${props.theme.colors.secondary.dark} 100%
   )`};
-`;
+`
 
 const Wrapper = styled.article`
   position: relative;
@@ -64,7 +64,7 @@ const Wrapper = styled.article`
       margin-bottom: 2rem;
     }
   }
-`;
+`
 
 const StyledLink = styled(Link)`
   position: absolute;
@@ -104,7 +104,7 @@ const StyledLink = styled(Link)`
       opacity: 0;
     }
   }
-`;
+`
 
 const Image = styled.div`
   position: absolute;
@@ -121,21 +121,21 @@ const Image = styled.div`
     width: 100%;
     height: 100%;
   }
-`;
+`
 
 const Title = styled.h4`
   color: ${props => props.theme.colors.white.base};
   text-align: center;
   margin-bottom: 0;
   text-shadow: ${props => props.theme.shadow.text.small};
-`;
+`
 
 const Suggestions = ({ left, right, primary, secondary }) => (
   <Row>
     {left && (
-      <Wrapper>
+      <Wrapper data-testid="suggestion-left">
         <Image>
-          <img src={left.data.cover.localFile.childImageSharp.resize.src} alt={left.data.title.text} />
+          <img src={left.data.cover.localFile.childImageSharp.resize.src} alt="" />
         </Image>
         <StyledLink to={left.fields.slug}>
           <Title>{left.data.title.text}</Title>
@@ -145,9 +145,9 @@ const Suggestions = ({ left, right, primary, secondary }) => (
     )}
 
     {right && (
-      <Wrapper>
+      <Wrapper data-testid="suggestion-right">
         <Image>
-          <img src={right.data.cover.localFile.childImageSharp.resize.src} alt={right.data.title.text} />
+          <img src={right.data.cover.localFile.childImageSharp.resize.src} alt="" />
         </Image>
         <StyledLink to={right.fields.slug}>
           <Title>{right.data.title.text}</Title>
@@ -156,18 +156,18 @@ const Suggestions = ({ left, right, primary, secondary }) => (
       </Wrapper>
     )}
   </Row>
-);
+)
 
-export default Suggestions;
+export default Suggestions
 
 Suggestions.propTypes = {
   left: PropTypes.object.isRequired,
   right: PropTypes.object.isRequired,
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
-};
+}
 
 Suggestions.defaultProps = {
   primary: true,
   secondary: false,
-};
+}

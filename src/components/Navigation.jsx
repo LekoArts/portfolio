@@ -1,10 +1,10 @@
 /* eslint no-unused-expressions: 0 */
 
-import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'react-emotion';
-import Headroom from 'react-headroom';
-import Logo from '../icons/Logo';
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'react-emotion'
+import Headroom from 'react-headroom'
+import Logo from '../icons/Logo'
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
     height: 2.5rem;
     margin-bottom: 0;
   }
-`;
+`
 
 const LogoText = styled.span`
   text-transform: uppercase;
@@ -25,7 +25,7 @@ const LogoText = styled.span`
   @media (max-width: 500px) {
     display: none;
   }
-`;
+`
 
 const Nav = styled.nav`
   display: flex;
@@ -43,7 +43,7 @@ const Nav = styled.nav`
       color: ${props => props.theme.colors.white.base};
     }
   }
-`;
+`
 
 const Navigation = () => (
   <Headroom calcHeightOnResize disableInlineStyles>
@@ -57,6 +57,6 @@ const Navigation = () => (
       <Link to="/kontakt">Kontakt</Link>
     </Nav>
   </Headroom>
-);
+)
 
-export default Navigation;
+export default Navigation

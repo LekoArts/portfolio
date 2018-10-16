@@ -1,6 +1,6 @@
-const cfl = require('./cfl');
-const ex = require('./ex');
-const fullText = require('./fullText');
-const timeToRead = require('./timeToRead');
+const cfl = require('./cfl')
+const ex = require('./ex')
+const fullText = require('./fullText')
+const timeToRead = require('./timeToRead')
 
-module.exports = { cfl, ex, fullText, timeToRead };
+module.exports = { cfl, ex, fullText, timeToRead }

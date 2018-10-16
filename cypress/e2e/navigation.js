@@ -13,8 +13,8 @@ describe('Navigation', () => {
       .click()
       .assertRoute('/kontakt')
       .getByText('LekoArts')
-      .click();
-  });
+      .click()
+  })
   it('to external sites in the footer works', () => {
     cy.visit('/')
       .getByText('Behance')
@@ -28,8 +28,8 @@ describe('Navigation', () => {
       .getByText('Instagram')
       .should('have.prop', 'href', 'https://www.instagram.com/lekoarts.de')
       .getByText('Patreon')
-      .should('have.prop', 'href', 'https://www.patreon.com/lekoarts');
-  });
+      .should('have.prop', 'href', 'https://www.patreon.com/lekoarts')
+  })
   it('to internal sites in the footer works', () => {
     cy.visit('/')
       .getByText('Datenschutzerklärung')
@@ -46,6 +46,6 @@ describe('Navigation', () => {
       .assertRoute('/categories/freebie')
       .getByText('LekoArts')
       .click()
-      .assertRoute('/');
-  });
-});
+      .assertRoute('/')
+  })
+})

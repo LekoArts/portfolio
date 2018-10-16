@@ -1,12 +1,12 @@
 /* eslint max-len: 0 */
 
-import React from 'react';
-import { Link } from 'gatsby';
-import Helmet from 'react-helmet';
-import { Container, Layout } from 'elements';
-import config from '../../config/website';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import React from 'react'
+import { Link } from 'gatsby'
+import Helmet from 'react-helmet'
+import { Container, Layout } from 'elements'
+import config from '../../config/website'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 const ErrorPage = () => (
   <Layout>
@@ -63,6 +63,6 @@ const ErrorPage = () => (
     </Container>
     <Footer />
   </Layout>
-);
+)
 
-export default ErrorPage;
+export default ErrorPage

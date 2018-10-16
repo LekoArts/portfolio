@@ -1,15 +1,15 @@
 /* eslint no-unused-expressions: 0 */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { injectGlobal } from 'emotion';
-import { ThemeProvider } from 'emotion-theming';
-import 'typeface-montserrat';
-import 'typeface-istok-web';
-import { reset, headroom } from 'styles';
-import { SEO } from 'elements';
-import Navigation from '../components/Navigation';
-import theme from '../../config/theme';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { injectGlobal } from 'emotion'
+import { ThemeProvider } from 'emotion-theming'
+import 'typeface-montserrat'
+import 'typeface-istok-web'
+import { reset, headroom } from 'styles'
+import { SEO } from 'elements'
+import Navigation from '../components/Navigation'
+import theme from '../../config/theme'
 
 injectGlobal`
   ${reset}
@@ -24,7 +24,7 @@ injectGlobal`
     margin-bottom: 2rem;
   }
   ${headroom}
-`;
+`
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
@@ -34,10 +34,10 @@ const Layout = ({ children }) => (
       {children}
     </React.Fragment>
   </ThemeProvider>
-);
+)
 
-export default Layout;
+export default Layout
 
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
-};
+}

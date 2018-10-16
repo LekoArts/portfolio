@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import Img from 'gatsby-image';
-import styled from 'react-emotion';
-import theme from '../../config/theme';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import Img from 'gatsby-image'
+import styled from 'react-emotion'
+import theme from '../../config/theme'
 
 const ImageOverlay = styled.div`
   border-radius: ${props => props.theme.borderRadius.default};
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
   z-index: 2;
   opacity: 0.1;
   transition: opacity ${props => props.theme.transitions.default.duration};
@@ -20,11 +20,12 @@ const ImageOverlay = styled.div`
     ${props => props.theme.colors.primary.light} 0%,
     ${props => props.theme.colors.primary.dark} 100%
   );
-`;
+`
 
 const Wrapper = styled.article`
   position: relative;
   z-index: 100;
+  overflow: hidden;
   border-radius: ${props => props.theme.borderRadius.default};
   box-shadow: ${props => props.theme.shadow.feature.big.default};
   transition: ${props => props.theme.transitions.boom.transition};
@@ -76,7 +77,7 @@ const Wrapper = styled.article`
       height: 12.5rem;
     }
   }
-`;
+`
 
 const StyledLink = styled(Link)`
   position: absolute;
@@ -113,7 +114,7 @@ const StyledLink = styled(Link)`
       opacity: 0;
     }
   }
-`;
+`
 
 const Image = styled.div`
   position: absolute;
@@ -134,22 +135,22 @@ const Image = styled.div`
   > div > div {
     position: static !important;
   }
-`;
+`
 
 const Customer = styled.div`
   text-align: left;
   margin-bottom: 0.5rem;
   color: ${props => props.theme.colors.white.light};
-`;
+`
 
 const Title = styled.h2`
   text-align: left;
   margin-bottom: 0;
   color: ${props => props.theme.colors.white.light};
-`;
+`
 
-const FeaturedProject = ({ cover, path, customer, title }) => (
-  <Wrapper>
+const FeaturedProject = ({ cover, path, customer, title, testid }) => (
+  <Wrapper data-testid={testid}>
     <Image>
       <Img fluid={cover} />
     </Image>
@@ -159,17 +160,18 @@ const FeaturedProject = ({ cover, path, customer, title }) => (
     </StyledLink>
     <ImageOverlay />
   </Wrapper>
-);
+)
 
-export default FeaturedProject;
+export default FeaturedProject
 
 FeaturedProject.propTypes = {
   cover: PropTypes.object.isRequired,
   path: PropTypes.string.isRequired,
   customer: PropTypes.string,
   title: PropTypes.string.isRequired,
-};
+  testid: PropTypes.string.isRequired,
+}
 
 FeaturedProject.defaultProps = {
   customer: '',
-};
+}

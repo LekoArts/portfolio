@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'react-emotion';
-import PropTypes from 'prop-types';
-import { Wave } from 'elements';
+import React from 'react'
+import styled from 'react-emotion'
+import PropTypes from 'prop-types'
+import { Wave } from 'elements'
 
 const Wrapper = styled.header`
   background: ${props => props.theme.gradient.rightToLeft};
@@ -14,7 +14,7 @@ const Wrapper = styled.header`
   }
   position: relative;
   overflow: hidden;
-`;
+`
 
 const Text = styled.div`
   color: ${props => props.theme.colors.white.base};
@@ -31,12 +31,12 @@ const Text = styled.div`
   padding: 0 2rem;
   margin-bottom: 7rem;
   align-items: center;
-`;
+`
 
 const Subtitle = styled.p`
   max-width: 650px;
   color: ${props => props.theme.colors.white.blue};
-`;
+`
 
 const Header = ({ children, title, big, html }) => (
   <Wrapper big={big}>
@@ -47,20 +47,20 @@ const Header = ({ children, title, big, html }) => (
     </Text>
     <Wave />
   </Wrapper>
-);
+)
 
-export default Header;
+export default Header
 
 Header.propTypes = {
   children: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   html: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.bool]),
   big: PropTypes.bool,
-};
+}
 
 Header.defaultProps = {
   big: false,
   title: false,
   children: false,
   html: false,
-};
+}

@@ -1,33 +1,33 @@
 /* eslint max-len: 0 */
 
-import React from 'react';
-import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
-import styled from 'react-emotion';
-import { Container, Layout } from 'elements';
-import Footer from '../components/Footer';
-import { LinkCard } from '../components/Card';
-import Header from '../components/Header';
-import Button from '../components/Button';
-import config from '../../config/website';
-import Paperplane from '../icons/Paperplane';
-import Discord from '../icons/Discord';
-import Instagram from '../icons/Instagram';
-import Behance from '../icons/Behance';
-import YouTube from '../icons/YouTube';
+import React from 'react'
+import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import styled from 'react-emotion'
+import { Container, Layout } from 'elements'
+import Footer from '../components/Footer'
+import { LinkCard } from '../components/Card'
+import Header from '../components/Header'
+import Button from '../components/Button'
+import config from '../../config/website'
+import Paperplane from '../icons/Paperplane'
+import Discord from '../icons/Discord'
+import Instagram from '../icons/Instagram'
+import Behance from '../icons/Behance'
+import YouTube from '../icons/YouTube'
 
 const CenteredContainer = styled(Container)`
   text-align: center;
   svg {
     fill: white;
   }
-`;
+`
 
 const Wrapper = styled.div`
   margin-top: 3rem;
   margin-bottom: 2rem;
-`;
+`
 
 const MyLinkCard = styled(LinkCard)`
   flex-basis: calc(99% * 1 / 4 - 1rem);
@@ -44,7 +44,7 @@ const MyLinkCard = styled(LinkCard)`
     max-width: calc(99% * 1 / 1);
     width: calc(99% * 1 / 1);
   }
-`;
+`
 
 const CardContainer = styled(Container)`
   display: flex;
@@ -52,16 +52,16 @@ const CardContainer = styled(Container)`
   justify-content: space-between;
   margin-top: 1rem;
   margin-bottom: 4rem;
-`;
+`
 
-const Outbound = Button.withComponent('a');
+const Outbound = Button.withComponent('a')
 
 const Kontakt = ({
   data: {
     allPrismicSeite: { edges },
   },
 }) => {
-  const k = edges[0].node.data;
+  const k = edges[0].node.data
   return (
     <Layout>
       <Helmet title={`${k.title.text} | ${config.siteTitle}`} />
@@ -100,10 +100,10 @@ const Kontakt = ({
       </Wrapper>
       <Footer />
     </Layout>
-  );
-};
+  )
+}
 
-export default Kontakt;
+export default Kontakt
 
 Kontakt.propTypes = {
   data: PropTypes.shape({
@@ -111,7 +111,7 @@ Kontakt.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query KontaktQuery {
@@ -134,4 +134,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

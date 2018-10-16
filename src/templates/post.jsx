@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { keyframes, css } from 'react-emotion';
-import Img from 'gatsby-image';
-import { Link, graphql } from 'gatsby';
-import kebabCase from 'lodash/kebabCase';
-import { SEO, Container, Content, Wave, Line, Layout, hideS, Hero, InfoText } from 'elements';
-import Tags from '../components/Tags';
-import Suggestions from '../components/Suggestions';
-import Button from '../components/Button';
-import Footer from '../components/Footer';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled, { keyframes, css } from 'react-emotion'
+import Img from 'gatsby-image'
+import { Link, graphql } from 'gatsby'
+import kebabCase from 'lodash/kebabCase'
+import { SEO, Container, Content, Wave, Line, Layout, hideS, Hero, InfoText } from 'elements'
+import Tags from '../components/Tags'
+import Suggestions from '../components/Suggestions'
+import Button from '../components/Button'
+import Footer from '../components/Footer'
 
 const pulse = keyframes`
   0% {
@@ -27,7 +27,7 @@ const pulse = keyframes`
     transform: scale(1);
     animation-timing-function: ease-out;
   }
-`;
+`
 
 const Wrapper = styled.header`
   height: 600px;
@@ -51,7 +51,7 @@ const Wrapper = styled.header`
       height: 400px;
     }
   }
-`;
+`
 
 const Information = styled.div`
   margin-top: 2rem;
@@ -68,25 +68,25 @@ const Information = styled.div`
       color: ${props => props.theme.colors.white.base};
     }
   }
-`;
+`
 
 const Note = styled.p`
   margin-bottom: 4rem;
-`;
+`
 
 const fontBold = css`
   font-weight: 700;
-`;
+`
 
-const Outbound = Button.withComponent('a');
+const Outbound = Button.withComponent('a')
 
 const Post = ({ pageContext: { slug, left, right }, data: { prismicBlogpost: postNode } }) => {
-  const post = postNode.data;
-  const { kategorie } = post.category.document[0].data;
-  const { fluid } = post.cover.localFile.childImageSharp;
-  let tags = false;
+  const post = postNode.data
+  const { kategorie } = post.category.document[0].data
+  const { fluid } = post.cover.localFile.childImageSharp
+  let tags = false
   if (post.tags[0].tag) {
-    tags = post.tags.map(tag => tag.tag.document[0].data.tag);
+    tags = post.tags.map(tag => tag.tag.document[0].data.tag)
   }
   return (
     <Layout>
@@ -129,10 +129,10 @@ const Post = ({ pageContext: { slug, left, right }, data: { prismicBlogpost: pos
         </Outbound>
       </Footer>
     </Layout>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post
 
 Post.propTypes = {
   pageContext: PropTypes.shape({
@@ -143,7 +143,7 @@ Post.propTypes = {
   data: PropTypes.shape({
     prismicBlogpost: PropTypes.object.isRequired,
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -239,4 +239,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

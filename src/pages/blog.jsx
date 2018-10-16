@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
-import styled from 'react-emotion';
-import { Container, Layout } from 'elements';
-import config from '../../config/website';
-import ItemBlog from '../components/ItemBlog';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
+import Helmet from 'react-helmet'
+import styled from 'react-emotion'
+import { Container, Layout } from 'elements'
+import config from '../../config/website'
+import ItemBlog from '../components/ItemBlog'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 const Base = styled.main`
   margin-top: 5rem;
   margin-bottom: 5rem;
   display: flex;
   flex-direction: column;
-`;
+`
 
 const Blog = ({
   data: {
@@ -42,9 +42,9 @@ const Blog = ({
     </Container>
     <Footer />
   </Layout>
-);
+)
 
-export default Blog;
+export default Blog
 
 Blog.propTypes = {
   data: PropTypes.shape({
@@ -52,7 +52,7 @@ Blog.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query BlogQuery {
@@ -91,4 +91,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

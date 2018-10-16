@@ -1,5 +1,5 @@
-import { css } from 'react-emotion';
-import theme from '../../config/theme';
+import { css } from 'react-emotion'
+import theme from '../../config/theme'
 
 const reset = css`
   *,
@@ -181,6 +181,6 @@ const reset = css`
   [hidden] {
     display: none !important;
   }
-`;
+`
 
-export default reset;
+export default reset

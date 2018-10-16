@@ -4,6 +4,6 @@
  * @returns {string} - An excerpt (first 300 words)
  */
 
-const ex = string => string.substring(0, 300);
+const ex = string => string.substring(0, 300)
 
-module.exports = ex;
+module.exports = ex

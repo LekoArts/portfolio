@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
-import styled from 'react-emotion';
-import { Container, Layout } from 'elements';
-import config from '../../config/website';
-import ItemProject from '../components/ItemProject';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
+import Helmet from 'react-helmet'
+import styled from 'react-emotion'
+import { Container, Layout } from 'elements'
+import config from '../../config/website'
+import ItemProject from '../components/ItemProject'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 const Base = styled.div`
   padding-top: 5rem;
   padding-bottom: 5rem;
   column-gap: 2rem;
   column-width: 500px;
-`;
+`
 
 const Projekte = ({
   data: {
@@ -41,9 +41,9 @@ const Projekte = ({
     </Container>
     <Footer />
   </Layout>
-);
+)
 
-export default Projekte;
+export default Projekte
 
 Projekte.propTypes = {
   data: PropTypes.shape({
@@ -51,7 +51,7 @@ Projekte.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query ProjectsQuery {
@@ -81,4 +81,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

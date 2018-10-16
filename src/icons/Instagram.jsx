@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Instagram = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 650" role="img" aria-label="Instagram">
@@ -7,6 +7,6 @@ const Instagram = () => (
     <path d="M251.92,122.56A129.36,129.36,0,1,0,381.29,251.92,129.36,129.36,0,0,0,251.92,122.56Zm0,213.34a84,84,0,1,1,84-84A84,84,0,0,1,251.92,335.89Z" />
     <circle cx="386.4" cy="117.44" r="30.23" />
   </svg>
-);
+)
 
-export default Instagram;
+export default Instagram

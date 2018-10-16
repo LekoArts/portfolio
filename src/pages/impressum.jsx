@@ -1,20 +1,20 @@
 /* eslint max-len: 0 */
 
-import React from 'react';
-import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
-import { Container, Layout } from 'elements';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import config from '../../config/website';
+import React from 'react'
+import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import { Container, Layout } from 'elements'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import config from '../../config/website'
 
 const Impressum = ({
   data: {
     allPrismicSeite: { edges },
   },
 }) => {
-  const i = edges[0].node.data;
+  const i = edges[0].node.data
   return (
     <Layout>
       <Helmet title={`${i.title.text} | ${config.siteTitle}`} />
@@ -26,10 +26,10 @@ const Impressum = ({
       </div>
       <Footer />
     </Layout>
-  );
-};
+  )
+}
 
-export default Impressum;
+export default Impressum
 
 Impressum.propTypes = {
   data: PropTypes.shape({
@@ -37,7 +37,7 @@ Impressum.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query ImpressumQuery {
@@ -57,4 +57,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

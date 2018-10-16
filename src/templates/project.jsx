@@ -1,16 +1,16 @@
 /* eslint max-len: 0 */
 /* eslint react/no-unescaped-entities: 0 */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { keyframes } from 'react-emotion';
-import Img from 'gatsby-image';
-import { graphql } from 'gatsby';
-import { SEO, Container, Content, Line, Wave, Layout, Hero, InfoText } from 'elements';
-import Suggestions from '../components/Suggestions';
-import { Card } from '../components/Card';
-import Button from '../components/Button';
-import Footer from '../components/Footer';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled, { keyframes } from 'react-emotion'
+import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
+import { SEO, Container, Content, Line, Wave, Layout, Hero, InfoText } from 'elements'
+import Suggestions from '../components/Suggestions'
+import { Card } from '../components/Card'
+import Button from '../components/Button'
+import Footer from '../components/Footer'
 
 const pulse = keyframes`
   0% {
@@ -29,7 +29,7 @@ const pulse = keyframes`
     transform: scale(1);
     animation-timing-function: ease-out;
   }
-`;
+`
 
 const Wrapper = styled.header`
   height: 600px;
@@ -53,7 +53,7 @@ const Wrapper = styled.header`
       height: 400px;
     }
   }
-`;
+`
 
 const CardWrapper = styled.div`
   display: flex;
@@ -75,11 +75,11 @@ const CardWrapper = styled.div`
       margin-bottom: 1.5rem;
     }
   }
-`;
+`
 
 const Project = ({ pageContext: { slug, left, right }, data: { prismicProjekt: projektNode } }) => {
-  const projekt = projektNode.data;
-  const { fluid } = projekt.cover.localFile.childImageSharp;
+  const projekt = projektNode.data
+  const { fluid } = projekt.cover.localFile.childImageSharp
   return (
     <Layout>
       <SEO postPath={slug} postNode={projektNode} postSEO />
@@ -119,10 +119,10 @@ const Project = ({ pageContext: { slug, left, right }, data: { prismicProjekt: p
         </Button>
       </Footer>
     </Layout>
-  );
-};
+  )
+}
 
-export default Project;
+export default Project
 
 Project.propTypes = {
   pageContext: PropTypes.shape({
@@ -133,7 +133,7 @@ Project.propTypes = {
   data: PropTypes.shape({
     prismicProjekt: PropTypes.object.isRequired,
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query ProjectPostBySlug($slug: String!) {
@@ -203,4 +203,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

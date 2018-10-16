@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link, graphql } from 'gatsby';
-import PropTypes from 'prop-types';
-import styled from 'react-emotion';
-import kebabCase from 'lodash/kebabCase';
-import { darken } from 'polished';
-import Helmet from 'react-helmet';
-import { Container, Layout } from 'elements';
-import config from '../../config/website';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import styled from 'react-emotion'
+import kebabCase from 'lodash/kebabCase'
+import { darken } from 'polished'
+import Helmet from 'react-helmet'
+import { Container, Layout } from 'elements'
+import config from '../../config/website'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 const TagsContainer = styled.div`
   margin: 2rem 0 4rem 0;
@@ -27,7 +27,7 @@ const TagsContainer = styled.div`
       color: ${props => darken(0.35, props.theme.colors.black.light)};
     }
   }
-`;
+`
 
 const Tags = ({ data: { tags, posts } }) => (
   <Layout>
@@ -46,9 +46,9 @@ const Tags = ({ data: { tags, posts } }) => (
     </Container>
     <Footer />
   </Layout>
-);
+)
 
-export default Tags;
+export default Tags
 
 Tags.propTypes = {
   data: PropTypes.shape({
@@ -57,7 +57,7 @@ Tags.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query TagsPage {
@@ -75,4 +75,4 @@ export const pageQuery = graphql`
       totalCount
     }
   }
-`;
+`

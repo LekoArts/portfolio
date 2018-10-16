@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { css, cx } from 'emotion';
-import styled from 'react-emotion';
-import theme from '../../config/theme';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { css, cx } from 'emotion'
+import styled from 'react-emotion'
+import theme from '../../config/theme'
 
 const discordStyle = css`
   svg {
@@ -19,7 +19,7 @@ const discordStyle = css`
   &:focus {
     outline: none;
   }
-`;
+`
 
 const instagramStyle = css`
   &:after {
@@ -70,7 +70,7 @@ const instagramStyle = css`
   &:focus {
     outline: none;
   }
-`;
+`
 
 const behanceStyle = css`
   svg {
@@ -87,7 +87,7 @@ const behanceStyle = css`
   &:focus {
     outline: none;
   }
-`;
+`
 
 const youtubeStyle = css`
   svg {
@@ -105,7 +105,7 @@ const youtubeStyle = css`
   &:focus {
     outline: none;
   }
-`;
+`
 
 const generalStyle = css`
   display: flex;
@@ -133,13 +133,13 @@ const generalStyle = css`
     border-radius: ${theme.borderRadius.default};
     background-color: ${theme.colors.white.light};
   }
-`;
+`
 
 const Card = styled.div`
   ${generalStyle};
-`;
+`
 
-export { Card };
+export { Card }
 
 export const LinkCard = ({ children, className, discord, instagram, behance, youtube, link }) => {
   const color = cx(generalStyle, className, {
@@ -147,17 +147,17 @@ export const LinkCard = ({ children, className, discord, instagram, behance, you
     [instagramStyle]: instagram,
     [behanceStyle]: behance,
     [youtubeStyle]: youtube,
-  });
+  })
   return (
     <a href={link} target="_blank" rel="noopener noreferrer" className={color}>
       {children}
     </a>
-  );
-};
+  )
+}
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
 LinkCard.propTypes = {
   children: PropTypes.node.isRequired,
@@ -167,7 +167,7 @@ LinkCard.propTypes = {
   instagram: PropTypes.bool,
   behance: PropTypes.bool,
   youtube: PropTypes.bool,
-};
+}
 
 LinkCard.defaultProps = {
   discord: false,
@@ -175,4 +175,4 @@ LinkCard.defaultProps = {
   behance: false,
   youtube: false,
   className: 'default',
-};
+}

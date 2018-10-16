@@ -3,21 +3,21 @@
 /* eslint no-script-url: 0 */
 /* eslint jsx-a11y/anchor-is-valid: 0 */
 
-import React from 'react';
-import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
-import { Container, Layout } from 'elements';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import config from '../../config/website';
+import React from 'react'
+import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import { Container, Layout } from 'elements'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import config from '../../config/website'
 
 const Datenschutzerklaerung = ({
   data: {
     allPrismicSeite: { edges },
   },
 }) => {
-  const d = edges[0].node.data;
+  const d = edges[0].node.data
   return (
     <Layout>
       <Helmet title={`${d.title.text} | ${config.siteTitle}`} />
@@ -29,10 +29,10 @@ const Datenschutzerklaerung = ({
       </div>
       <Footer />
     </Layout>
-  );
-};
+  )
+}
 
-export default Datenschutzerklaerung;
+export default Datenschutzerklaerung
 
 Datenschutzerklaerung.propTypes = {
   data: PropTypes.shape({
@@ -40,7 +40,7 @@ Datenschutzerklaerung.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
-};
+}
 
 export const pageQuery = graphql`
   query DatenschutzQuery {
@@ -60,4 +60,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

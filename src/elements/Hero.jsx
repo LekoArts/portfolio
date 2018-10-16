@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from 'react-emotion'
 
 const Hero = styled.div`
   position: absolute;
@@ -13,6 +13,6 @@ const Hero = styled.div`
   max-width: ${props => props.theme.layout.base};
   padding: 0 2rem;
   text-align: center;
-`;
+`
 
-export default Hero;
+export default Hero

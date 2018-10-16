@@ -4,6 +4,6 @@
  * @returns {string}
  */
 
-const cfl = string => string.charAt(0).toUpperCase() + string.slice(1);
+const cfl = string => string.charAt(0).toUpperCase() + string.slice(1)
 
-module.exports = cfl;
+module.exports = cfl

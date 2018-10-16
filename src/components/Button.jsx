@@ -1,6 +1,6 @@
-import styled from 'react-emotion';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+import styled from 'react-emotion'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 
 const Button = styled(Link)`
   background: ${props => props.theme.button[props.type].background};
@@ -32,15 +32,15 @@ const Button = styled(Link)`
     box-shadow: ${props => props.theme.button[props.type].hover.boxShadow},
       0 0 0 5px ${props => props.theme.button[props.type].focus};
   }
-`;
+`
 
-export default Button;
+export default Button
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf(['primary', 'secondary']),
-};
+}
 
 Button.defaultProps = {
   type: 'default',
-};
+}

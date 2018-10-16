@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'react-emotion';
-import { prism } from 'styles';
-import { BodyText, CodeBlock, Image, Quote } from 'slices';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'react-emotion'
+import { prism } from 'styles'
+import { BodyText, CodeBlock, Image, Quote } from 'slices'
 
 const Wrapper = styled.main`
   padding: 5rem 0 1rem 0;
@@ -59,28 +59,28 @@ const Wrapper = styled.main`
       height: 100%;
     }
   }
-`;
+`
 
 const Content = ({ sliceZone }) => {
   const slices = sliceZone.map(s => {
     switch (s.slice_type) {
       case 'text':
-        return <BodyText key={s.id} input={s} />;
+        return <BodyText key={s.id} input={s} />
       case 'code_block':
-        return <CodeBlock key={s.id} input={s} />;
+        return <CodeBlock key={s.id} input={s} />
       case 'bild':
-        return <Image key={s.id} input={s} />;
+        return <Image key={s.id} input={s} />
       case 'quote':
-        return <Quote key={s.id} input={s} />;
+        return <Quote key={s.id} input={s} />
       default:
-        return null;
+        return null
     }
-  });
-  return <Wrapper>{slices}</Wrapper>;
-};
+  })
+  return <Wrapper>{slices}</Wrapper>
+}
 
-export default Content;
+export default Content
 
 Content.propTypes = {
   sliceZone: PropTypes.array.isRequired,
-};
+}
