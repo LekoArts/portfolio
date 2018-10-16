@@ -1,24 +1,32 @@
 version: 2
+
 jobs:
   build:
     docker:
+    # the Docker image with Cypress dependencies
     - image: cypress/base:8
       environment:
+        ## this enables colors in the output
         TERM: xterm
     working_directory: ~/app
     steps:
     - checkout
     - restore_cache:
-        key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
-        key: v1-deps-{{ .Branch }}
-        key: v1-deps
-    - run:
-        name: Install Dependencies
-        command: yarn install --frozen-lockfile
+        name: Restore Yarn Package Cache
+        keys:
+          - v2-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          - v2-deps-{{ .Branch }}-
+          - v2-deps-
+    - run: yarn install --frozen-lockfile
     - save_cache:
-        key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+        name: Save Yarn Package Cache
+        key: v2-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
         paths:
-        - ~/.cache
+          - ~/.cache
     - run:
-        name: Run E2E Tests
+        name: Running E2E tests
         command: yarn test:e2e:run
+    - store_artifacts:
+        path: cypress/videos
+    - store_artifacts:
+        path: cypress/screenshots
