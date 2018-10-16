@@ -6068,10 +6068,10 @@ gatsby-plugin-nprogress@^2.0.5:
     "@babel/runtime" "^7.0.0"
     nprogress "^0.2.0"
 
-gatsby-plugin-offline@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-2.0.6.tgz#09b729d30a9cb2524d4fa5adfe706e1160a7604f"
-  integrity sha512-sitjfwEuNK7Fx4zwphCCda+CpzbV6mSlDM4CFyB4xByHjrFL/TQCqb0cZ8t8ln3N6ja2NhnKRZ2HgwFTtWKI6g==
+gatsby-plugin-offline@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-2.0.7.tgz#41825f5b5ba0f9b75054056fb33e3acd8da5017d"
+  integrity sha512-EY0RSrgMALnQBv5dLyYMo9/LEue/HgUVdXpjoEdQT+yZnYT8qsQFjrvAYJeG7Eel1kpz7uuy/xXnT2BhFNQEjg==
   dependencies:
     "@babel/runtime" "^7.0.0"
     cheerio "^1.0.0-rc.2"
@@ -6203,10 +6203,10 @@ gatsby-transformer-sharp@^2.1.4:
     probe-image-size "^4.0.0"
     sharp "^0.20.2"
 
-gatsby@^2.0.24:
-  version "2.0.24"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.24.tgz#83231a0d11b4bac5f51327067afeab4f1307a4f6"
-  integrity sha512-cv5r87/knyYpa5zRDOrRVzsGUzNay5FYyI0fFxQ7iIpoI35Qec3KWmtmYxFKtQ1DWMUvx7Wy9z8iagmq2Hc+sw==
+gatsby@^2.0.25:
+  version "2.0.25"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.25.tgz#ec4ad24585a06b700b39fe81c197caf01f2e170d"
+  integrity sha512-OLj0PrywrFNxt3SglotvB/iNVVgI2QndpF43MXJfWWCGeMB6D8H81PSPj3H3d9DvJ3SE5k2pMZZH+pRYNSKofw==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"

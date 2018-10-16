@@ -1,7 +1,6 @@
 version: 2
-
 jobs:
-  build:
+  e2e_cypress:
     docker:
     - image: cypress/base:8
       environment:
@@ -12,16 +11,15 @@ jobs:
     - restore_cache:
         name: Restore Yarn Package Cache
         keys:
-          - v2-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          - v2-deps-{{ .Branch }}-
-          - v2-deps-
+          - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-
+          - v{{ .Environment.versionCache }}-deps-
     - run: yarn install --frozen-lockfile
     - save_cache:
         name: Save Yarn Package Cache
-        key: v2-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        key: v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
         paths:
           - ~/.cache
-          - public
     - run:
         name: Running E2E tests
         command: yarn test:e2e:ci
@@ -31,3 +29,9 @@ jobs:
         path: cypress/videos
     - store_artifacts:
         path: cypress/screenshots
+
+workflows:
+  version: 2
+  testing:
+    jobs:
+      - e2e_cypress
