@@ -19,13 +19,14 @@
   "env": {
     "browser": true,
     "node": true,
-    "jquery": true
+    "jquery": true,
+    "jest": true
   },
   "rules": {
     "no-unused-vars": [
       1,
       {
-        "argsIgnorePattern": "res|next|^err"
+        "argsIgnorePattern": "res|next|stage|^err"
       }
     ],
     "arrow-body-style": [2, "as-needed"],
@@ -66,11 +67,12 @@
         "allowTemplateLiterals": true
       }
     ],
-    "indent": ["error", 2],
+    "indent": ["error", 2, {"SwitchCase": 1}],
     "prettier/prettier": [
       "error",
       {
         "trailingComma": "es5",
+        "semi": false,
         "singleQuote": true,
         "printWidth": 120
       }

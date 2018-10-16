@@ -1,23 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { css, cx } from 'emotion';
-import styled from 'react-emotion';
-import theme from '../../config/theme';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { css, cx } from 'emotion'
+import styled from 'react-emotion'
+import theme from '../../config/theme'
 
-const discord = css`
+const discordStyle = css`
   svg {
     fill: ${theme.colors.brands.discord};
   }
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: ${theme.colors.brands.discord};
     color: ${theme.colors.white.light};
     svg {
       fill: ${theme.colors.white.light};
     }
   }
-`;
+  &:focus {
+    outline: none;
+  }
+`
 
-const instagram = css`
+const instagramStyle = css`
   &:after {
     content: '';
     position: absolute;
@@ -50,7 +54,8 @@ const instagram = css`
     opacity: 0;
     transition: opacity ${theme.transitions.default.duration};
   }
-  &:hover {
+  &:hover,
+  &:focus {
     color: ${theme.colors.white.light};
     svg {
       fill: ${theme.colors.white.light};
@@ -62,34 +67,45 @@ const instagram = css`
       opacity: 0;
     }
   }
-`;
+  &:focus {
+    outline: none;
+  }
+`
 
-const behance = css`
+const behanceStyle = css`
   svg {
     font-size: 3rem;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: ${theme.colors.brands.behance};
     color: ${theme.colors.white.light};
     svg {
       fill: ${theme.colors.white.light};
     }
   }
-`;
+  &:focus {
+    outline: none;
+  }
+`
 
-const youtube = css`
+const youtubeStyle = css`
   svg {
     fill: ${theme.colors.brands.youtube};
     font-size: 3rem;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: ${theme.colors.brands.youtube};
     color: ${theme.colors.white.light};
     svg {
       fill: ${theme.colors.white.light};
     }
   }
-`;
+  &:focus {
+    outline: none;
+  }
+`
 
 const generalStyle = css`
   display: flex;
@@ -117,32 +133,31 @@ const generalStyle = css`
     border-radius: ${theme.borderRadius.default};
     background-color: ${theme.colors.white.light};
   }
-`;
+`
 
 const Card = styled.div`
   ${generalStyle};
-`;
+`
 
-export { Card };
+export { Card }
 
-export const LinkCard = props => {
-  const { children } = props;
-  const color = cx(generalStyle, props.className, {
-    [discord]: props.discord,
-    [instagram]: props.instagram,
-    [behance]: props.behance,
-    [youtube]: props.youtube,
-  });
+export const LinkCard = ({ children, className, discord, instagram, behance, youtube, link }) => {
+  const color = cx(generalStyle, className, {
+    [discordStyle]: discord,
+    [instagramStyle]: instagram,
+    [behanceStyle]: behance,
+    [youtubeStyle]: youtube,
+  })
   return (
-    <a href={props.link} rel="noreferrer noopener" target="_blank" className={color}>
+    <a href={link} target="_blank" rel="noopener noreferrer" className={color}>
       {children}
     </a>
-  );
-};
+  )
+}
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
 LinkCard.propTypes = {
   children: PropTypes.node.isRequired,
@@ -152,7 +167,7 @@ LinkCard.propTypes = {
   instagram: PropTypes.bool,
   behance: PropTypes.bool,
   youtube: PropTypes.bool,
-};
+}
 
 LinkCard.defaultProps = {
   discord: false,
@@ -160,4 +175,4 @@ LinkCard.defaultProps = {
   behance: false,
   youtube: false,
   className: 'default',
-};
+}

@@ -1,5 +1,5 @@
-import { css } from 'react-emotion';
-import theme from '../../config/theme';
+import { css } from 'react-emotion'
+import theme from '../../config/theme'
 
 const reset = css`
   *,
@@ -13,7 +13,7 @@ const reset = css`
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    @media (max-width: ${theme.breakpoints.m}) and (max-device-width: ${theme.breakpoints.m}) {
+    @media (max-width: ${theme.breakpoints.m}), (max-device-width: ${theme.breakpoints.m}) {
       font-size: 16px !important;
       h1 {
         font-size: 2.074rem;
@@ -28,7 +28,7 @@ const reset = css`
         font-size: 1.2rem;
       }
     }
-    @media (max-width: ${theme.breakpoints.s}) and (max-device-width: ${theme.breakpoints.s}) {
+    @media (max-width: ${theme.breakpoints.s}), (max-device-width: ${theme.breakpoints.s}) {
       font-size: 14px !important;
       h1 {
         font-size: 1.602rem;
@@ -53,12 +53,12 @@ const reset = css`
     background-color: ${theme.colors.primary.base};
   }
   a {
-    color: ${theme.colors.primary.base};
+    color: ${theme.colors.primary.dark};
     transition: ${theme.transitions.default.transition};
     text-decoration: none;
     &:hover,
     &:focus {
-      color: ${theme.colors.primary.light};
+      color: ${theme.colors.primary.base};
     }
   }
   a:not([href]):not([tabindex]) {
@@ -181,6 +181,6 @@ const reset = css`
   [hidden] {
     display: none !important;
   }
-`;
+`
 
-export default reset;
+export default reset

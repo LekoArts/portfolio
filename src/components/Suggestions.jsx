@@ -1,16 +1,16 @@
-import React from 'react';
-import styled from 'react-emotion';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import theme from '../../config/theme';
+import React from 'react'
+import styled from 'react-emotion'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import theme from '../../config/theme'
 
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 2rem;
-  margin-bottom: 1rem;
-`;
+  margin-bottom: 5rem;
+`
 
 const ImageOverlay = styled.div`
   border-radius: ${props => props.theme.borderRadius.default};
@@ -36,7 +36,7 @@ const ImageOverlay = styled.div`
     ${props.theme.colors.secondary.light} 0%,
     ${props.theme.colors.secondary.dark} 100%
   )`};
-`;
+`
 
 const Wrapper = styled.article`
   position: relative;
@@ -64,7 +64,7 @@ const Wrapper = styled.article`
       margin-bottom: 2rem;
     }
   }
-`;
+`
 
 const StyledLink = styled(Link)`
   position: absolute;
@@ -104,7 +104,7 @@ const StyledLink = styled(Link)`
       opacity: 0;
     }
   }
-`;
+`
 
 const Image = styled.div`
   position: absolute;
@@ -121,53 +121,53 @@ const Image = styled.div`
     width: 100%;
     height: 100%;
   }
-`;
+`
 
 const Title = styled.h4`
   color: ${props => props.theme.colors.white.base};
   text-align: center;
   margin-bottom: 0;
   text-shadow: ${props => props.theme.shadow.text.small};
-`;
+`
 
 const Suggestions = ({ left, right, primary, secondary }) => (
   <Row>
     {left && (
-      <Wrapper>
+      <Wrapper data-testid="suggestion-left">
         <Image>
-          <img src={left.frontmatter.cover.childImageSharp.resize.src} alt={left.frontmatter.title} />
+          <img src={left.data.cover.localFile.childImageSharp.resize.src} alt="" />
         </Image>
         <StyledLink to={left.fields.slug}>
-          <Title>{left.frontmatter.title}</Title>
+          <Title>{left.data.title.text}</Title>
         </StyledLink>
         <ImageOverlay primary={primary} secondary={secondary} />
       </Wrapper>
     )}
 
     {right && (
-      <Wrapper>
+      <Wrapper data-testid="suggestion-right">
         <Image>
-          <img src={right.frontmatter.cover.childImageSharp.resize.src} alt={right.frontmatter.title} />
+          <img src={right.data.cover.localFile.childImageSharp.resize.src} alt="" />
         </Image>
         <StyledLink to={right.fields.slug}>
-          <Title>{right.frontmatter.title}</Title>
+          <Title>{right.data.title.text}</Title>
         </StyledLink>
         <ImageOverlay primary={primary} secondary={secondary} />
       </Wrapper>
     )}
   </Row>
-);
+)
 
-export default Suggestions;
+export default Suggestions
 
 Suggestions.propTypes = {
-  left: PropTypes.any.isRequired,
-  right: PropTypes.any.isRequired,
+  left: PropTypes.object.isRequired,
+  right: PropTypes.object.isRequired,
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
-};
+}
 
 Suggestions.defaultProps = {
   primary: true,
   secondary: false,
-};
+}

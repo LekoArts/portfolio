@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import Img from 'gatsby-image';
-import styled from 'react-emotion';
-import theme from '../../config/theme';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import Img from 'gatsby-image'
+import styled from 'react-emotion'
+import theme from '../../config/theme'
 
-const StyledLink = styled(Link)`
+const Overlay = styled.div`
   position: absolute;
   top: 0;
   right: 0;
@@ -27,9 +27,9 @@ const StyledLink = styled(Link)`
   &:hover {
     color: ${theme.colors.white.light};
   }
-`;
+`
 
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
   display: inline-block;
   width: 100%;
   position: relative;
@@ -44,28 +44,32 @@ const Wrapper = styled.div`
   &:hover {
     box-shadow: ${props => props.theme.shadow.feature.small.hover};
     transform: translateY(-12px);
-    a {
+    ${Overlay} {
       visibility: visible;
       opacity: 0.9;
     }
   }
-`;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px ${props => props.theme.tint.blue};
+  }
+`
 
 const ItemProject = ({ cover, path, customer, title }) => (
-  <Wrapper>
+  <Wrapper to={path}>
     <Img fluid={cover} />
-    <StyledLink to={path}>
+    <Overlay>
       <div>{customer}</div>
       <h2>{title}</h2>
-    </StyledLink>
+    </Overlay>
   </Wrapper>
-);
+)
 
-export default ItemProject;
+export default ItemProject
 
 ItemProject.propTypes = {
-  cover: PropTypes.any.isRequired,
+  cover: PropTypes.object.isRequired,
   path: PropTypes.string.isRequired,
   customer: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-};
+}

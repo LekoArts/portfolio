@@ -1,19 +1,13 @@
 # lekoarts.de
 > ars aurea
 
-My personal portfolio & blog.
+My personal portfolio & blog. Built with [Gatsby.js](https://www.gatsbyjs.org/).
 
-## Development
+## Tech Stack
 
-Installation:
-```bash
-yarn
-```
-
-Starting the local development server:
-```bash
-yarn run dev
-```
+- Hosted on [Netlify](https://www.netlify.com/)
+- [Prismic.io](https://prismic.io/) as Headless CMS
+- [Emotion](https://emotion.sh/) for styling
 
 ## License
 

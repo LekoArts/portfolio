@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'react-emotion';
-import {Link} from 'gatsby';
-import Img from 'gatsby-image';
-import kebabCase from 'lodash/kebabCase';
-import { hideS } from 'utilities';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'react-emotion'
+import { Link } from 'gatsby'
+import Img from 'gatsby-image'
+import kebabCase from 'lodash/kebabCase'
+import { hideS } from 'elements'
 
 const Wrapper = styled.article`
   display: flex;
@@ -12,7 +12,7 @@ const Wrapper = styled.article`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 4rem;
-`;
+`
 
 const Image = styled.div`
   position: relative;
@@ -33,11 +33,16 @@ const Image = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
+    border-radius: ${props => props.theme.borderRadius.default};
     > div {
       position: static !important;
     }
     > div > div {
       position: static !important;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 5px ${props => props.theme.tint.blue};
     }
   }
   flex-basis: calc(99.9% * 2 / 5 - 1rem);
@@ -52,7 +57,7 @@ const Image = styled.div`
   @media (max-width: 500px) {
     min-height: 200px;
   }
-`;
+`
 
 const Information = styled.div`
   h1 {
@@ -74,15 +79,15 @@ const Information = styled.div`
     max-width: 100%;
     width: 100%;
   }
-`;
+`
 
 const Statistics = styled.div`
   color: ${props => props.theme.colors.black.lighter};
-`;
+`
 
 const Excerpt = styled.div`
   margin-top: 2rem;
-`;
+`
 
 const ItemBlog = ({ path, cover, category, title, date, timeToRead, excerpt }) => (
   <Wrapper>
@@ -99,19 +104,19 @@ const ItemBlog = ({ path, cover, category, title, date, timeToRead, excerpt }) =
         {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
         <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
       </Statistics>
-      <Excerpt>{excerpt}</Excerpt>
+      <Excerpt>{`${excerpt}...`}</Excerpt>
     </Information>
   </Wrapper>
-);
+)
 
-export default ItemBlog;
+export default ItemBlog
 
 ItemBlog.propTypes = {
   path: PropTypes.string.isRequired,
-  cover: PropTypes.any.isRequired,
+  cover: PropTypes.object.isRequired,
   category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   timeToRead: PropTypes.number.isRequired,
   excerpt: PropTypes.string.isRequired,
-};
+}
