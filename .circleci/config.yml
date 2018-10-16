@@ -3,10 +3,8 @@ version: 2
 jobs:
   build:
     docker:
-    # the Docker image with Cypress dependencies
     - image: cypress/base:8
       environment:
-        ## this enables colors in the output
         TERM: xterm
     working_directory: ~/app
     steps:
@@ -23,6 +21,7 @@ jobs:
         key: v2-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
         paths:
           - ~/.cache
+          - public
     - run:
         name: Running E2E tests
         command: yarn test:e2e:ci
