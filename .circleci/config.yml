@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: cypress/base:8
+      environment:
+        TERM: xterm
+    working_directory: ~/app
+    steps:
+    - checkout
+    - restore_cache:
+        key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+        key: v1-deps-{{ .Branch }}
+        key: v1-deps
+    - run:
+        name: Install Dependencies
+        command: yarn install --frozen-lockfile
+    - save_cache:
+        key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+        paths:
+        - ~/.cache
+    - run:
+        name: Run E2E Tests
+        command: yarn test:e2e:run
