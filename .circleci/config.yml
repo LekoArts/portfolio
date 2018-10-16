@@ -25,7 +25,9 @@ jobs:
           - ~/.cache
     - run:
         name: Running E2E tests
-        command: yarn test:e2e:run
+        command: yarn test:e2e:ci
+    - store_test_results:
+        path: test-results
     - store_artifacts:
         path: cypress/videos
     - store_artifacts:
