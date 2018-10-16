@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  e2e_cypress:
+  build:
     docker:
     # the Docker image with Cypress dependencies
     - image: cypress/base:8
