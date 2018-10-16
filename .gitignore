@@ -59,7 +59,9 @@ public/
 # Bundle stats
 bundle-stats.json
 
-psds/
-
 .env.development
 .env.production
+
+# Cypress
+cypress/videos
+cypress/screenshots

@@ -112,7 +112,7 @@ const Footer = ({ children }) => {
             <a href="https://www.facebook.com/lekoarts.de" target="_blank" rel="noopener noreferrer">
               Facebook
             </a>
-            <a href="https://github.com/LeKoArts" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/LekoArts" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
             <a href="https://www.instagram.com/lekoarts.de" target="_blank" rel="noopener noreferrer">

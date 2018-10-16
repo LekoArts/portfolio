@@ -24,7 +24,7 @@ describe('Navigation', () => {
       .getByText('Facebook')
       .should('have.prop', 'href', 'https://www.facebook.com/lekoarts.de')
       .getByText('GitHub')
-      .should('have.prop', 'href', 'https://github.com/LeKoArts')
+      .should('have.prop', 'href', 'https://github.com/LekoArts')
       .getByText('Instagram')
       .should('have.prop', 'href', 'https://www.instagram.com/lekoarts.de')
       .getByText('Patreon')
