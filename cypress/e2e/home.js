@@ -1,6 +1,7 @@
-/* globals cy */
-
 describe('Home', () => {
+  it('Page loads', () => {
+    cy.visit('/')
+  })
   it('Featured Projects load', () => {
     cy.visit('/')
       .getByTestId('featured-project-0')

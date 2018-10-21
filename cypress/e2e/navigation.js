@@ -1,5 +1,3 @@
-/* globals cy */
-
 describe('Navigation', () => {
   it('in the header works', () => {
     cy.visit('/')

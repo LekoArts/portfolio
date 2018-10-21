@@ -1,5 +1,3 @@
-/* globals cy */
-
 describe('Project & Blogpost', () => {
   it('Suggestions work', () => {
     cy.visit('/projekte/krotus-computer-produktion-einer-eigenen-tastatur')
@@ -13,5 +11,16 @@ describe('Project & Blogpost', () => {
       .click()
       .getByText('Kunde')
       .should('exist')
+  })
+  it('Project footer links to contact', () => {
+    cy.visit('/projekte/krotus-computer-produktion-einer-eigenen-tastatur')
+      .getByText('Projekt starten')
+      .click()
+      .assertRoute('/kontakt')
+  })
+  it('Blogpost footer links to patreon', () => {
+    cy.visit('/blog/quicktipp-netlify-discord')
+      .getByText('Patreon')
+      .should('have.prop', 'href', 'https://www.patreon.com/lekoarts')
   })
 })
