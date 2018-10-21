@@ -9,6 +9,9 @@
       "classes": true
     }
   },
+  "globals": {
+    "cy": true
+  },
   "settings": {
     "import/resolver": {
       "node": {

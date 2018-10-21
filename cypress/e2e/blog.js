@@ -1,6 +1,7 @@
-/* globals cy */
-
 describe('Blog', () => {
+  it('Page loads', () => {
+    cy.visit('/blog')
+  })
   it('Cover links to Blogpost', () => {
     cy.visit('/blog')
       .getByTitle('Quicktipp: Netlify + Discord')
