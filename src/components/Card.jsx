@@ -4,13 +4,14 @@ import { css, cx } from 'emotion'
 import styled from 'react-emotion'
 import theme from '../../config/theme'
 
-const discordStyle = css`
+const githubStyle = css`
   svg {
-    fill: ${theme.colors.brands.discord};
+    fill: ${theme.colors.brands.github};
+    font-size: 3rem;
   }
   &:hover,
   &:focus {
-    background-color: ${theme.colors.brands.discord};
+    background-color: ${theme.colors.brands.github};
     color: ${theme.colors.white.light};
     svg {
       fill: ${theme.colors.white.light};
@@ -141,9 +142,9 @@ const Card = styled.div`
 
 export { Card }
 
-export const LinkCard = ({ children, className, discord, instagram, behance, youtube, link }) => {
+export const LinkCard = ({ children, className, github, instagram, behance, youtube, link }) => {
   const color = cx(generalStyle, className, {
-    [discordStyle]: discord,
+    [githubStyle]: github,
     [instagramStyle]: instagram,
     [behanceStyle]: behance,
     [youtubeStyle]: youtube,
@@ -163,14 +164,14 @@ LinkCard.propTypes = {
   children: PropTypes.node.isRequired,
   link: PropTypes.string.isRequired,
   className: PropTypes.string,
-  discord: PropTypes.bool,
+  github: PropTypes.bool,
   instagram: PropTypes.bool,
   behance: PropTypes.bool,
   youtube: PropTypes.bool,
 }
 
 LinkCard.defaultProps = {
-  discord: false,
+  github: false,
   instagram: false,
   behance: false,
   youtube: false,

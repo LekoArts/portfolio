@@ -12,7 +12,7 @@ import Header from '../components/Header'
 import Button from '../components/Button'
 import config from '../../config/website'
 import Paperplane from '../icons/Paperplane'
-import Discord from '../icons/Discord'
+import GitHub from '../icons/GitHub'
 import Instagram from '../icons/Instagram'
 import Behance from '../icons/Behance'
 import YouTube from '../icons/YouTube'
@@ -80,9 +80,9 @@ const Kontakt = ({
           </Outbound>
         </CenteredContainer>
         <CardContainer>
-          <MyLinkCard link="https://www.discordapp.com" discord>
-            <Discord />
-            LekoArts#2495
+          <MyLinkCard link="https://www.discordapp.com" github>
+            <GitHub />
+            Open Source Projekte
           </MyLinkCard>
           <MyLinkCard link="https://www.instagram.com/lekoarts.de" instagram>
             <Instagram />

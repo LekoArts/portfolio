@@ -28,7 +28,7 @@ const colors = {
     dark: '#262c41',
   },
   brands: {
-    discord: '#7289da',
+    github: '#24292E',
     instagram: {
       yellow: '#f7eb4c',
       pink: '#ee2a7b',
