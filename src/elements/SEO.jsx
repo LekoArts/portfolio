@@ -80,43 +80,7 @@ const SEO = props => {
       <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
-      <link
-        href="/splashscreen/iphone5_splash.png"
-        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
-        rel="apple-touch-startup-image"
-      />
-      <link
-        href="/splashscreen/iphone6_splash.png"
-        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
-        rel="apple-touch-startup-image"
-      />
-      <link
-        href="/splashscreen/iphoneplus_splash.png"
-        media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
-        rel="apple-touch-startup-image"
-      />
-      <link
-        href="/splashscreen/iphonex_splash.png"
-        media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
-        rel="apple-touch-startup-image"
-      />
-      <link
-        href="/splashscreen/ipad_splash.png"
-        media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
-        rel="apple-touch-startup-image"
-      />
-      <link
-        href="/splashscreen/ipadpro1_splash.png"
-        media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
-        rel="apple-touch-startup-image"
-      />
-      <link
-        href="/splashscreen/ipadpro2_splash.png"
-        media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
-        rel="apple-touch-startup-image"
-      />
       <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#343849" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta name="msapplication-TileColor" content="#3498db" />
       <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
       <meta property="og:locale" content="de_DE" />
