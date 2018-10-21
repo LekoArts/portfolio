@@ -20,6 +20,9 @@ injectGlobal`
       border-radius: ${theme.borderRadius.default};
     }
   }
+  body {
+    -webkit-tap-highlight-color: transparent;
+  }
   .gatsby-resp-iframe-wrapper {
     margin-bottom: 2rem;
   }
