@@ -9,21 +9,28 @@ const SEO = props => {
   let title
   let description
   let image
+  let imageWidth
+  let imageHeight
   let postURL
   if (postSEO) {
     const postMeta = postNode.data
+    const postImage = postMeta.cover.localFile.childImageSharp.resize
     title = `${postMeta.title.text} | ${config.siteTitleAlt} – ${postNode.fields.sourceType}`
     description = `${postNode.fields.excerpt}...`
-    image = postMeta.cover.localFile.childImageSharp.resize.src
+    image = postImage.src
+    imageWidth = postImage.width
+    imageHeight = postImage.height
     postURL = config.siteUrl + postPath
   } else {
     title = config.siteTitle
     description = config.siteDescription
     image = config.siteBanner
+    imageWidth = config.siteBannerWidth
+    imageHeight = config.siteBannerHeight
   }
   const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
   image = config.siteUrl + realPrefix + image
-  const blogURL = config.siteUrl + config.pathPrefix
+  const blogURL = config.siteUrl + realPrefix
   let schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
@@ -90,6 +97,9 @@ const SEO = props => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:alt" content={title} />
+      <meta property="og:image:width" content={imageWidth} />
+      <meta property="og:image:height" content={imageHeight} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={config.twitter} />
       <meta name="twitter:title" content={title} />
