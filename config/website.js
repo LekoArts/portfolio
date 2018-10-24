@@ -5,6 +5,8 @@ module.exports = {
   siteShortName: 'LekoArts',
   siteLogo: '/social/avatar.png',
   siteBanner: '/social/banner.jpg',
+  siteBannerWidth: '776',
+  siteBannerHeight: '382',
   siteUrl: 'https://www.lekoarts.de', // No trailing slash!
   pathPrefix: '/',
   siteDescription:

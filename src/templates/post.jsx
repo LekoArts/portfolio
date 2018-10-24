@@ -185,6 +185,8 @@ export const pageQuery = graphql`
               }
               resize(width: 1200, quality: 90) {
                 src
+                height
+                width
               }
             }
           }
