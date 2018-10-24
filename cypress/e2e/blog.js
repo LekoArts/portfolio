@@ -1,24 +1,21 @@
 describe('Blog', () => {
-  it('Page loads', () => {
+  beforeEach(() => {
     cy.visit('/blog')
   })
   it('Cover links to Blogpost', () => {
-    cy.visit('/blog')
-      .getByTitle('Quicktipp: Netlify + Discord')
+    cy.getByTitle('Quicktipp: Netlify + Discord')
       .click()
       .getByText('Quicktipp: Netlify + Discord')
       .should('exist')
   })
   it('Title links to Blogpost', () => {
-    cy.visit('/blog')
-      .getByText('Quicktipp: Netlify + Discord')
+    cy.getByText('Quicktipp: Netlify + Discord')
       .click()
       .getByText('Quicktipp: Netlify + Discord')
       .should('exist')
   })
   it('Category links to overview of that Category', () => {
-    cy.visit('/blog')
-      .getByText('Quicktipp')
+    cy.getByText('Quicktipp')
       .click()
       .getByTestId('header-title')
       .should('contain', 'Quicktipp')
@@ -26,8 +23,7 @@ describe('Blog', () => {
       .should('exist')
   })
   it('Tag in the Blogpost links to overview of that Tag', () => {
-    cy.visit('/blog')
-      .getByText('Quicktipp: Netlify + Discord')
+    cy.getByText('Quicktipp: Netlify + Discord')
       .click()
       .getByTestId('tag-Discord')
       .click()

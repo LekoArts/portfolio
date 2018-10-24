@@ -1,7 +1,9 @@
 describe('Navigation', () => {
-  it('in the header works', () => {
+  beforeEach(() => {
     cy.visit('/')
-      .getByText('Projekte')
+  })
+  it('in the header works', () => {
+    cy.getByText('Projekte')
       .click()
       .assertRoute('/projekte')
       .getByText('Blog')
@@ -14,8 +16,7 @@ describe('Navigation', () => {
       .click()
   })
   it('to external sites in the footer works', () => {
-    cy.visit('/')
-      .getByText('Behance')
+    cy.getByText('Behance')
       .should('have.prop', 'href', 'https://www.behance.net/lekoarts')
       .getByText('Dribbble')
       .should('have.prop', 'href', 'https://dribbble.com/LekoArts')
@@ -29,8 +30,7 @@ describe('Navigation', () => {
       .should('have.prop', 'href', 'https://www.patreon.com/lekoarts')
   })
   it('to internal sites in the footer works', () => {
-    cy.visit('/')
-      .getByText('Datenschutzerklärung')
+    cy.getByText('Datenschutzerklärung')
       .click()
       .assertRoute('/datenschutz')
       .getByText('Tutorials')
@@ -42,8 +42,5 @@ describe('Navigation', () => {
       .getByText('Freebies')
       .click()
       .assertRoute('/categories/freebie')
-      .getByText('LekoArts')
-      .click()
-      .assertRoute('/')
   })
 })
