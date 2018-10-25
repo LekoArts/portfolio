@@ -64,7 +64,7 @@ const Index = ({
     <Container>
       <Text>
         {home.teaser_projects.text} <br />
-        <Button to="/projekte" type="primary" role="button">
+        <Button to="/projects" type="primary" role="button">
           Projekte
         </Button>
       </Text>

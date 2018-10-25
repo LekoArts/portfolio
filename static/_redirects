@@ -1,0 +1,5 @@
+/kontakt        /contact
+/impressum      /imprint
+/datenschutz    /privacy
+/projekte       /projects
+/projekte/*     /projects/:splat

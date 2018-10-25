@@ -16,7 +16,7 @@ const Base = styled.div`
   column-width: 500px;
 `
 
-const Projekte = ({
+const Projects = ({
   data: {
     allPrismicProjekt: { edges },
   },
@@ -43,9 +43,9 @@ const Projekte = ({
   </Layout>
 )
 
-export default Projekte
+export default Projects
 
-Projekte.propTypes = {
+Projects.propTypes = {
   data: PropTypes.shape({
     allPrismicProjekt: PropTypes.shape({
       edges: PropTypes.array.isRequired,

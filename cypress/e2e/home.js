@@ -33,7 +33,7 @@ describe('Home', () => {
     cy.get('a[type="primary"]')
       .should('contain', 'Projekte')
       .click()
-      .assertRoute('/projekte')
+      .assertRoute('/projects')
   })
   it('Button to blog works', () => {
     cy.get('a[type="secondary"]')

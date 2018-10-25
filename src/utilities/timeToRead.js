@@ -8,7 +8,7 @@ const words = require('lodash/words')
 
 const timeToRead = content => {
   let TTR
-  const avgWPM = 245
+  const avgWPM = 240
   const wordCount = words(content).length
   TTR = Math.round(wordCount / avgWPM)
   if (TTR === 0) {

@@ -12,19 +12,19 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import config from '../../config/website'
 
-const Datenschutzerklaerung = ({
+const Privacy = ({
   data: {
     allPrismicSeite: { edges },
   },
 }) => {
-  const d = edges[0].node.data
+  const p = edges[0].node.data
   return (
     <Layout>
-      <Helmet title={`${d.title.text} | ${config.siteTitle}`} />
-      <Header title={d.title.text} />
+      <Helmet title={`${p.title.text} | ${config.siteTitle}`} />
+      <Header title={p.title.text} />
       <div style={{ marginTop: '3rem' }}>
         <Container type="article">
-          <div dangerouslySetInnerHTML={{ __html: d.content.html }} />
+          <div dangerouslySetInnerHTML={{ __html: p.content.html }} />
         </Container>
       </div>
       <Footer />
@@ -32,9 +32,9 @@ const Datenschutzerklaerung = ({
   )
 }
 
-export default Datenschutzerklaerung
+export default Privacy
 
-Datenschutzerklaerung.propTypes = {
+Privacy.propTypes = {
   data: PropTypes.shape({
     allPrismicSeite: PropTypes.shape({
       edges: PropTypes.array.isRequired,
@@ -43,7 +43,7 @@ Datenschutzerklaerung.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query DatenschutzQuery {
+  query PrivacyQuery {
     allPrismicSeite(filter: { uid: { eq: "datenschutz" } }) {
       edges {
         node {
