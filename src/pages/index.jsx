@@ -33,7 +33,7 @@ const Text = styled.p`
   font-weight: 700;
   font-size: 1.8rem;
   line-height: 2.5rem;
-  max-width: 850px;
+  max-width: 860px;
   margin: 5rem auto;
   text-shadow: ${props => props.theme.shadow.text.big};
 `
@@ -110,7 +110,7 @@ Index.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    content: prismicHome {
+    content: prismicHome(lang: { eq: "de-de" }) {
       data {
         hero_title
         teaser_projects {
