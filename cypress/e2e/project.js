@@ -2,7 +2,7 @@ import config from '../../config/website'
 
 describe('Project', () => {
   beforeEach(() => {
-    cy.visit('/projekte/krotus-computer-produktion-einer-eigenen-tastatur')
+    cy.visit('/projects/krotus-computer-produktion-einer-eigenen-tastatur')
   })
   it('Suggestions work', () => {
     cy.getByTestId('suggestion-left')
@@ -13,7 +13,7 @@ describe('Project', () => {
   it('Footer links to Contact', () => {
     cy.getByText('Projekt starten')
       .click()
-      .assertRoute('/kontakt')
+      .assertRoute('/contact')
   })
   it('Contains specific title tag', () => {
     cy.get('head title').should('contain', `Produktion einer eigenen Tastatur | ${config.siteTitleAlt} – Projekte`)
@@ -25,7 +25,7 @@ describe('Project', () => {
     cy.get('head meta[property="og:url"').should(
       'have.attr',
       'content',
-      `${config.siteUrl}/projekte/krotus-computer-produktion-einer-eigenen-tastatur`
+      `${config.siteUrl}/projects/krotus-computer-produktion-einer-eigenen-tastatur`
     )
   })
   it('Contains not the general og:image', () => {

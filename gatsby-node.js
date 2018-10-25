@@ -13,7 +13,7 @@ exports.onCreateNode = ({ node, actions }) => {
 
   if (node.internal.type === 'PrismicProjekt') {
     const data = JSON.parse(node.dataString)
-    slug = `/projekte/${node.uid}`
+    slug = `/projects/${node.uid}`
     /* Since every project starts with a heading the element to extract from is the second item in the array */
     excerpt = ex(data.body[0].primary.text[1].text)
     createNodeField({ node, name: 'slug', value: slug })

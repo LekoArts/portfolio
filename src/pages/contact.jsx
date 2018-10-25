@@ -56,19 +56,19 @@ const CardContainer = styled(Container)`
 
 const Outbound = Button.withComponent('a')
 
-const Kontakt = ({
+const Contact = ({
   data: {
     allPrismicSeite: { edges },
   },
 }) => {
-  const k = edges[0].node.data
+  const c = edges[0].node.data
   return (
     <Layout>
-      <Helmet title={`${k.title.text} | ${config.siteTitle}`} />
-      <Header title={k.title.text}>{k.description.text}</Header>
+      <Helmet title={`${c.title.text} | ${config.siteTitle}`} />
+      <Header title={c.title.text}>{c.description.text}</Header>
       <Wrapper>
         <Container type="article">
-          <div dangerouslySetInnerHTML={{ __html: k.content.html }} />
+          <div dangerouslySetInnerHTML={{ __html: c.content.html }} />
         </Container>
         <CenteredContainer>
           <Outbound
@@ -103,9 +103,9 @@ const Kontakt = ({
   )
 }
 
-export default Kontakt
+export default Contact
 
-Kontakt.propTypes = {
+Contact.propTypes = {
   data: PropTypes.shape({
     allPrismicSeite: PropTypes.shape({
       edges: PropTypes.array.isRequired,
@@ -114,7 +114,7 @@ Kontakt.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query KontaktQuery {
+  query ContactQuery {
     allPrismicSeite(filter: { uid: { eq: "kontakt" } }) {
       edges {
         node {

@@ -9,7 +9,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import config from '../../config/website'
 
-const Impressum = ({
+const Imprint = ({
   data: {
     allPrismicSeite: { edges },
   },
@@ -29,9 +29,9 @@ const Impressum = ({
   )
 }
 
-export default Impressum
+export default Imprint
 
-Impressum.propTypes = {
+Imprint.propTypes = {
   data: PropTypes.shape({
     allPrismicSeite: PropTypes.shape({
       edges: PropTypes.array.isRequired,
@@ -40,7 +40,7 @@ Impressum.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query ImpressumQuery {
+  query ImprintQuery {
     allPrismicSeite(filter: { uid: { eq: "impressum" } }) {
       edges {
         node {

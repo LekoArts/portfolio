@@ -52,9 +52,9 @@ const Navigation = () => (
       <LogoText>LekoArts</LogoText>
     </StyledLink>
     <Nav>
-      <Link to="/projekte">Projekte</Link>
+      <Link to="/projects">Projekte</Link>
       <Link to="/blog">Blog</Link>
-      <Link to="/kontakt">Kontakt</Link>
+      <Link to="/contact">Kontakt</Link>
     </Nav>
   </Headroom>
 )
