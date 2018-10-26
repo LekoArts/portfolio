@@ -1,6 +1,10 @@
 const path = require('path')
 const _ = require('lodash')
 const { ex, fullText, timeToRead } = require('./src/utilities')
+const locales = require('./config/i18n')
+
+const replaceTrailing = _path => (_path === `/` ? _path : _path.replace(/\/$/, ``))
+const replaceBoth = _path => _path.replace(/^\/|\/$/g, '')
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
@@ -31,6 +35,32 @@ exports.onCreateNode = ({ node, actions }) => {
     createNodeField({ node, name: 'timeToRead', value: TTR })
     createNodeField({ node, name: 'sourceType', value: 'Blog' })
   }
+}
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
+
+  return new Promise(resolve => {
+    deletePage(page)
+
+    Object.keys(locales).map(lang => {
+      page.path = replaceTrailing(page.path)
+      const pageName = replaceBoth(page.path)
+      const localizedPath = locales[lang].default ? page.path : `${locales[lang].path}${page.path}`
+      const localizedName = `${pageName}-${locales[lang].locale}`
+
+      return createPage({
+        ...page,
+        path: localizedPath,
+        context: {
+          locale: lang,
+          name: localizedName,
+        },
+      })
+    })
+
+    resolve()
+  })
 }
 
 exports.createPages = ({ graphql, actions }) => {

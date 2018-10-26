@@ -19,13 +19,13 @@ const Base = styled.div`
 const Projects = ({
   data: {
     allPrismicProjekt: { edges },
+    content: { data: p },
   },
+  pageContext: { locale },
 }) => (
-  <Layout>
-    <Helmet title={`Projekte | ${config.siteTitle}`} />
-    <Header title="Projekte">
-      Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken
-    </Header>
+  <Layout locale={locale}>
+    <Helmet title={`${p.title.text} | ${config.siteTitle}`} />
+    <Header title={p.title.text}>{p.description.text}</Header>
     <Container type="big">
       <Base>
         {edges.map(project => (
@@ -51,10 +51,26 @@ Projects.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export const pageQuery = graphql`
-  query ProjectsQuery {
+  query ProjectsQuery($name: String!) {
+    content: prismicSeite(uid: { eq: $name }) {
+      data {
+        title {
+          text
+        }
+        description {
+          text
+        }
+        content {
+          html
+        }
+      }
+    }
     allPrismicProjekt(sort: { fields: [data___date], order: DESC }) {
       edges {
         node {

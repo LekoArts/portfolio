@@ -14,23 +14,21 @@ import config from '../../config/website'
 
 const Privacy = ({
   data: {
-    allPrismicSeite: { edges },
+    content: { data: p },
   },
-}) => {
-  const p = edges[0].node.data
-  return (
-    <Layout>
-      <Helmet title={`${p.title.text} | ${config.siteTitle}`} />
-      <Header title={p.title.text} />
-      <div style={{ marginTop: '3rem' }}>
-        <Container type="article">
-          <div dangerouslySetInnerHTML={{ __html: p.content.html }} />
-        </Container>
-      </div>
-      <Footer />
-    </Layout>
-  )
-}
+  pageContext: { locale },
+}) => (
+  <Layout locale={locale}>
+    <Helmet title={`${p.title.text} | ${config.siteTitle}`} />
+    <Header title={p.title.text} />
+    <div style={{ marginTop: '3rem' }}>
+      <Container type="article">
+        <div dangerouslySetInnerHTML={{ __html: p.content.html }} />
+      </Container>
+    </div>
+    <Footer />
+  </Layout>
+)
 
 export default Privacy
 
@@ -40,22 +38,23 @@ Privacy.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export const pageQuery = graphql`
-  query PrivacyQuery {
-    allPrismicSeite(filter: { uid: { eq: "datenschutz" } }) {
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
-            }
-            content {
-              html
-            }
-          }
+  query PrivacyQuery($name: String!) {
+    content: prismicSeite(uid: { eq: $name }) {
+      data {
+        title {
+          text
+        }
+        description {
+          text
+        }
+        content {
+          html
         }
       }
     }

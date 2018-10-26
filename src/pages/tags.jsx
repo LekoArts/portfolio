@@ -29,8 +29,8 @@ const TagsContainer = styled.div`
   }
 `
 
-const Tags = ({ data: { tags, posts } }) => (
-  <Layout>
+const Tags = ({ data: { tags, posts }, pageContext: { locale } }) => (
+  <Layout locale={locale}>
     <Helmet title={`Tags | ${config.siteTitle}`} />
     <Header title="Tags">
       {posts.totalCount} Beiträge wurden mit {tags.totalCount} Tags markiert
@@ -56,6 +56,9 @@ Tags.propTypes = {
       group: PropTypes.array.isRequired,
       edges: PropTypes.array.isRequired,
     }),
+  }).isRequired,
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
   }).isRequired,
 }
 

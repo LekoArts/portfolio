@@ -10,6 +10,7 @@ import { reset, headroom } from 'styles'
 import { SEO } from 'elements'
 import Navigation from '../components/Navigation'
 import theme from '../../config/theme'
+import i18n from '../../config/i18n'
 
 injectGlobal`
   ${reset}
@@ -29,18 +30,25 @@ injectGlobal`
   ${headroom}
 `
 
-const Layout = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <React.Fragment>
-      <SEO />
-      <Navigation />
-      {children}
-    </React.Fragment>
-  </ThemeProvider>
+const { Provider: LocaleProvider, Consumer: LocaleConsumer } = React.createContext()
+
+const Layout = ({ children, locale }) => (
+  <LocaleProvider value={{ locale, i18n }}>
+    <ThemeProvider theme={theme}>
+      <React.Fragment>
+        <SEO />
+        <Navigation />
+        {children}
+      </React.Fragment>
+    </ThemeProvider>
+  </LocaleProvider>
 )
 
 export default Layout
 
+export { LocaleConsumer }
+
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
+  locale: PropTypes.string.isRequired
 }
