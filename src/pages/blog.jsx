@@ -19,11 +19,13 @@ const Base = styled.main`
 const Blog = ({
   data: {
     allPrismicBlogpost: { edges },
+    content: { data: b },
   },
+  pageContext: { locale },
 }) => (
-  <Layout>
-    <Helmet title={`Blog | ${config.siteTitle}`} />
-    <Header title="Blog">Ein bunter Mix aus Überlegungen, Tutorials und Neuigkeiten</Header>
+  <Layout locale={locale}>
+    <Helmet title={`${b.title.text} | ${config.siteTitle}`} />
+    <Header title={b.title.text}>{b.description.text}</Header>
     <Container type="big">
       <Base>
         {edges.map(post => (
@@ -52,10 +54,26 @@ Blog.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export const pageQuery = graphql`
-  query BlogQuery {
+  query BlogQuery($name: String!) {
+    content: prismicSeite(uid: { eq: $name }) {
+      data {
+        title {
+          text
+        }
+        description {
+          text
+        }
+        content {
+          html
+        }
+      }
+    }
     allPrismicBlogpost(sort: { fields: [data___date], order: DESC }) {
       edges {
         node {

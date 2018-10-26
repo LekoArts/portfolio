@@ -44,8 +44,9 @@ const Index = ({
     projects: { edges: projectEdges },
     posts: { edges: postEdges },
   },
+  pageContext: { locale },
 }) => (
-  <Layout>
+  <Layout locale={locale}>
     <Header big html={`<h1>${home.hero_title}</h1>`} />
     <Container type="big">
       <ProjectsWrapper>
@@ -106,11 +107,14 @@ Index.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
-    content: prismicHome(lang: { eq: "de-de" }) {
+  query IndexQuery($locale: String!) {
+    content: prismicHome(lang: { eq: $locale }) {
       data {
         hero_title
         teaser_projects {

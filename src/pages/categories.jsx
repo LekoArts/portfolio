@@ -29,8 +29,8 @@ const CategoriesContainer = styled.div`
   }
 `
 
-const Categories = ({ data: { categories, posts } }) => (
-  <Layout>
+const Categories = ({ data: { categories, posts }, pageContext: { locale } }) => (
+  <Layout locale={locale}>
     <Helmet title={`Kategorien | ${config.siteTitle}`} />
     <Header title="Kategorien">
       {posts.totalCount} Beiträge wurden in {categories.totalCount} Kategorien eingeteilt
@@ -56,6 +56,9 @@ Categories.propTypes = {
       group: PropTypes.array.isRequired,
       edges: PropTypes.array.isRequired,
     }),
+  }).isRequired,
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
   }).isRequired,
 }
 
