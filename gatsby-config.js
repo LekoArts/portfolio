@@ -13,6 +13,7 @@ require('prismjs/components/prism-diff')
 require('prismjs/components/prism-markdown')
 require('prismjs/components/prism-graphql')
 const config = require('./config/website')
+const i18n = require('./config/i18n')
 
 const { Elements } = RichText
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
@@ -116,9 +117,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: config.siteTitle,
+        name: i18n['de-de'].translation.siteTitle,
         short_name: config.siteShortName,
-        description: config.siteDescription,
+        description: i18n['de-de'].translation.siteDescription,
         start_url: config.pathPrefix,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,

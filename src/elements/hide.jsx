@@ -1,4 +1,4 @@
-import { css } from 'emotion'
+import { css } from 'react-emotion'
 import theme from '../../config/theme'
 
 export const hideS = css`

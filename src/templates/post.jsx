@@ -80,7 +80,7 @@ const fontBold = css`
 
 const Outbound = Button.withComponent('a')
 
-const Post = ({ pageContext: { slug, left, right }, data: { prismicBlogpost: postNode } }) => {
+const Post = ({ pageContext: { slug, left, right, locale }, data: { prismicBlogpost: postNode } }) => {
   const post = postNode.data
   const { kategorie } = post.category.document[0].data
   const { fluid } = post.cover.localFile.childImageSharp
@@ -89,8 +89,8 @@ const Post = ({ pageContext: { slug, left, right }, data: { prismicBlogpost: pos
     tags = post.tags.map(tag => tag.tag.document[0].data.tag)
   }
   return (
-    <Layout>
-      <SEO postPath={slug} postNode={postNode} postSEO />
+    <Layout locale={locale}>
+      <SEO locale={locale} postPath={slug} postNode={postNode} postSEO />
       <Wrapper>
         <Hero>
           <h1>{post.title.text}</h1>
@@ -139,6 +139,7 @@ Post.propTypes = {
     slug: PropTypes.string.isRequired,
     left: PropTypes.object.isRequired,
     right: PropTypes.object.isRequired,
+    locale: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     prismicBlogpost: PropTypes.object.isRequired,
@@ -146,8 +147,8 @@ Post.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    prismicBlogpost(fields: { slug: { eq: $slug } }) {
+  query BlogPostBySlug($uid: String!) {
+    prismicBlogpost(uid: { eq: $uid }) {
       fields {
         slug
         sourceType

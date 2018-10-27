@@ -24,7 +24,7 @@ const Blog = ({
   pageContext: { locale },
 }) => (
   <Layout locale={locale}>
-    <Helmet title={`${b.title.text} | ${config.siteTitle}`} />
+    <Helmet title={`${b.title.text} | ${config.siteTitleAlt}`} />
     <Header title={b.title.text}>{b.description.text}</Header>
     <Container type="big">
       <Base>
@@ -60,7 +60,7 @@ Blog.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query BlogQuery($name: String!) {
+  query BlogQuery($name: String!, $locale: String!) {
     content: prismicSeite(uid: { eq: $name }) {
       data {
         title {
@@ -74,7 +74,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPrismicBlogpost(sort: { fields: [data___date], order: DESC }) {
+    allPrismicBlogpost(sort: { fields: [data___date], order: DESC }, filter: { lang: { eq: $locale } }) {
       edges {
         node {
           uid
@@ -87,7 +87,7 @@ export const pageQuery = graphql`
             title {
               text
             }
-            date(formatString: "DD.MM.YYYY", locale: "de")
+            date
             category {
               document {
                 data {

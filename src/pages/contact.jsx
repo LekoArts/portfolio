@@ -60,10 +60,10 @@ const Contact = ({
   data: {
     content: { data: c },
   },
-  pageContext: { locale },
+  pageContext: { locale, i18n },
 }) => (
   <Layout locale={locale}>
-    <Helmet title={`${c.title.text} | ${config.siteTitle}`} />
+    <Helmet title={`${c.title.text} | ${config.siteTitleAlt}`} />
     <Header title={c.title.text}>{c.description.text}</Header>
     <Wrapper>
       <Container type="article">
@@ -79,21 +79,21 @@ const Contact = ({
         </Outbound>
       </CenteredContainer>
       <CardContainer>
-        <MyLinkCard link="https://www.discordapp.com" github>
+        <MyLinkCard link="https://github.com/LekoArts" github>
           <GitHub />
-          Open Source Projekte
+          {i18n.pageContactGitHub}
         </MyLinkCard>
         <MyLinkCard link="https://www.instagram.com/lekoarts.de" instagram>
           <Instagram />
-          3D & Experimente
+          {i18n.pageContactInstagram}
         </MyLinkCard>
         <MyLinkCard link="https://www.behance.net/lekoarts" behance>
           <Behance />
-          Persönliche Projekte
+          {i18n.pageContactBehance}
         </MyLinkCard>
         <MyLinkCard link="https://youtube.de/LekoArtsDE" youtube>
           <YouTube />
-          Speedarts
+          {i18n.pageContactYouTube}
         </MyLinkCard>
       </CardContainer>
     </Wrapper>
@@ -111,6 +111,7 @@ Contact.propTypes = {
   }).isRequired,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
+    i18n: PropTypes.object.isRequired,
   }).isRequired,
 }
 
