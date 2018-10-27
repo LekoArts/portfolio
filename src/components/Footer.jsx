@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import format from 'date-fns/format'
 import styled from 'react-emotion'
-import { Wave, Container } from 'elements'
+import { Wave, Container, LocalizedLink } from 'elements'
+import { LocaleConsumer } from 'elements/Layout'
 
 const Wrapper = styled.footer`
   position: relative;
@@ -82,47 +82,53 @@ const Copyright = styled.div`
 const Footer = ({ children }) => {
   const date = format(new Date(), 'YYYY')
   return (
-    <Wrapper>
-      <Wave orientation="top" />
-      <Container>
-        {children && <OptionalContent>{children}</OptionalContent>}
-        <Content>
-          <Important>
-            <a href="https://www.patreon.com/lekoarts" target="_blank" rel="noopener noreferrer">
-              Patreon
-            </a>
-            <Link to="/categories/tutorial">Tutorials</Link>
-            <Link to="/categories/freebie">Freebies</Link>
-          </Important>
-          <Item>
-            <Link to="/imprint" rel="nofollow">
-              Impressum
-            </Link>
-            <Link to="/privacy" rel="nofollow">
-              Datenschutzerklärung
-            </Link>
-          </Item>
-          <Item>
-            <a href="https://www.behance.net/lekoarts" target="_blank" rel="noopener noreferrer">
-              Behance
-            </a>
-            <a href="https://dribbble.com/LekoArts" target="_blank" rel="noopener noreferrer">
-              Dribbble
-            </a>
-            <a href="https://www.facebook.com/lekoarts.de" target="_blank" rel="noopener noreferrer">
-              Facebook
-            </a>
-            <a href="https://github.com/LekoArts" target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-            <a href="https://www.instagram.com/lekoarts.de" target="_blank" rel="noopener noreferrer">
-              Instagram
-            </a>
-          </Item>
-        </Content>
-        <Copyright>Copyright © {date}. LekoArts. Alle Rechte vorbehalten.</Copyright>
-      </Container>
-    </Wrapper>
+    <LocaleConsumer>
+      {({ i18n }) => (
+        <Wrapper>
+          <Wave orientation="top" />
+          <Container>
+            {children && <OptionalContent>{children}</OptionalContent>}
+            <Content>
+              <Important>
+                <a href="https://www.patreon.com/lekoarts" target="_blank" rel="noopener noreferrer">
+                  Patreon
+                </a>
+                <LocalizedLink to="/categories/tutorial">Tutorials</LocalizedLink>
+                <LocalizedLink to="/categories/freebie">Freebies</LocalizedLink>
+              </Important>
+              <Item>
+                <LocalizedLink to="/imprint" rel="nofollow">
+                  {i18n.imprint}
+                </LocalizedLink>
+                <LocalizedLink to="/privacy" rel="nofollow">
+                  {i18n.privacy}
+                </LocalizedLink>
+              </Item>
+              <Item>
+                <a href="https://www.behance.net/lekoarts" target="_blank" rel="noopener noreferrer">
+                  Behance
+                </a>
+                <a href="https://dribbble.com/LekoArts" target="_blank" rel="noopener noreferrer">
+                  Dribbble
+                </a>
+                <a href="https://www.facebook.com/lekoarts.de" target="_blank" rel="noopener noreferrer">
+                  Facebook
+                </a>
+                <a href="https://github.com/LekoArts" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <a href="https://www.instagram.com/lekoarts.de" target="_blank" rel="noopener noreferrer">
+                  Instagram
+                </a>
+              </Item>
+            </Content>
+            <Copyright>
+              Copyright © {date}. LekoArts. {i18n.footerNote}.
+            </Copyright>
+          </Container>
+        </Wrapper>
+      )}
+    </LocaleConsumer>
   )
 }
 

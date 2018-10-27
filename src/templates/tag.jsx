@@ -14,12 +14,12 @@ const StyledLink = styled(Link)`
 `
 
 const Tag = ({
-  pageContext: { tag },
+  pageContext: { t: tag, locale },
   data: {
     allPrismicBlogpost: { edges, totalCount },
   },
 }) => (
-  <Layout>
+  <Layout locale={locale}>
     <Helmet title={`${tag} | ${config.siteTitle}`} />
     <Header title={tag}>
       {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} wurde
@@ -48,7 +48,8 @@ export default Tag
 
 Tag.propTypes = {
   pageContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
+    t: PropTypes.string.isRequired,
+    locale: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     allPrismicBlogpost: PropTypes.shape({
@@ -58,10 +59,13 @@ Tag.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query TagPage($tag: String) {
+  query TagPage($t: String, $locale: String!) {
     allPrismicBlogpost(
       sort: { fields: [data___date], order: DESC }
-      filter: { data: { tags: { elemMatch: { tag: { document: { elemMatch: { data: { tag: { eq: $tag } } } } } } } } }
+      filter: {
+        data: { tags: { elemMatch: { tag: { document: { elemMatch: { data: { tag: { eq: $t } } } } } } } }
+        lang: { eq: $locale }
+      }
     ) {
       totalCount
       edges {

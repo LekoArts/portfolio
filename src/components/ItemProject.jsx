@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import { LocalizedLink } from 'elements'
 import Img from 'gatsby-image'
 import styled from 'react-emotion'
 import theme from '../../config/theme'
@@ -55,14 +56,16 @@ const Wrapper = styled(Link)`
   }
 `
 
+const LocalizedWrapper = Wrapper.withComponent(LocalizedLink)
+
 const ItemProject = ({ cover, path, customer, title }) => (
-  <Wrapper to={path}>
+  <LocalizedWrapper to={path}>
     <Img fluid={cover} />
     <Overlay>
       <div>{customer}</div>
       <h2>{title}</h2>
     </Overlay>
-  </Wrapper>
+  </LocalizedWrapper>
 )
 
 export default ItemProject

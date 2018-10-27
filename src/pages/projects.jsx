@@ -24,7 +24,7 @@ const Projects = ({
   pageContext: { locale },
 }) => (
   <Layout locale={locale}>
-    <Helmet title={`${p.title.text} | ${config.siteTitle}`} />
+    <Helmet title={`${p.title.text} | ${config.siteTitleAlt}`} />
     <Header title={p.title.text}>{p.description.text}</Header>
     <Container type="big">
       <Base>
@@ -57,7 +57,7 @@ Projects.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query ProjectsQuery($name: String!) {
+  query ProjectsQuery($name: String!, $locale: String!) {
     content: prismicSeite(uid: { eq: $name }) {
       data {
         title {
@@ -71,7 +71,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPrismicProjekt(sort: { fields: [data___date], order: DESC }) {
+    allPrismicProjekt(sort: { fields: [data___date], order: DESC }, filter: { lang: { eq: $locale } }) {
       edges {
         node {
           uid

@@ -77,12 +77,12 @@ const CardWrapper = styled.div`
   }
 `
 
-const Project = ({ pageContext: { slug, left, right }, data: { prismicProjekt: projektNode } }) => {
+const Project = ({ pageContext: { slug, left, right, locale }, data: { prismicProjekt: projektNode } }) => {
   const projekt = projektNode.data
   const { fluid } = projekt.cover.localFile.childImageSharp
   return (
-    <Layout>
-      <SEO postPath={slug} postNode={projektNode} postSEO />
+    <Layout locale={locale}>
+      <SEO locale={locale} postPath={slug} postNode={projektNode} postSEO />
       <Wrapper>
         <Hero>
           <h1>{projekt.title.text}</h1>
@@ -129,6 +129,7 @@ Project.propTypes = {
     slug: PropTypes.string.isRequired,
     left: PropTypes.object.isRequired,
     right: PropTypes.object.isRequired,
+    locale: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     prismicProjekt: PropTypes.object.isRequired,
@@ -136,8 +137,8 @@ Project.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query ProjectPostBySlug($slug: String!) {
-    prismicProjekt(fields: { slug: { eq: $slug } }) {
+  query ProjectPostBySlug($uid: String!) {
+    prismicProjekt(uid: { eq: $uid }) {
       fields {
         slug
         sourceType

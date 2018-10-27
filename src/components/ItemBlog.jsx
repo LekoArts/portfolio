@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import kebabCase from 'lodash/kebabCase'
-import { hideS } from 'elements'
+import { hideS, LocalizedLink } from 'elements'
+import { localizedDate } from 'utilities'
+import { LocaleConsumer } from 'elements/Layout'
 
 const Wrapper = styled.article`
   display: flex;
@@ -90,23 +91,28 @@ const Excerpt = styled.div`
 `
 
 const ItemBlog = ({ path, cover, category, title, date, timeToRead, excerpt }) => (
-  <Wrapper>
-    <Image>
-      <Link to={path} title={title}>
-        <Img fluid={cover} />
-      </Link>
-    </Image>
-    <Information>
-      <Link to={path}>
-        <h1>{title}</h1>
-      </Link>
-      <Statistics>
-        {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
-        <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
-      </Statistics>
-      <Excerpt>{`${excerpt}...`}</Excerpt>
-    </Information>
-  </Wrapper>
+  <LocaleConsumer>
+    {({ i18n, locale }) => (
+      <Wrapper>
+        <Image>
+          <LocalizedLink to={path} title={title}>
+            <Img fluid={cover} />
+          </LocalizedLink>
+        </Image>
+        <Information>
+          <LocalizedLink to={path}>
+            <h1>{title}</h1>
+          </LocalizedLink>
+          <Statistics>
+            {localizedDate(date, locale)} &mdash; {i18n.readingTime}: {timeToRead} Min. &mdash;{' '}
+            <span className={hideS}>{i18n.category}: </span>
+            <LocalizedLink to={`/categories/${kebabCase(category)}`}>{category}</LocalizedLink>
+          </Statistics>
+          <Excerpt>{`${excerpt}...`}</Excerpt>
+        </Information>
+      </Wrapper>
+    )}
+  </LocaleConsumer>
 )
 
 export default ItemBlog

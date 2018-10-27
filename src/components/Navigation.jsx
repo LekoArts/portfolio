@@ -1,12 +1,13 @@
 /* eslint no-unused-expressions: 0 */
 
 import React from 'react'
-import { Link } from 'gatsby'
-import styled from 'react-emotion'
+import styled, { css } from 'react-emotion'
 import Headroom from 'react-headroom'
+import { LocalizedLink } from 'elements'
+import { LocaleConsumer } from 'elements/Layout'
 import Logo from '../icons/Logo'
 
-const StyledLink = styled(Link)`
+const styledLink = css`
   display: flex;
   font-weight: 700;
   align-items: center;
@@ -46,17 +47,21 @@ const Nav = styled.nav`
 `
 
 const Navigation = () => (
-  <Headroom calcHeightOnResize disableInlineStyles>
-    <StyledLink to="/">
-      <Logo />
-      <LogoText>LekoArts</LogoText>
-    </StyledLink>
-    <Nav>
-      <Link to="/projects">Projekte</Link>
-      <Link to="/blog">Blog</Link>
-      <Link to="/contact">Kontakt</Link>
-    </Nav>
-  </Headroom>
+  <LocaleConsumer>
+    {({ i18n }) => (
+      <Headroom calcHeightOnResize disableInlineStyles>
+        <LocalizedLink to="/" className={styledLink}>
+          <Logo />
+          <LogoText>LekoArts</LogoText>
+        </LocalizedLink>
+        <Nav>
+          <LocalizedLink to="/projects">{i18n.projects}</LocalizedLink>
+          <LocalizedLink to="/blog">{i18n.blog}</LocalizedLink>
+          <LocalizedLink to="/contact">{i18n.contact}</LocalizedLink>
+        </Nav>
+      </Headroom>
+    )}
+  </LocaleConsumer>
 )
 
 export default Navigation

@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from 'react-emotion'
-import { Container, Layout } from 'elements'
+import { Container, Layout, LocalizedLink } from 'elements'
 import Footer from '../components/Footer'
 import FeaturedProject from '../components/FeaturedProject'
 import FeaturedPost from '../components/FeaturedPost'
@@ -38,13 +38,15 @@ const Text = styled.p`
   text-shadow: ${props => props.theme.shadow.text.big};
 `
 
+const LocalizedButton = Button.withComponent(LocalizedLink)
+
 const Index = ({
   data: {
     content: { data: home },
     projects: { edges: projectEdges },
     posts: { edges: postEdges },
   },
-  pageContext: { locale },
+  pageContext: { locale, i18n },
 }) => (
   <Layout locale={locale}>
     <Header big html={`<h1>${home.hero_title}</h1>`} />
@@ -65,9 +67,9 @@ const Index = ({
     <Container>
       <Text>
         {home.teaser_projects.text} <br />
-        <Button to="/projects" type="primary" role="button">
-          Projekte
-        </Button>
+        <LocalizedButton to="/projects" type="primary" role="button">
+          {i18n.projects}
+        </LocalizedButton>
       </Text>
     </Container>
     <Container>
@@ -86,9 +88,9 @@ const Index = ({
       </PostsWrapper>
       <Text>
         {home.teaser_blog.text} <br />
-        <Button to="/blog" type="secondary" role="button">
-          Blog
-        </Button>
+        <LocalizedButton to="/blog" type="secondary" role="button">
+          {i18n.blog}
+        </LocalizedButton>
       </Text>
     </Container>
     <Footer />
@@ -109,6 +111,7 @@ Index.propTypes = {
   }).isRequired,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
+    i18n: PropTypes.object.isRequired,
   }).isRequired,
 }
 
@@ -125,7 +128,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    projects: allPrismicProjekt(limit: 3, sort: { fields: [data___date], order: DESC }) {
+    projects: allPrismicProjekt(
+      limit: 3
+      sort: { fields: [data___date], order: DESC }
+      filter: { lang: { eq: $locale } }
+    ) {
       edges {
         node {
           uid
@@ -150,7 +157,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    posts: allPrismicBlogpost(limit: 2, sort: { fields: [data___date], order: DESC }) {
+    posts: allPrismicBlogpost(
+      limit: 2
+      sort: { fields: [data___date], order: DESC }
+      filter: { lang: { eq: $locale } }
+    ) {
       edges {
         node {
           uid

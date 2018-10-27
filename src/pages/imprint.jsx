@@ -16,8 +16,8 @@ const Imprint = ({
   pageContext: { locale },
 }) => (
   <Layout locale={locale}>
-    <Helmet title={`${i.title.text} | ${config.siteTitle}`} />
-    <Header title={i.title.text} />
+    <Helmet title={`${i.title.text} | ${config.siteTitleAlt}`} />
+    <Header title={i.title.text}>{i.description.text}</Header>
     <div style={{ marginTop: '3rem' }}>
       <Container type="article">
         <div dangerouslySetInnerHTML={{ __html: i.content.html }} />

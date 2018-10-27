@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
 import config from '../../config/website'
 
 const SEO = props => {
-  const { postNode, postPath, postSEO } = props
+  const { locale, postNode, postPath, postSEO } = props
+  const { htmlLang, ogLang, translation: i18n } = locale
   let title
   let description
   let image
@@ -15,15 +16,14 @@ const SEO = props => {
   if (postSEO) {
     const postMeta = postNode.data
     const postImage = postMeta.cover.localFile.childImageSharp.resize
-    title = `${postMeta.title.text} | ${config.siteTitleAlt} – ${postNode.fields.sourceType}`
     description = `${postNode.fields.excerpt}...`
     image = postImage.src
     imageWidth = postImage.width
     imageHeight = postImage.height
     postURL = config.siteUrl + postPath
   } else {
-    title = config.siteTitle
-    description = config.siteDescription
+    title = i18n.siteTitle
+    description = i18n.siteDescription
     image = config.siteBanner
     imageWidth = config.siteBannerWidth
     imageHeight = config.siteBannerHeight
@@ -80,7 +80,7 @@ const SEO = props => {
   }
   return (
     <Helmet>
-      <html lang="de" />
+      <html lang={htmlLang} />
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="image" content={image} />
@@ -90,7 +90,7 @@ const SEO = props => {
       <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#343849" />
       <meta name="msapplication-TileColor" content="#3498db" />
       <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
-      <meta property="og:locale" content="de_DE" />
+      <meta property="og:locale" content={ogLang} />
       <meta property="og:site_name" content={config.facebook} />
       <meta property="og:url" content={postSEO ? postURL : blogURL} />
       {postSEO ? <meta property="og:type" content="article" /> : null}
@@ -112,6 +112,7 @@ const SEO = props => {
 export default SEO
 
 SEO.propTypes = {
+  locale: PropTypes.object,
   postNode: PropTypes.object,
   postPath: PropTypes.string,
   postSEO: PropTypes.bool,
