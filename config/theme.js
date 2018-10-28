@@ -5,7 +5,7 @@ const colors = {
     base: '#fff',
     light: '#f0f0f0',
     blueish: '#d6e1ff',
-    blue: '#a0afd7',
+    blue: '#a8b8e1',
   },
   black: {
     base: '#333438',
@@ -16,6 +16,7 @@ const colors = {
   primary: {
     base: '#3498db',
     light: '#5abdff',
+    lightest: '#7cc9ff',
     dark: '#4768b4',
   },
   secondary: {
@@ -43,6 +44,7 @@ const tint = {
   black: rgba(colors.black.base, 0.1),
   white: rgba(colors.white.light, 0.85),
   blue: rgba(colors.primary.base, 0.35),
+  blueWhite: rgba(colors.white.blue, 0.7),
   orange: rgba(colors.secondary.base, 0.35),
 }
 
