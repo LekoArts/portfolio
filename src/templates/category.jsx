@@ -23,27 +23,34 @@ const Category = ({
   },
 }) => (
   <Layout locale={locale}>
-    <Helmet title={`${category} | ${config.siteTitle}`} />
-    <Header title={category}>
-      {totalCount} {totalCount === 1 ? 'Beitrag' : 'Beiträge'} {totalCount === 1 ? 'gehört' : 'gehören'} der Kategorie "
-      {category}" an <br />
-      <LocalLink to="/categories">Alle Kategorien</LocalLink>
-    </Header>
-    <Container>
-      {edges.map(edge => (
-        <ItemTagCategory
-          key={edge.node.uid}
-          title={edge.node.data.title.text}
-          category={edge.node.data.category.document[0].data.kategorie}
-          path={edge.node.fields.slug}
-          date={edge.node.data.date}
-          timeToRead={edge.node.fields.timeToRead}
-          inputTags={edge.node.data.tags}
-          excerpt={edge.node.fields.excerpt}
-        />
-      ))}
-    </Container>
-    <Footer />
+    <LocaleConsumer>
+      {({ i18n }) => (
+        <>
+          <Helmet title={`${i18n.category}: ${category} | ${config.siteTitleAlt}`} />
+          <Header title={category}>
+            {totalCount} {totalCount === 1 ? i18n.post : i18n.posts}{' '}
+            {totalCount === 1 ? i18n.belongSingular : i18n.belongPlural} {i18n.pageCategoryOne} "{category}"{' '}
+            {i18n.pageCategoryTwo} <br />
+            <LocalLink to="/categories">{i18n.allCategories}</LocalLink>
+          </Header>
+          <Container>
+            {edges.map(edge => (
+              <ItemTagCategory
+                key={edge.node.uid}
+                title={edge.node.data.title.text}
+                category={edge.node.data.category.document[0].data.kategorie}
+                path={edge.node.fields.slug}
+                date={edge.node.data.date}
+                timeToRead={edge.node.fields.timeToRead}
+                inputTags={edge.node.data.tags}
+                excerpt={edge.node.fields.excerpt}
+              />
+            ))}
+          </Container>
+          <Footer />
+        </>
+      )}
+    </LocaleConsumer>
   </Layout>
 )
 
@@ -83,7 +90,7 @@ export const pageQuery = graphql`
             title {
               text
             }
-            date(formatString: "DD. MMMM YYYY", locale: "de")
+            date
             category {
               document {
                 data {

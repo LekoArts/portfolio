@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes, css } from 'react-emotion'
 import Img from 'gatsby-image'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
-import { SEO, Container, Content, Wave, Line, Layout, hideS, Hero, InfoText } from 'elements'
+import { SEO, Container, Content, Wave, Line, Layout, hideS, Hero, InfoText, LocalizedLink } from 'elements'
+import { localizedDate } from 'utilities'
+import { LocaleConsumer } from 'elements/Layout'
 import Tags from '../components/Tags'
 import Suggestions from '../components/Suggestions'
 import Button from '../components/Button'
@@ -90,44 +92,50 @@ const Post = ({ pageContext: { slug, left, right, locale }, data: { prismicBlogp
   }
   return (
     <Layout locale={locale}>
-      <SEO locale={locale} postPath={slug} postNode={postNode} postSEO />
-      <Wrapper>
-        <Hero>
-          <h1>{post.title.text}</h1>
-          <Information>
-            {post.date} &mdash; Lesezeit: {postNode.fields.timeToRead} Min. &mdash;{' '}
-            <span className={hideS}>Kategorie: </span>
-            <Link to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</Link>
-          </Information>
-        </Hero>
-        <Wave />
-        <Img fluid={fluid} />
-      </Wrapper>
-      <Content sliceZone={postNode.data.body} />
-      <Container type="article">
-        <Line aria-hidden="true" />
-        {tags && <Tags tags={tags} />}
-        <Note>
-          <span className={fontBold}>Interesse geweckt?</span> Lies alle Beiträge in der Kategorie{' '}
-          <Link to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</Link>
-        </Note>
-      </Container>
-      <Container>
-        <InfoText>Weitere Blogeinträge</InfoText>
-        <Suggestions left={left} right={right} secondary />
-      </Container>
-      <Footer>
-        <h2>Lust auf mehr Tutorials & Goodies? Werde ein Patron.</h2>
-        <Outbound
-          href="https://www.patreon.com/lekoarts"
-          target="_blank"
-          rel="noopener noreferrer"
-          type="secondary"
-          role="button"
-        >
-          Patreon
-        </Outbound>
-      </Footer>
+      <LocaleConsumer>
+        {({ i18n, localeContent }) => (
+          <>
+            <SEO locale={localeContent} postPath={slug} postNode={postNode} postSEO />
+            <Wrapper>
+              <Hero>
+                <h1>{post.title.text}</h1>
+                <Information>
+                  {localizedDate(post.date, locale)} &mdash; {i18n.readingTime}: {postNode.fields.timeToRead} Min.
+                  &mdash; <span className={hideS}>{i18n.category}: </span>
+                  <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
+                </Information>
+              </Hero>
+              <Wave />
+              <Img fluid={fluid} />
+            </Wrapper>
+            <Content sliceZone={postNode.data.body} />
+            <Container type="article">
+              <Line aria-hidden="true" />
+              {tags && <Tags tags={tags} />}
+              <Note>
+                <span className={fontBold}>{i18n.interest}</span> {i18n.readPosts}{' '}
+                <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
+              </Note>
+            </Container>
+            <Container>
+              <InfoText>{i18n.morePosts}</InfoText>
+              <Suggestions left={left} right={right} secondary />
+            </Container>
+            <Footer>
+              <h2>{i18n.patreonHook}</h2>
+              <Outbound
+                href="https://www.patreon.com/lekoarts"
+                target="_blank"
+                rel="noopener noreferrer"
+                type="secondary"
+                role="button"
+              >
+                Patreon
+              </Outbound>
+            </Footer>
+          </>
+        )}
+      </LocaleConsumer>
     </Layout>
   )
 }
@@ -161,7 +169,7 @@ export const pageQuery = graphql`
         title {
           text
         }
-        date(formatString: "DD. MMMM YYYY", locale: "de")
+        date
         category {
           document {
             data {

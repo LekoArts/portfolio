@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'react-emotion'
+import { localizedDate } from 'utilities'
+import { LocaleConsumer } from 'elements/Layout'
 import theme from '../../config/theme'
 
 const ImageOverlay = styled.div`
@@ -144,19 +146,23 @@ const Title = styled.h2`
 `
 
 const FeaturedPost = ({ cover, path, category, date, title, testid }) => (
-  <Wrapper data-testid={testid}>
-    <Image>
-      <Img fluid={cover} />
-    </Image>
-    <StyledLink to={path}>
-      <Information>
-        <Category>{category}</Category>
-        <Date>{date}</Date>
-      </Information>
-      <Title>{title}</Title>
-    </StyledLink>
-    <ImageOverlay />
-  </Wrapper>
+  <LocaleConsumer>
+    {({ locale }) => (
+      <Wrapper data-testid={testid}>
+        <Image>
+          <Img fluid={cover} />
+        </Image>
+        <StyledLink to={path}>
+          <Information>
+            <Category>{category}</Category>
+            <Date>{localizedDate(date, locale)}</Date>
+          </Information>
+          <Title>{title}</Title>
+        </StyledLink>
+        <ImageOverlay />
+      </Wrapper>
+    )}
+  </LocaleConsumer>
 )
 
 export default FeaturedPost

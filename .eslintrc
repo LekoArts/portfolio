@@ -29,7 +29,7 @@
     "no-unused-vars": [
       1,
       {
-        "argsIgnorePattern": "res|next|stage|^err"
+        "argsIgnorePattern": "res|next|stage|^err|on|config"
       }
     ],
     "arrow-body-style": [2, "as-needed"],

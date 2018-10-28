@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'react-emotion'
 import kebabCase from 'lodash/kebabCase'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import { LocalizedLink } from 'elements'
 import { darken } from 'polished'
 
 const TagsContainer = styled.div`
@@ -28,9 +28,9 @@ const TagsContainer = styled.div`
 const Tags = ({ tags }) => (
   <TagsContainer>
     {tags.map(tag => (
-      <Link key={tag} to={`/tags/${kebabCase(tag)}`} data-testid={`tag-${tag}`}>
+      <LocalizedLink key={tag} to={`/tags/${kebabCase(tag)}`} data-testid={`tag-${tag}`}>
         <span>{tag}</span>
-      </Link>
+      </LocalizedLink>
     ))}
   </TagsContainer>
 )
