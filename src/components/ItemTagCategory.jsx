@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'react-emotion'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
-import { hideS } from 'elements'
+import { hideS, LocalizedLink } from 'elements'
 import { localizedDate } from 'utilities'
 import { LocaleConsumer } from 'elements/Layout'
 import Tags from './Tags'
@@ -46,13 +45,13 @@ const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, e
       {({ i18n, locale }) => (
         <Wrapper>
           <Information>
-            <Link to={path}>
+            <LocalizedLink to={path}>
               <h1>{title}</h1>
-            </Link>
+            </LocalizedLink>
             <Statistics>
               {localizedDate(date, locale)} &mdash; {i18n.readingTime}: {timeToRead} Min. &mdash;{' '}
               <span className={hideS}>{i18n.category}: </span>
-              <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
+              <LocalizedLink to={`/categories/${kebabCase(category)}`}>{category}</LocalizedLink>
             </Statistics>
             {tags && <Tags tags={tags} />}
             <Excerpt>{`${excerpt}...`}</Excerpt>

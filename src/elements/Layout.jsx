@@ -34,8 +34,9 @@ const { Provider: LocaleProvider, Consumer: LocaleConsumer } = React.createConte
 
 const Layout = ({ children, locale }) => {
   const i18n = locales[locale].translation
+  const localeContent = locales[locale]
   return (
-    <LocaleProvider value={{ locale, i18n }}>
+    <LocaleProvider value={{ locale, i18n, localeContent }}>
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <SEO locale={locales[locale]} />
@@ -53,5 +54,5 @@ export { LocaleConsumer }
 
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
 }

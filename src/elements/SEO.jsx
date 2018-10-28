@@ -3,10 +3,12 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import config from '../../config/website'
+import locales from '../../config/i18n'
 
 const SEO = props => {
-  const { locale, postNode, postPath, postSEO } = props
-  const { htmlLang, ogLang, translation: i18n } = locale
+  const { locale, postNode, postPath, postSEO, project } = props
+  const { htmlLang, ogLang, translation: i18n, locale: localeLang } = locale
+  const localizedPath = locales[localeLang].default ? '' : `/${locales[localeLang].path}`
   let title
   let description
   let image
@@ -16,6 +18,9 @@ const SEO = props => {
   if (postSEO) {
     const postMeta = postNode.data
     const postImage = postMeta.cover.localFile.childImageSharp.resize
+    title = project
+      ? `${postMeta.customer}: ${postMeta.title.text} – ${postNode.fields.sourceType} | ${config.siteTitleAlt}`
+      : `${postMeta.title.text} – ${postNode.fields.sourceType} | ${config.siteTitleAlt}`
     description = `${postNode.fields.excerpt}...`
     image = postImage.src
     imageWidth = postImage.width
@@ -30,7 +35,7 @@ const SEO = props => {
   }
   const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
   image = config.siteUrl + realPrefix + image
-  const blogURL = config.siteUrl + realPrefix
+  const blogURL = config.siteUrl + realPrefix + localizedPath
   let schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
@@ -112,8 +117,13 @@ const SEO = props => {
 export default SEO
 
 SEO.propTypes = {
+  project: PropTypes.bool,
   locale: PropTypes.object,
   postNode: PropTypes.object,
   postPath: PropTypes.string,
   postSEO: PropTypes.bool,
+}
+
+SEO.defaultProps = {
+  project: false,
 }
