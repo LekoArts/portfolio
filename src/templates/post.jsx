@@ -155,8 +155,8 @@ Post.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($uid: String!) {
-    prismicBlogpost(uid: { eq: $uid }) {
+  query BlogPostBySlug($slug: String!) {
+    prismicBlogpost(fields: { slug: { eq: $slug } }) {
       fields {
         slug
         sourceType

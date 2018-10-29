@@ -19,19 +19,20 @@ exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type === 'PrismicProjekt') {
     const data = JSON.parse(node.dataString)
 
-    slug = `/projects/${node.uid}`
+    // node.lang returns the lang, e.g. de-de
+    slug = locales[node.lang].default ? `/projects/${node.uid}` : `/${locales[node.lang].path}/projects/${node.uid}`
 
     // Since every project starts with a heading the element to extract from is the second item in the array
     excerpt = ex(data.body[0].primary.text[1].text)
     createNodeField({ node, name: 'slug', value: slug })
     createNodeField({ node, name: 'excerpt', value: excerpt })
-    createNodeField({ node, name: 'sourceType', value: locales[node.lang].translation.projects }) // node.lang returns the lang, e.g. de-de
+    createNodeField({ node, name: 'sourceType', value: locales[node.lang].translation.projects })
   }
   if (node.internal.type === 'PrismicBlogpost') {
     const data = JSON.parse(node.dataString)
     const allText = fullText(data).toString()
 
-    slug = `/blog/${node.uid}`
+    slug = locales[node.lang].default ? `/blog/${node.uid}` : `/${locales[node.lang].path}/blog/${node.uid}`
 
     excerpt = ex(data.body[0].primary.text[0].text) // Use the first text block for the excerpt
     TTR = timeToRead(allText)
@@ -59,6 +60,7 @@ exports.onCreatePage = ({ page, actions }) => {
       const pageName = replaceBoth(page.path) // Remove the leading AND traling slash from path, e.g. --> blog
       const localizedPath = locales[lang].default ? page.path : `${locales[lang].path}${page.path}`
       const localizedName = `${pageName}-${locales[lang].locale}` // This name is also used as "slug" (UID) in the Prismic backend. Result --> blog-de-de
+      const i18n = locales[lang]
 
       return createPage({
         ...page,
@@ -66,7 +68,7 @@ exports.onCreatePage = ({ page, actions }) => {
         context: {
           locale: lang,
           name: localizedName,
-          i18n: locales[lang].translation,
+          i18n,
         },
       })
     })
@@ -94,7 +96,6 @@ exports.createPages = ({ graphql, actions }) => {
                 fields {
                   slug
                 }
-                uid
                 lang
                 data {
                   title {
@@ -119,7 +120,6 @@ exports.createPages = ({ graphql, actions }) => {
                 fields {
                   slug
                 }
-                uid
                 lang
                 data {
                   title {
@@ -178,18 +178,17 @@ exports.createPages = ({ graphql, actions }) => {
           const right = sample[1].node
           const {
             lang,
-            uid,
             fields: { slug },
           } = post.node
-          const localizedPath = locales[lang].default ? slug : `/${locales[lang].path}${slug}`
+          const i18n = locales[lang]
 
           createPage({
-            path: localizedPath,
+            path: slug,
             component: postPage,
             context: {
-              slug: localizedPath,
-              uid,
+              slug,
               locale: lang,
+              i18n,
               left,
               right,
             },
@@ -204,52 +203,51 @@ exports.createPages = ({ graphql, actions }) => {
           const right = sample[1].node
           const {
             lang,
-            uid,
             fields: { slug },
           } = project.node
-          const localizedPath = locales[lang].default ? slug : `/${locales[lang].path}${slug}`
+          const i18n = locales[lang]
 
           createPage({
-            path: localizedPath,
+            path: slug,
             component: projectPage,
             context: {
-              slug: localizedPath,
-              uid,
+              slug,
               locale: lang,
+              i18n,
               left,
               right,
             },
           })
         })
 
-        categoriesList.forEach(category => {
-          const c = category.node.data.kategorie
-          const { lang } = category.node
+        categoriesList.forEach(c => {
+          const category = c.node.data.kategorie
+          const { lang } = c.node
           const localizedPath = locales[lang].default
-            ? `/categories/${_.kebabCase(c)}`
-            : `/${locales[lang].path}/categories/${_.kebabCase(c)}`
+            ? `/categories/${_.kebabCase(category)}`
+            : `/${locales[lang].path}/categories/${_.kebabCase(category)}`
 
           createPage({
             path: localizedPath,
             component: categoryPage,
             context: {
-              c,
+              category,
               locale: lang,
             },
           })
         })
 
-        tagsList.forEach(tag => {
-          const t = tag.node.data.tag
-          const { lang } = tag.node
+        tagsList.forEach(t => {
+          const { tag } = t.node.data
+          const { lang } = t.node
           const localizedPath = locales[lang].default
-            ? `/tags/${_.kebabCase(t)}`
-            : `/${locales[lang].path}/tags/${_.kebabCase(t)}`
+            ? `/tags/${_.kebabCase(tag)}`
+            : `/${locales[lang].path}/tags/${_.kebabCase(tag)}`
           createPage({
             path: localizedPath,
             component: tagPage,
             context: {
-              t,
+              tag,
               locale: lang,
             },
           })

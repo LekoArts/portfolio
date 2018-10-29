@@ -33,13 +33,12 @@ injectGlobal`
 const { Provider: LocaleProvider, Consumer: LocaleConsumer } = React.createContext()
 
 const Layout = ({ children, locale }) => {
-  const i18n = locales[locale].translation
-  const localeContent = locales[locale]
+  const i18n = locales[locale]
   return (
-    <LocaleProvider value={{ locale, i18n, localeContent }}>
+    <LocaleProvider value={{ locale, i18n }}>
       <ThemeProvider theme={theme}>
         <React.Fragment>
-          <SEO locale={locales[locale]} />
+          <SEO i18n={i18n} />
           <Navigation />
           {children}
         </React.Fragment>
