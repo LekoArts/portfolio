@@ -1,44 +1,48 @@
-describe('Home', () => {
+describe('Home English', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/en')
+  })
+  it('Index button (Projects) work', () => {
+    cy.get('a[type="primary"]')
+      .should('contain', 'Projects')
+      .click()
+      .assertRoute('/en/projects')
+  })
+  it('Index button (Blog) work', () => {
+    cy.get('a[type="secondary"]')
+      .should('contain', 'Blog')
+      .click()
+      .assertRoute('/en/blog')
   })
   it('Featured Projects load', () => {
     cy.getByTestId('featured-project-0')
       .click()
-      .getByText('Kunde')
+      .getByText('Period')
       .should('exist')
+    /*
     cy.visit('/')
       .getByTestId('featured-project-1')
       .click()
-      .getByText('Kunde')
+      .getByText('Customer')
       .should('exist')
     cy.visit('/')
       .getByTestId('featured-project-2')
       .click()
-      .getByText('Kunde')
+      .getByText('Customer')
       .should('exist')
+    */
   })
   it('Featured Posts load', () => {
     cy.getByTestId('featured-post-0')
       .click()
-      .getByText('Weitere Blogeinträge')
+      .getByText('More posts')
       .should('exist')
+    /*
     cy.visit('/')
       .getByTestId('featured-post-1')
       .click()
       .getByText('Weitere Blogeinträge')
       .should('exist')
-  })
-  it('Button to projects works', () => {
-    cy.get('a[type="primary"]')
-      .should('contain', 'Projekte')
-      .click()
-      .assertRoute('/projects')
-  })
-  it('Button to blog works', () => {
-    cy.get('a[type="secondary"]')
-      .should('contain', 'Blog')
-      .click()
-      .assertRoute('/blog')
+    */
   })
 })

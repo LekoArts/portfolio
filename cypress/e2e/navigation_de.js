@@ -1,4 +1,4 @@
-describe('Navigation', () => {
+describe('Navigation German', () => {
   beforeEach(() => {
     cy.visit('/')
   })
