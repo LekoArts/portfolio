@@ -23,7 +23,7 @@ const Tag = ({
 }) => (
   <Layout locale={locale}>
     <Helmet title={`Tag: ${tag} | ${config.siteTitleAlt}`} />
-    <Header title="Tag">
+    <Header title={tag}>
       {totalCount} {totalCount === 1 ? i18n.post : i18n.posts} {totalCount === 1 ? i18n.was : i18n.were}{' '}
       {i18n.pageTagOne} "{tag}" {i18n.pageTagTwo} <br />
       <LocaleLink to="/tags">{i18n.all} Tags</LocaleLink>

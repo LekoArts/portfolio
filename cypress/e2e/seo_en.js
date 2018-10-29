@@ -6,10 +6,10 @@ describe('SEO English', () => {
     cy.visit('/en')
   })
   it('Contains general title tag', () => {
-    cy.get('head title').should('contain', i18n['en-gb'].translation.siteTitle)
+    cy.get('head title').should('contain', i18n['en-gb'].siteTitle)
   })
   it('Contains general description', () => {
-    cy.get('head meta[name="description"]').should('have.attr', 'content', i18n['en-gb'].translation.siteDescription)
+    cy.get('head meta[name="description"]').should('have.attr', 'content', i18n['en-gb'].siteDescription)
   })
   it('Contains general og:url', () => {
     cy.get('head meta[property="og:url"').should('have.attr', 'content', `${config.siteUrl}/${i18n['en-gb'].path}`)
