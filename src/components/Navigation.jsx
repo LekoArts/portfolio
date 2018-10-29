@@ -56,7 +56,7 @@ const Navigation = () => (
         </LocalizedLink>
         <Nav>
           <LocalizedLink to="/projects">{i18n.projects}</LocalizedLink>
-          <LocalizedLink to="/blog">{i18n.blog}</LocalizedLink>
+          <LocalizedLink to="/blog">Blog</LocalizedLink>
           <LocalizedLink to="/contact">{i18n.contact}</LocalizedLink>
         </Nav>
       </Headroom>
