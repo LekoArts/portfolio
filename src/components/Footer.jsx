@@ -182,7 +182,7 @@ const Footer = ({ children }) => {
             </Content>
             <LanguageWrapper>
               <LanguageBox currentLocale={locale}>
-                {i18n.languages}: <Link to="../">{i18n.german}</Link> –{' '}
+                {i18n.languages}: <Link to="/">{i18n.german}</Link> –{' '}
                 <Link to="/en">{i18n.english}</Link>
               </LanguageBox>
             </LanguageWrapper>
