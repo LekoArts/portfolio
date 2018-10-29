@@ -81,19 +81,19 @@ const Contact = ({
       <CardContainer>
         <MyLinkCard link="https://github.com/LekoArts" github>
           <GitHub />
-          {i18n.pageContactGitHub}
+          {i18n.github}
         </MyLinkCard>
         <MyLinkCard link="https://www.instagram.com/lekoarts.de" instagram>
           <Instagram />
-          {i18n.pageContactInstagram}
+          {i18n.instagram}
         </MyLinkCard>
         <MyLinkCard link="https://www.behance.net/lekoarts" behance>
           <Behance />
-          {i18n.pageContactBehance}
+          {i18n.behance}
         </MyLinkCard>
         <MyLinkCard link="https://youtube.de/LekoArtsDE" youtube>
           <YouTube />
-          {i18n.pageContactYouTube}
+          {i18n.youtube}
         </MyLinkCard>
       </CardContainer>
     </Wrapper>

@@ -31,8 +31,8 @@ const TagsContainer = styled.div`
 
 const Tags = ({ data: { tags, posts }, pageContext: { locale, i18n } }) => (
   <Layout locale={locale}>
-    <Helmet title={`${i18n.tags} | ${config.siteTitleAlt}`} />
-    <Header title={i18n.tags}>
+    <Helmet title={`Tags | ${config.siteTitleAlt}`} />
+    <Header title="Tags">
       {posts.totalCount} {i18n.pageTagsOne} {tags.totalCount} {i18n.pageTagsTwo}
     </Header>
     <Container>

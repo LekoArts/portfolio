@@ -226,6 +226,7 @@ exports.createPages = ({ graphql, actions }) => {
           const localizedPath = locales[lang].default
             ? `/categories/${_.kebabCase(category)}`
             : `/${locales[lang].path}/categories/${_.kebabCase(category)}`
+          const i18n = locales[lang]
 
           createPage({
             path: localizedPath,
@@ -233,6 +234,7 @@ exports.createPages = ({ graphql, actions }) => {
             context: {
               category,
               locale: lang,
+              i18n,
             },
           })
         })
@@ -243,12 +245,15 @@ exports.createPages = ({ graphql, actions }) => {
           const localizedPath = locales[lang].default
             ? `/tags/${_.kebabCase(tag)}`
             : `/${locales[lang].path}/tags/${_.kebabCase(tag)}`
+          const i18n = locales[lang]
+
           createPage({
             path: localizedPath,
             component: tagPage,
             context: {
               tag,
               locale: lang,
+              i18n,
             },
           })
         })

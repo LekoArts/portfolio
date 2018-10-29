@@ -6,7 +6,6 @@ import { graphql } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
 import { SEO, Container, Content, Wave, Line, Layout, hideS, Hero, InfoText, LocalizedLink } from 'elements'
 import { localizedDate } from 'utilities'
-import { LocaleConsumer } from 'elements/Layout'
 import Tags from '../components/Tags'
 import Suggestions from '../components/Suggestions'
 import Button from '../components/Button'
@@ -82,7 +81,7 @@ const fontBold = css`
 
 const Outbound = Button.withComponent('a')
 
-const Post = ({ pageContext: { slug, left, right, locale }, data: { prismicBlogpost: postNode } }) => {
+const Post = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismicBlogpost: postNode } }) => {
   const post = postNode.data
   const { kategorie } = post.category.document[0].data
   const { fluid } = post.cover.localFile.childImageSharp
@@ -92,50 +91,46 @@ const Post = ({ pageContext: { slug, left, right, locale }, data: { prismicBlogp
   }
   return (
     <Layout locale={locale}>
-      <LocaleConsumer>
-        {({ i18n, localeContent }) => (
-          <>
-            <SEO locale={localeContent} postPath={slug} postNode={postNode} postSEO />
-            <Wrapper>
-              <Hero>
-                <h1>{post.title.text}</h1>
-                <Information>
-                  {localizedDate(post.date, locale)} &mdash; {i18n.readingTime}: {postNode.fields.timeToRead} Min.
-                  &mdash; <span className={hideS}>{i18n.category}: </span>
-                  <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
-                </Information>
-              </Hero>
-              <Wave />
-              <Img fluid={fluid} />
-            </Wrapper>
-            <Content sliceZone={postNode.data.body} />
-            <Container type="article">
-              <Line aria-hidden="true" />
-              {tags && <Tags tags={tags} />}
-              <Note>
-                <span className={fontBold}>{i18n.interest}</span> {i18n.readPosts}{' '}
-                <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
-              </Note>
-            </Container>
-            <Container>
-              <InfoText>{i18n.morePosts}</InfoText>
-              <Suggestions left={left} right={right} secondary />
-            </Container>
-            <Footer>
-              <h2>{i18n.patreonHook}</h2>
-              <Outbound
-                href="https://www.patreon.com/lekoarts"
-                target="_blank"
-                rel="noopener noreferrer"
-                type="secondary"
-                role="button"
-              >
-                Patreon
-              </Outbound>
-            </Footer>
-          </>
-        )}
-      </LocaleConsumer>
+      <SEO i18n={i18n} postPath={slug} postNode={postNode} postSEO />
+      <Wrapper>
+        <Hero>
+          <h1>{post.title.text}</h1>
+          <Information>
+            {localizedDate(post.date, locale)} &mdash; {i18n.readingTime}: {postNode.fields.timeToRead} Min. &mdash;{' '}
+            <span className={hideS}>{i18n.category}: </span>
+            <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
+          </Information>
+        </Hero>
+        <Wave />
+        <Img fluid={fluid} />
+      </Wrapper>
+      <Content sliceZone={postNode.data.body} />
+      <Container type="article">
+        <Line aria-hidden="true" />
+        {tags && <Tags tags={tags} />}
+        <Note>
+          <span className={fontBold}>{i18n.interest}</span> {i18n.readPosts}{' '}
+          <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
+        </Note>
+      </Container>
+      <Container>
+        <InfoText>
+          {i18n.more} {i18n.posts}
+        </InfoText>
+        <Suggestions left={left} right={right} secondary />
+      </Container>
+      <Footer>
+        <h2>{i18n.patreonHook}</h2>
+        <Outbound
+          href="https://www.patreon.com/lekoarts"
+          target="_blank"
+          rel="noopener noreferrer"
+          type="secondary"
+          role="button"
+        >
+          Patreon
+        </Outbound>
+      </Footer>
     </Layout>
   )
 }
@@ -148,6 +143,7 @@ Post.propTypes = {
     left: PropTypes.object.isRequired,
     right: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
+    i18n: PropTypes.object.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     prismicBlogpost: PropTypes.object.isRequired,

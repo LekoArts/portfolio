@@ -6,9 +6,8 @@ import config from '../../config/website'
 import locales from '../../config/i18n'
 
 const SEO = props => {
-  const { locale, postNode, postPath, postSEO, project } = props
-  const { htmlLang, ogLang, translation: i18n, locale: localeLang } = locale
-  const localizedPath = locales[localeLang].default ? '' : `/${locales[localeLang].path}`
+  const { i18n, postNode, postPath, postSEO, project } = props
+  const localizedPath = locales[i18n.locale].default ? '' : `/${locales[i18n.locale].path}`
   let title
   let description
   let image
@@ -33,9 +32,8 @@ const SEO = props => {
     imageWidth = config.siteBannerWidth
     imageHeight = config.siteBannerHeight
   }
-  const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
-  image = config.siteUrl + realPrefix + image
-  const blogURL = config.siteUrl + realPrefix + localizedPath
+  image = config.siteUrl + image
+  const blogURL = config.siteUrl + localizedPath
   let schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
@@ -72,7 +70,7 @@ const SEO = props => {
           name: 'LekoArts',
           logo: {
             '@type': 'ImageObject',
-            url: config.siteUrl + realPrefix + config.siteLogo,
+            url: config.siteUrl + config.siteLogo,
           },
         },
         isPartOf: blogURL,
@@ -85,7 +83,7 @@ const SEO = props => {
   }
   return (
     <Helmet>
-      <html lang={htmlLang} />
+      <html lang={i18n.htmlLang} />
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="image" content={image} />
@@ -95,7 +93,7 @@ const SEO = props => {
       <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#343849" />
       <meta name="msapplication-TileColor" content="#3498db" />
       <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
-      <meta property="og:locale" content={ogLang} />
+      <meta property="og:locale" content={i18n.ogLang} />
       <meta property="og:site_name" content={config.facebook} />
       <meta property="og:url" content={postSEO ? postURL : blogURL} />
       {postSEO ? <meta property="og:type" content="article" /> : null}
@@ -118,7 +116,7 @@ export default SEO
 
 SEO.propTypes = {
   project: PropTypes.bool,
-  locale: PropTypes.object,
+  i18n: PropTypes.object,
   postNode: PropTypes.object,
   postPath: PropTypes.string,
   postSEO: PropTypes.bool,
@@ -126,4 +124,5 @@ SEO.propTypes = {
 
 SEO.defaultProps = {
   project: false,
+  postSEO: false,
 }
