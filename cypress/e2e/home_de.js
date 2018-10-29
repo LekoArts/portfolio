@@ -21,12 +21,12 @@ describe('Home German', () => {
   it('Featured Posts load', () => {
     cy.getByTestId('featured-post-0')
       .click()
-      .getByText('Weitere Blogeinträge')
+      .getByText('Weitere Beiträge')
       .should('exist')
     cy.visit('/')
       .getByTestId('featured-post-1')
       .click()
-      .getByText('Weitere Blogeinträge')
+      .getByText('Weitere Beiträge')
       .should('exist')
   })
   it('Button to projects works', () => {

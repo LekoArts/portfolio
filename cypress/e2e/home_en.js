@@ -20,12 +20,12 @@ describe('Home English', () => {
       .getByText('Period')
       .should('exist')
     /*
-    cy.visit('/')
+    cy.visit('/en')
       .getByTestId('featured-project-1')
       .click()
       .getByText('Customer')
       .should('exist')
-    cy.visit('/')
+    cy.visit('/en')
       .getByTestId('featured-project-2')
       .click()
       .getByText('Customer')
@@ -35,10 +35,10 @@ describe('Home English', () => {
   it('Featured Posts load', () => {
     cy.getByTestId('featured-post-0')
       .click()
-      .getByText('More posts')
+      .getByText('Sparked your interest?')
       .should('exist')
     /*
-    cy.visit('/')
+    cy.visit('/en')
       .getByTestId('featured-post-1')
       .click()
       .getByText('Weitere Blogeinträge')
