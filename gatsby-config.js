@@ -22,6 +22,10 @@ const codeInline = ['text']
 const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql']
 
 module.exports = {
+  // Metadata
+  siteMetadata: {
+    siteUrl: config.siteUrl,
+  },
   // Plugins
   plugins: [
     'gatsby-plugin-react-helmet',
