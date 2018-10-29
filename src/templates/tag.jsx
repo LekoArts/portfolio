@@ -4,7 +4,6 @@ import { Link, graphql } from 'gatsby'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet'
 import { Container, Layout, LocalizedLink } from 'elements'
-import { LocaleConsumer } from 'elements/Layout'
 import config from '../../config/website'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -17,39 +16,33 @@ const StyledLink = styled(Link)`
 const LocaleLink = StyledLink.withComponent(LocalizedLink)
 
 const Tag = ({
-  pageContext: { t: tag, locale },
+  pageContext: { tag, locale, i18n },
   data: {
     allPrismicBlogpost: { edges, totalCount },
   },
 }) => (
   <Layout locale={locale}>
-    <LocaleConsumer>
-      {({ i18n }) => (
-        <>
-          <Helmet title={`${i18n.tag}: ${tag} | ${config.siteTitleAlt}`} />
-          <Header title={tag}>
-            {totalCount} {totalCount === 1 ? i18n.post : i18n.posts}{' '}
-            {totalCount === 1 ? i18n.tagSingular : i18n.tagPlural} {i18n.pageTagOne} "{tag}" {i18n.pageTagTwo} <br />
-            <LocaleLink to="/tags">{i18n.allTags}</LocaleLink>
-          </Header>
-          <Container>
-            {edges.map(edge => (
-              <ItemTagCategory
-                key={edge.node.uid}
-                title={edge.node.data.title.text}
-                category={edge.node.data.category.document[0].data.kategorie}
-                path={edge.node.fields.slug}
-                date={edge.node.data.date}
-                timeToRead={edge.node.fields.timeToRead}
-                inputTags={edge.node.data.tags}
-                excerpt={edge.node.fields.excerpt}
-              />
-            ))}
-          </Container>
-          <Footer />
-        </>
-      )}
-    </LocaleConsumer>
+    <Helmet title={`Tag: ${tag} | ${config.siteTitleAlt}`} />
+    <Header title="Tag">
+      {totalCount} {totalCount === 1 ? i18n.post : i18n.posts} {totalCount === 1 ? i18n.was : i18n.were}{' '}
+      {i18n.pageTagOne} "{tag}" {i18n.pageTagTwo} <br />
+      <LocaleLink to="/tags">{i18n.all} Tags</LocaleLink>
+    </Header>
+    <Container>
+      {edges.map(edge => (
+        <ItemTagCategory
+          key={edge.node.uid}
+          title={edge.node.data.title.text}
+          category={edge.node.data.category.document[0].data.kategorie}
+          path={edge.node.fields.slug}
+          date={edge.node.data.date}
+          timeToRead={edge.node.fields.timeToRead}
+          inputTags={edge.node.data.tags}
+          excerpt={edge.node.fields.excerpt}
+        />
+      ))}
+    </Container>
+    <Footer />
   </Layout>
 )
 
@@ -57,8 +50,9 @@ export default Tag
 
 Tag.propTypes = {
   pageContext: PropTypes.shape({
-    t: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
     locale: PropTypes.string.isRequired,
+    i18n: PropTypes.object.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     allPrismicBlogpost: PropTypes.shape({
@@ -68,11 +62,11 @@ Tag.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query TagPage($t: String, $locale: String!) {
+  query TagPage($tag: String, $locale: String!) {
     allPrismicBlogpost(
       sort: { fields: [data___date], order: DESC }
       filter: {
-        data: { tags: { elemMatch: { tag: { document: { elemMatch: { data: { tag: { eq: $t } } } } } } } }
+        data: { tags: { elemMatch: { tag: { document: { elemMatch: { data: { tag: { eq: $tag } } } } } } } }
         lang: { eq: $locale }
       }
     ) {

@@ -123,7 +123,7 @@ const LanguageBox = styled.div`
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.1);
   border-radius: ${props => props.theme.borderRadius.round};
   display: inline-block;
-  padding: 0.4rem 1.75rem;
+  padding: 0.5rem 1.75rem;
   ${props =>
     props.currentLocale === 'de-de'
       ? `

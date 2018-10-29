@@ -7,7 +7,6 @@ module.exports = {
   siteBannerWidth: '776',
   siteBannerHeight: '382',
   siteUrl: 'https://www.lekoarts.de', // No trailing slash!
-  pathPrefix: '/',
   // IDs
   googleAnalyticsID: 'UA-47519312-1',
   twitter: '@lekoarts_de',

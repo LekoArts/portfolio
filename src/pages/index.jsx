@@ -89,7 +89,7 @@ const Index = ({
       <Text>
         {home.teaser_blog.text} <br />
         <LocalizedButton to="/blog" type="secondary" role="button">
-          {i18n.blog}
+          Blog
         </LocalizedButton>
       </Text>
     </Container>
