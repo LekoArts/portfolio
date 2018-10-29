@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'react-emotion'
+import { LocalizedLink } from 'elements'
 import theme from '../../config/theme'
 
 const ImageOverlay = styled.div`
@@ -149,15 +150,17 @@ const Title = styled.h2`
   color: ${props => props.theme.colors.white.light};
 `
 
+const LocalLink = StyledLink.withComponent(LocalizedLink)
+
 const FeaturedProject = ({ cover, path, customer, title, testid }) => (
   <Wrapper data-testid={testid}>
     <Image>
       <Img fluid={cover} />
     </Image>
-    <StyledLink to={path}>
+    <LocalLink to={path}>
       <Customer>{customer}</Customer>
       <Title>{title}</Title>
-    </StyledLink>
+    </LocalLink>
     <ImageOverlay />
   </Wrapper>
 )
