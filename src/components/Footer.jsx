@@ -124,11 +124,14 @@ const LanguageBox = styled.div`
   border-radius: ${props => props.theme.borderRadius.round};
   display: inline-block;
   padding: 0.4rem 1.75rem;
-  ${props => props.currentLocale === 'de-de' ? `
+  ${props =>
+    props.currentLocale === 'de-de'
+      ? `
     a:first-child {
       color: white;
     }
-  ` : `
+  `
+      : `
     a:last-child {
       color: white;
     }
@@ -184,8 +187,7 @@ const Footer = ({ children }) => {
             </Content>
             <LanguageWrapper>
               <LanguageBox currentLocale={locale}>
-                {i18n.languages}: <Link to="/">{i18n.german}</Link> –{' '}
-                <Link to="/en">{i18n.english}</Link>
+                {i18n.languages}: <Link to="/">{i18n.german}</Link> – <Link to="/en">{i18n.english}</Link>
               </LanguageBox>
             </LanguageWrapper>
           </Container>
