@@ -97,6 +97,8 @@ const Right = styled(Side)`
 const Copyright = styled.div`
   color: ${props => props.theme.tint.blueWhite};
   font-size: 0.9rem;
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
   @media (max-width: ${props => props.theme.breakpoints.m}) {
     margin-top: 0.5rem;
   }
