@@ -48,7 +48,7 @@ module.exports = {
           // DE: contact-de-de
           // EN: contact-en-gb
           // Therefore I slice the "-de-de" / "-en-gb" part
-          const singlePagePath = doc.uid.slice(0, -6)
+          const singlePagePath = `${doc.uid}`.slice(0, -6)
 
           if (doc.type === 'projekt') return `${prefix}projects/${doc.uid}`
           if (doc.type === 'blogpost') return `${prefix}blog/${doc.uid}`

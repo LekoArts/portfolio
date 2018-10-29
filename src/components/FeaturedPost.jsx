@@ -4,7 +4,6 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'react-emotion'
 import { localizedDate } from 'utilities'
-import { LocalizedLink } from 'elements'
 import { LocaleConsumer } from 'elements/Layout'
 import theme from '../../config/theme'
 
@@ -146,8 +145,6 @@ const Title = styled.h2`
   margin-bottom: 0;
 `
 
-const LocalLink = StyledLink.withComponent(LocalizedLink)
-
 const FeaturedPost = ({ cover, path, category, date, title, testid }) => (
   <LocaleConsumer>
     {({ locale }) => (
@@ -155,13 +152,13 @@ const FeaturedPost = ({ cover, path, category, date, title, testid }) => (
         <Image>
           <Img fluid={cover} />
         </Image>
-        <LocalLink to={path}>
+        <StyledLink to={path}>
           <Information>
             <Category>{category}</Category>
             <Date>{localizedDate(date, locale)}</Date>
           </Information>
           <Title>{title}</Title>
-        </LocalLink>
+        </StyledLink>
         <ImageOverlay />
       </Wrapper>
     )}

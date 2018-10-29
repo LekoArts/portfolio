@@ -91,7 +91,7 @@ module.exports = {
     pageTagOne: 'tagged with',
     pageTagTwo: null,
     pageTagsOne: 'posts were marked with',
-    pageTagsTwo: null,
+    pageTagsTwo: 'Tags',
     github: 'Open Source Projects',
     instagram: '3D & Experiments',
     behance: 'Personal Projects',

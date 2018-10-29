@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import kebabCase from 'lodash/kebabCase'
 import { hideS, LocalizedLink } from 'elements'
@@ -95,14 +96,14 @@ const ItemBlog = ({ path, cover, category, title, date, timeToRead, excerpt }) =
     {({ i18n, locale }) => (
       <Wrapper>
         <Image>
-          <LocalizedLink to={path} title={title}>
+          <Link to={path} title={title}>
             <Img fluid={cover} />
-          </LocalizedLink>
+          </Link>
         </Image>
         <Information>
-          <LocalizedLink to={path}>
+          <Link to={path}>
             <h1>{title}</h1>
-          </LocalizedLink>
+          </Link>
           <Statistics>
             {localizedDate(date, locale)} &mdash; {i18n.readingTime}: {timeToRead} Min. &mdash;{' '}
             <span className={hideS}>{i18n.category}: </span>

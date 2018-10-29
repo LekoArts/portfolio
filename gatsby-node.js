@@ -26,7 +26,7 @@ exports.onCreateNode = ({ node, actions }) => {
     excerpt = ex(data.body[0].primary.text[1].text)
     createNodeField({ node, name: 'slug', value: slug })
     createNodeField({ node, name: 'excerpt', value: excerpt })
-    createNodeField({ node, name: 'sourceType', value: locales[node.lang].translation.projects })
+    createNodeField({ node, name: 'sourceType', value: locales[node.lang].projects })
   }
   if (node.internal.type === 'PrismicBlogpost') {
     const data = JSON.parse(node.dataString)
@@ -39,7 +39,7 @@ exports.onCreateNode = ({ node, actions }) => {
     createNodeField({ node, name: 'slug', value: slug })
     createNodeField({ node, name: 'excerpt', value: excerpt })
     createNodeField({ node, name: 'timeToRead', value: TTR })
-    createNodeField({ node, name: 'sourceType', value: locales[node.lang].translation.blog })
+    createNodeField({ node, name: 'sourceType', value: 'Blog' })
   }
 }
 
