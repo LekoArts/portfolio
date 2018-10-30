@@ -50,7 +50,7 @@ const Navigation = () => (
   <LocaleConsumer>
     {({ i18n }) => (
       <Headroom calcHeightOnResize disableInlineStyles>
-        <LocalizedLink to="/" className={styledLink}>
+        <LocalizedLink to="/" className={styledLink} aria-label="LekoArts, Back to homepage">
           <Logo />
           <LogoText>LekoArts</LogoText>
         </LocalizedLink>
