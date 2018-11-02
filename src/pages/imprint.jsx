@@ -11,23 +11,21 @@ import config from '../../config/website'
 
 const Imprint = ({
   data: {
-    allPrismicSeite: { edges },
+    content: { data: i },
   },
-}) => {
-  const i = edges[0].node.data
-  return (
-    <Layout>
-      <Helmet title={`${i.title.text} | ${config.siteTitle}`} />
-      <Header title={i.title.text} />
-      <div style={{ marginTop: '3rem' }}>
-        <Container type="article">
-          <div dangerouslySetInnerHTML={{ __html: i.content.html }} />
-        </Container>
-      </div>
-      <Footer />
-    </Layout>
-  )
-}
+  pageContext: { locale },
+}) => (
+  <Layout locale={locale}>
+    <Helmet title={`${i.title.text} | ${config.siteTitleAlt}`} />
+    <Header title={i.title.text}>{i.description.text}</Header>
+    <div style={{ marginTop: '3rem' }}>
+      <Container type="article">
+        <div dangerouslySetInnerHTML={{ __html: i.content.html }} />
+      </Container>
+    </div>
+    <Footer />
+  </Layout>
+)
 
 export default Imprint
 
@@ -37,22 +35,23 @@ Imprint.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export const pageQuery = graphql`
-  query ImprintQuery {
-    allPrismicSeite(filter: { uid: { eq: "impressum" } }) {
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
-            }
-            content {
-              html
-            }
-          }
+  query ImprintQuery($name: String!) {
+    content: prismicSeite(uid: { eq: $name }) {
+      data {
+        title {
+          text
+        }
+        description {
+          text
+        }
+        content {
+          html
         }
       }
     }

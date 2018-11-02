@@ -12,20 +12,24 @@ import Header from '../components/Header'
 const Base = styled.div`
   padding-top: 5rem;
   padding-bottom: 5rem;
-  column-gap: 2rem;
-  column-width: 500px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  @media (max-width: ${props => props.theme.breakpoints.m}) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const Projects = ({
   data: {
     allPrismicProjekt: { edges },
+    content: { data: p },
   },
+  pageContext: { locale },
 }) => (
-  <Layout>
-    <Helmet title={`Projekte | ${config.siteTitle}`} />
-    <Header title="Projekte">
-      Spezialisiert auf Grafik- und Webdesign, kombiniere ich minimalistisches Design mit modernen Webtechniken
-    </Header>
+  <Layout locale={locale}>
+    <Helmet title={`${p.title.text} | ${config.siteTitleAlt}`} />
+    <Header title={p.title.text}>{p.description.text}</Header>
     <Container type="big">
       <Base>
         {edges.map(project => (
@@ -51,11 +55,27 @@ Projects.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export const pageQuery = graphql`
-  query ProjectsQuery {
-    allPrismicProjekt(sort: { fields: [data___date], order: DESC }) {
+  query ProjectsQuery($name: String!, $locale: String!) {
+    content: prismicSeite(uid: { eq: $name }) {
+      data {
+        title {
+          text
+        }
+        description {
+          text
+        }
+        content {
+          html
+        }
+      }
+    }
+    allPrismicProjekt(sort: { fields: [data___date], order: DESC }, filter: { lang: { eq: $locale } }) {
       edges {
         node {
           uid

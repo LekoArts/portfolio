@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { css, cx } from 'emotion'
-import styled from 'react-emotion'
+import styled, { css, cx } from 'react-emotion'
 import theme from '../../config/theme'
 
 const githubStyle = css`

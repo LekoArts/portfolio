@@ -3,9 +3,11 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import config from '../../config/website'
+import locales from '../../config/i18n'
 
 const SEO = props => {
-  const { postNode, postPath, postSEO } = props
+  const { i18n, postNode, postPath, postSEO, project } = props
+  const localizedPath = locales[i18n.locale].default ? '' : `/${locales[i18n.locale].path}`
   let title
   let description
   let image
@@ -15,22 +17,23 @@ const SEO = props => {
   if (postSEO) {
     const postMeta = postNode.data
     const postImage = postMeta.cover.localFile.childImageSharp.resize
-    title = `${postMeta.title.text} | ${config.siteTitleAlt} – ${postNode.fields.sourceType}`
+    title = project
+      ? `${postMeta.customer}: ${postMeta.title.text} – ${postNode.fields.sourceType} | ${config.siteTitleAlt}`
+      : `${postMeta.title.text} – ${postNode.fields.sourceType} | ${config.siteTitleAlt}`
     description = `${postNode.fields.excerpt}...`
     image = postImage.src
     imageWidth = postImage.width
     imageHeight = postImage.height
     postURL = config.siteUrl + postPath
   } else {
-    title = config.siteTitle
-    description = config.siteDescription
+    title = i18n.siteTitle
+    description = i18n.siteDescription
     image = config.siteBanner
     imageWidth = config.siteBannerWidth
     imageHeight = config.siteBannerHeight
   }
-  const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
-  image = config.siteUrl + realPrefix + image
-  const blogURL = config.siteUrl + realPrefix
+  image = config.siteUrl + image
+  const blogURL = config.siteUrl + localizedPath
   let schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
@@ -67,7 +70,7 @@ const SEO = props => {
           name: 'LekoArts',
           logo: {
             '@type': 'ImageObject',
-            url: config.siteUrl + realPrefix + config.siteLogo,
+            url: config.siteUrl + config.siteLogo,
           },
         },
         isPartOf: blogURL,
@@ -80,7 +83,7 @@ const SEO = props => {
   }
   return (
     <Helmet>
-      <html lang="de" />
+      <html lang={i18n.htmlLang} />
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="image" content={image} />
@@ -90,7 +93,7 @@ const SEO = props => {
       <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#343849" />
       <meta name="msapplication-TileColor" content="#3498db" />
       <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
-      <meta property="og:locale" content="de_DE" />
+      <meta property="og:locale" content={i18n.ogLang} />
       <meta property="og:site_name" content={config.facebook} />
       <meta property="og:url" content={postSEO ? postURL : blogURL} />
       {postSEO ? <meta property="og:type" content="article" /> : null}
@@ -112,7 +115,14 @@ const SEO = props => {
 export default SEO
 
 SEO.propTypes = {
+  project: PropTypes.bool,
+  i18n: PropTypes.object,
   postNode: PropTypes.object,
   postPath: PropTypes.string,
   postSEO: PropTypes.bool,
+}
+
+SEO.defaultProps = {
+  project: false,
+  postSEO: false,
 }

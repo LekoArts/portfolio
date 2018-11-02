@@ -7,10 +7,10 @@ import theme from '../../config/theme'
 
 const Overlay = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
   border-radius: ${theme.borderRadius.default};
   display: flex;
   flex-flow: column nowrap;
@@ -34,8 +34,6 @@ const Wrapper = styled(Link)`
   width: 100%;
   position: relative;
   border-radius: ${props => props.theme.borderRadius.default};
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
   box-shadow: ${props => props.theme.shadow.feature.small.default};
   transition: ${props => props.theme.transitions.boom.transition};
   img {

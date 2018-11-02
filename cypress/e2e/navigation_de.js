@@ -1,4 +1,4 @@
-describe('Navigation', () => {
+describe('Navigation German', () => {
   beforeEach(() => {
     cy.visit('/')
   })
@@ -20,8 +20,6 @@ describe('Navigation', () => {
       .should('have.prop', 'href', 'https://www.behance.net/lekoarts')
       .getByText('Dribbble')
       .should('have.prop', 'href', 'https://dribbble.com/LekoArts')
-      .getByText('Facebook')
-      .should('have.prop', 'href', 'https://www.facebook.com/lekoarts.de')
       .getByText('GitHub')
       .should('have.prop', 'href', 'https://github.com/LekoArts')
       .getByText('Instagram')

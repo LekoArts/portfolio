@@ -13,21 +13,20 @@ require('prismjs/components/prism-diff')
 require('prismjs/components/prism-markdown')
 require('prismjs/components/prism-graphql')
 const config = require('./config/website')
+const i18n = require('./config/i18n')
 
 const { Elements } = RichText
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 
-/* Arrays of the labels I use on Prismic.io */
+// Arrays of the labels I use on Prismic.io
 const codeInline = ['text']
 const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql']
 
 module.exports = {
-  /* General Information */
-  pathPrefix: config.pathPrefix,
+  // Metadata
   siteMetadata: {
-    siteUrl: config.siteUrl + pathPrefix,
+    siteUrl: config.siteUrl,
   },
-  /* Plugins */
+  // Plugins
   plugins: [
     'gatsby-plugin-react-helmet',
     {
@@ -45,12 +44,22 @@ module.exports = {
         repositoryName: 'lekoarts',
         accessToken: `${process.env.API_KEY}`,
         linkResolver: () => doc => {
-          if (doc.type === 'projekt') return `/projekte/${doc.uid}`
-          if (doc.type === 'blogpost') return `/blog/${doc.uid}`
+          // Give the project/blog links the appropriate language path
+          const prefix = i18n[doc.lang].default ? `/` : `/${i18n[doc.lang].path}/`
 
-          return `/${doc.uid}`
+          // Since the uid needs to be unique and the pathname is done by Gatsby (src/pages)
+          // the single pages (e.g. /contact) have names of the following pattern:
+          // DE: contact-de-de
+          // EN: contact-en-gb
+          // Therefore I slice the "-de-de" / "-en-gb" part
+          const singlePagePath = `${doc.uid}`.slice(0, -6)
+
+          if (doc.type === 'projekt') return `${prefix}projects/${doc.uid}`
+          if (doc.type === 'blogpost') return `${prefix}blog/${doc.uid}`
+
+          return `${prefix}${singlePagePath}`
         },
-        /* PrismJS highlighting for labels and slices */
+        // PrismJS highlighting for labels and slices
         htmlSerializer: () => (type, element, content) => {
           switch (type) {
             case Elements.label: {
@@ -116,10 +125,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: config.siteTitle,
+        name: i18n['de-de'].siteTitle,
         short_name: config.siteShortName,
-        description: config.siteDescription,
-        start_url: config.pathPrefix,
+        lang: 'de-DE',
+        description: i18n['de-de'].siteDescription,
+        start_url: '/',
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'standalone', // standalone is the right choice here!
@@ -137,7 +147,7 @@ module.exports = {
         ],
       },
     },
-    /* Must be placed at the end */
+    // Must be placed at the end
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
     'gatsby-plugin-netlify-cache',

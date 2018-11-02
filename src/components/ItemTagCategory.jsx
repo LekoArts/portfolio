@@ -3,7 +3,9 @@ import styled from 'react-emotion'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
-import { hideS } from 'elements'
+import { hideS, LocalizedLink } from 'elements'
+import { localizedDate } from 'utilities'
+import { LocaleConsumer } from 'elements/Layout'
 import Tags from './Tags'
 
 const Wrapper = styled.article`
@@ -40,19 +42,24 @@ const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, e
     tags = inputTags.map(tag => tag.tag.document[0].data.tag)
   }
   return (
-    <Wrapper>
-      <Information>
-        <Link to={path}>
-          <h1>{title}</h1>
-        </Link>
-        <Statistics>
-          {date} &mdash; Lesezeit: {timeToRead} Min. &mdash; <span className={hideS}>Kategorie: </span>
-          <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
-        </Statistics>
-        {tags && <Tags tags={tags} />}
-        <Excerpt>{`${excerpt}...`}</Excerpt>
-      </Information>
-    </Wrapper>
+    <LocaleConsumer>
+      {({ i18n, locale }) => (
+        <Wrapper>
+          <Information>
+            <Link to={path}>
+              <h1>{title}</h1>
+            </Link>
+            <Statistics>
+              {localizedDate(date, locale)} &mdash; {i18n.readingTime}: {timeToRead} Min. &mdash;{' '}
+              <span className={hideS}>{i18n.category}: </span>
+              <LocalizedLink to={`/categories/${kebabCase(category)}`}>{category}</LocalizedLink>
+            </Statistics>
+            {tags && <Tags tags={tags} />}
+            <Excerpt>{`${excerpt}...`}</Excerpt>
+          </Information>
+        </Wrapper>
+      )}
+    </LocaleConsumer>
   )
 }
 

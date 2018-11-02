@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import styled, { keyframes } from 'react-emotion'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
-import { SEO, Container, Content, Line, Wave, Layout, Hero, InfoText } from 'elements'
+import { SEO, Container, Content, Line, Wave, Layout, Hero, InfoText, LocalizedLink } from 'elements'
 import Suggestions from '../components/Suggestions'
 import { Card } from '../components/Card'
 import Button from '../components/Button'
@@ -77,12 +77,14 @@ const CardWrapper = styled.div`
   }
 `
 
-const Project = ({ pageContext: { slug, left, right }, data: { prismicProjekt: projektNode } }) => {
+const LocalizedButton = Button.withComponent(LocalizedLink)
+
+const Project = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismicProjekt: projektNode } }) => {
   const projekt = projektNode.data
   const { fluid } = projekt.cover.localFile.childImageSharp
   return (
-    <Layout>
-      <SEO postPath={slug} postNode={projektNode} postSEO />
+    <Layout locale={locale}>
+      <SEO i18n={i18n} postPath={slug} postNode={projektNode} postSEO project />
       <Wrapper>
         <Hero>
           <h1>{projekt.title.text}</h1>
@@ -93,15 +95,15 @@ const Project = ({ pageContext: { slug, left, right }, data: { prismicProjekt: p
       <Container>
         <CardWrapper>
           <Card>
-            <h2>Kunde</h2>
+            <h2>{i18n.customer}</h2>
             {projekt.customer}
           </Card>
           <Card>
-            <h2>Aufgabe</h2>
+            <h2>{i18n.task}</h2>
             {projekt.task}
           </Card>
           <Card>
-            <h2>Zeitraum</h2>
+            <h2>{i18n.period}</h2>
             {projekt.time}
           </Card>
         </CardWrapper>
@@ -109,14 +111,16 @@ const Project = ({ pageContext: { slug, left, right }, data: { prismicProjekt: p
       <Content sliceZone={projektNode.data.body} />
       <Container>
         <Line aria-hidden="true" />
-        <InfoText>Weitere Projekte</InfoText>
+        <InfoText>
+          {i18n.more} {i18n.projects}
+        </InfoText>
         <Suggestions left={left} right={right} />
       </Container>
       <Footer>
-        <h1>Packen wir's an!</h1>
-        <Button to="/contact" type="primary" role="button">
-          Projekt starten
-        </Button>
+        <h1>{i18n.getStarted}</h1>
+        <LocalizedButton to="/contact" type="primary" role="button">
+          {i18n.startProject}
+        </LocalizedButton>
       </Footer>
     </Layout>
   )
@@ -129,6 +133,8 @@ Project.propTypes = {
     slug: PropTypes.string.isRequired,
     left: PropTypes.object.isRequired,
     right: PropTypes.object.isRequired,
+    locale: PropTypes.string.isRequired,
+    i18n: PropTypes.object.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     prismicProjekt: PropTypes.object.isRequired,

@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import kebabCase from 'lodash/kebabCase'
 import { darken } from 'polished'
 import Helmet from 'react-helmet'
-import { Container, Layout } from 'elements'
+import { Container, Layout, LocalizedLink } from 'elements'
 import config from '../../config/website'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -29,18 +29,18 @@ const TagsContainer = styled.div`
   }
 `
 
-const Tags = ({ data: { tags, posts } }) => (
-  <Layout>
-    <Helmet title={`Tags | ${config.siteTitle}`} />
+const Tags = ({ data: { tags, posts }, pageContext: { locale, i18n } }) => (
+  <Layout locale={locale}>
+    <Helmet title={`Tags | ${config.siteTitleAlt}`} />
     <Header title="Tags">
-      {posts.totalCount} Beiträge wurden mit {tags.totalCount} Tags markiert
+      {posts.totalCount} {i18n.pageTagsOne} {tags.totalCount} {i18n.pageTagsTwo}
     </Header>
     <Container>
       <TagsContainer>
         {tags.edges.map(tag => (
-          <Link key={tag.node.data.tag} to={`/tags/${kebabCase(tag.node.data.tag)}`}>
+          <LocalizedLink key={tag.node.data.tag} to={`/tags/${kebabCase(tag.node.data.tag)}`}>
             <span>{tag.node.data.tag}</span>
-          </Link>
+          </LocalizedLink>
         ))}
       </TagsContainer>
     </Container>
@@ -57,11 +57,15 @@ Tags.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    i18n: PropTypes.object.isRequired,
+  }).isRequired,
 }
 
 export const pageQuery = graphql`
-  query TagsPage {
-    tags: allPrismicTag(sort: { fields: data___tag, order: ASC }) {
+  query TagsPage($locale: String!) {
+    tags: allPrismicTag(sort: { fields: data___tag, order: ASC }, filter: { lang: { eq: $locale } }) {
       totalCount
       edges {
         node {
@@ -71,7 +75,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    posts: allPrismicBlogpost {
+    posts: allPrismicBlogpost(filter: { lang: { eq: $locale } }) {
       totalCount
     }
   }

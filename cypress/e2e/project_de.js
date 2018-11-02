@@ -16,7 +16,10 @@ describe('Project', () => {
       .assertRoute('/contact')
   })
   it('Contains specific title tag', () => {
-    cy.get('head title').should('contain', `Produktion einer eigenen Tastatur | ${config.siteTitleAlt} – Projekte`)
+    cy.get('head title').should(
+      'contain',
+      `Krotus Computer: Produktion einer eigenen Tastatur – Projekte | ${config.siteTitleAlt}`
+    )
   })
   it('Contains not the general description', () => {
     cy.get('head meta[name="description"]').should('not.have.attr', 'content', config.siteDescription)
