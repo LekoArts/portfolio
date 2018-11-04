@@ -41,8 +41,6 @@ aliases:
   store_results: &store_results
     store_test_results:
       path: results
-    store_artifacts:
-      path: results
 
 version: 2.1
 
@@ -58,6 +56,8 @@ jobs:
         name: Run ESLint
         command: yarn lint:ci
     - <<: *store_results
+    - store_artifacts:
+        path: results
 
   e2e_cypress:
     <<: *e2e-executor
