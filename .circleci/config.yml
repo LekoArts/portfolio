@@ -42,6 +42,10 @@ aliases:
     store_test_results:
       path: results
 
+  store_results_artifacts: &store_results_artifacts
+    store_artifacts:
+      path: results
+
 version: 2.1
 
 jobs:
@@ -56,8 +60,7 @@ jobs:
         name: Run ESLint
         command: yarn lint:ci
     - <<: *store_results
-    - store_artifacts:
-        path: results
+    - <<: *store_results_artifacts
 
   e2e_cypress:
     <<: *e2e-executor
@@ -70,6 +73,7 @@ jobs:
         name: Run E2E tests
         command: yarn test:e2e:ci
     - <<: *store_results
+    - <<: *store_results_artifacts
     - store_artifacts:
         path: cypress/videos
     - store_artifacts:
