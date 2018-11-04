@@ -1,30 +1,67 @@
-version: 2
-jobs:
-  e2e_cypress:
+executors:
+  node:
+    parameters:
+      image:
+        type: string
+        default: "10"
     docker:
-    - image: cypress/base:8
-      environment:
-        TERM: xterm
-    working_directory: ~/app
+      - image: circleci/node:<< parameters.image >>
+        environment:
+          TERM: xterm
+
+aliases:
+  e2e-executor: &e2e-executor
+    docker:
+      - image: cypress/base:8
+        environment:
+          TERM: xterm
+  restore_cache: &restore_cache
+    restore_cache:
+      name: Restore Yarn Package Cache
+      keys:
+        - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-
+        - v{{ .Environment.versionCache }}-deps-
+  install_node_modules: &install_node_modules
+    run:
+      name: Install Yarn Packages
+      command: yarn install --frozen-lockfile
+  save_cache: &save_cache
+    save_cache:
+      name: Save Yarn Package Cache
+      key: v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      paths:
+        - ~/.cache
+  store_results: &store_results
+    store_test_results:
+      path: results
+
+version: 2.1
+
+jobs:
+  lint:
+    executor: node
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *save_cache
+      - run:
+        name: Run ESLint
+        command: yarn lint:ci
+      - <<: *store_results
+
+  e2e_cypress:
+    <<: *e2e-executor
     steps:
     - checkout
-    - restore_cache:
-        name: Restore Yarn Package Cache
-        keys:
-          - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-
-          - v{{ .Environment.versionCache }}-deps-
-    - run: yarn install --frozen-lockfile
-    - save_cache:
-        name: Save Yarn Package Cache
-        key: v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-        paths:
-          - ~/.cache
+    - <<: *restore_cache
+    - <<: *install_node_modules
+    - <<: *save_cache
     - run:
-        name: Running E2E tests
+        name: Run E2E tests
         command: yarn test:e2e:ci
-    - store_test_results:
-        path: test-results
+    - <<: *store_results
     - store_artifacts:
         path: cypress/videos
     - store_artifacts:
@@ -34,4 +71,5 @@ workflows:
   version: 2
   testing:
     jobs:
+      - lint
       - e2e_cypress
