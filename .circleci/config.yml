@@ -4,6 +4,7 @@ executors:
       image:
         type: string
         default: "10"
+    working_directory: ~/app
     docker:
       - image: circleci/node:<< parameters.image >>
         environment:
@@ -11,6 +12,7 @@ executors:
 
 aliases:
   e2e-executor: &e2e-executor
+    working_directory: ~/app
     docker:
       - image: cypress/base:8
         environment:
@@ -38,6 +40,8 @@ aliases:
 
   store_results: &store_results
     store_test_results:
+      path: results
+    store_artifacts:
       path: results
 
 version: 2.1
