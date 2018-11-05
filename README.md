@@ -16,16 +16,16 @@
       alt="CircleCI"
     />
   </a>
-  <a href="https://github.com/prettier/prettier">
-    <img
-      src="https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square"
-      alt="styled with prettier"
-    />
-  </a>
   <a href="https://cypress.io">
     <img
-      src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square"
+      src="https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square"
       alt="tests by Cypress.io"
+    />
+  </a>
+  <a href="https://github.com/prettier/prettier">
+    <img
+      src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square"
+      alt="styled with prettier"
     />
   </a>
   <a href="https://prismic.io/">
