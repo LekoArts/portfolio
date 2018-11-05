@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://www.lekoarts.de">
     <img
-      src="https://img.lekoarts.de/Logo-Horizontal-Blau-Schwarz.png"
+      src="https://img.lekoarts.de/Logo-Horizontal-Blau-Schwarz_small.png"
       height="100"
       width="352"
       alt="lekoarts"
