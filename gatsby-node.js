@@ -56,10 +56,15 @@ exports.onCreatePage = ({ page, actions }) => {
     deletePage(page)
 
     Object.keys(locales).map(lang => {
-      page.path = replaceTrailing(page.path) // Remove the trailing slash from the path, e.g. --> /blog
-      const pageName = replaceBoth(page.path) // Remove the leading AND traling slash from path, e.g. --> blog
+      // Remove the trailing slash from the path, e.g. --> /blog
+      page.path = replaceTrailing(page.path)
+
+      // Remove the leading AND traling slash from path, e.g. --> blog
+      const pageName = replaceBoth(page.path)
       const localizedPath = locales[lang].default ? page.path : `${locales[lang].path}${page.path}`
-      const localizedName = `${pageName}-${locales[lang].locale}` // This name is also used as "slug" (UID) in the Prismic backend. Result --> blog-de-de
+
+      // This name is also used as "slug" (UID) in the Prismic backend. Result --> blog-de-de
+      const localizedName = `${pageName}-${locales[lang].locale}`
       const i18n = locales[lang]
 
       return createPage({
@@ -172,8 +177,10 @@ exports.createPages = ({ graphql, actions }) => {
 
         postsList.forEach(post => {
           // Create a random selection of the other posts (excluding the current post)
-          const filtered = _.filter(postsList, input => input.node.fields.slug !== post.node.fields.slug)
-          const sample = _.sampleSize(filtered, 2)
+          const filterUnique = _.filter(postsList, input => input.node.fields.slug !== post.node.fields.slug)
+          // Only use the current language
+          const filterLanguage = _.filter(filterUnique, input => input.node.lang === post.node.lang)
+          const sample = _.sampleSize(filterLanguage, 2)
           const left = sample[0].node
           const right = sample[1].node
           const {
@@ -197,8 +204,10 @@ exports.createPages = ({ graphql, actions }) => {
 
         projectsList.forEach(project => {
           // Create a random selection of the other posts (excluding the current post)
-          const filtered = _.filter(projectsList, input => input.node.fields.slug !== project.node.fields.slug)
-          const sample = _.sampleSize(filtered, 2)
+          const filterUnique = _.filter(projectsList, input => input.node.fields.slug !== project.node.fields.slug)
+          // Only use the current language
+          const filterLanguage = _.filter(filterUnique, input => input.node.lang === project.node.lang)
+          const sample = _.sampleSize(filterLanguage, 2)
           const left = sample[0].node
           const right = sample[1].node
           const {
