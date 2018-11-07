@@ -4,12 +4,10 @@ import styled, { keyframes, css } from 'react-emotion'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
-import { SEO, Container, Content, Wave, Line, Layout, hideS, Hero, InfoText, LocalizedLink } from 'elements'
+import { Container, Content, Wave, Line, Layout, Hero, InfoText, LocalizedLink, Button } from 'elements'
+import { hide } from 'styles'
+import { SEO, Tags, Suggestions, Footer } from 'components'
 import { localizedDate } from 'utilities'
-import Tags from '../components/Tags'
-import Suggestions from '../components/Suggestions'
-import Button from '../components/Button'
-import Footer from '../components/Footer'
 
 const pulse = keyframes`
   0% {
@@ -97,7 +95,7 @@ const Post = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismi
           <h1>{post.title.text}</h1>
           <Information>
             {localizedDate(post.date, locale)} &mdash; {i18n.readingTime}: {postNode.fields.timeToRead} Min. &mdash;{' '}
-            <span className={hideS}>{i18n.category}: </span>
+            <span className={hide}>{i18n.category}: </span>
             <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
           </Information>
         </Hero>
@@ -107,7 +105,7 @@ const Post = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismi
       <Content sliceZone={postNode.data.body} />
       <Container type="article">
         <Line aria-hidden="true" />
-        {tags && <Tags tags={tags} />}
+        {tags && <Tags linkPrefix="tags" tags={tags} />}
         <Note>
           <span className={fontBold}>{i18n.interest}</span> {i18n.readPosts}{' '}
           <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>

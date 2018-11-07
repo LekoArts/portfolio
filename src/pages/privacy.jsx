@@ -8,8 +8,7 @@ import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import { Container, Layout } from 'elements'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
+import { Footer, Header } from 'components'
 import config from '../../config/website'
 
 const Privacy = ({

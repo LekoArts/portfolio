@@ -5,7 +5,7 @@ import styled, { css } from 'react-emotion'
 import Headroom from 'react-headroom'
 import { LocalizedLink } from 'elements'
 import { LocaleConsumer } from 'elements/Layout'
-import Logo from '../icons/Logo'
+import { Logo } from 'icons'
 
 const styledLink = css`
   display: flex;

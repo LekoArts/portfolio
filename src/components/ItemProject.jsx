@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'react-emotion'
-import theme from '../../config/theme'
 
 const Overlay = styled.div`
   position: absolute;
@@ -11,13 +10,17 @@ const Overlay = styled.div`
   right: -1px;
   bottom: -1px;
   left: -1px;
-  border-radius: ${theme.borderRadius.default};
+  border-radius: ${props => props.theme.borderRadius.default};
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
   padding: 1rem;
-  background-image: linear-gradient(30deg, ${theme.colors.primary.light} 0%, ${theme.colors.primary.dark} 100%);
-  color: ${theme.colors.white.light};
+  background-image: linear-gradient(
+    30deg,
+    ${props => props.theme.colors.primary.light} 0%,
+    ${props => props.theme.colors.primary.dark} 100%
+  );
+  color: ${props => props.theme.colors.white.light};
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -25,7 +28,7 @@ const Overlay = styled.div`
     margin-bottom: 0;
   }
   &:hover {
-    color: ${theme.colors.white.light};
+    color: ${props => props.theme.colors.white.light};
   }
 `
 

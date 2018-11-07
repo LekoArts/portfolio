@@ -4,10 +4,8 @@ import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import styled from 'react-emotion'
 import { Container, Layout, SkipNavContent } from 'elements'
+import { ItemProject, Footer, Header } from 'components'
 import config from '../../config/website'
-import ItemProject from '../components/ItemProject'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
 
 const Base = styled(Container)`
   padding-top: 5rem;
@@ -32,13 +30,13 @@ const Projects = ({
     <Header title={p.title.text}>{p.description.text}</Header>
     <SkipNavContent>
       <Base type="big">
-        {edges.map(project => (
+        {edges.map(({ node }) => (
           <ItemProject
-            key={project.node.uid}
-            path={project.node.fields.slug}
-            cover={project.node.data.cover.localFile.childImageSharp.fluid}
-            customer={project.node.data.customer}
-            title={project.node.data.title.text}
+            key={node.uid}
+            path={node.fields.slug}
+            cover={node.data.cover.localFile.childImageSharp.fluid}
+            customer={node.data.customer}
+            title={node.data.title.text}
           />
         ))}
       </Base>

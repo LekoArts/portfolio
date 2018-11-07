@@ -1,5 +1,3 @@
-/* eslint no-unused-expressions: 0 */
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { injectGlobal } from 'emotion'
@@ -7,8 +5,8 @@ import { ThemeProvider } from 'emotion-theming'
 import 'typeface-montserrat'
 import 'typeface-istok-web'
 import { reset, headroom } from 'styles'
-import { SEO, SkipNavLink } from 'elements'
-import Navigation from '../components/Navigation'
+import { SEO, Navigation } from 'components'
+import { SkipNavLink } from 'elements'
 import theme from '../../config/theme'
 import locales from '../../config/i18n'
 

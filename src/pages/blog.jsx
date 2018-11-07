@@ -4,10 +4,8 @@ import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import styled from 'react-emotion'
 import { Container, Layout, SkipNavContent } from 'elements'
+import { ItemBlog, Footer, Header } from 'components'
 import config from '../../config/website'
-import ItemBlog from '../components/ItemBlog'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
 
 const Base = styled(Container)`
   margin-top: 5rem;
@@ -18,7 +16,7 @@ const Base = styled(Container)`
 
 const Blog = ({
   data: {
-    allPrismicBlogpost: { edges },
+    allPrismicBlogpost: { edges: blogposts },
     content: { data: b },
   },
   pageContext: { locale },
@@ -28,16 +26,16 @@ const Blog = ({
     <Header title={b.title.text}>{b.description.text}</Header>
     <SkipNavContent>
       <Base type="big">
-        {edges.map(post => (
+        {blogposts.map(({ node }) => (
           <ItemBlog
-            key={post.node.uid}
-            path={post.node.fields.slug}
-            cover={post.node.data.cover.localFile.childImageSharp.fluid}
-            title={post.node.data.title.text}
-            date={post.node.data.date}
-            category={post.node.data.category.document[0].data.kategorie}
-            timeToRead={post.node.fields.timeToRead}
-            excerpt={post.node.fields.excerpt}
+            key={node.uid}
+            path={node.fields.slug}
+            cover={node.data.cover.localFile.childImageSharp.fluid}
+            title={node.data.title.text}
+            date={node.data.date}
+            category={node.data.category.document[0].data.kategorie}
+            timeToRead={node.fields.timeToRead}
+            excerpt={node.fields.excerpt}
           />
         ))}
       </Base>
