@@ -2,52 +2,37 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import kebabCase from 'lodash/kebabCase'
-import { darken } from 'polished'
 import Helmet from 'react-helmet'
-import { Container, Layout, LocalizedLink, SkipNavContent } from 'elements'
-import { Footer, Header } from 'components'
+import { Container, Layout, SkipNavContent } from 'elements'
+import { Footer, Header, Tags } from 'components'
 import config from '../../config/website'
 
-const CategoriesContainer = styled.div`
-  margin: 2rem 0 4rem 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+const CategoriesContainer = styled(Container)`
+  margin: 4rem auto;
   a {
-    background: ${props => props.theme.tint.black};
-    color: ${props => props.theme.colors.black.light};
+    font-size: 1rem;
     padding: 0.25rem 0.85rem;
-    border-radius: ${props => props.theme.borderRadius.default};
-    margin: 0.3rem 0.6rem 0.3rem 0;
-    white-space: nowrap;
-    &:hover {
-      background: ${props => darken(0.35, props.theme.tint.black)};
-      color: ${props => darken(0.35, props.theme.colors.black.light)};
-    }
   }
 `
 
-const Categories = ({ data: { categories, posts }, pageContext: { locale, i18n } }) => (
-  <Layout locale={locale}>
-    <Helmet title={`${i18n.categories} | ${config.siteTitleAlt}`} />
-    <Header title={i18n.categories}>
-      {posts.totalCount} {i18n.pageCategoriesOne} {categories.totalCount} {i18n.pageCategoriesTwo}
-    </Header>
-    <SkipNavContent>
-      <Container>
+const Categories = ({ data: { categories, posts }, pageContext: { locale, i18n } }) => {
+  const allCategories = categories.edges.map(category => category.node.data.kategorie)
+
+  return (
+    <Layout locale={locale}>
+      <Helmet title={`${i18n.categories} | ${config.siteTitleAlt}`} />
+      <Header title={i18n.categories}>
+        {posts.totalCount} {i18n.pageCategoriesOne} {categories.totalCount} {i18n.pageCategoriesTwo}
+      </Header>
+      <SkipNavContent>
         <CategoriesContainer>
-          {categories.edges.map(({ node }) => (
-            <LocalizedLink key={node.data.kategorie} to={`/categories/${kebabCase(node.data.kategorie)}`}>
-              <span>{node.data.kategorie}</span>
-            </LocalizedLink>
-          ))}
+          <Tags tags={allCategories} linkPrefix="categories" />
         </CategoriesContainer>
-      </Container>
-    </SkipNavContent>
-    <Footer />
-  </Layout>
-)
+      </SkipNavContent>
+      <Footer />
+    </Layout>
+  )
+}
 
 export default Categories
 

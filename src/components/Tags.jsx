@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'react-emotion'
+import styled from 'react-emotion'
 import kebabCase from 'lodash/kebabCase'
 import PropTypes from 'prop-types'
 import { LocalizedLink } from 'elements'
@@ -22,20 +22,17 @@ const TagsContainer = styled.div`
       background: ${props => darken(0.35, props.theme.tint.black)};
       color: ${props => darken(0.35, props.theme.colors.black.light)};
     }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+    }
   }
 `
 
-const focusStyle = css`
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
-  }
-`
-
-const Tags = ({ tags }) => (
+const Tags = ({ tags, linkPrefix }) => (
   <TagsContainer>
     {tags.map(tag => (
-      <LocalizedLink className={focusStyle} key={tag} to={`/tags/${kebabCase(tag)}`} data-testid={`tag-${tag}`}>
+      <LocalizedLink key={tag} to={`/${linkPrefix}/${kebabCase(tag)}`} data-testid={`tag-${tag}`}>
         {tag}
       </LocalizedLink>
     ))}
@@ -46,4 +43,5 @@ export default Tags
 
 Tags.propTypes = {
   tags: PropTypes.array.isRequired,
+  linkPrefix: PropTypes.oneOf(['tags', 'categories']).isRequired,
 }

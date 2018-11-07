@@ -55,7 +55,7 @@ const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, e
               <span className={hide}>{i18n.category}: </span>
               <LocalizedLink to={`/categories/${kebabCase(category)}`}>{category}</LocalizedLink>
             </Statistics>
-            {tags && <Tags tags={tags} />}
+            {tags && <Tags tags={tags} linkPrefix="tags" />}
             <Excerpt>{`${excerpt}...`}</Excerpt>
           </Information>
         </Wrapper>
