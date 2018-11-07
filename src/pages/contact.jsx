@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import { Container, Layout } from 'elements'
+import { Container, Layout, SkipNavContent } from 'elements'
 import Footer from '../components/Footer'
 import { LinkCard } from '../components/Card'
 import Header from '../components/Header'
@@ -24,7 +24,7 @@ const CenteredContainer = styled(Container)`
   }
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled(SkipNavContent)`
   margin-top: 3rem;
   margin-bottom: 2rem;
 `

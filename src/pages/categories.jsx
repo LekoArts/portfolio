@@ -5,7 +5,7 @@ import styled from 'react-emotion'
 import kebabCase from 'lodash/kebabCase'
 import { darken } from 'polished'
 import Helmet from 'react-helmet'
-import { Container, Layout, LocalizedLink } from 'elements'
+import { Container, Layout, LocalizedLink, SkipNavContent } from 'elements'
 import config from '../../config/website'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -35,18 +35,20 @@ const Categories = ({ data: { categories, posts }, pageContext: { locale, i18n }
     <Header title={i18n.categories}>
       {posts.totalCount} {i18n.pageCategoriesOne} {categories.totalCount} {i18n.pageCategoriesTwo}
     </Header>
-    <Container>
-      <CategoriesContainer>
-        {categories.edges.map(category => (
-          <LocalizedLink
-            key={category.node.data.kategorie}
-            to={`/categories/${kebabCase(category.node.data.kategorie)}`}
-          >
-            <span>{category.node.data.kategorie}</span>
-          </LocalizedLink>
-        ))}
-      </CategoriesContainer>
-    </Container>
+    <SkipNavContent>
+      <Container>
+        <CategoriesContainer>
+          {categories.edges.map(category => (
+            <LocalizedLink
+              key={category.node.data.kategorie}
+              to={`/categories/${kebabCase(category.node.data.kategorie)}`}
+            >
+              <span>{category.node.data.kategorie}</span>
+            </LocalizedLink>
+          ))}
+        </CategoriesContainer>
+      </Container>
+    </SkipNavContent>
     <Footer />
   </Layout>
 )

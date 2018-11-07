@@ -5,7 +5,7 @@ import styled from 'react-emotion'
 import kebabCase from 'lodash/kebabCase'
 import { darken } from 'polished'
 import Helmet from 'react-helmet'
-import { Container, Layout, LocalizedLink } from 'elements'
+import { Container, Layout, LocalizedLink, SkipNavContent } from 'elements'
 import config from '../../config/website'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -35,15 +35,17 @@ const Tags = ({ data: { tags, posts }, pageContext: { locale, i18n } }) => (
     <Header title="Tags">
       {posts.totalCount} {i18n.pageTagsOne} {tags.totalCount} {i18n.pageTagsTwo}
     </Header>
-    <Container>
-      <TagsContainer>
-        {tags.edges.map(tag => (
-          <LocalizedLink key={tag.node.data.tag} to={`/tags/${kebabCase(tag.node.data.tag)}`}>
-            <span>{tag.node.data.tag}</span>
-          </LocalizedLink>
-        ))}
-      </TagsContainer>
-    </Container>
+    <SkipNavContent>
+      <Container>
+        <TagsContainer>
+          {tags.edges.map(tag => (
+            <LocalizedLink key={tag.node.data.tag} to={`/tags/${kebabCase(tag.node.data.tag)}`}>
+              <span>{tag.node.data.tag}</span>
+            </LocalizedLink>
+          ))}
+        </TagsContainer>
+      </Container>
+    </SkipNavContent>
     <Footer />
   </Layout>
 )

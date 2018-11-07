@@ -25,12 +25,19 @@ const TagsContainer = styled.div`
   }
 `
 
+const StyledLink = styled(LocalizedLink)`
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+  }
+`
+
 const Tags = ({ tags }) => (
   <TagsContainer>
     {tags.map(tag => (
-      <LocalizedLink key={tag} to={`/tags/${kebabCase(tag)}`} data-testid={`tag-${tag}`}>
-        <span>{tag}</span>
-      </LocalizedLink>
+      <StyledLink key={tag} to={`/tags/${kebabCase(tag)}`} data-testid={`tag-${tag}`}>
+        {tag}
+      </StyledLink>
     ))}
   </TagsContainer>
 )
