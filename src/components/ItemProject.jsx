@@ -50,6 +50,10 @@ const Wrapper = styled(Link)`
   &:focus {
     outline: none;
     box-shadow: 0 0 0 5px ${props => props.theme.tint.blue};
+    ${Overlay} {
+      visibility: visible;
+      opacity: 0.9;
+    }
   }
 `
 

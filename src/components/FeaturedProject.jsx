@@ -25,7 +25,6 @@ const ImageOverlay = styled.div`
 const Wrapper = styled.article`
   position: relative;
   z-index: 100;
-  overflow: hidden;
   border-radius: ${props => props.theme.borderRadius.default};
   box-shadow: ${props => props.theme.shadow.feature.big.default};
   transition: ${props => props.theme.transitions.boom.transition};
