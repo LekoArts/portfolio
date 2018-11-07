@@ -1,10 +1,13 @@
 const path = require('path')
-const _ = require('lodash')
 const { ex, fullText, timeToRead } = require('./src/utilities')
+const { createPosts, createProjects, createCategories, createTags } = require('./src/gatsby/pageCreator')
+const gatsbyNodeGraphQL = require('./src/gatsby/gatsbyNodeGraphQL')
 const locales = require('./config/i18n')
 
 const replaceTrailing = _path => (_path === `/` ? _path : _path.replace(/\/$/, ``))
 const replaceBoth = _path => _path.replace(/^\/|\/$/g, '')
+const localizedSlug = (_page, node) =>
+  locales[node.lang].default ? `/${_page}/${node.uid}` : `/${locales[node.lang].path}/${_page}/${node.uid}`
 
 // Insert additional info into the nodes for queries
 exports.onCreateNode = ({ node, actions }) => {
@@ -20,7 +23,7 @@ exports.onCreateNode = ({ node, actions }) => {
     const data = JSON.parse(node.dataString)
 
     // node.lang returns the lang, e.g. de-de
-    slug = locales[node.lang].default ? `/projects/${node.uid}` : `/${locales[node.lang].path}/projects/${node.uid}`
+    slug = localizedSlug('projects', node)
 
     // Since every project starts with a heading the element to extract from is the second item in the array
     excerpt = ex(data.body[0].primary.text[1].text)
@@ -32,7 +35,7 @@ exports.onCreateNode = ({ node, actions }) => {
     const data = JSON.parse(node.dataString)
     const allText = fullText(data).toString()
 
-    slug = locales[node.lang].default ? `/blog/${node.uid}` : `/${locales[node.lang].path}/blog/${node.uid}`
+    slug = localizedSlug('blog', node)
 
     excerpt = ex(data.body[0].primary.text[0].text) // Use the first text block for the excerpt
     TTR = timeToRead(allText)
@@ -87,82 +90,15 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     // Path to templates
-    const postPage = path.resolve('src/templates/post.jsx')
-    const projectPage = path.resolve('src/templates/project.jsx')
-    const categoryPage = path.resolve('src/templates/category.jsx')
-    const tagPage = path.resolve('src/templates/tag.jsx')
+    const postTemplate = path.resolve('src/templates/post.jsx')
+    const projectTemplate = path.resolve('src/templates/project.jsx')
+    const categoryTemplate = path.resolve('src/templates/category.jsx')
+    const tagTemplate = path.resolve('src/templates/tag.jsx')
 
     resolve(
       graphql(`
         {
-          posts: allPrismicBlogpost(sort: { fields: [data___date], order: DESC }) {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-                lang
-                data {
-                  title {
-                    text
-                  }
-                  cover {
-                    localFile {
-                      childImageSharp {
-                        resize(width: 600) {
-                          src
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          projects: allPrismicProjekt(sort: { fields: [data___date], order: DESC }) {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-                lang
-                data {
-                  title {
-                    text
-                  }
-                  cover {
-                    localFile {
-                      childImageSharp {
-                        resize(width: 600) {
-                          src
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          categories: allPrismicKategorie(sort: { fields: data___kategorie, order: ASC }) {
-            edges {
-              node {
-                lang
-                data {
-                  kategorie
-                }
-              }
-            }
-          }
-          tags: allPrismicTag(sort: { fields: data___tag, order: ASC }) {
-            edges {
-              node {
-                lang
-                data {
-                  tag
-                }
-              }
-            }
-          }
+          ${gatsbyNodeGraphQL}
         }
       `).then(result => {
         if (result.errors) {
@@ -170,102 +106,10 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors)
         }
 
-        const postsList = result.data.posts.edges
-        const projectsList = result.data.projects.edges
-        const categoriesList = result.data.categories.edges
-        const tagsList = result.data.tags.edges
-
-        postsList.forEach(post => {
-          // Create a random selection of the other posts (excluding the current post)
-          const filterUnique = _.filter(postsList, input => input.node.fields.slug !== post.node.fields.slug)
-          // Only use the current language
-          const filterLanguage = _.filter(filterUnique, input => input.node.lang === post.node.lang)
-          const sample = _.sampleSize(filterLanguage, 2)
-          const left = sample[0].node
-          const right = sample[1].node
-          const {
-            lang,
-            fields: { slug },
-          } = post.node
-          const i18n = locales[lang]
-
-          createPage({
-            path: slug,
-            component: postPage,
-            context: {
-              slug,
-              locale: lang,
-              i18n,
-              left,
-              right,
-            },
-          })
-        })
-
-        projectsList.forEach(project => {
-          // Create a random selection of the other posts (excluding the current post)
-          const filterUnique = _.filter(projectsList, input => input.node.fields.slug !== project.node.fields.slug)
-          // Only use the current language
-          const filterLanguage = _.filter(filterUnique, input => input.node.lang === project.node.lang)
-          const sample = _.sampleSize(filterLanguage, 2)
-          const left = sample[0].node
-          const right = sample[1].node
-          const {
-            lang,
-            fields: { slug },
-          } = project.node
-          const i18n = locales[lang]
-
-          createPage({
-            path: slug,
-            component: projectPage,
-            context: {
-              slug,
-              locale: lang,
-              i18n,
-              left,
-              right,
-            },
-          })
-        })
-
-        categoriesList.forEach(c => {
-          const category = c.node.data.kategorie
-          const { lang } = c.node
-          const localizedPath = locales[lang].default
-            ? `/categories/${_.kebabCase(category)}`
-            : `/${locales[lang].path}/categories/${_.kebabCase(category)}`
-          const i18n = locales[lang]
-
-          createPage({
-            path: localizedPath,
-            component: categoryPage,
-            context: {
-              category,
-              locale: lang,
-              i18n,
-            },
-          })
-        })
-
-        tagsList.forEach(t => {
-          const { tag } = t.node.data
-          const { lang } = t.node
-          const localizedPath = locales[lang].default
-            ? `/tags/${_.kebabCase(tag)}`
-            : `/${locales[lang].path}/tags/${_.kebabCase(tag)}`
-          const i18n = locales[lang]
-
-          createPage({
-            path: localizedPath,
-            component: tagPage,
-            context: {
-              tag,
-              locale: lang,
-              i18n,
-            },
-          })
-        })
+        createPosts(result.data.posts.edges, createPage, postTemplate)
+        createProjects(result.data.projects.edges, createPage, projectTemplate)
+        createCategories(result.data.categories.edges, createPage, categoryTemplate)
+        createTags(result.data.tags.edges, createPage, tagTemplate)
       })
     )
   })
