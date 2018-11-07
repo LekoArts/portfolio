@@ -4,7 +4,8 @@ const GitHub = () => (
   <svg
     viewBox="0 0 32.58 31.77"
     role="img"
-    aria-label="GitHub"
+    aria-hidden="true"
+    focusable="false"
     style={{ verticalAlign: 'middle' }}
     preserveAspectRatio="xMidYMid meet"
     height="1em"

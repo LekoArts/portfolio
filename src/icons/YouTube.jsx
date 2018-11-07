@@ -8,7 +8,8 @@ const YouTube = () => (
     viewBox="0 0 40 40"
     style={{ verticalAlign: 'middle' }}
     role="img"
-    aria-label="YouTube"
+    aria-hidden="true"
+    focusable="false"
   >
     <title>YouTube</title>
     <g>
