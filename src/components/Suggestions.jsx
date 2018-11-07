@@ -23,19 +23,19 @@ const ImageOverlay = styled.div`
   opacity: 0;
   transition: opacity ${props => props.theme.transitions.default.duration};
   ${props =>
-    props.primary &&
-    `background-image: linear-gradient(
-    30deg,
-    ${props.theme.colors.primary.light} 0%,
-    ${props.theme.colors.primary.dark} 100%
-  )`};
-  ${props =>
-    props.secondary &&
-    `background-image: linear-gradient(
-    30deg,
-    ${props.theme.colors.secondary.light} 0%,
-    ${props.theme.colors.secondary.dark} 100%
-  )`};
+    props.cardstyle === 'primary'
+      ? `
+      background-image: linear-gradient(
+      30deg,
+      ${props.theme.colors.primary.light} 0%,
+      ${props.theme.colors.primary.dark} 100%)
+    `
+      : `
+      background-image: linear-gradient(
+      30deg,
+      ${props.theme.colors.secondary.light} 0%,
+      ${props.theme.colors.secondary.dark} 100%)
+    `};
 `
 
 const Wrapper = styled.article`
@@ -77,6 +77,7 @@ const StyledLink = styled(Link)`
   align-items: center;
   padding: 1rem;
   z-index: 3;
+  border-radius: ${props => props.theme.borderRadius.default};
   &:after {
     content: '';
     position: absolute;
@@ -104,6 +105,10 @@ const StyledLink = styled(Link)`
       opacity: 0;
     }
   }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px ${props => (props.cardstyle === 'primary' ? props.theme.tint.blue : props.theme.tint.orange)};
+  }
 `
 
 const Image = styled.div`
@@ -130,17 +135,17 @@ const Title = styled.h4`
   text-shadow: ${props => props.theme.shadow.text.small};
 `
 
-const Suggestions = ({ left, right, primary, secondary }) => (
+const Suggestions = ({ left, right, cardstyle }) => (
   <Row>
     {left && (
       <Wrapper data-testid="suggestion-left">
         <Image>
           <img src={left.data.cover.localFile.childImageSharp.resize.src} alt="" />
         </Image>
-        <StyledLink to={left.fields.slug}>
+        <StyledLink to={left.fields.slug} cardstyle={cardstyle}>
           <Title>{left.data.title.text}</Title>
         </StyledLink>
-        <ImageOverlay primary={primary} secondary={secondary} />
+        <ImageOverlay cardstyle={cardstyle} />
       </Wrapper>
     )}
 
@@ -149,10 +154,10 @@ const Suggestions = ({ left, right, primary, secondary }) => (
         <Image>
           <img src={right.data.cover.localFile.childImageSharp.resize.src} alt="" />
         </Image>
-        <StyledLink to={right.fields.slug}>
+        <StyledLink to={right.fields.slug} cardstyle={cardstyle}>
           <Title>{right.data.title.text}</Title>
         </StyledLink>
-        <ImageOverlay primary={primary} secondary={secondary} />
+        <ImageOverlay cardstyle={cardstyle} />
       </Wrapper>
     )}
   </Row>
@@ -163,11 +168,9 @@ export default Suggestions
 Suggestions.propTypes = {
   left: PropTypes.object.isRequired,
   right: PropTypes.object.isRequired,
-  primary: PropTypes.bool,
-  secondary: PropTypes.bool,
+  cardstyle: PropTypes.oneOf(['primary', 'secondary']),
 }
 
 Suggestions.defaultProps = {
-  primary: true,
-  secondary: false,
+  cardstyle: 'primary',
 }

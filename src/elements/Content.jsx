@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import { prism } from 'styles'
 import { BodyText, CodeBlock, Image, Quote } from 'slices'
+import { SkipNavContent } from './SkipNavLink'
 
-const Wrapper = styled.main`
+const Wrapper = styled(SkipNavContent)`
   padding: 5rem 0 1rem 0;
   ${prism};
   p,

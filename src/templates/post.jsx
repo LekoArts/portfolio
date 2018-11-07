@@ -117,7 +117,7 @@ const Post = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismi
         <InfoText>
           {i18n.more} {i18n.posts}
         </InfoText>
-        <Suggestions left={left} right={right} secondary />
+        <Suggestions left={left} right={right} cardstyle="secondary" />
       </Container>
       <Footer>
         <h2>{i18n.patreonHook}</h2>

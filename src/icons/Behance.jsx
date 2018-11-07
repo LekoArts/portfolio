@@ -8,7 +8,8 @@ const Behance = () => (
     viewBox="0 0 40 40"
     style={{ verticalAlign: 'middle' }}
     role="img"
-    aria-label="Behance"
+    aria-hidden="true"
+    focusable="false"
   >
     <title>Behance</title>
     <g>

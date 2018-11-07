@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet'
-import { Container, Layout, LocalizedLink } from 'elements'
+import { Container, Layout, LocalizedLink, SkipNavContent } from 'elements'
 import config from '../../config/website'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -30,20 +30,22 @@ const Category = ({
         {i18n.all} {i18n.categories}
       </LocalLink>
     </Header>
-    <Container>
-      {edges.map(edge => (
-        <ItemTagCategory
-          key={edge.node.uid}
-          title={edge.node.data.title.text}
-          category={edge.node.data.category.document[0].data.kategorie}
-          path={edge.node.fields.slug}
-          date={edge.node.data.date}
-          timeToRead={edge.node.fields.timeToRead}
-          inputTags={edge.node.data.tags}
-          excerpt={edge.node.fields.excerpt}
-        />
-      ))}
-    </Container>
+    <SkipNavContent>
+      <Container>
+        {edges.map(edge => (
+          <ItemTagCategory
+            key={edge.node.uid}
+            title={edge.node.data.title.text}
+            category={edge.node.data.category.document[0].data.kategorie}
+            path={edge.node.fields.slug}
+            date={edge.node.data.date}
+            timeToRead={edge.node.fields.timeToRead}
+            inputTags={edge.node.data.tags}
+            excerpt={edge.node.fields.excerpt}
+          />
+        ))}
+      </Container>
+    </SkipNavContent>
     <Footer />
   </Layout>
 )
