@@ -114,7 +114,7 @@ const Project = ({ pageContext: { slug, left, right, locale, i18n }, data: { pri
         <InfoText>
           {i18n.more} {i18n.projects}
         </InfoText>
-        <Suggestions left={left} right={right} />
+        <Suggestions left={left} right={right} cardstyle="primary" />
       </Container>
       <Footer>
         <h1>{i18n.getStarted}</h1>
