@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from 'react-emotion'
-import { Container, Layout, LocalizedLink } from 'elements'
+import { Container, Layout, LocalizedLink, SkipNavContent } from 'elements'
 import Footer from '../components/Footer'
 import FeaturedProject from '../components/FeaturedProject'
 import FeaturedPost from '../components/FeaturedPost'
@@ -50,49 +50,51 @@ const Index = ({
 }) => (
   <Layout locale={locale}>
     <Header big html={`<h1>${home.hero_title}</h1>`} />
-    <Container type="big">
-      <ProjectsWrapper>
-        {projectEdges.map((project, index) => (
-          <FeaturedProject
-            key={project.node.uid}
-            cover={project.node.data.cover.localFile.childImageSharp.fluid}
-            customer={project.node.data.customer}
-            path={project.node.fields.slug}
-            title={project.node.data.title.text}
-            testid={`featured-project-${index}`}
-          />
-        ))}
-      </ProjectsWrapper>
-    </Container>
-    <Container>
-      <Text>
-        {home.teaser_projects.text} <br />
-        <LocalizedButton to="/projects" type="primary" role="button">
-          {i18n.projects}
-        </LocalizedButton>
-      </Text>
-    </Container>
-    <Container>
-      <PostsWrapper>
-        {postEdges.map((post, index) => (
-          <FeaturedPost
-            key={post.node.uid}
-            cover={post.node.data.cover.localFile.childImageSharp.fluid}
-            date={post.node.data.date}
-            path={post.node.fields.slug}
-            title={post.node.data.title.text}
-            category={post.node.data.category.document[0].data.kategorie}
-            testid={`featured-post-${index}`}
-          />
-        ))}
-      </PostsWrapper>
-      <Text>
-        {home.teaser_blog.text} <br />
-        <LocalizedButton to="/blog" type="secondary" role="button">
-          Blog
-        </LocalizedButton>
-      </Text>
-    </Container>
+    <SkipNavContent>
+      <Container type="big">
+        <ProjectsWrapper>
+          {projectEdges.map((project, index) => (
+            <FeaturedProject
+              key={project.node.uid}
+              cover={project.node.data.cover.localFile.childImageSharp.fluid}
+              customer={project.node.data.customer}
+              path={project.node.fields.slug}
+              title={project.node.data.title.text}
+              testid={`featured-project-${index}`}
+            />
+          ))}
+        </ProjectsWrapper>
+      </Container>
+      <Container>
+        <Text>
+          {home.teaser_projects.text} <br />
+          <LocalizedButton to="/projects" type="primary" role="button">
+            {i18n.projects}
+          </LocalizedButton>
+        </Text>
+      </Container>
+      <Container>
+        <PostsWrapper>
+          {postEdges.map((post, index) => (
+            <FeaturedPost
+              key={post.node.uid}
+              cover={post.node.data.cover.localFile.childImageSharp.fluid}
+              date={post.node.data.date}
+              path={post.node.fields.slug}
+              title={post.node.data.title.text}
+              category={post.node.data.category.document[0].data.kategorie}
+              testid={`featured-post-${index}`}
+            />
+          ))}
+        </PostsWrapper>
+        <Text>
+          {home.teaser_blog.text} <br />
+          <LocalizedButton to="/blog" type="secondary" role="button">
+            Blog
+          </LocalizedButton>
+        </Text>
+      </Container>
+    </SkipNavContent>
     <Footer />
   </Layout>
 )

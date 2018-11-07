@@ -7,7 +7,7 @@ import { ThemeProvider } from 'emotion-theming'
 import 'typeface-montserrat'
 import 'typeface-istok-web'
 import { reset, headroom } from 'styles'
-import { SEO } from 'elements'
+import { SEO, SkipNavLink } from 'elements'
 import Navigation from '../components/Navigation'
 import theme from '../../config/theme'
 import locales from '../../config/i18n'
@@ -39,6 +39,7 @@ const Layout = ({ children, locale }) => {
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <SEO i18n={i18n} />
+          <SkipNavLink />
           <Navigation />
           {children}
         </React.Fragment>

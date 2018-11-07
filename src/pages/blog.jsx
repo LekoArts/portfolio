@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import styled from 'react-emotion'
-import { Container, Layout } from 'elements'
+import { Container, Layout, SkipNavContent } from 'elements'
 import config from '../../config/website'
 import ItemBlog from '../components/ItemBlog'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 
-const Base = styled.main`
+const Base = styled(Container)`
   margin-top: 5rem;
   margin-bottom: 5rem;
   display: flex;
@@ -26,8 +26,8 @@ const Blog = ({
   <Layout locale={locale}>
     <Helmet title={`${b.title.text} | ${config.siteTitleAlt}`} />
     <Header title={b.title.text}>{b.description.text}</Header>
-    <Container type="big">
-      <Base>
+    <SkipNavContent>
+      <Base type="big">
         {edges.map(post => (
           <ItemBlog
             key={post.node.uid}
@@ -41,7 +41,7 @@ const Blog = ({
           />
         ))}
       </Base>
-    </Container>
+    </SkipNavContent>
     <Footer />
   </Layout>
 )

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import styled from 'react-emotion'
-import { Container, Layout } from 'elements'
+import { Container, Layout, SkipNavContent } from 'elements'
 import config from '../../config/website'
 import ItemProject from '../components/ItemProject'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 
-const Base = styled.div`
+const Base = styled(Container)`
   padding-top: 5rem;
   padding-bottom: 5rem;
   display: grid;
@@ -30,8 +30,8 @@ const Projects = ({
   <Layout locale={locale}>
     <Helmet title={`${p.title.text} | ${config.siteTitleAlt}`} />
     <Header title={p.title.text}>{p.description.text}</Header>
-    <Container type="big">
-      <Base>
+    <SkipNavContent>
+      <Base type="big">
         {edges.map(project => (
           <ItemProject
             key={project.node.uid}
@@ -42,7 +42,7 @@ const Projects = ({
           />
         ))}
       </Base>
-    </Container>
+    </SkipNavContent>
     <Footer />
   </Layout>
 )
