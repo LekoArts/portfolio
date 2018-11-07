@@ -37,9 +37,9 @@ const Tags = ({ data: { tags, posts }, pageContext: { locale, i18n } }) => (
     <SkipNavContent>
       <Container>
         <TagsContainer>
-          {tags.edges.map(tag => (
-            <LocalizedLink key={tag.node.data.tag} to={`/tags/${kebabCase(tag.node.data.tag)}`}>
-              <span>{tag.node.data.tag}</span>
+          {tags.edges.map(({ node }) => (
+            <LocalizedLink key={node.data.tag} to={`/tags/${kebabCase(node.data.tag)}`}>
+              <span>{node.data.tag}</span>
             </LocalizedLink>
           ))}
         </TagsContainer>

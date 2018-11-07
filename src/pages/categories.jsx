@@ -37,12 +37,9 @@ const Categories = ({ data: { categories, posts }, pageContext: { locale, i18n }
     <SkipNavContent>
       <Container>
         <CategoriesContainer>
-          {categories.edges.map(category => (
-            <LocalizedLink
-              key={category.node.data.kategorie}
-              to={`/categories/${kebabCase(category.node.data.kategorie)}`}
-            >
-              <span>{category.node.data.kategorie}</span>
+          {categories.edges.map(({ node }) => (
+            <LocalizedLink key={node.data.kategorie} to={`/categories/${kebabCase(node.data.kategorie)}`}>
+              <span>{node.data.kategorie}</span>
             </LocalizedLink>
           ))}
         </CategoriesContainer>

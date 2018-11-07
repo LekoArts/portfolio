@@ -30,13 +30,13 @@ const Projects = ({
     <Header title={p.title.text}>{p.description.text}</Header>
     <SkipNavContent>
       <Base type="big">
-        {edges.map(project => (
+        {edges.map(({ node }) => (
           <ItemProject
-            key={project.node.uid}
-            path={project.node.fields.slug}
-            cover={project.node.data.cover.localFile.childImageSharp.fluid}
-            customer={project.node.data.customer}
-            title={project.node.data.title.text}
+            key={node.uid}
+            path={node.fields.slug}
+            cover={node.data.cover.localFile.childImageSharp.fluid}
+            customer={node.data.customer}
+            title={node.data.title.text}
           />
         ))}
       </Base>
