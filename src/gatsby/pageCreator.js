@@ -1,15 +1,24 @@
 const _ = require('lodash')
 const locales = require('../../config/i18n')
 
+const prevNext = (list, item) => {
+  // Create a random selection of the other posts (excluding the current post)
+  const filterUnique = _.filter(list, input => input.node.fields.slug !== item.node.fields.slug)
+  // Only use the current language
+  const filterLanguage = _.filter(filterUnique, input => input.node.lang === item.node.lang)
+  const sample = _.sampleSize(filterLanguage, 2)
+
+  return {
+    left: sample[0].node,
+    right: sample[1].node,
+  }
+}
+
 const createPosts = (list, createPage, template) =>
   list.forEach(post => {
-    // Create a random selection of the other posts (excluding the current post)
-    const filterUnique = _.filter(list, input => input.node.fields.slug !== post.node.fields.slug)
-    // Only use the current language
-    const filterLanguage = _.filter(filterUnique, input => input.node.lang === post.node.lang)
-    const sample = _.sampleSize(filterLanguage, 2)
-    const left = sample[0].node
-    const right = sample[1].node
+    const samples = prevNext(list, post)
+    const { left, right } = samples
+
     const {
       lang,
       fields: { slug },
@@ -31,13 +40,9 @@ const createPosts = (list, createPage, template) =>
 
 const createProjects = (list, createPage, template) =>
   list.forEach(project => {
-    // Create a random selection of the other posts (excluding the current post)
-    const filterUnique = _.filter(list, input => input.node.fields.slug !== project.node.fields.slug)
-    // Only use the current language
-    const filterLanguage = _.filter(filterUnique, input => input.node.lang === project.node.lang)
-    const sample = _.sampleSize(filterLanguage, 2)
-    const left = sample[0].node
-    const right = sample[1].node
+    const samples = prevNext(list, project)
+    const { left, right } = samples
+
     const {
       lang,
       fields: { slug },
