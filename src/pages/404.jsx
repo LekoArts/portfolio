@@ -3,9 +3,8 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Container, Layout } from 'elements'
+import { Footer, Header } from 'components'
 import config from '../../config/website'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
 
 const ErrorPage = () => (
   <Layout locale="de-de">

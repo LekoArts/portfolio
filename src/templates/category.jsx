@@ -4,10 +4,8 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet'
 import { Container, Layout, LocalizedLink, SkipNavContent } from 'elements'
+import { Footer, Header, ItemTagCategory } from 'components'
 import config from '../../config/website'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import ItemTagCategory from '../components/ItemTagCategory'
 
 const StyledLink = styled(Link)`
   color: ${props => props.theme.colors.white.light};

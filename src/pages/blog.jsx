@@ -4,10 +4,8 @@ import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import styled from 'react-emotion'
 import { Container, Layout, SkipNavContent } from 'elements'
+import { ItemBlog, Footer, Header } from 'components'
 import config from '../../config/website'
-import ItemBlog from '../components/ItemBlog'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
 
 const Base = styled(Container)`
   margin-top: 5rem;

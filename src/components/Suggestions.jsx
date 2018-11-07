@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'react-emotion'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import theme from '../../config/theme'
 
 const Row = styled.div`
   display: flex;
@@ -97,8 +96,8 @@ const StyledLink = styled(Link)`
       rgba(0, 0, 0, 0) 100%
     );
     z-index: -10;
-    border-radius: ${theme.borderRadius.default};
-    transition: opacity ${theme.transitions.default.duration};
+    border-radius: ${props => props.theme.borderRadius.default};
+    transition: opacity ${props => props.theme.transitions.default.duration};
   }
   &:hover {
     &:after {

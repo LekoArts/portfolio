@@ -4,12 +4,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from 'react-emotion'
-import { Container, Layout, LocalizedLink, SkipNavContent } from 'elements'
-import Footer from '../components/Footer'
-import FeaturedProject from '../components/FeaturedProject'
-import FeaturedPost from '../components/FeaturedPost'
-import Header from '../components/Header'
-import Button from '../components/Button'
+import { Container, Layout, LocalizedLink, SkipNavContent, Button } from 'elements'
+import { Footer, FeaturedPost, FeaturedProject, Header } from 'components'
 
 const ProjectsWrapper = styled.div`
   display: flex;

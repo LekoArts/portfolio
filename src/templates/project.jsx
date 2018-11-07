@@ -6,11 +6,9 @@ import PropTypes from 'prop-types'
 import styled, { keyframes } from 'react-emotion'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
-import { SEO, Container, Content, Line, Wave, Layout, Hero, InfoText, LocalizedLink } from 'elements'
-import Suggestions from '../components/Suggestions'
-import { Card } from '../components/Card'
-import Button from '../components/Button'
-import Footer from '../components/Footer'
+import { Container, Content, Line, Wave, Layout, Hero, InfoText, LocalizedLink, Button } from 'elements'
+import { SEO, Suggestions, Footer } from 'components'
+import { Card } from 'components/Card'
 
 const pulse = keyframes`
   0% {

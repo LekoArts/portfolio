@@ -5,7 +5,6 @@ import Img from 'gatsby-image'
 import styled from 'react-emotion'
 import { localizedDate } from 'utilities'
 import { LocaleConsumer } from 'elements/Layout'
-import theme from '../../config/theme'
 
 const ImageOverlay = styled.div`
   border-radius: ${props => props.theme.borderRadius.default};
@@ -89,8 +88,8 @@ const StyledLink = styled(Link)`
       rgba(0, 0, 0, 0.5) 100%
     );
     z-index: -10;
-    border-radius: ${theme.borderRadius.default};
-    transition: opacity ${theme.transitions.default.duration};
+    border-radius: ${props => props.theme.borderRadius.default};
+    transition: opacity ${props => props.theme.transitions.default.duration};
   }
   &:hover {
     &:after {

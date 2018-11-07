@@ -4,7 +4,8 @@ import styled from 'react-emotion'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import kebabCase from 'lodash/kebabCase'
-import { hideS, LocalizedLink } from 'elements'
+import { LocalizedLink } from 'elements'
+import { hide } from 'styles'
 import { localizedDate } from 'utilities'
 import { LocaleConsumer } from 'elements/Layout'
 
@@ -106,7 +107,7 @@ const ItemBlog = ({ path, cover, category, title, date, timeToRead, excerpt }) =
           </Link>
           <Statistics>
             {localizedDate(date, locale)} &mdash; {i18n.readingTime}: {timeToRead} Min. &mdash;{' '}
-            <span className={hideS}>{i18n.category}: </span>
+            <span className={hide}>{i18n.category}: </span>
             <LocalizedLink to={`/categories/${kebabCase(category)}`}>{category}</LocalizedLink>
           </Statistics>
           <Excerpt>{`${excerpt}...`}</Excerpt>
