@@ -23,5 +23,5 @@ export {
   InfoText,
   SkipNavLink,
   SkipNavContent,
-  SkipNavID
+  SkipNavID,
 }
