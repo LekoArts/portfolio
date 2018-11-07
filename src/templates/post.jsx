@@ -105,7 +105,7 @@ const Post = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismi
       <Content sliceZone={postNode.data.body} />
       <Container type="article">
         <Line aria-hidden="true" />
-        {tags && <Tags tags={tags} />}
+        {tags && <Tags linkPrefix="tags" tags={tags} />}
         <Note>
           <span className={fontBold}>{i18n.interest}</span> {i18n.readPosts}{' '}
           <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
