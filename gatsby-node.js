@@ -37,7 +37,8 @@ exports.onCreateNode = ({ node, actions }) => {
 
     slug = localizedSlug('blog', node)
 
-    excerpt = ex(data.body[0].primary.text[0].text) // Use the first text block for the excerpt
+    // Use the first text block for the excerpt
+    excerpt = ex(data.body[0].primary.text[0].text)
     TTR = timeToRead(allText)
     createNodeField({ node, name: 'slug', value: slug })
     createNodeField({ node, name: 'excerpt', value: excerpt })
@@ -56,6 +57,7 @@ exports.onCreatePage = ({ page, actions }) => {
   }
 
   return new Promise(resolve => {
+    // First delete all pages
     deletePage(page)
 
     Object.keys(locales).map(lang => {
@@ -106,6 +108,7 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors)
         }
 
+        // Programatically create pages with templates
         createPosts(result.data.posts.edges, createPage, postTemplate)
         createProjects(result.data.projects.edges, createPage, projectTemplate)
         createCategories(result.data.categories.edges, createPage, categoryTemplate)
