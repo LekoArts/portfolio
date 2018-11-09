@@ -5,22 +5,19 @@ import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
+import { Spring, animated, config as springConfig } from 'react-spring'
 import { Container, Layout, SkipNavContent, Button } from 'elements'
 import { Footer, Header } from 'components'
 import { LinkCard } from 'components/Card'
 import { Paperplane, GitHub, Instagram, Behance, YouTube } from 'icons'
 import config from '../../config/website'
+import ItemBlog from '../components/ItemBlog'
 
 const CenteredContainer = styled(Container)`
   text-align: center;
   svg {
     fill: white;
   }
-`
-
-const Wrapper = styled(SkipNavContent)`
-  margin-top: 3rem;
-  margin-bottom: 2rem;
 `
 
 const MyLinkCard = styled(LinkCard)`
@@ -50,6 +47,15 @@ const CardContainer = styled(Container)`
 
 const Outbound = Button.withComponent('a')
 
+const Content = styled(SkipNavContent)`
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+`
+
+const TempWrapper = React.forwardRef((props, ref) => <Content ref={ref} {...props} />)
+
+const Wrapper = animated(TempWrapper)
+
 const Contact = ({
   data: {
     content: { data: c },
@@ -59,38 +65,42 @@ const Contact = ({
   <Layout locale={locale}>
     <Helmet title={`${c.title.text} | ${config.siteTitleAlt}`} />
     <Header title={c.title.text}>{c.description.text}</Header>
-    <Wrapper>
-      <Container type="article">
-        <div dangerouslySetInnerHTML={{ __html: c.content.html }} />
-      </Container>
-      <CenteredContainer>
-        <Outbound
-          href="mailto:&#104;&#101;&#108;&#108;&#111;&#064;&#108;&#101;&#107;&#111;&#097;&#114;&#116;&#115;&#046;&#100;&#101;"
-          type="primary"
-          role="button"
-        >
-          <Paperplane /> E-Mail
-        </Outbound>
-      </CenteredContainer>
-      <CardContainer>
-        <MyLinkCard link="https://github.com/LekoArts" github>
-          <GitHub />
-          {i18n.github}
-        </MyLinkCard>
-        <MyLinkCard link="https://www.instagram.com/lekoarts.de" instagram>
-          <Instagram />
-          {i18n.instagram}
-        </MyLinkCard>
-        <MyLinkCard link="https://www.behance.net/lekoarts" behance>
-          <Behance />
-          {i18n.behance}
-        </MyLinkCard>
-        <MyLinkCard link="https://youtube.de/LekoArtsDE" youtube>
-          <YouTube />
-          {i18n.youtube}
-        </MyLinkCard>
-      </CardContainer>
-    </Wrapper>
+    <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+      {props => (
+        <Wrapper style={props}>
+          <Container type="article">
+            <div dangerouslySetInnerHTML={{ __html: c.content.html }} />
+          </Container>
+          <CenteredContainer>
+            <Outbound
+              href="mailto:&#104;&#101;&#108;&#108;&#111;&#064;&#108;&#101;&#107;&#111;&#097;&#114;&#116;&#115;&#046;&#100;&#101;"
+              type="primary"
+              role="button"
+            >
+              <Paperplane /> E-Mail
+            </Outbound>
+          </CenteredContainer>
+          <CardContainer>
+            <MyLinkCard link="https://github.com/LekoArts" github>
+              <GitHub />
+              {i18n.github}
+            </MyLinkCard>
+            <MyLinkCard link="https://www.instagram.com/lekoarts.de" instagram>
+              <Instagram />
+              {i18n.instagram}
+            </MyLinkCard>
+            <MyLinkCard link="https://www.behance.net/lekoarts" behance>
+              <Behance />
+              {i18n.behance}
+            </MyLinkCard>
+            <MyLinkCard link="https://youtube.de/LekoArtsDE" youtube>
+              <YouTube />
+              {i18n.youtube}
+            </MyLinkCard>
+          </CardContainer>
+        </Wrapper>
+      )}
+    </Spring>
     <Footer />
   </Layout>
 )

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
+import { Spring, animated, config as springConfig } from 'react-spring'
 import styled from 'react-emotion'
 import { Container, Layout, SkipNavContent } from 'elements'
 import { ItemBlog, Footer, Header } from 'components'
@@ -14,6 +15,8 @@ const Base = styled(Container)`
   flex-direction: column;
 `
 
+const Content = animated(SkipNavContent)
+
 const Blog = ({
   data: {
     allPrismicBlogpost: { edges: blogposts },
@@ -24,22 +27,26 @@ const Blog = ({
   <Layout locale={locale}>
     <Helmet title={`${b.title.text} | ${config.siteTitleAlt}`} />
     <Header title={b.title.text}>{b.description.text}</Header>
-    <SkipNavContent>
-      <Base type="big">
-        {blogposts.map(({ node }) => (
-          <ItemBlog
-            key={node.uid}
-            path={node.fields.slug}
-            cover={node.data.cover.localFile.childImageSharp.fluid}
-            title={node.data.title.text}
-            date={node.data.date}
-            category={node.data.category.document[0].data.kategorie}
-            timeToRead={node.fields.timeToRead}
-            excerpt={node.fields.excerpt}
-          />
-        ))}
-      </Base>
-    </SkipNavContent>
+    <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+      {props => (
+        <Content style={props}>
+          <Base type="big">
+            {blogposts.map(({ node }) => (
+              <ItemBlog
+                key={node.uid}
+                path={node.fields.slug}
+                cover={node.data.cover.localFile.childImageSharp.fluid}
+                title={node.data.title.text}
+                date={node.data.date}
+                category={node.data.category.document[0].data.kategorie}
+                timeToRead={node.fields.timeToRead}
+                excerpt={node.fields.excerpt}
+              />
+            ))}
+          </Base>
+        </Content>
+      )}
+    </Spring>
     <Footer />
   </Layout>
 )
