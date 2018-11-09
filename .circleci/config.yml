@@ -23,8 +23,6 @@ aliases:
       name: Restore Yarn Package Cache
       keys:
       - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-
-      - v{{ .Environment.versionCache }}-deps-
 
   install_node_modules: &install_node_modules
     run:
