@@ -15,10 +15,6 @@ const Base = styled(Container)`
   flex-direction: column;
 `
 
-const TempWrapper = React.forwardRef((props, ref) => <SkipNavContent ref={ref} {...props} />)
-
-const Wrapper = animated(TempWrapper)
-
 const Blog = ({
   data: {
     allPrismicBlogpost: { edges: blogposts },
@@ -29,26 +25,28 @@ const Blog = ({
   <Layout locale={locale}>
     <Helmet title={`${b.title.text} | ${config.siteTitleAlt}`} />
     <Header title={b.title.text}>{b.description.text}</Header>
-    <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
-      {props => (
-        <Wrapper style={props}>
-          <Base type="big">
-            {blogposts.map(({ node }) => (
-              <ItemBlog
-                key={node.uid}
-                path={node.fields.slug}
-                cover={node.data.cover.localFile.childImageSharp.fluid}
-                title={node.data.title.text}
-                date={node.data.date}
-                category={node.data.category.document[0].data.kategorie}
-                timeToRead={node.fields.timeToRead}
-                excerpt={node.fields.excerpt}
-              />
-            ))}
-          </Base>
-        </Wrapper>
-      )}
-    </Spring>
+    <SkipNavContent>
+      <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+        {props => (
+          <animated.div style={props}>
+            <Base type="big">
+              {blogposts.map(({ node }) => (
+                <ItemBlog
+                  key={node.uid}
+                  path={node.fields.slug}
+                  cover={node.data.cover.localFile.childImageSharp.fluid}
+                  title={node.data.title.text}
+                  date={node.data.date}
+                  category={node.data.category.document[0].data.kategorie}
+                  timeToRead={node.fields.timeToRead}
+                  excerpt={node.fields.excerpt}
+                />
+              ))}
+            </Base>
+          </animated.div>
+        )}
+      </Spring>
+    </SkipNavContent>
     <Footer />
   </Layout>
 )

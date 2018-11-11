@@ -4,6 +4,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'react-emotion'
+import { Spring, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 import { Container, Content, Line, Wave, Layout, Hero, InfoText, LocalizedLink, Button } from 'elements'
@@ -86,7 +87,13 @@ const Project = ({ pageContext: { slug, left, right, locale, i18n }, data: { pri
       <SEO i18n={i18n} postPath={slug} postNode={projektNode} postSEO project />
       <Wrapper>
         <Hero>
-          <h1>{projekt.title.text}</h1>
+          <Spring
+            native
+            from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
+            to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+          >
+            {props => <animated.h1 style={props}>{projekt.title.text}</animated.h1>}
+          </Spring>
         </Hero>
         <Wave />
         <Img fluid={fluid} />

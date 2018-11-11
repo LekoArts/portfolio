@@ -56,7 +56,7 @@ const Header = ({ children, title, big, html }) => (
         </Spring>
       )}
       {children && (
-        <Spring native config={config.slow} delay={500} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+        <Spring native config={config.slow} delay={400} from={{ opacity: 0 }} to={{ opacity: 1 }}>
           {props => <Subtitle style={props}>{children}</Subtitle>}
         </Spring>
       )}

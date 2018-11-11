@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet'
+import { animated, config as springConfig, Spring } from 'react-spring'
 import { Container, Layout, LocalizedLink, SkipNavContent } from 'elements'
 import { Footer, Header, ItemTagCategory } from 'components'
 import config from '../../config/website'
@@ -27,20 +28,26 @@ const Tag = ({
       <LocaleLink to="/tags">{i18n.all} Tags</LocaleLink>
     </Header>
     <SkipNavContent>
-      <Container>
-        {edges.map(edge => (
-          <ItemTagCategory
-            key={edge.node.uid}
-            title={edge.node.data.title.text}
-            category={edge.node.data.category.document[0].data.kategorie}
-            path={edge.node.fields.slug}
-            date={edge.node.data.date}
-            timeToRead={edge.node.fields.timeToRead}
-            inputTags={edge.node.data.tags}
-            excerpt={edge.node.fields.excerpt}
-          />
-        ))}
-      </Container>
+      <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+        {props => (
+          <animated.div style={props}>
+            <Container>
+              {edges.map(edge => (
+                <ItemTagCategory
+                  key={edge.node.uid}
+                  title={edge.node.data.title.text}
+                  category={edge.node.data.category.document[0].data.kategorie}
+                  path={edge.node.fields.slug}
+                  date={edge.node.data.date}
+                  timeToRead={edge.node.fields.timeToRead}
+                  inputTags={edge.node.data.tags}
+                  excerpt={edge.node.fields.excerpt}
+                />
+              ))}
+            </Container>
+          </animated.div>
+        )}
+      </Spring>
     </SkipNavContent>
     <Footer />
   </Layout>
