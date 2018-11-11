@@ -15,7 +15,9 @@ const Base = styled(Container)`
   flex-direction: column;
 `
 
-const Content = animated(SkipNavContent)
+const TempWrapper = React.forwardRef((props, ref) => <SkipNavContent ref={ref} {...props} />)
+
+const Wrapper = animated(TempWrapper)
 
 const Blog = ({
   data: {
@@ -29,7 +31,7 @@ const Blog = ({
     <Header title={b.title.text}>{b.description.text}</Header>
     <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
       {props => (
-        <Content style={props}>
+        <Wrapper style={props}>
           <Base type="big">
             {blogposts.map(({ node }) => (
               <ItemBlog
@@ -44,7 +46,7 @@ const Blog = ({
               />
             ))}
           </Base>
-        </Content>
+        </Wrapper>
       )}
     </Spring>
     <Footer />
