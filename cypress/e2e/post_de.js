@@ -4,9 +4,9 @@ describe('Blogpost', () => {
   })
   it('Suggestions work', () => {
     cy.getByTestId('suggestion-left')
-      .click()
+      .click({ force: true })
       .getByTestId('suggestion-right')
-      .click()
+      .click({ force: true })
   })
   it('Blogpost footer links to patreon', () => {
     cy.getByText('Patreon').should('have.prop', 'href', 'https://www.patreon.com/lekoarts')
