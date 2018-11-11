@@ -32,6 +32,7 @@ const Wrapper = styled.header`
   height: 600px;
   position: relative;
   overflow: hidden;
+  background: ${props => props.theme.colors.secondary.base};
   .gatsby-image-wrapper {
     height: 600px;
     img {
