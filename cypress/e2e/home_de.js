@@ -2,6 +2,18 @@ describe('Home German', () => {
   beforeEach(() => {
     cy.visit('/')
   })
+  it('Index button (Projects) work', () => {
+    cy.get('a[type="primary"]')
+      .should('contain', 'Projekte')
+      .click()
+      .assertRoute('/projects')
+  })
+  it('Index button (Blog) work', () => {
+    cy.get('a[type="secondary"]')
+      .should('contain', 'Blog')
+      .click()
+      .assertRoute('/blog')
+  })
   it('Featured Projects load', () => {
     cy.getByTestId('featured-project-0')
       .click()
@@ -28,17 +40,5 @@ describe('Home German', () => {
       .click()
       .getByText('Weitere Beiträge')
       .should('exist')
-  })
-  it('Button to projects works', () => {
-    cy.get('a[type="primary"]')
-      .should('contain', 'Projekte')
-      .click()
-      .assertRoute('/projects')
-  })
-  it('Button to blog works', () => {
-    cy.get('a[type="secondary"]')
-      .should('contain', 'Blog')
-      .click()
-      .assertRoute('/blog')
   })
 })

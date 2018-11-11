@@ -19,7 +19,6 @@ describe('Home English', () => {
       .click()
       .getByText('Period')
       .should('exist')
-    /*
     cy.visit('/en')
       .getByTestId('featured-project-1')
       .click()
@@ -30,19 +29,16 @@ describe('Home English', () => {
       .click()
       .getByText('Customer')
       .should('exist')
-    */
   })
   it('Featured Posts load', () => {
     cy.getByTestId('featured-post-0')
       .click()
       .getByText('Sparked your interest?')
       .should('exist')
-    /*
     cy.visit('/en')
       .getByTestId('featured-post-1')
       .click()
-      .getByText('Weitere Blogeinträge')
+      .getByText('More posts')
       .should('exist')
-    */
   })
 })

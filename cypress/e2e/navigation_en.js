@@ -15,18 +15,18 @@ describe('Navigation English', () => {
   })
   it('to internal sites in the footer works', () => {
     cy.getByText('Privacy Policy')
-      .click()
+      .click({ force: true })
       .assertRoute('/en/privacy')
       .getByText('Imprint')
-      .click()
+      .click({ force: true })
       .assertRoute('/en/imprint')
+      .getByText('Freebies')
+      .click({ force: true })
+      .assertRoute('/en/categories/freebie')
     /*
       .getByText('Tutorials')
       .click()
       .assertRoute('/en/categories/tutorial')
-      .getByText('Freebies')
-      .click()
-      .assertRoute('/en/categories/freebie')
       */
   })
 })
