@@ -4,6 +4,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'react-emotion'
+import { Spring, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 import { Container, Content, Line, Wave, Layout, Hero, InfoText, LocalizedLink, Button } from 'elements'
@@ -33,6 +34,7 @@ const Wrapper = styled.header`
   height: 600px;
   position: relative;
   overflow: hidden;
+  background: ${props => props.theme.colors.primary.dark};
   .gatsby-image-wrapper {
     height: 600px;
     img {
@@ -85,7 +87,13 @@ const Project = ({ pageContext: { slug, left, right, locale, i18n }, data: { pri
       <SEO i18n={i18n} postPath={slug} postNode={projektNode} postSEO project />
       <Wrapper>
         <Hero>
-          <h1>{projekt.title.text}</h1>
+          <Spring
+            native
+            from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
+            to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+          >
+            {props => <animated.h1 style={props}>{projekt.title.text}</animated.h1>}
+          </Spring>
         </Hero>
         <Wave />
         <Img fluid={fluid} />
@@ -160,7 +168,7 @@ export const pageQuery = graphql`
         cover {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
+              fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#4768b4" }) {
                 ...GatsbyImageSharpFluid_withWebp
               }
               resize(width: 1200, quality: 90) {

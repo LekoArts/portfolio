@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
+import { Spring, config, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import { Wave } from 'elements'
 
@@ -33,7 +34,7 @@ const Text = styled.div`
   align-items: center;
 `
 
-const Subtitle = styled.p`
+const Subtitle = styled(animated.p)`
   max-width: 650px;
   color: ${props => props.theme.colors.white.blue};
 `
@@ -41,9 +42,33 @@ const Subtitle = styled.p`
 const Header = ({ children, title, big, html }) => (
   <Wrapper big={big}>
     <Text>
-      {title && <h1 data-testid="header-title">{title}</h1>}
-      {children && <Subtitle>{children}</Subtitle>}
-      {html && <div dangerouslySetInnerHTML={{ __html: html }} />}
+      {title && (
+        <Spring
+          native
+          from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
+          to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+        >
+          {props => (
+            <animated.h1 data-testid="header-title" style={props}>
+              {title}
+            </animated.h1>
+          )}
+        </Spring>
+      )}
+      {children && (
+        <Spring native config={config.slow} delay={400} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+          {props => <Subtitle style={props}>{children}</Subtitle>}
+        </Spring>
+      )}
+      {html && (
+        <Spring
+          native
+          from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
+          to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+        >
+          {props => <animated.div style={props} dangerouslySetInnerHTML={{ __html: html }} />}
+        </Spring>
+      )}
     </Text>
     <Wave />
   </Wrapper>

@@ -4,13 +4,13 @@ describe('Navigation English', () => {
   })
   it('in the header works', () => {
     cy.getByText('Projects')
-      .click()
+      .click({ force: true })
       .assertRoute('/en/projects')
       .getByText('Blog')
-      .click()
+      .click({ force: true })
       .assertRoute('/en/blog')
       .getByText('Contact')
-      .click()
+      .click({ force: true })
       .assertRoute('/en/contact')
   })
   it('to internal sites in the footer works', () => {

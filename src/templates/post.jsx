@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes, css } from 'react-emotion'
+import { Spring, config, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
@@ -32,6 +33,7 @@ const Wrapper = styled.header`
   height: 600px;
   position: relative;
   overflow: hidden;
+  background: ${props => props.theme.colors.secondary.dark};
   .gatsby-image-wrapper {
     height: 600px;
     img {
@@ -52,7 +54,7 @@ const Wrapper = styled.header`
   }
 `
 
-const Information = styled.div`
+const Information = styled(animated.div)`
   margin-top: 2rem;
   font-family: ${props => props.theme.fontFamily.heading};
   a {
@@ -92,12 +94,22 @@ const Post = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismi
       <SEO i18n={i18n} postPath={slug} postNode={postNode} postSEO />
       <Wrapper>
         <Hero>
-          <h1>{post.title.text}</h1>
-          <Information>
-            {localizedDate(post.date, locale)} &mdash; {i18n.readingTime}: {postNode.fields.timeToRead} Min. &mdash;{' '}
-            <span className={hide}>{i18n.category}: </span>
-            <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
-          </Information>
+          <Spring
+            native
+            from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
+            to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+          >
+            {props => <animated.h1 style={props}>{post.title.text}</animated.h1>}
+          </Spring>
+          <Spring native config={config.slow} delay={300} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+            {props => (
+              <Information style={props}>
+                {localizedDate(post.date, locale)} &mdash; {i18n.readingTime}: {postNode.fields.timeToRead} Min. &mdash;{' '}
+                <span className={hide}>{i18n.category}: </span>
+                <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
+              </Information>
+            )}
+          </Spring>
         </Hero>
         <Wave />
         <Img fluid={fluid} />
@@ -183,7 +195,7 @@ export const pageQuery = graphql`
         cover {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#EE9338", shadow: "#BE7123" }) {
+              fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#EE9338", shadow: "#d17c26" }) {
                 ...GatsbyImageSharpFluid_withWebp
               }
               resize(width: 1200, quality: 90) {

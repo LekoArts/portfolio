@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import { Spring, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import styled from 'react-emotion'
 
@@ -21,7 +22,7 @@ const ImageOverlay = styled.div`
   );
 `
 
-const Wrapper = styled.article`
+const Wrapper = styled(animated.article)`
   position: relative;
   z-index: 100;
   border-radius: ${props => props.theme.borderRadius.default};
@@ -30,7 +31,7 @@ const Wrapper = styled.article`
   height: 30rem;
   &:hover {
     box-shadow: ${props => props.theme.shadow.feature.big.hover};
-    transform: translateY(-20px);
+    transform: translateY(-20px) !important;
     ${ImageOverlay} {
       opacity: 0.9;
     }
@@ -147,17 +148,26 @@ const Title = styled.h2`
   color: ${props => props.theme.colors.white.light};
 `
 
-const FeaturedProject = ({ cover, path, customer, title, testid }) => (
-  <Wrapper data-testid={testid}>
-    <Image>
-      <Img fluid={cover} />
-    </Image>
-    <StyledLink to={path}>
-      <Customer>{customer}</Customer>
-      <Title>{title}</Title>
-    </StyledLink>
-    <ImageOverlay />
-  </Wrapper>
+const FeaturedProject = ({ cover, path, customer, title, testid, delay }) => (
+  <Spring
+    native
+    delay={100 * delay}
+    from={{ opacity: 0, transform: 'translate3d(0, 30px, 0)' }}
+    to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+  >
+    {props => (
+      <Wrapper data-testid={testid} style={props}>
+        <Image>
+          <Img fluid={cover} />
+        </Image>
+        <StyledLink to={path}>
+          <Customer>{customer}</Customer>
+          <Title>{title}</Title>
+        </StyledLink>
+        <ImageOverlay />
+      </Wrapper>
+    )}
+  </Spring>
 )
 
 export default FeaturedProject
@@ -168,6 +178,7 @@ FeaturedProject.propTypes = {
   customer: PropTypes.string,
   title: PropTypes.string.isRequired,
   testid: PropTypes.string.isRequired,
+  delay: PropTypes.number.isRequired,
 }
 
 FeaturedProject.defaultProps = {

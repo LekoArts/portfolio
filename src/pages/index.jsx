@@ -51,6 +51,7 @@ const Index = ({
         <ProjectsWrapper>
           {projectEdges.map((project, index) => (
             <FeaturedProject
+              delay={index}
               key={project.node.uid}
               cover={project.node.data.cover.localFile.childImageSharp.fluid}
               customer={project.node.data.customer}

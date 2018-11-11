@@ -4,7 +4,6 @@ executors:
       image:
         type: string
         default: "10"
-    working_directory: ~/app
     docker:
     - image: circleci/node:<< parameters.image >>
       environment:
@@ -12,7 +11,6 @@ executors:
 
 aliases:
   e2e-executor: &e2e-executor
-    working_directory: ~/app
     docker:
     - image: cypress/base:8
       environment:
@@ -22,9 +20,7 @@ aliases:
     restore_cache:
       name: Restore Yarn Package Cache
       keys:
-      - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-
-      - v{{ .Environment.versionCache }}-deps-
+      - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".circleci/config.yml" }}
 
   install_node_modules: &install_node_modules
     run:
@@ -34,7 +30,7 @@ aliases:
   save_cache: &save_cache
     save_cache:
       name: Save Yarn Package Cache
-      key: v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      key: v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".circleci/config.yml" }}
       paths:
       - ~/.cache
 
@@ -84,4 +80,6 @@ workflows:
   lint-test:
     jobs:
     - lint
-    - e2e_cypress
+    - e2e_cypress:
+        requires:
+          - lint

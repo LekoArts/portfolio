@@ -40,6 +40,7 @@
     "react-emotion": "^9.2.12",
     "react-headroom": "^2.2.4",
     "react-helmet": "^5.2.0",
+    "react-spring": "^6.1.8",
     "react-typography": "^0.16.13",
     "typeface-istok-web": "^0.0.54",
     "typeface-montserrat": "^0.0.54",
