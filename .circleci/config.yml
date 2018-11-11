@@ -80,4 +80,6 @@ workflows:
   lint-test:
     jobs:
     - lint
-    - e2e_cypress
+    - e2e_cypress:
+        requires:
+          - lint
