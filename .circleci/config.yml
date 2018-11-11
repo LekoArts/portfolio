@@ -32,7 +32,7 @@ aliases:
       name: Save Yarn Package Cache
       key: v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".circleci/config.yml" }}
       paths:
-      - ~/.cache
+      - /home/circleci/.cache
 
   store_results: &store_results
     store_test_results:
@@ -80,6 +80,4 @@ workflows:
   lint-test:
     jobs:
     - lint
-    - e2e_cypress:
-        requires:
-          - lint
+    - e2e_cypress

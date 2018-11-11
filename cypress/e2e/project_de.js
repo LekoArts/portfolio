@@ -6,9 +6,9 @@ describe('Project', () => {
   })
   it('Suggestions work', () => {
     cy.getByTestId('suggestion-left')
-      .click()
+      .click({ force: true })
       .getByTestId('suggestion-right')
-      .click()
+      .click({ force: true })
   })
   it('Footer links to Contact', () => {
     cy.getByText('Projekt starten')

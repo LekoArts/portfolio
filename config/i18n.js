@@ -67,7 +67,7 @@ module.exports = {
     customer: 'Customer',
     task: 'Task',
     period: 'Period',
-    more: 'more',
+    more: 'More',
     all: 'All',
     patreonHook: 'Desire for more tutorials & goodies? Become a patron.',
     interest: 'Sparked your interest?',
