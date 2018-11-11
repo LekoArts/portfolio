@@ -34,7 +34,7 @@ const Wrapper = styled.header`
   height: 600px;
   position: relative;
   overflow: hidden;
-  background: ${props => props.theme.colors.primary.base};
+  background: ${props => props.theme.colors.primary.dark};
   .gatsby-image-wrapper {
     height: 600px;
     img {
@@ -168,7 +168,7 @@ export const pageQuery = graphql`
         cover {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#3466DB" }) {
+              fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#4768b4" }) {
                 ...GatsbyImageSharpFluid_withWebp
               }
               resize(width: 1200, quality: 90) {
