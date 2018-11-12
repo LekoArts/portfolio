@@ -69,7 +69,7 @@
 
 - Hosted on Netlify
 - Prismic.io as Headless CMS
-- Emotion for styling
+- styled-components for styling
 - ESLint & Prettier for linting
 - Cypress.io for E2E-testing
 - CircleCI

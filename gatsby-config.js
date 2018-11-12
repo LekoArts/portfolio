@@ -16,12 +16,9 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-plugin-emotion',
+      resolve: 'gatsby-plugin-styled-components',
       options: {
-        autoLabel: process.env.NODE_ENV !== 'production',
-        labelFormat: '[filename]--[local]',
-        sourceMap: process.env.NODE_ENV !== `production`,
-        hoist: process.env.NODE_ENV === `production`,
+        displayName: process.env.NODE_ENV !== 'production',
       },
     },
     {
