@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { keyframes, css } from 'react-emotion'
+import styled, { keyframes } from 'styled-components'
 import { Spring, config, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
@@ -75,8 +75,12 @@ const Note = styled.p`
   margin-bottom: 4rem;
 `
 
-const fontBold = css`
+const Bold = styled.span`
   font-weight: 700;
+`
+
+const Cat = styled.span`
+  ${hide}
 `
 
 const Outbound = Button.withComponent('a')
@@ -104,8 +108,8 @@ const Post = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismi
           <Spring native config={config.slow} delay={300} from={{ opacity: 0 }} to={{ opacity: 1 }}>
             {props => (
               <Information style={props}>
-                {localizedDate(post.date, locale)} &mdash; {i18n.readingTime}: {postNode.fields.timeToRead} Min. &mdash;{' '}
-                <span className={hide}>{i18n.category}: </span>
+                {localizedDate(post.date, locale)} &mdash; {postNode.fields.timeToRead} {i18n.minutes}{' '}
+                {i18n.readingTime} &mdash; <Cat>{i18n.category}: </Cat>
                 <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
               </Information>
             )}
@@ -119,7 +123,7 @@ const Post = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismi
         <Line aria-hidden="true" />
         {tags && <Tags linkPrefix="tags" tags={tags} />}
         <Note>
-          <span className={fontBold}>{i18n.interest}</span> {i18n.readPosts}{' '}
+          <Bold>{i18n.interest}</Bold> {i18n.readPosts}{' '}
           <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
         </Note>
       </Container>

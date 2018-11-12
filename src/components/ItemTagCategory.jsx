@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
@@ -37,6 +37,10 @@ const Excerpt = styled.div`
   margin-top: 1rem;
 `
 
+const Cat = styled.span`
+  ${hide}
+`
+
 const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, excerpt }) => {
   let tags = false
   if (inputTags[0].tag) {
@@ -51,8 +55,8 @@ const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, e
               <h1>{title}</h1>
             </Link>
             <Statistics>
-              {localizedDate(date, locale)} &mdash; {i18n.readingTime}: {timeToRead} Min. &mdash;{' '}
-              <span className={hide}>{i18n.category}: </span>
+              {localizedDate(date, locale)} &mdash; {timeToRead} {i18n.minutes} {i18n.readingTime} &mdash;{' '}
+              <Cat>{i18n.category}: </Cat>
               <LocalizedLink to={`/categories/${kebabCase(category)}`}>{category}</LocalizedLink>
             </Statistics>
             {tags && <Tags tags={tags} linkPrefix="tags" />}

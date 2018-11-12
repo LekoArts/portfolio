@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
 import PropTypes from 'prop-types'
 import { LocalizedLink } from 'elements'

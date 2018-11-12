@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import format from 'date-fns/format'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 import { Wave, Container, LocalizedLink } from 'elements'
 import { LocaleConsumer } from 'elements/Layout'
 

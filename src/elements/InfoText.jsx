@@ -1,4 +1,4 @@
-import styled from 'react-emotion'
+import styled from 'styled-components'
 
 const InfoText = styled.div`
   text-transform: uppercase;

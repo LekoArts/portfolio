@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 import { prism } from 'styles'
 import { BodyText, CodeBlock, Image, Quote } from 'slices'
 import { SkipNavContent } from './SkipNavLink'

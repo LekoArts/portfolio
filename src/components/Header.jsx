@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 import { Spring, config, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import { Wave } from 'elements'

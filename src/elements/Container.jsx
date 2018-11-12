@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 
 const Wrapper = styled.section`
   margin: 0 auto;
