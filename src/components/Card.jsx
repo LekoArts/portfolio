@@ -150,8 +150,8 @@ const Card = styled.div`
 
 export { Card }
 
-export const LinkCard = ({ children, type, link }) => (
-  <CustomLink href={link} type={type} target="_blank" rel="noopener noreferrer">
+export const LinkCard = ({ children, className, type, link }) => (
+  <CustomLink className={className} href={link} type={type} target="_blank" rel="noopener noreferrer">
     {children}
   </CustomLink>
 )
@@ -164,8 +164,10 @@ LinkCard.propTypes = {
   children: PropTypes.node.isRequired,
   link: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['github', 'instagram', 'behance', 'youtube', 'default']),
+  className: PropTypes.string,
 }
 
 LinkCard.defaultProps = {
   type: 'default',
+  className: 'default',
 }

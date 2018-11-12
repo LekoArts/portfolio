@@ -5,7 +5,7 @@ import { LocalizedLink } from 'elements'
 import { LocaleConsumer } from 'elements/Layout'
 import { Logo } from 'icons'
 
-const StyledLink = styled(LocalizedLink)`
+const StyledLink = styled.a`
   display: flex;
   font-weight: 700;
   align-items: center;
@@ -48,7 +48,7 @@ const Navigation = () => (
   <LocaleConsumer>
     {({ i18n }) => (
       <Headroom calcHeightOnResize disableInlineStyles>
-        <StyledLink to="/" aria-label="LekoArts, Back to homepage">
+        <StyledLink as={LocalizedLink} to="/" aria-label="LekoArts, Back to homepage">
           <Logo />
           <LogoText>LekoArts</LogoText>
         </StyledLink>

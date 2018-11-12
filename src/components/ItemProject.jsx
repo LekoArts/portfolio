@@ -61,9 +61,7 @@ const Card = styled(Link)`
   }
 `
 
-const TempWrapper = React.forwardRef((props, ref) => <Card ref={ref} {...props} />)
-
-const Wrapper = animated(TempWrapper)
+const Wrapper = animated(Card)
 
 const ItemProject = ({ cover, path, customer, title, delay }) => (
   <Spring
