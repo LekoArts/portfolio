@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import kebabCase from 'lodash/kebabCase'
@@ -92,6 +92,10 @@ const Excerpt = styled.div`
   margin-top: 2rem;
 `
 
+const Cat = styled.span`
+  ${hide}
+`
+
 const ItemBlog = ({ path, cover, category, title, date, timeToRead, excerpt }) => (
   <LocaleConsumer>
     {({ i18n, locale }) => (
@@ -106,8 +110,8 @@ const ItemBlog = ({ path, cover, category, title, date, timeToRead, excerpt }) =
             <h1>{title}</h1>
           </Link>
           <Statistics>
-            {localizedDate(date, locale)} &mdash; {i18n.readingTime}: {timeToRead} Min. &mdash;{' '}
-            <span className={hide}>{i18n.category}: </span>
+            {localizedDate(date, locale)} &mdash; {timeToRead} {i18n.minutes} {i18n.readingTime} &mdash;{' '}
+            <Cat>{i18n.category}: </Cat>
             <LocalizedLink to={`/categories/${kebabCase(category)}`}>{category}</LocalizedLink>
           </Statistics>
           <Excerpt>{`${excerpt}...`}</Excerpt>

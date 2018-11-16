@@ -1,9 +1,6 @@
-/* eslint max-len: 0 */
-/* eslint react/no-unescaped-entities: 0 */
-
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { keyframes } from 'react-emotion'
+import styled, { keyframes } from 'styled-components'
 import { Spring, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
@@ -77,8 +74,6 @@ const CardWrapper = styled.div`
   }
 `
 
-const LocalizedButton = Button.withComponent(LocalizedLink)
-
 const Project = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismicProjekt: projektNode } }) => {
   const projekt = projektNode.data
   const { fluid } = projekt.cover.localFile.childImageSharp
@@ -124,9 +119,9 @@ const Project = ({ pageContext: { slug, left, right, locale, i18n }, data: { pri
       </Container>
       <Footer>
         <h1>{i18n.getStarted}</h1>
-        <LocalizedButton to="/contact" type="primary" role="button">
+        <Button as={LocalizedLink} to="/contact" type="primary" role="button">
           {i18n.startProject}
-        </LocalizedButton>
+        </Button>
       </Footer>
     </Layout>
   )

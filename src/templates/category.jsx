@@ -1,18 +1,16 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 import Helmet from 'react-helmet'
 import { Spring, animated, config as springConfig } from 'react-spring'
 import { Container, Layout, LocalizedLink, SkipNavContent } from 'elements'
 import { Footer, Header, ItemTagCategory } from 'components'
 import config from '../../config/website'
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(LocalizedLink)`
   color: ${props => props.theme.colors.white.light};
 `
-
-const LocalLink = StyledLink.withComponent(LocalizedLink)
 
 const Category = ({
   pageContext: { category, locale, i18n },
@@ -25,9 +23,9 @@ const Category = ({
     <Header title={category}>
       {totalCount} {totalCount === 1 ? i18n.post : i18n.posts} {totalCount === 1 ? i18n.belongs : i18n.belong}{' '}
       {i18n.pageCategoryOne} "{category}" {i18n.pageCategoryTwo} <br />
-      <LocalLink to="/categories">
+      <StyledLink to="/categories">
         {i18n.all} {i18n.categories}
-      </LocalLink>
+      </StyledLink>
     </Header>
     <SkipNavContent>
       <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>

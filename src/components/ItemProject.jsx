@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { Spring, animated } from 'react-spring'
 import Img from 'gatsby-image'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 
 const Overlay = styled.div`
   position: absolute;
@@ -61,9 +61,7 @@ const Card = styled(Link)`
   }
 `
 
-const TempWrapper = React.forwardRef((props, ref) => <Card ref={ref} {...props} />)
-
-const Wrapper = animated(TempWrapper)
+const Wrapper = animated(Card)
 
 const ItemProject = ({ cover, path, customer, title, delay }) => (
   <Spring

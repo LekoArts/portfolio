@@ -1,13 +1,11 @@
-/* eslint no-unused-expressions: 0 */
-
 import React from 'react'
-import styled, { css } from 'react-emotion'
+import styled from 'styled-components'
 import Headroom from 'react-headroom'
 import { LocalizedLink } from 'elements'
 import { LocaleConsumer } from 'elements/Layout'
 import { Logo } from 'icons'
 
-const styledLink = css`
+const StyledLink = styled.a`
   display: flex;
   font-weight: 700;
   align-items: center;
@@ -50,10 +48,10 @@ const Navigation = () => (
   <LocaleConsumer>
     {({ i18n }) => (
       <Headroom calcHeightOnResize disableInlineStyles>
-        <LocalizedLink to="/" className={styledLink} aria-label="LekoArts, Back to homepage">
+        <StyledLink as={LocalizedLink} to="/" aria-label="LekoArts, Back to homepage">
           <Logo />
           <LogoText>LekoArts</LogoText>
-        </LocalizedLink>
+        </StyledLink>
         <Nav>
           <LocalizedLink to="/projects">{i18n.projects}</LocalizedLink>
           <LocalizedLink to="/blog">Blog</LocalizedLink>

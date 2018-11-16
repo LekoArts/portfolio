@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css, cx } from 'react-emotion'
+import styled, { css } from 'styled-components'
 import theme from '../../config/theme'
 
 const githubStyle = css`
@@ -135,25 +135,26 @@ const generalStyle = css`
   }
 `
 
+const CustomLink = styled.a`
+  ${generalStyle}
+  ${({ type }) => type === 'default' && ``}
+  ${({ type }) => type === 'github' && githubStyle}
+  ${({ type }) => type === 'instagram' && instagramStyle}
+  ${({ type }) => type === 'behance' && behanceStyle}
+  ${({ type }) => type === 'youtube' && youtubeStyle}
+`
+
 const Card = styled.div`
   ${generalStyle};
 `
 
 export { Card }
 
-export const LinkCard = ({ children, className, github, instagram, behance, youtube, link }) => {
-  const color = cx(generalStyle, className, {
-    [githubStyle]: github,
-    [instagramStyle]: instagram,
-    [behanceStyle]: behance,
-    [youtubeStyle]: youtube,
-  })
-  return (
-    <a href={link} target="_blank" rel="noopener noreferrer" className={color}>
-      {children}
-    </a>
-  )
-}
+export const LinkCard = ({ children, className, type, link }) => (
+  <CustomLink className={className} href={link} type={type} target="_blank" rel="noopener noreferrer">
+    {children}
+  </CustomLink>
+)
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
@@ -162,17 +163,11 @@ Card.propTypes = {
 LinkCard.propTypes = {
   children: PropTypes.node.isRequired,
   link: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['github', 'instagram', 'behance', 'youtube', 'default']),
   className: PropTypes.string,
-  github: PropTypes.bool,
-  instagram: PropTypes.bool,
-  behance: PropTypes.bool,
-  youtube: PropTypes.bool,
 }
 
 LinkCard.defaultProps = {
-  github: false,
-  instagram: false,
-  behance: false,
-  youtube: false,
+  type: 'default',
   className: 'default',
 }

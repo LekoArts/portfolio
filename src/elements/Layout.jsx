@@ -1,16 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { injectGlobal } from 'emotion'
-import { ThemeProvider } from 'emotion-theming'
-import 'typeface-montserrat'
-import 'typeface-istok-web'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { reset, headroom } from 'styles'
 import { SEO, Navigation } from 'components'
 import { SkipNavLink } from 'elements'
+import 'typeface-montserrat'
+import 'typeface-istok-web'
 import theme from '../../config/theme'
 import locales from '../../config/i18n'
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   ${reset}
   .gatsby-resp-image-wrapper {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -36,6 +35,7 @@ const Layout = ({ children, locale }) => {
     <LocaleProvider value={{ locale, i18n }}>
       <ThemeProvider theme={theme}>
         <React.Fragment>
+          <GlobalStyle />
           <SEO i18n={i18n} />
           <SkipNavLink />
           <Navigation />

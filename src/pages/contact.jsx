@@ -1,10 +1,8 @@
-/* eslint max-len: 0 */
-
 import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 import { Spring, animated, config as springConfig } from 'react-spring'
 import { Container, Layout, SkipNavContent, Button } from 'elements'
 import { Footer, Header } from 'components'
@@ -77,19 +75,19 @@ const Contact = ({
               </Outbound>
             </CenteredContainer>
             <CardContainer>
-              <MyLinkCard link="https://github.com/LekoArts" github>
+              <MyLinkCard link="https://github.com/LekoArts" type="github">
                 <GitHub />
                 {i18n.github}
               </MyLinkCard>
-              <MyLinkCard link="https://www.instagram.com/lekoarts.de" instagram>
+              <MyLinkCard link="https://www.instagram.com/lekoarts.de" type="instagram">
                 <Instagram />
                 {i18n.instagram}
               </MyLinkCard>
-              <MyLinkCard link="https://www.behance.net/lekoarts" behance>
+              <MyLinkCard link="https://www.behance.net/lekoarts" type="behance">
                 <Behance />
                 {i18n.behance}
               </MyLinkCard>
-              <MyLinkCard link="https://youtube.de/LekoArtsDE" youtube>
+              <MyLinkCard link="https://youtube.de/LekoArtsDE" type="youtube">
                 <YouTube />
                 {i18n.youtube}
               </MyLinkCard>

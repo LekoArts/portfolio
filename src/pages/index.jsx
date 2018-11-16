@@ -1,9 +1,7 @@
-/* eslint max-len: 0 */
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 import { Container, Layout, LocalizedLink, SkipNavContent, Button } from 'elements'
 import { Footer, FeaturedPost, FeaturedProject, Header } from 'components'
 

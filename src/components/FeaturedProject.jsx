@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { Spring, animated } from 'react-spring'
 import Img from 'gatsby-image'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 
 const ImageOverlay = styled.div`
   border-radius: ${props => props.theme.borderRadius.default};

@@ -1,4 +1,4 @@
-import { css } from 'react-emotion'
+import { css } from 'styled-components'
 import theme from '../../config/theme'
 
 const reset = css`
