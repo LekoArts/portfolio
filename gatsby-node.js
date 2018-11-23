@@ -8,6 +8,7 @@ const replaceTrailing = _path => (_path === `/` ? _path : _path.replace(/\/$/, `
 const replaceBoth = _path => _path.replace(/^\/|\/$/g, '')
 const localizedSlug = (_page, node) =>
   locales[node.lang].default ? `/${_page}/${node.uid}` : `/${locales[node.lang].path}/${_page}/${node.uid}`
+const wrapper = promise => promise.then(result => ({ result, error: null })).catch(error => ({ error, result: null }))
 
 // Insert additional info into the nodes for queries
 exports.onCreateNode = ({ node, actions }) => {
@@ -31,6 +32,7 @@ exports.onCreateNode = ({ node, actions }) => {
     createNodeField({ node, name: 'excerpt', value: excerpt })
     createNodeField({ node, name: 'sourceType', value: locales[node.lang].projects })
   }
+
   if (node.internal.type === 'PrismicBlogpost') {
     const data = JSON.parse(node.dataString)
     const allText = fullText(data).toString()
@@ -53,69 +55,61 @@ exports.onCreatePage = ({ page, actions }) => {
 
   // Only create one 404 page at /404.html
   if (page.path.includes('404')) {
-    return Promise.resolve()
+    return
   }
 
-  return new Promise(resolve => {
-    // First delete all pages
-    deletePage(page)
+  deletePage(page)
 
-    Object.keys(locales).map(lang => {
-      // Remove the trailing slash from the path, e.g. --> /blog
-      page.path = replaceTrailing(page.path)
+  Object.keys(locales).map(lang => {
+    // Remove the trailing slash from the path, e.g. --> /blog
+    page.path = replaceTrailing(page.path)
 
-      // Remove the leading AND traling slash from path, e.g. --> blog
-      const pageName = replaceBoth(page.path)
-      const localizedPath = locales[lang].default ? page.path : `${locales[lang].path}${page.path}`
+    // Remove the leading AND traling slash from path, e.g. --> blog
+    const pageName = replaceBoth(page.path)
+    const localizedPath = locales[lang].default ? page.path : `${locales[lang].path}${page.path}`
 
-      // This name is also used as "slug" (UID) in the Prismic backend. Result --> blog-de-de
-      const localizedName = `${pageName}-${locales[lang].locale}`
-      const i18n = locales[lang]
+    // This name is also used as "slug" (UID) in the Prismic backend. Result --> blog-de-de
+    const localizedName = `${pageName}-${locales[lang].locale}`
+    const i18n = locales[lang]
 
-      return createPage({
-        ...page,
-        path: localizedPath,
-        context: {
-          locale: lang,
-          name: localizedName,
-          i18n,
-        },
-      })
+    return createPage({
+      ...page,
+      path: localizedPath,
+      context: {
+        locale: lang,
+        name: localizedName,
+        i18n,
+      },
     })
-
-    resolve()
   })
 }
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  return new Promise((resolve, reject) => {
-    // Path to templates
-    const postTemplate = path.resolve('src/templates/post.jsx')
-    const projectTemplate = path.resolve('src/templates/project.jsx')
-    const categoryTemplate = path.resolve('src/templates/category.jsx')
-    const tagTemplate = path.resolve('src/templates/tag.jsx')
+  // Path to templates
+  const postTemplate = path.resolve('src/templates/post.jsx')
+  const projectTemplate = path.resolve('src/templates/project.jsx')
+  const categoryTemplate = path.resolve('src/templates/category.jsx')
+  const tagTemplate = path.resolve('src/templates/tag.jsx')
 
-    resolve(
-      graphql(`
-        {
-          ${gatsbyNodeGraphQL}
-        }
-      `).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
-        }
+  const { error, result } = await wrapper(
+    graphql(`
+      {
+        ${gatsbyNodeGraphQL}
+      }
+    `)
+  )
 
-        // Programatically create pages with templates
-        createPosts(result.data.posts.edges, createPage, postTemplate)
-        createProjects(result.data.projects.edges, createPage, projectTemplate)
-        createCategories(result.data.categories.edges, createPage, categoryTemplate)
-        createTags(result.data.tags.edges, createPage, tagTemplate)
-      })
-    )
-  })
+  if (!error) {
+    // Programatically create pages with templates
+    createPosts(result.data.posts.edges, createPage, postTemplate)
+    createProjects(result.data.projects.edges, createPage, projectTemplate)
+    createCategories(result.data.categories.edges, createPage, categoryTemplate)
+    createTags(result.data.tags.edges, createPage, tagTemplate)
+    return
+  }
+  console.log(error)
 }
 
 // Allow me to use something like: import { X } from 'directory' instead of '../../folder/directory'
