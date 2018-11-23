@@ -16,8 +16,7 @@ const prevNext = (list, item) => {
 
 const createPosts = (list, createPage, template) =>
   list.forEach(post => {
-    const samples = prevNext(list, post)
-    const { left, right } = samples
+    const { left, right } = prevNext(list, post)
 
     const {
       lang,
@@ -40,8 +39,7 @@ const createPosts = (list, createPage, template) =>
 
 const createProjects = (list, createPage, template) =>
   list.forEach(project => {
-    const samples = prevNext(list, project)
-    const { left, right } = samples
+    const { left, right } = prevNext(list, project)
 
     const {
       lang,
