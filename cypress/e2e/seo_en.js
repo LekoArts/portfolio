@@ -15,6 +15,6 @@ describe('SEO English', () => {
     cy.get('head meta[property="og:url"').should('have.attr', 'content', `${config.siteUrl}/${i18n['en-gb'].path}`)
   })
   it('Contains general og:image', () => {
-    cy.get('head meta[property="og:image"').should('have.attr', 'content', `${config.siteUrl}/social/banner.jpg`)
+    cy.get('head meta[property="og:image"').should('have.attr', 'content', `${config.siteUrl}/social/banner_en-gb.jpg`)
   })
 })
