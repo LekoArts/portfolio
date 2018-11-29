@@ -28,7 +28,7 @@ const SEO = props => {
   } else {
     title = i18n.siteTitle
     description = i18n.siteDescription
-    image = config.siteBanner
+    image = `${config.siteBanner}${i18n.locale}.jpg`
     imageWidth = config.siteBannerWidth
     imageHeight = config.siteBannerHeight
   }

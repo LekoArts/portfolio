@@ -3,7 +3,7 @@ module.exports = {
   siteTitleAlt: 'LekoArts',
   siteShortName: 'LekoArts',
   siteLogo: '/social/avatar.png',
-  siteBanner: '/social/banner.jpg',
+  siteBanner: '/social/banner_',
   siteBannerWidth: '776',
   siteBannerHeight: '382',
   siteUrl: 'https://www.lekoarts.de', // No trailing slash!
