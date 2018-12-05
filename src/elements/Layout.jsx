@@ -37,6 +37,7 @@ const Layout = ({ children, locale }) => {
         <React.Fragment>
           <GlobalStyle />
           <SEO i18n={i18n} />
+          <noscript>To browse this site, please enable JavaScript.</noscript>
           <SkipNavLink />
           <Navigation />
           {children}
