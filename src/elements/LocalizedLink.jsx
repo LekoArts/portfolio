@@ -7,7 +7,8 @@ import locales from '../../config/i18n'
 const LocalizedLink = ({ to, ...props }) => (
   <LocaleConsumer>
     {({ locale }) => {
-      const path = locales[locale].default ? to : `${locales[locale].path}${to}`
+      const isIndex = to === '/'
+      const path = locales[locale].default ? to : `${locales[locale].path}${isIndex ? '' : to}`
       return <Link {...props} to={path} />
     }}
   </LocaleConsumer>

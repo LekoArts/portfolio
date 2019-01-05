@@ -4,14 +4,18 @@ import PropTypes from 'prop-types'
 import config from '../../config/website'
 import locales from '../../config/i18n'
 
+const replaceTrailing = _path => _path.replace(/\/$/, ``)
+
 const SEO = props => {
   const { i18n, postNode, pathname, article, project } = props
 
   const localizedPath = locales[i18n.locale].default ? '' : `/${locales[i18n.locale].path}`
   const isGerman = !!locales[i18n.locale].default
   const homeURL = `${config.siteUrl}${localizedPath}`
-  const URL = `${config.siteUrl}${pathname}`
+  const URL = `${config.siteUrl}${replaceTrailing(pathname)}`
   const isBlog = URL === `${homeURL}/blog`
+  const slicedPathname = pathname === '/en' ? '/' : `${pathname}`.slice(3)
+  const alternateURL = isGerman ? replaceTrailing(`/en${pathname}`) : replaceTrailing(slicedPathname)
 
   let title
   let description
@@ -196,6 +200,10 @@ const SEO = props => {
     <Helmet>
       <html lang={i18n.htmlLang} />
       <title>{title}</title>
+      {!article && (
+        <link rel="alternate" hrefLang={isGerman ? 'en-gb' : 'de'} href={`${config.siteUrl}${alternateURL}`} />
+      )}
+      <link rel="alternate" hrefLang="x-default" href={URL} />
       <meta httpEquiv="content-language" content={i18n.locale} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
