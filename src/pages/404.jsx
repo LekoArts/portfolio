@@ -1,13 +1,12 @@
-/* eslint max-len: 0 */
-
 import React from 'react'
 import Helmet from 'react-helmet'
+import PropTypes from 'prop-types'
 import { Container, Layout } from 'elements'
 import { Footer, Header } from 'components'
 import config from '../../config/website'
 
-const ErrorPage = () => (
-  <Layout locale="de-de">
+const ErrorPage = ({ location }) => (
+  <Layout locale="de-de" pathname={location.pathname}>
     <Helmet title={`404 | ${config.siteTitleAlt}`} />
     <Header title="404" />
     <Container>
@@ -63,3 +62,7 @@ const ErrorPage = () => (
 )
 
 export default ErrorPage
+
+ErrorPage.propTypes = {
+  location: PropTypes.object.isRequired,
+}

@@ -11,8 +11,9 @@ const Imprint = ({
     content: { data: i },
   },
   pageContext: { locale },
+  location,
 }) => (
-  <Layout locale={locale}>
+  <Layout locale={locale} pathname={location.pathname}>
     <Helmet title={`${i.title.text} | ${config.siteTitleAlt}`} />
     <Header title={i.title.text}>{i.description.text}</Header>
     <div style={{ marginTop: '3rem' }}>
@@ -35,6 +36,7 @@ Imprint.propTypes = {
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

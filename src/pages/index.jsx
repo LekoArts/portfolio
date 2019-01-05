@@ -41,8 +41,9 @@ const Index = ({
     posts: { edges: postEdges },
   },
   pageContext: { locale, i18n },
+  location,
 }) => (
-  <Layout locale={locale}>
+  <Layout locale={locale} pathname={location.pathname}>
     <Header big html={`<h1>${home.hero_title}</h1>`} />
     <SkipNavContent>
       <Container type="big">
@@ -110,6 +111,7 @@ Index.propTypes = {
     locale: PropTypes.string.isRequired,
     i18n: PropTypes.object.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

@@ -16,11 +16,11 @@ const CategoriesContainer = styled(Container)`
   }
 `
 
-const Categories = ({ data: { categories, posts }, pageContext: { locale, i18n } }) => {
+const Categories = ({ data: { categories, posts }, pageContext: { locale, i18n }, location }) => {
   const allCategories = categories.edges.map(category => category.node.data.kategorie)
 
   return (
-    <Layout locale={locale}>
+    <Layout locale={locale} pathname={location.pathname}>
       <Helmet title={`${i18n.categories} | ${config.siteTitleAlt}`} />
       <Header title={i18n.categories}>
         {posts.totalCount} {i18n.pageCategoriesOne} {categories.totalCount} {i18n.pageCategoriesTwo}
@@ -54,6 +54,7 @@ Categories.propTypes = {
     locale: PropTypes.string.isRequired,
     i18n: PropTypes.object.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

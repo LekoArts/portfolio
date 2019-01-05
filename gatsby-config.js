@@ -61,7 +61,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-catch-links',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/en/offline-plugin-app-shell-fallback'],
+      },
+    },
     'gatsby-plugin-lodash',
     {
       resolve: 'gatsby-plugin-manifest',

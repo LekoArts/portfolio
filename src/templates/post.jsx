@@ -85,7 +85,7 @@ const Cat = styled.span`
 
 const Outbound = Button.withComponent('a')
 
-const Post = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismicBlogpost: postNode } }) => {
+const Post = ({ pageContext: { left, right, locale, i18n }, data: { prismicBlogpost: postNode }, location }) => {
   const post = postNode.data
   const { kategorie } = post.category.document[0].data
   const { fluid } = post.cover.localFile.childImageSharp
@@ -94,8 +94,8 @@ const Post = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismi
     tags = post.tags.map(tag => tag.tag.document[0].data.tag)
   }
   return (
-    <Layout locale={locale}>
-      <SEO i18n={i18n} postPath={slug} postNode={postNode} postSEO />
+    <Layout locale={locale} pathname={location.pathname} customSEO>
+      <SEO i18n={i18n} postNode={postNode} pathname={location.pathname} article />
       <Wrapper>
         <Hero>
           <Spring
@@ -162,6 +162,7 @@ Post.propTypes = {
   data: PropTypes.shape({
     prismicBlogpost: PropTypes.object.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

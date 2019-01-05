@@ -29,14 +29,14 @@ const GlobalStyle = createGlobalStyle`
 
 const { Provider: LocaleProvider, Consumer: LocaleConsumer } = React.createContext()
 
-const Layout = ({ children, locale }) => {
+const Layout = ({ children, locale, pathname, customSEO }) => {
   const i18n = locales[locale]
   return (
     <LocaleProvider value={{ locale, i18n }}>
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <GlobalStyle />
-          <SEO i18n={i18n} />
+          {!customSEO && <SEO i18n={i18n} pathname={pathname} />}
           <noscript>To browse this site, please enable JavaScript.</noscript>
           <SkipNavLink />
           <Navigation />
@@ -54,4 +54,10 @@ export { LocaleConsumer }
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
   locale: PropTypes.string.isRequired,
+  pathname: PropTypes.string.isRequired,
+  customSEO: PropTypes.bool,
+}
+
+Layout.defaultProps = {
+  customSEO: false,
 }

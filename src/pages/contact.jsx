@@ -54,8 +54,9 @@ const Contact = ({
     content: { data: c },
   },
   pageContext: { locale, i18n },
+  location,
 }) => (
-  <Layout locale={locale}>
+  <Layout locale={locale} pathname={location.pathname}>
     <Helmet title={`${c.title.text} | ${config.siteTitleAlt}`} />
     <Header title={c.title.text}>{c.description.text}</Header>
     <Content>
@@ -112,6 +113,7 @@ Contact.propTypes = {
     locale: PropTypes.string.isRequired,
     i18n: PropTypes.object.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

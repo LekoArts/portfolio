@@ -17,8 +17,9 @@ const Category = ({
   data: {
     allPrismicBlogpost: { edges, totalCount },
   },
+  location,
 }) => (
-  <Layout locale={locale}>
+  <Layout locale={locale} pathname={location.pathname}>
     <Helmet title={`${i18n.category}: ${category} | ${config.siteTitleAlt}`} />
     <Header title={category}>
       {totalCount} {totalCount === 1 ? i18n.post : i18n.posts} {totalCount === 1 ? i18n.belongs : i18n.belong}{' '}
@@ -66,6 +67,7 @@ Category.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

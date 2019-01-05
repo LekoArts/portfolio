@@ -16,11 +16,11 @@ const TagsContainer = styled(Container)`
   }
 `
 
-const TagsPage = ({ data: { tags, posts }, pageContext: { locale, i18n } }) => {
+const TagsPage = ({ data: { tags, posts }, pageContext: { locale, i18n }, location }) => {
   const allTags = tags.edges.map(tag => tag.node.data.tag)
 
   return (
-    <Layout locale={locale}>
+    <Layout locale={locale} pathname={location.pathname}>
       <Helmet title={`Tags | ${config.siteTitleAlt}`} />
       <Header title="Tags">
         {posts.totalCount} {i18n.pageTagsOne} {tags.totalCount} {i18n.pageTagsTwo}
@@ -54,6 +54,7 @@ TagsPage.propTypes = {
     locale: PropTypes.string.isRequired,
     i18n: PropTypes.object.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

@@ -9,6 +9,7 @@ module.exports = {
     siteTitle: 'LekoArts - Kommunikationsdesigner & Front-End Entwickler',
     siteDescription:
       'Hi! Ich heiße Lennart und bin sowohl autodidaktischer als auch leidenschaftlicher Kommunikationsdesigner & Front-End Entwickler. Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus deiner Marke herauszuholen.',
+    siteHeadline: 'Kommunikationsdesigner & Front-End Entwickler',
     german: 'Deutsch',
     english: 'Englisch',
     imprint: 'Impressum',
@@ -58,6 +59,7 @@ module.exports = {
     dateFormat: 'DD/MM/YYYY',
     siteTitle: 'LekoArts - Graphic Designer & Front-End Developer',
     siteDescription: `Hi! I'm Lennart and I'm a self-taught and passionate graphic designer & front-end developer. I design, create and develop cross-platform design concepts to get the most out of your brand.`,
+    siteHeadline: 'Graphic Designer & Front-End Developer',
     german: 'German',
     english: 'English',
     imprint: 'Imprint',

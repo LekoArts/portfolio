@@ -3,6 +3,7 @@ module.exports = {
   siteTitleAlt: 'LekoArts',
   siteShortName: 'LekoArts',
   siteLogo: '/social/avatar.png',
+  siteLogoSmall: '/social/avatar_small.png',
   siteBanner: '/social/banner_',
   siteBannerWidth: '776',
   siteBannerHeight: '382',

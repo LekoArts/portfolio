@@ -74,12 +74,12 @@ const CardWrapper = styled.div`
   }
 `
 
-const Project = ({ pageContext: { slug, left, right, locale, i18n }, data: { prismicProjekt: projektNode } }) => {
+const Project = ({ pageContext: { left, right, locale, i18n }, data: { prismicProjekt: projektNode }, location }) => {
   const projekt = projektNode.data
   const { fluid } = projekt.cover.localFile.childImageSharp
   return (
-    <Layout locale={locale}>
-      <SEO i18n={i18n} postPath={slug} postNode={projektNode} postSEO project />
+    <Layout locale={locale} pathname={location.pathname} customSEO>
+      <SEO i18n={i18n} postNode={projektNode} pathname={location.pathname} article project />
       <Wrapper>
         <Hero>
           <Spring
@@ -140,6 +140,7 @@ Project.propTypes = {
   data: PropTypes.shape({
     prismicProjekt: PropTypes.object.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

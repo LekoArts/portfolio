@@ -21,8 +21,9 @@ const Blog = ({
     content: { data: b },
   },
   pageContext: { locale },
+  location,
 }) => (
-  <Layout locale={locale}>
+  <Layout locale={locale} pathname={location.pathname}>
     <Helmet title={`${b.title.text} | ${config.siteTitleAlt}`} />
     <Header title={b.title.text}>{b.description.text}</Header>
     <SkipNavContent>
@@ -62,6 +63,7 @@ Blog.propTypes = {
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`

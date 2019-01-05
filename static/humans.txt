@@ -1,0 +1,10 @@
+/* TEAM */
+
+Creator: LekoArts
+URL: https://www.lekoarts.de
+Description: Hi! I'm Lennart and I'm a self-taught and passionate graphic designer & front-end developer
+
+/* SITE */
+
+Standards: HTML5, CSS
+Components: Gatsby, Prismic.io

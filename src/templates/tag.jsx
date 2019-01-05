@@ -17,8 +17,9 @@ const Tag = ({
   data: {
     allPrismicBlogpost: { edges, totalCount },
   },
+  location,
 }) => (
-  <Layout locale={locale}>
+  <Layout locale={locale} pathname={location.pathname}>
     <Helmet title={`Tag: ${tag} | ${config.siteTitleAlt}`} />
     <Header title={tag}>
       {totalCount} {totalCount === 1 ? i18n.post : i18n.posts} {totalCount === 1 ? i18n.was : i18n.were}{' '}
@@ -64,6 +65,7 @@ Tag.propTypes = {
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`
