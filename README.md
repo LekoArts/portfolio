@@ -74,10 +74,6 @@
 - Cypress.io for E2E-testing
 - CircleCI
 
-## Lighthouse scores
-
-![Lighthouse scores](https://lighthouse.now.sh/?perf=100&pwa=100&a11y=100&bp=100&seo=100)
-
 ## License
 
 Only for educational purposes! You are **not** allowed to use this site publicly and/or commercially. 
