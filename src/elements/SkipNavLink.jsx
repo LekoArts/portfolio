@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const SkipNavID = 'skip-nav'
@@ -29,7 +30,7 @@ const StyledLink = styled.a`
   }
 `
 
-const SkipNavLink = ({ children = 'Skip to content', ...props }) => (
+const SkipNavLink = ({ children, ...props }) => (
   <StyledLink {...props} href={`#${SkipNavID}`}>
     {children}
   </StyledLink>
@@ -38,3 +39,11 @@ const SkipNavLink = ({ children = 'Skip to content', ...props }) => (
 const SkipNavContent = props => <main {...props} id={SkipNavID} />
 
 export { SkipNavLink, SkipNavContent, SkipNavID }
+
+SkipNavLink.propTypes = {
+  children: PropTypes.node,
+}
+
+SkipNavLink.defaultProps = {
+  children: 'Skip to content',
+}

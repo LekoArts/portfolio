@@ -32,25 +32,12 @@ module.exports = {
         htmlSerializer: () => prismicHtmlSerializer,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: 'src',
-        path: `${__dirname}/src/`,
-      },
-    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: config.googleAnalyticsID,
         anonymize: true,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-nprogress',
-      options: {
-        color: config.themeColor,
       },
     },
     'gatsby-plugin-sharp',
@@ -64,7 +51,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/en/offline-plugin-app-shell-fallback'],
+        exclude: ['/en/offline-plugin-app-shell-fallback', '/imprint', '/en/imprint'],
       },
     },
     'gatsby-plugin-lodash',
