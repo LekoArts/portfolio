@@ -17,4 +17,11 @@ describe('SEO German', () => {
   it('Contains general og:image', () => {
     cy.get('head meta[property="og:image"').should('have.attr', 'content', `${config.siteUrl}/social/banner_de-de.jpg`)
   })
+  it('Contains correct alternative lang URL', () => {
+    cy.get('head link[rel="alternate"]')
+      .should('have.attr', 'href', `${config.siteUrl}/en`)
+      .visit('/blog')
+      .get('head link[rel="alternate"]')
+      .should('have.attr', 'href', `${config.siteUrl}/en/blog`)
+  })
 })
