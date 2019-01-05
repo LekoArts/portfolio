@@ -112,7 +112,41 @@ const SEO = props => {
   }
 
   let schemaArticle = null
-  let breadcrumbArticleItem = {}
+
+  const itemListElement = [
+    {
+      '@type': 'ListItem',
+      item: {
+        '@id': homeURL,
+        name: 'Homepage',
+      },
+      position: 1,
+    },
+    {
+      '@type': 'ListItem',
+      item: {
+        '@id': `${homeURL}/projects`,
+        name: 'Projects',
+      },
+      position: 2,
+    },
+    {
+      '@type': 'ListItem',
+      item: {
+        '@id': `${homeURL}/blog`,
+        name: 'Blog',
+      },
+      position: 3,
+    },
+    {
+      '@type': 'ListItem',
+      item: {
+        '@id': `${homeURL}/contact`,
+        name: 'Contact',
+      },
+      position: 4,
+    },
+  ]
 
   if (article) {
     schemaArticle = {
@@ -144,14 +178,14 @@ const SEO = props => {
       },
       mainEntityOfPage: URL,
     }
-    breadcrumbArticleItem = {
+    itemListElement.push({
       '@type': 'ListItem',
       item: {
         '@id': URL,
         name: title,
       },
       position: 5,
-    }
+    })
   }
 
   const breadcrumb = {
@@ -159,41 +193,7 @@ const SEO = props => {
     '@type': 'BreadcrumbList',
     description: 'Breadcrumbs list',
     name: 'Breadcrumbs',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        item: {
-          '@id': homeURL,
-          name: 'Homepage',
-        },
-        position: 1,
-      },
-      {
-        '@type': 'ListItem',
-        item: {
-          '@id': `${homeURL}/projects`,
-          name: 'Projects',
-        },
-        position: 2,
-      },
-      {
-        '@type': 'ListItem',
-        item: {
-          '@id': `${homeURL}/blog`,
-          name: 'Blog',
-        },
-        position: 3,
-      },
-      {
-        '@type': 'ListItem',
-        item: {
-          '@id': `${homeURL}/contact`,
-          name: 'Contact',
-        },
-        position: 4,
-      },
-      ...breadcrumbArticleItem,
-    ],
+    itemListElement,
   }
 
   return (
