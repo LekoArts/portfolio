@@ -37,7 +37,6 @@ const Layout = ({ children, locale, pathname, customSEO }) => {
         <React.Fragment>
           <GlobalStyle />
           {!customSEO && <SEO i18n={i18n} pathname={pathname} />}
-          <noscript>To browse this site, please enable JavaScript.</noscript>
           <SkipNavLink />
           <Navigation />
           {children}
