@@ -1,3 +1,5 @@
+const website = require('./website')
+
 module.exports = {
   'de-de': {
     default: true,
@@ -6,10 +8,9 @@ module.exports = {
     htmlLang: 'de',
     ogLang: 'de_DE',
     dateFormat: 'DD.MM.YYYY',
-    siteTitle: 'LekoArts - Kommunikationsdesigner & Front-End Entwickler',
-    siteDescription:
-      'Hi! Ich heiße Lennart und bin sowohl autodidaktischer als auch leidenschaftlicher Kommunikationsdesigner & Front-End Entwickler. Ich entwerfe, gestalte und entwickle plattformübergreifende Design-Konzepte, um das volle Potential aus deiner Marke herauszuholen.',
-    siteHeadline: 'Kommunikationsdesigner & Front-End Entwickler',
+    siteTitle: website.siteTitle,
+    siteDescription: website.siteDescription,
+    siteHeadline: website.siteHeadline,
     german: 'Deutsch',
     english: 'Englisch',
     imprint: 'Impressum',

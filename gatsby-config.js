@@ -2,15 +2,41 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const config = require('./config/website')
-const i18n = require('./config/i18n')
+const {
+  siteTitle,
+  siteTitleAlt,
+  siteDescription,
+  siteShortName,
+  siteUrl,
+  siteLogo,
+  siteLogoSmall,
+  siteBanner,
+  siteBannerWidth,
+  siteBannerHeight,
+  twitter,
+  facebook,
+  themeColor,
+  backgroundColor,
+  googleAnalyticsID,
+} = require('./config/website')
 const prismicLinkResolver = require('./src/gatsby/linkResolver')
 const prismicHtmlSerializer = require('./src/gatsby/htmlSerializer')
 
 module.exports = {
   // Metadata
   siteMetadata: {
-    siteUrl: config.siteUrl,
+    siteTitle,
+    siteTitleAlt,
+    siteDescription,
+    siteShortName,
+    siteUrl,
+    siteLogo,
+    siteLogoSmall,
+    siteBanner,
+    siteBannerWidth,
+    siteBannerHeight,
+    twitter,
+    facebook,
   },
   // Plugins
   plugins: [
@@ -36,7 +62,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: config.googleAnalyticsID,
+        trackingId: googleAnalyticsID,
         anonymize: true,
       },
     },
@@ -58,13 +84,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: i18n['de-de'].siteTitle,
-        short_name: config.siteShortName,
+        name: siteTitle,
+        short_name: siteShortName,
         lang: 'de-DE',
-        description: i18n['de-de'].siteDescription,
+        description: siteDescription,
         start_url: '/',
-        background_color: config.backgroundColor,
-        theme_color: config.themeColor,
+        background_color: backgroundColor,
+        theme_color: themeColor,
         display: 'standalone',
         icons: [
           {

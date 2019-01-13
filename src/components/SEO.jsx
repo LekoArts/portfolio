@@ -1,13 +1,16 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
-import config from '../../config/website'
+import { format } from 'date-fns'
+import { StaticQuery, graphql } from 'gatsby'
 import locales from '../../config/i18n'
 
 const replaceTrailing = _path => _path.replace(/\/$/, ``)
 
-const SEO = props => {
-  const { i18n, postNode, pathname, article, project } = props
+const Head = props => {
+  const { i18n, postNode, pathname, article, project, data } = props
+  const { buildTime, config } = data.site
+  const bt = format(buildTime, 'YYYY-MM-DD')
 
   const localizedPath = locales[i18n.locale].default ? '' : `/${locales[i18n.locale].path}`
   const isGerman = !!locales[i18n.locale].default
@@ -36,7 +39,7 @@ const SEO = props => {
   } else {
     title = i18n.siteTitle
     description = i18n.siteDescription
-    image = `${config.siteUrl}${config.siteBanner}${i18n.locale}.jpg`
+    image = `${config.siteBanner}${i18n.locale}.jpg`
     imageWidth = config.siteBannerWidth
     imageHeight = config.siteBannerHeight
   }
@@ -52,7 +55,7 @@ const SEO = props => {
       postalCode: '',
     },
     name: i18n.siteTitle,
-    alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
+    alternateName: config.siteTitleAlt,
     description: i18n.siteDescription,
     url: homeURL,
     email: 'hello@lekoarts.de',
@@ -61,13 +64,13 @@ const SEO = props => {
     foundingLocation: 'Germany',
     image: {
       '@type': 'ImageObject',
-      url: config.siteUrl + config.siteLogo,
+      url: config.siteLogo,
       height: '512',
       width: '512',
     },
     logo: {
       '@type': 'ImageObject',
-      url: config.siteUrl + config.siteLogoSmall,
+      url: config.siteLogoSmall,
       height: '60',
       width: '60',
     },
@@ -103,8 +106,8 @@ const SEO = props => {
     publisher: {
       '@id': `${config.siteUrl}/#creator`,
     },
-    datePublished: '2017-12-08T10:30:00+01:00',
-    dateModified: '2017-12-08T10:30:00+01:00',
+    datePublished: '2017-12-08',
+    dateModified: bt,
     image: {
       '@type': 'ImageObject',
       url: image,
@@ -246,18 +249,43 @@ const SEO = props => {
   )
 }
 
+const SEO = props => <StaticQuery query={querySEO} render={data => <Head {...props} data={data} />} />
+
 export default SEO
 
-SEO.propTypes = {
+Head.propTypes = {
   i18n: PropTypes.object.isRequired,
   pathname: PropTypes.string.isRequired,
+  data: PropTypes.any.isRequired,
   project: PropTypes.bool,
   postNode: PropTypes.object,
   article: PropTypes.bool,
 }
 
-SEO.defaultProps = {
+Head.defaultProps = {
   project: false,
   postNode: null,
   article: false,
 }
+
+const querySEO = graphql`
+  query SEO {
+    site {
+      buildTime(formatString: "YYYY-MM-DD")
+      config: siteMetadata {
+        siteTitle
+        siteTitleAlt
+        siteDescription
+        siteShortName
+        siteUrl
+        siteLogo
+        siteLogoSmall
+        siteBanner
+        siteBannerWidth
+        siteBannerHeight
+        twitter
+        facebook
+      }
+    }
+  }
+`
