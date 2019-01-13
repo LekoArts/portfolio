@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import { Spring, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
@@ -184,3 +184,27 @@ FeaturedProject.propTypes = {
 FeaturedProject.defaultProps = {
   customer: '',
 }
+
+export const query = graphql`
+  fragment FeaturedProject on PrismicProjekt {
+    uid
+    fields {
+      slug
+    }
+    data {
+      title {
+        text
+      }
+      customer
+      cover {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
+      }
+    }
+  }
+`

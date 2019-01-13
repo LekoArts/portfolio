@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import { localizedDate } from 'utilities'
@@ -178,3 +178,34 @@ FeaturedPost.propTypes = {
 FeaturedPost.defaultProps = {
   category: 'Keine',
 }
+
+export const query = graphql`
+  fragment FeaturedPost on PrismicBlogpost {
+    uid
+    fields {
+      slug
+    }
+    data {
+      title {
+        text
+      }
+      date
+      category {
+        document {
+          data {
+            kategorie
+          }
+        }
+      }
+      cover {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
+      }
+    }
+  }
+`

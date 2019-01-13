@@ -134,25 +134,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          uid
-          fields {
-            slug
-          }
-          data {
-            title {
-              text
-            }
-            customer
-            cover {
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                  }
-                }
-              }
-            }
-          }
+          ...FeaturedProject
         }
       }
     }
@@ -163,32 +145,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          uid
-          fields {
-            slug
-          }
-          data {
-            title {
-              text
-            }
-            date
-            category {
-              document {
-                data {
-                  kategorie
-                }
-              }
-            }
-            cover {
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                  }
-                }
-              }
-            }
-          }
+          ...FeaturedPost
         }
       }
     }

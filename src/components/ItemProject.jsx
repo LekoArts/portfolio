@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { Spring, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
@@ -91,3 +91,27 @@ ItemProject.propTypes = {
   title: PropTypes.string.isRequired,
   delay: PropTypes.number.isRequired,
 }
+
+export const query = graphql`
+  fragment ItemProject on PrismicProjekt {
+    uid
+    fields {
+      slug
+    }
+    data {
+      title {
+        text
+      }
+      customer
+      cover {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 900, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
+      }
+    }
+  }
+`

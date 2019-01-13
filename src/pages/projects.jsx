@@ -79,25 +79,7 @@ export const pageQuery = graphql`
     allPrismicProjekt(sort: { fields: [data___date], order: DESC }, filter: { lang: { eq: $locale } }) {
       edges {
         node {
-          uid
-          fields {
-            slug
-          }
-          data {
-            title {
-              text
-            }
-            customer
-            cover {
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 900, quality: 90, traceSVG: { color: "#2B2B2F" }) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                  }
-                }
-              }
-            }
-          }
+          ...ItemProject
         }
       }
     }

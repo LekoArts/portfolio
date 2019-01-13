@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import kebabCase from 'lodash/kebabCase'
 import { LocalizedLink } from 'elements'
@@ -132,3 +132,36 @@ ItemBlog.propTypes = {
   timeToRead: PropTypes.number.isRequired,
   excerpt: PropTypes.string.isRequired,
 }
+
+export const query = graphql`
+  fragment ItemBlog on PrismicBlogpost {
+    uid
+    fields {
+      slug
+      timeToRead
+      excerpt
+    }
+    data {
+      title {
+        text
+      }
+      date
+      category {
+        document {
+          data {
+            kategorie
+          }
+        }
+      }
+      cover {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 900, quality: 85, traceSVG: { color: "#2B2B2F" }) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
+      }
+    }
+  }
+`

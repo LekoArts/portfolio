@@ -84,34 +84,7 @@ export const pageQuery = graphql`
     allPrismicBlogpost(sort: { fields: [data___date], order: DESC }, filter: { lang: { eq: $locale } }) {
       edges {
         node {
-          uid
-          fields {
-            slug
-            timeToRead
-            excerpt
-          }
-          data {
-            title {
-              text
-            }
-            date
-            category {
-              document {
-                data {
-                  kategorie
-                }
-              }
-            }
-            cover {
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 900, quality: 85, traceSVG: { color: "#2B2B2F" }) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                  }
-                }
-              }
-            }
-          }
+          ...ItemBlog
         }
       }
     }
