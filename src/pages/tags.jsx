@@ -7,6 +7,7 @@ import { animated, config as springConfig, Spring } from 'react-spring'
 import { Container, Layout, SkipNavContent } from 'elements'
 import { Footer, Header, Tags } from 'components'
 import config from '../../config/website'
+import { LocaleConsumer } from '../elements/Layout'
 
 const TagsContainer = styled(Container)`
   margin: 4rem auto;
@@ -16,15 +17,19 @@ const TagsContainer = styled(Container)`
   }
 `
 
-const TagsPage = ({ data: { tags, posts }, pageContext: { locale, i18n }, location }) => {
+const TagsPage = ({ data: { tags, posts }, pageContext: { locale }, location }) => {
   const allTags = tags.edges.map(tag => tag.node.data.tag)
 
   return (
     <Layout locale={locale} pathname={location.pathname}>
       <Helmet title={`Tags | ${config.siteTitleAlt}`} />
-      <Header title="Tags">
-        {posts.totalCount} {i18n.pageTagsOne} {tags.totalCount} {i18n.pageTagsTwo}
-      </Header>
+      <LocaleConsumer>
+        {({ i18n }) => (
+          <Header title="Tags">
+            {posts.totalCount} {i18n.page_tags_one} {tags.totalCount} {i18n.page_tags_two}
+          </Header>
+        )}
+      </LocaleConsumer>
       <SkipNavContent>
         <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
           {props => (
@@ -52,7 +57,6 @@ TagsPage.propTypes = {
   }).isRequired,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
-    i18n: PropTypes.object.isRequired,
   }).isRequired,
   location: PropTypes.object.isRequired,
 }

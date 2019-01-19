@@ -22,7 +22,6 @@ const createPosts = (list, createPage, template) =>
       lang,
       fields: { slug },
     } = post.node
-    const i18n = locales[lang]
 
     createPage({
       path: slug,
@@ -30,7 +29,6 @@ const createPosts = (list, createPage, template) =>
       context: {
         slug,
         locale: lang,
-        i18n,
         left,
         right,
       },
@@ -45,7 +43,6 @@ const createProjects = (list, createPage, template) =>
       lang,
       fields: { slug },
     } = project.node
-    const i18n = locales[lang]
 
     createPage({
       path: slug,
@@ -53,7 +50,6 @@ const createProjects = (list, createPage, template) =>
       context: {
         slug,
         locale: lang,
-        i18n,
         left,
         right,
       },
@@ -67,7 +63,6 @@ const createCategories = (list, createPage, template) =>
     const localizedPath = locales[lang].default
       ? `/categories/${_.kebabCase(category)}`
       : `/${locales[lang].path}/categories/${_.kebabCase(category)}`
-    const i18n = locales[lang]
 
     createPage({
       path: localizedPath,
@@ -75,7 +70,6 @@ const createCategories = (list, createPage, template) =>
       context: {
         category,
         locale: lang,
-        i18n,
       },
     })
   })
@@ -87,7 +81,6 @@ const createTags = (list, createPage, template) =>
     const localizedPath = locales[lang].default
       ? `/tags/${_.kebabCase(tag)}`
       : `/${locales[lang].path}/tags/${_.kebabCase(tag)}`
-    const i18n = locales[lang]
 
     createPage({
       path: localizedPath,
@@ -95,7 +88,6 @@ const createTags = (list, createPage, template) =>
       context: {
         tag,
         locale: lang,
-        i18n,
       },
     })
   })

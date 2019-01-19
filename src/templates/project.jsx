@@ -7,6 +7,7 @@ import { graphql } from 'gatsby'
 import { Container, Content, Line, Wave, Layout, Hero, InfoText, LocalizedLink, Button } from 'elements'
 import { SEO, Suggestions, Footer } from 'components'
 import { Card } from 'components/Card'
+import { LocaleConsumer } from '../elements/Layout'
 
 const pulse = keyframes`
   0% {
@@ -74,55 +75,61 @@ const CardWrapper = styled.div`
   }
 `
 
-const Project = ({ pageContext: { left, right, locale, i18n }, data: { prismicProjekt: projektNode }, location }) => {
+const Project = ({ pageContext: { left, right, locale }, data: { prismicProjekt: projektNode }, location }) => {
   const projekt = projektNode.data
   const { fluid } = projekt.cover.localFile.childImageSharp
   return (
     <Layout locale={locale} pathname={location.pathname} customSEO>
-      <SEO i18n={i18n} postNode={projektNode} pathname={location.pathname} article project />
-      <Wrapper>
-        <Hero>
-          <Spring
-            native
-            from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
-            to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
-          >
-            {props => <animated.h1 style={props}>{projekt.title.text}</animated.h1>}
-          </Spring>
-        </Hero>
-        <Wave />
-        <Img fluid={fluid} />
-      </Wrapper>
-      <Container>
-        <CardWrapper>
-          <Card>
-            <h2>{i18n.customer}</h2>
-            {projekt.customer}
-          </Card>
-          <Card>
-            <h2>{i18n.task}</h2>
-            {projekt.task}
-          </Card>
-          <Card>
-            <h2>{i18n.period}</h2>
-            {projekt.time}
-          </Card>
-        </CardWrapper>
-      </Container>
-      <Content sliceZone={projektNode.data.body} />
-      <Container>
-        <Line aria-hidden="true" />
-        <InfoText>
-          {i18n.more} {i18n.projects}
-        </InfoText>
-        <Suggestions left={left} right={right} cardstyle="primary" />
-      </Container>
-      <Footer>
-        <h1>{i18n.getStarted}</h1>
-        <Button as={LocalizedLink} to="/contact" type="primary" role="button">
-          {i18n.startProject}
-        </Button>
-      </Footer>
+      <LocaleConsumer>
+        {({ i18n }) => (
+          <>
+            <SEO i18n={i18n} postNode={projektNode} pathname={location.pathname} article project />
+            <Wrapper>
+              <Hero>
+                <Spring
+                  native
+                  from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
+                  to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+                >
+                  {props => <animated.h1 style={props}>{projekt.title.text}</animated.h1>}
+                </Spring>
+              </Hero>
+              <Wave />
+              <Img fluid={fluid} />
+            </Wrapper>
+            <Container>
+              <CardWrapper>
+                <Card>
+                  <h2>{i18n.customer}</h2>
+                  {projekt.customer}
+                </Card>
+                <Card>
+                  <h2>{i18n.task}</h2>
+                  {projekt.task}
+                </Card>
+                <Card>
+                  <h2>{i18n.period}</h2>
+                  {projekt.time}
+                </Card>
+              </CardWrapper>
+            </Container>
+            <Content sliceZone={projektNode.data.body} />
+            <Container>
+              <Line aria-hidden="true" />
+              <InfoText>
+                {i18n.more} {i18n.projects}
+              </InfoText>
+              <Suggestions left={left} right={right} cardstyle="primary" />
+            </Container>
+            <Footer>
+              <h1>{i18n.get_started}</h1>
+              <Button as={LocalizedLink} to="/contact" type="primary" role="button">
+                {i18n.start_project}
+              </Button>
+            </Footer>
+          </>
+        )}
+      </LocaleConsumer>
     </Layout>
   )
 }
@@ -135,7 +142,6 @@ Project.propTypes = {
     left: PropTypes.object.isRequired,
     right: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
-    i18n: PropTypes.object.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     prismicProjekt: PropTypes.object.isRequired,
@@ -148,7 +154,6 @@ export const pageQuery = graphql`
     prismicProjekt(fields: { slug: { eq: $slug } }) {
       fields {
         slug
-        sourceType
         excerpt
       }
       first_publication_date

@@ -55,7 +55,7 @@ const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, e
               <h1>{title}</h1>
             </Link>
             <Statistics>
-              {localizedDate(date, locale)} &mdash; {timeToRead} {i18n.minutes} {i18n.readingTime} &mdash;{' '}
+              {localizedDate(date, locale)} &mdash; {timeToRead} {i18n.minutes} {i18n.reading_time} &mdash;{' '}
               <Cat>{i18n.category}: </Cat>
               <LocalizedLink to={`/categories/${kebabCase(category)}`}>{category}</LocalizedLink>
             </Statistics>

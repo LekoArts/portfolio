@@ -1,7 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
-import { format } from 'date-fns'
 import { StaticQuery, graphql } from 'gatsby'
 import locales from '../../config/i18n'
 
@@ -10,7 +9,6 @@ const replaceTrailing = _path => _path.replace(/\/$/, ``)
 const Head = props => {
   const { i18n, postNode, pathname, article, project, data } = props
   const { buildTime, config } = data.site
-  const bt = format(buildTime, 'YYYY-MM-DD')
 
   const localizedPath = locales[i18n.locale].default ? '' : `/${locales[i18n.locale].path}`
   const isGerman = !!locales[i18n.locale].default
@@ -25,13 +23,14 @@ const Head = props => {
   let image
   let imageWidth
   let imageHeight
+
   if (article) {
     const postMeta = postNode.data
     const postImage = postMeta.cover.localFile.childImageSharp.resize
 
     title = project
-      ? `${postMeta.customer}: ${postMeta.title.text} – ${postNode.fields.sourceType} | ${config.siteTitleAlt}`
-      : `${postMeta.title.text} – ${postNode.fields.sourceType} | ${config.siteTitleAlt}`
+      ? `${postMeta.customer}: ${postMeta.title.text} – ${i18n.projects} | ${config.siteTitleAlt}`
+      : `${postMeta.title.text} – Blog | ${config.siteTitleAlt}`
     description = `${postNode.fields.excerpt}...`
     image = `${config.siteUrl}${postImage.src}`
     imageWidth = postImage.width
@@ -107,7 +106,7 @@ const Head = props => {
       '@id': `${config.siteUrl}/#creator`,
     },
     datePublished: '2017-12-08',
-    dateModified: bt,
+    dateModified: buildTime,
     image: {
       '@type': 'ImageObject',
       url: image,

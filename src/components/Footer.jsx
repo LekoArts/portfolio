@@ -181,13 +181,20 @@ const Footer = ({ children }) => {
                   </LocalizedLink>
                 </Item>
                 <Copyright>
-                  Copyright © {date}. LekoArts. {i18n.footerNote}.
+                  Copyright © {date}. LekoArts. {i18n.footer_note}.
                 </Copyright>
               </Right>
             </Content>
             <LanguageWrapper>
-              <LanguageBox currentLocale={locale}>
-                {i18n.languages}: <Link to="/">{i18n.german}</Link> – <Link to="/en">{i18n.english}</Link>
+              <LanguageBox lang={locale} currentLocale={locale}>
+                {i18n.languages}:{' '}
+                <Link hrefLang="de-de" to="/">
+                  {i18n.german}
+                </Link>{' '}
+                –{' '}
+                <Link hrefLang="en-gb" to="/en">
+                  {i18n.english}
+                </Link>
               </LanguageBox>
             </LanguageWrapper>
           </Container>

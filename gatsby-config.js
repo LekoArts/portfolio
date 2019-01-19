@@ -2,41 +2,25 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const {
-  siteTitle,
-  siteTitleAlt,
-  siteDescription,
-  siteShortName,
-  siteUrl,
-  siteLogo,
-  siteLogoSmall,
-  siteBanner,
-  siteBannerWidth,
-  siteBannerHeight,
-  twitter,
-  facebook,
-  themeColor,
-  backgroundColor,
-  googleAnalyticsID,
-} = require('./config/website')
+const config = require('./config/website')
 const prismicLinkResolver = require('./src/gatsby/linkResolver')
 const prismicHtmlSerializer = require('./src/gatsby/htmlSerializer')
 
 module.exports = {
   // Metadata
   siteMetadata: {
-    siteTitle,
-    siteTitleAlt,
-    siteDescription,
-    siteShortName,
-    siteUrl,
-    siteLogo,
-    siteLogoSmall,
-    siteBanner,
-    siteBannerWidth,
-    siteBannerHeight,
-    twitter,
-    facebook,
+    siteTitle: config.siteTitle,
+    siteTitleAlt: config.siteTitleAlt,
+    siteDescription: config.siteDescription,
+    siteShortName: config.siteShortName,
+    siteUrl: config.siteUrl,
+    siteLogo: config.siteLogo,
+    siteLogoSmall: config.siteLogoSmall,
+    siteBanner: config.siteBanner,
+    siteBannerWidth: config.siteBannerWidth,
+    siteBannerHeight: config.siteBannerHeight,
+    twitter: config.twitter,
+    facebook: config.facebook,
   },
   // Plugins
   plugins: [
@@ -62,7 +46,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: googleAnalyticsID,
+        trackingId: config.googleAnalyticsID,
         anonymize: true,
       },
     },
@@ -84,13 +68,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: siteTitle,
-        short_name: siteShortName,
+        name: config.siteTitle,
+        short_name: config.siteShortName,
         lang: 'de-DE',
-        description: siteDescription,
+        description: config.siteDescription,
         start_url: '/',
-        background_color: backgroundColor,
-        theme_color: themeColor,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
         display: 'standalone',
         icons: [
           {

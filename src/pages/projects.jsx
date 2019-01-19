@@ -63,7 +63,7 @@ Projects.propTypes = {
 
 export const pageQuery = graphql`
   query ProjectsQuery($name: String!, $locale: String!) {
-    content: prismicSeite(uid: { eq: $name }) {
+    content: prismicSeite(uid: { eq: $name }, lang: { eq: $locale }) {
       data {
         title {
           text
