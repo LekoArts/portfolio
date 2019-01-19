@@ -6,6 +6,7 @@ import Helmet from 'react-helmet'
 import { animated, config as springConfig, Spring } from 'react-spring'
 import { Container, Layout, SkipNavContent } from 'elements'
 import { Footer, Header, Tags } from 'components'
+import { LocaleConsumer } from '../elements/Layout'
 import config from '../../config/website'
 
 const CategoriesContainer = styled(Container)`
@@ -16,27 +17,33 @@ const CategoriesContainer = styled(Container)`
   }
 `
 
-const Categories = ({ data: { categories, posts }, pageContext: { locale, i18n }, location }) => {
+const Categories = ({ data: { categories, posts }, pageContext: { locale }, location }) => {
   const allCategories = categories.edges.map(category => category.node.data.kategorie)
 
   return (
     <Layout locale={locale} pathname={location.pathname}>
-      <Helmet title={`${i18n.categories} | ${config.siteTitleAlt}`} />
-      <Header title={i18n.categories}>
-        {posts.totalCount} {i18n.pageCategoriesOne} {categories.totalCount} {i18n.pageCategoriesTwo}
-      </Header>
-      <SkipNavContent>
-        <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
-          {props => (
-            <animated.div style={props}>
-              <CategoriesContainer>
-                <Tags tags={allCategories} linkPrefix="categories" />
-              </CategoriesContainer>
-            </animated.div>
-          )}
-        </Spring>
-      </SkipNavContent>
-      <Footer />
+      <LocaleConsumer>
+        {({ i18n }) => (
+          <>
+            <Helmet title={`${i18n.categories} | ${config.siteTitleAlt}`} />
+            <Header title={i18n.categories}>
+              {posts.totalCount} {i18n.page_categories_one} {categories.totalCount} {i18n.page_categories_two}
+            </Header>
+            <SkipNavContent>
+              <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                {props => (
+                  <animated.div style={props}>
+                    <CategoriesContainer>
+                      <Tags tags={allCategories} linkPrefix="categories" />
+                    </CategoriesContainer>
+                  </animated.div>
+                )}
+              </Spring>
+            </SkipNavContent>
+            <Footer />
+          </>
+        )}
+      </LocaleConsumer>
     </Layout>
   )
 }
@@ -52,7 +59,6 @@ Categories.propTypes = {
   }).isRequired,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
-    i18n: PropTypes.object.isRequired,
   }).isRequired,
   location: PropTypes.object.isRequired,
 }

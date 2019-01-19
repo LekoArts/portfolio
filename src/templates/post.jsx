@@ -9,6 +9,7 @@ import { Container, Content, Wave, Line, Layout, Hero, InfoText, LocalizedLink, 
 import { hide } from 'styles'
 import { SEO, Tags, Suggestions, Footer } from 'components'
 import { localizedDate } from 'utilities'
+import { LocaleConsumer } from '../elements/Layout'
 
 const pulse = keyframes`
   0% {
@@ -85,7 +86,7 @@ const Cat = styled.span`
 
 const Outbound = Button.withComponent('a')
 
-const Post = ({ pageContext: { left, right, locale, i18n }, data: { prismicBlogpost: postNode }, location }) => {
+const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: postNode }, location }) => {
   const post = postNode.data
   const { kategorie } = post.category.document[0].data
   const { fluid } = post.cover.localFile.childImageSharp
@@ -95,56 +96,62 @@ const Post = ({ pageContext: { left, right, locale, i18n }, data: { prismicBlogp
   }
   return (
     <Layout locale={locale} pathname={location.pathname} customSEO>
-      <SEO i18n={i18n} postNode={postNode} pathname={location.pathname} article />
-      <Wrapper>
-        <Hero>
-          <Spring
-            native
-            from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
-            to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
-          >
-            {props => <animated.h1 style={props}>{post.title.text}</animated.h1>}
-          </Spring>
-          <Spring native config={config.slow} delay={300} from={{ opacity: 0 }} to={{ opacity: 1 }}>
-            {props => (
-              <Information style={props}>
-                {localizedDate(post.date, locale)} &mdash; {postNode.fields.timeToRead} {i18n.minutes}{' '}
-                {i18n.readingTime} &mdash; <Cat>{i18n.category}: </Cat>
+      <LocaleConsumer>
+        {({ i18n }) => (
+          <>
+            <SEO i18n={i18n} postNode={postNode} pathname={location.pathname} article />
+            <Wrapper>
+              <Hero>
+                <Spring
+                  native
+                  from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
+                  to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+                >
+                  {props => <animated.h1 style={props}>{post.title.text}</animated.h1>}
+                </Spring>
+                <Spring native config={config.slow} delay={300} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <Information style={props}>
+                      {localizedDate(post.date, locale)} &mdash; {postNode.fields.timeToRead} {i18n.minutes}{' '}
+                      {i18n.reading_time} &mdash; <Cat>{i18n.category}: </Cat>
+                      <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
+                    </Information>
+                  )}
+                </Spring>
+              </Hero>
+              <Wave />
+              <Img fluid={fluid} />
+            </Wrapper>
+            <Content sliceZone={postNode.data.body} />
+            <Container type="article">
+              <Line aria-hidden="true" />
+              {tags && <Tags linkPrefix="tags" tags={tags} />}
+              <Note>
+                <Bold>{i18n.interest}</Bold> {i18n.read_posts}{' '}
                 <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
-              </Information>
-            )}
-          </Spring>
-        </Hero>
-        <Wave />
-        <Img fluid={fluid} />
-      </Wrapper>
-      <Content sliceZone={postNode.data.body} />
-      <Container type="article">
-        <Line aria-hidden="true" />
-        {tags && <Tags linkPrefix="tags" tags={tags} />}
-        <Note>
-          <Bold>{i18n.interest}</Bold> {i18n.readPosts}{' '}
-          <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
-        </Note>
-      </Container>
-      <Container>
-        <InfoText>
-          {i18n.more} {i18n.posts}
-        </InfoText>
-        <Suggestions left={left} right={right} cardstyle="secondary" />
-      </Container>
-      <Footer>
-        <h2>{i18n.patreonHook}</h2>
-        <Outbound
-          href="https://www.patreon.com/lekoarts"
-          target="_blank"
-          rel="noopener noreferrer"
-          type="secondary"
-          role="button"
-        >
-          Patreon
-        </Outbound>
-      </Footer>
+              </Note>
+            </Container>
+            <Container>
+              <InfoText>
+                {i18n.more} {i18n.posts}
+              </InfoText>
+              <Suggestions left={left} right={right} cardstyle="secondary" />
+            </Container>
+            <Footer>
+              <h2>{i18n.patreon_hook}</h2>
+              <Outbound
+                href="https://www.patreon.com/lekoarts"
+                target="_blank"
+                rel="noopener noreferrer"
+                type="secondary"
+                role="button"
+              >
+                Patreon
+              </Outbound>
+            </Footer>
+          </>
+        )}
+      </LocaleConsumer>
     </Layout>
   )
 }
@@ -157,7 +164,6 @@ Post.propTypes = {
     left: PropTypes.object.isRequired,
     right: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
-    i18n: PropTypes.object.isRequired,
   }).isRequired,
   data: PropTypes.shape({
     prismicBlogpost: PropTypes.object.isRequired,
@@ -170,7 +176,6 @@ export const pageQuery = graphql`
     prismicBlogpost(fields: { slug: { eq: $slug } }) {
       fields {
         slug
-        sourceType
         timeToRead
         excerpt
       }

@@ -8,6 +8,7 @@ import { Container, Layout, SkipNavContent, Button } from 'elements'
 import { Footer, Header } from 'components'
 import { LinkCard } from 'components/Card'
 import { Paperplane, GitHub, Instagram, Behance, YouTube } from 'icons'
+import { LocaleConsumer } from '../elements/Layout'
 import config from '../../config/website'
 
 const CenteredContainer = styled(Container)`
@@ -53,7 +54,7 @@ const Contact = ({
   data: {
     content: { data: c },
   },
-  pageContext: { locale, i18n },
+  pageContext: { locale },
   location,
 }) => (
   <Layout locale={locale} pathname={location.pathname}>
@@ -75,24 +76,28 @@ const Contact = ({
                 <Paperplane /> E-Mail
               </Outbound>
             </CenteredContainer>
-            <CardContainer>
-              <MyLinkCard link="https://github.com/LekoArts" type="github">
-                <GitHub />
-                {i18n.github}
-              </MyLinkCard>
-              <MyLinkCard link="https://www.instagram.com/lekoarts.de" type="instagram">
-                <Instagram />
-                {i18n.instagram}
-              </MyLinkCard>
-              <MyLinkCard link="https://www.behance.net/lekoarts" type="behance">
-                <Behance />
-                {i18n.behance}
-              </MyLinkCard>
-              <MyLinkCard link="https://youtube.de/LekoArtsDE" type="youtube">
-                <YouTube />
-                {i18n.youtube}
-              </MyLinkCard>
-            </CardContainer>
+            <LocaleConsumer>
+              {({ i18n }) => (
+                <CardContainer>
+                  <MyLinkCard link="https://github.com/LekoArts" type="github">
+                    <GitHub />
+                    {i18n.github}
+                  </MyLinkCard>
+                  <MyLinkCard link="https://www.instagram.com/lekoarts.de" type="instagram">
+                    <Instagram />
+                    {i18n.instagram}
+                  </MyLinkCard>
+                  <MyLinkCard link="https://www.behance.net/lekoarts" type="behance">
+                    <Behance />
+                    {i18n.behance}
+                  </MyLinkCard>
+                  <MyLinkCard link="https://youtube.de/LekoArtsDE" type="youtube">
+                    <YouTube />
+                    {i18n.youtube}
+                  </MyLinkCard>
+                </CardContainer>
+              )}
+            </LocaleConsumer>
           </animated.div>
         )}
       </Spring>
@@ -111,14 +116,13 @@ Contact.propTypes = {
   }).isRequired,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
-    i18n: PropTypes.object.isRequired,
   }).isRequired,
   location: PropTypes.object.isRequired,
 }
 
 export const pageQuery = graphql`
-  query ContactQuery($name: String!) {
-    content: prismicSeite(uid: { eq: $name }) {
+  query ContactQuery($name: String!, $locale: String!) {
+    content: prismicSeite(uid: { eq: $name }, lang: { eq: $locale }) {
       data {
         title {
           text

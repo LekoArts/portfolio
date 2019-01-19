@@ -4,8 +4,11 @@ const { createPosts, createProjects, createCategories, createTags } = require('.
 const gatsbyNodeGraphQL = require('./src/gatsby/gatsbyNodeGraphQL')
 const locales = require('./config/i18n')
 
+// Remove trailing slashes unless it's only "/", then leave it as it is
 const replaceTrailing = _path => (_path === `/` ? _path : _path.replace(/\/$/, ``))
+// Remove slashes at the beginning and end
 const replaceBoth = _path => _path.replace(/^\/|\/$/g, '')
+// If the "lang" is the default language, don't create a prefix. Otherwise add a "/en" before the slug (defined in "locales")
 const localizedSlug = (_page, node) =>
   locales[node.lang].default ? `/${_page}/${node.uid}` : `/${locales[node.lang].path}/${_page}/${node.uid}`
 const wrapper = promise => promise.then(result => ({ result, error: null })).catch(error => ({ error, result: null }))
@@ -21,6 +24,7 @@ exports.onCreateNode = ({ node, actions }) => {
   // node.dataString is the original response from the API which indluces all informaiton
 
   if (node.internal.type === 'PrismicProjekt') {
+    // This is the complete API response in one string
     const data = JSON.parse(node.dataString)
 
     // node.lang returns the lang, e.g. de-de
@@ -30,7 +34,6 @@ exports.onCreateNode = ({ node, actions }) => {
     excerpt = ex(data.body[0].primary.text[1].text)
     createNodeField({ node, name: 'slug', value: slug })
     createNodeField({ node, name: 'excerpt', value: excerpt })
-    createNodeField({ node, name: 'sourceType', value: locales[node.lang].projects })
   }
 
   if (node.internal.type === 'PrismicBlogpost') {
@@ -45,7 +48,6 @@ exports.onCreateNode = ({ node, actions }) => {
     createNodeField({ node, name: 'slug', value: slug })
     createNodeField({ node, name: 'excerpt', value: excerpt })
     createNodeField({ node, name: 'timeToRead', value: TTR })
-    createNodeField({ node, name: 'sourceType', value: 'Blog' })
   }
 }
 
@@ -58,6 +60,7 @@ exports.onCreatePage = ({ page, actions }) => {
     return
   }
 
+  // First delete the pages so we can re-create them
   deletePage(page)
 
   Object.keys(locales).map(lang => {
@@ -65,20 +68,16 @@ exports.onCreatePage = ({ page, actions }) => {
     page.path = replaceTrailing(page.path)
 
     // Remove the leading AND traling slash from path, e.g. --> blog
-    const pageName = replaceBoth(page.path)
+    const name = replaceBoth(page.path)
+    // Create the "slugs" for the pages like in "onCreateNode". Unless default language, add prefix àla "/en"
     const localizedPath = locales[lang].default ? page.path : `${locales[lang].path}${page.path}`
-
-    // This name is also used as "slug" (UID) in the Prismic backend. Result --> blog-de-de
-    const localizedName = `${pageName}-${locales[lang].locale}`
-    const i18n = locales[lang]
 
     return createPage({
       ...page,
       path: localizedPath,
       context: {
         locale: lang,
-        name: localizedName,
-        i18n,
+        name,
       },
     })
   })
@@ -88,10 +87,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   // Path to templates
-  const postTemplate = path.resolve('src/templates/post.jsx')
-  const projectTemplate = path.resolve('src/templates/project.jsx')
-  const categoryTemplate = path.resolve('src/templates/category.jsx')
-  const tagTemplate = path.resolve('src/templates/tag.jsx')
+  const postTemplate = require.resolve('./src/templates/post.jsx')
+  const projectTemplate = require.resolve('./src/templates/project.jsx')
+  const categoryTemplate = require.resolve('./src/templates/category.jsx')
+  const tagTemplate = require.resolve('./src/templates/tag.jsx')
 
   const { error, result } = await wrapper(
     graphql(`

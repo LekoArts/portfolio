@@ -181,7 +181,7 @@ const Footer = ({ children }) => {
                   </LocalizedLink>
                 </Item>
                 <Copyright>
-                  Copyright © {date}. LekoArts. {i18n.footerNote}.
+                  Copyright © {date}. LekoArts. {i18n.footer_note}.
                 </Copyright>
               </Right>
             </Content>

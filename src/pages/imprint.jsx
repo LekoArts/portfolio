@@ -40,8 +40,8 @@ Imprint.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query ImprintQuery($name: String!) {
-    content: prismicSeite(uid: { eq: $name }) {
+  query ImprintQuery($name: String!, $locale: String!) {
+    content: prismicSeite(uid: { eq: $name }, lang: { eq: $locale }) {
       data {
         title {
           text

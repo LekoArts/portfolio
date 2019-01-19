@@ -40,8 +40,8 @@ Privacy.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query PrivacyQuery($name: String!) {
-    content: prismicSeite(uid: { eq: $name }) {
+  query PrivacyQuery($name: String!, $locale: String!) {
+    content: prismicSeite(uid: { eq: $name }, lang: { eq: $locale }) {
       data {
         title {
           text

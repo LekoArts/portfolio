@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { Container, Layout, LocalizedLink, SkipNavContent, Button } from 'elements'
 import { Footer, FeaturedPost, FeaturedProject, Header } from 'components'
+import { LocaleConsumer } from '../elements/Layout'
 
 const ProjectsWrapper = styled.div`
   display: flex;
@@ -40,7 +41,7 @@ const Index = ({
     projects: { edges: projectEdges },
     posts: { edges: postEdges },
   },
-  pageContext: { locale, i18n },
+  pageContext: { locale },
   location,
 }) => (
   <Layout locale={locale} pathname={location.pathname}>
@@ -64,9 +65,13 @@ const Index = ({
       <Container>
         <Text>
           {home.teaser_projects.text} <br />
-          <LocalizedButton to="/projects" type="primary" role="button">
-            {i18n.projects}
-          </LocalizedButton>
+          <LocaleConsumer>
+            {({ i18n }) => (
+              <LocalizedButton to="/projects" type="primary" role="button">
+                {i18n.projects}
+              </LocalizedButton>
+            )}
+          </LocaleConsumer>
         </Text>
       </Container>
       <Container>
@@ -109,7 +114,6 @@ Index.propTypes = {
   }).isRequired,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
-    i18n: PropTypes.object.isRequired,
   }).isRequired,
   location: PropTypes.object.isRequired,
 }
