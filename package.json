@@ -46,6 +46,8 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",
+    "chrome-launcher": "^0.10.5",
+    "cli-table": "^0.3.1",
     "cypress": "^3.1.4",
     "cypress-testing-library": "^2.3.5",
     "dotenv": "^6.2.0",
@@ -56,6 +58,8 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.3",
+    "jest": "^24.0.0",
+    "lighthouse": "^4.1.0",
     "prettier": "^1.15.3",
     "start-server-and-test": "^1.7.11"
   },
@@ -75,11 +79,14 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:run:ci": "cypress run --reporter junit --reporter-options 'mochaFile=results/cypress/result.xml'",
+    "format": "prettier \"**/*.{md,mdx,yml} \" --write",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
     "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
+    "test": "jest",
     "test:e2e:dev": "start-server-and-test dev http://localhost:8000 cy:open",
     "test:e2e:run": "start-server-and-test develop http://localhost:8000 cy:run",
-    "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run:ci"
+    "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run:ci",
+    "test:lighthouse": "start-server-and-test serve http://localhost:9000 test"
   }
 }

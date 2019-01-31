@@ -5,22 +5,22 @@ executors:
         type: string
         default: "10"
     docker:
-    - image: circleci/node:<< parameters.image >>
-      environment:
-        TERM: xterm
+      - image: circleci/node:<< parameters.image >>
+        environment:
+          TERM: xterm
 
 aliases:
   e2e-executor: &e2e-executor
     docker:
-    - image: cypress/base:8
-      environment:
-        TERM: xterm
+      - image: cypress/base:8
+        environment:
+          TERM: xterm
 
   restore_cache: &restore_cache
     restore_cache:
       name: Restore Yarn Package Cache
       keys:
-      - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".circleci/config.yml" }}
+        - v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".circleci/config.yml" }}
 
   install_node_modules: &install_node_modules
     run:
@@ -32,7 +32,7 @@ aliases:
       name: Save Yarn Package Cache
       key: v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".circleci/config.yml" }}
       paths:
-      - /home/circleci/.cache
+        - /home/circleci/.cache
 
   store_results: &store_results
     store_test_results:
@@ -48,36 +48,53 @@ jobs:
   lint:
     executor: node
     steps:
-    - checkout
-    - <<: *restore_cache
-    - <<: *install_node_modules
-    - <<: *save_cache
-    - run:
-        name: Run ESLint
-        command: yarn lint:ci
-    - <<: *store_results
-    - <<: *store_results_artifacts
+      - checkout
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *save_cache
+      - run:
+          name: Run ESLint
+          command: yarn lint:ci
+      - <<: *store_results
+      - <<: *store_results_artifacts
 
   e2e_cypress:
     <<: *e2e-executor
     steps:
-    - checkout
-    - <<: *restore_cache
-    - <<: *install_node_modules
-    - <<: *save_cache
-    - run:
-        name: Run E2E tests
-        command: yarn test:e2e:ci
-    - <<: *store_results
-    - <<: *store_results_artifacts
-    - store_artifacts:
-        path: cypress/videos
-    - store_artifacts:
-        path: cypress/screenshots
+      - checkout
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *save_cache
+      - run:
+          name: Run E2E tests
+          command: yarn test:e2e:ci
+      - <<: *store_results
+      - <<: *store_results_artifacts
+      - store_artifacts:
+          path: cypress/videos
+      - store_artifacts:
+          path: cypress/screenshots
+
+  lighthouse:
+    executor:
+      name: node
+      image: "10-browsers"
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *save_cache
+      - run:
+          name: Build Gatsby site
+          command: yarn build
+      - run:
+          name: Test Lighthouse scores
+          command: yarn test:lighthouse
 
 workflows:
   version: 2
   lint-test:
     jobs:
-    - lint
-    - e2e_cypress
+      - lint
+      - e2e_cypress
+      - lighthouse
