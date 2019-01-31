@@ -17,6 +17,12 @@
       alt="CircleCI"
     />
   </a>
+  <a href="https://app.netlify.com/sites/lekoarts/deploys">
+    <img
+      src="https://api.netlify.com/api/v1/badges/279adfbe-dd11-487c-9ab9-cecc21fc4d69/deploy-status"
+      alt="Netlify"
+    />
+  </a>
   <a href="https://cypress.io">
     <img
       src="https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square"
