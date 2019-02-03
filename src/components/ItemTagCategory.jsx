@@ -17,7 +17,7 @@ const Wrapper = styled.article`
 `
 
 const Information = styled.div`
-  h1 {
+  h2 {
     font-size: 2rem;
     margin-bottom: 1.25rem;
     display: inline-block;
@@ -52,7 +52,7 @@ const ItemTagCategory = ({ category, path, title, date, timeToRead, inputTags, e
         <Wrapper>
           <Information>
             <Link to={path}>
-              <h1>{title}</h1>
+              <h2>{title}</h2>
             </Link>
             <Statistics>
               {localizedDate(date, locale)} &mdash; {timeToRead} {i18n.minutes} {i18n.reading_time} &mdash;{' '}
