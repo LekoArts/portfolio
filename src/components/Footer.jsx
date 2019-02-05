@@ -26,6 +26,7 @@ const OptionalContent = styled.div`
     text-align: center;
     margin: 0 auto;
     display: block;
+    font-size: 2rem;
   }
 `
 

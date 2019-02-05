@@ -122,7 +122,7 @@ const Project = ({ pageContext: { left, right, locale }, data: { prismicProjekt:
               <Suggestions left={left} right={right} cardstyle="primary" />
             </Container>
             <Footer>
-              <h1>{i18n.get_started}</h1>
+              <h2>{i18n.get_started}</h2>
               <Button as={LocalizedLink} to="/contact" type="primary" role="button">
                 {i18n.start_project}
               </Button>
