@@ -5,6 +5,7 @@ import { Spring, config, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
+import ReactDisqusComments from 'react-disqus-comments'
 import { Container, Content, Wave, Line, Layout, Hero, InfoText, LocalizedLink, Button } from 'elements'
 import { hide } from 'styles'
 import { SEO, Tags, Suggestions, Footer } from 'components'
@@ -73,6 +74,10 @@ const Information = styled(animated.div)`
 `
 
 const Note = styled.p`
+  margin-bottom: 3rem;
+`
+
+const DisqusContainer = styled(Container)`
   margin-bottom: 4rem;
 `
 
@@ -86,7 +91,8 @@ const Cat = styled.span`
 
 const Outbound = Button.withComponent('a')
 
-const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: postNode }, location }) => {
+const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: postNode, site }, location }) => {
+  // Site
   const post = postNode.data
   const { kategorie } = post.category.document[0].data
   const { fluid } = post.cover.localFile.childImageSharp
@@ -94,6 +100,16 @@ const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: p
   if (post.tags[0].tag) {
     tags = post.tags.map(tag => tag.tag.document[0].data.tag)
   }
+
+  // Disqus
+  const disqus = {
+    shortname: 'lekoarts',
+    url: `${site.siteMetadata.siteUrl}${location.pathname}`,
+    identifier: location.pathname,
+    title: post.title.text,
+    language: locale === 'de-de' ? 'de' : 'en',
+  }
+
   return (
     <Layout locale={locale} pathname={location.pathname} customSEO>
       <LocaleConsumer>
@@ -131,6 +147,15 @@ const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: p
                 <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
               </Note>
             </Container>
+            <DisqusContainer type="article">
+              <ReactDisqusComments
+                shortname={disqus.shortname}
+                identifier={disqus.identifier}
+                url={disqus.url}
+                title={disqus.title}
+                language={disqus.language}
+              />
+            </DisqusContainer>
             <Container>
               <InfoText>
                 {i18n.more} {i18n.posts}
@@ -173,6 +198,11 @@ Post.propTypes = {
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     prismicBlogpost(fields: { slug: { eq: $slug } }) {
       fields {
         slug
