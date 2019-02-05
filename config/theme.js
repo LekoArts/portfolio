@@ -18,6 +18,7 @@ const colors = {
     light: '#5abdff',
     lightest: '#7cc9ff',
     dark: '#4768b4',
+    darker: '#45458d',
   },
   secondary: {
     base: '#db8834',

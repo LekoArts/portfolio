@@ -241,6 +241,7 @@ export const pageQuery = graphql`
             slice_type
             id
             primary {
+              code_block_title
               code_block {
                 html
                 text

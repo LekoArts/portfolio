@@ -5,7 +5,7 @@ const prism = css`
   p > code,
   li > code {
     color: #f8f8f2;
-    background: #131316;
+    background: #22222f;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     text-align: left;
     word-spacing: normal;
@@ -52,7 +52,7 @@ const prism = css`
   }
 
   pre[class*='language-'] {
-    background: #131316;
+    background: #22222f;
   }
 
   p > code[class*='language-'],
