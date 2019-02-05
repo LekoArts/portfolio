@@ -30,7 +30,8 @@ exports.onCreateNode = ({ node, actions }) => {
     // node.lang returns the lang, e.g. de-de
     slug = localizedSlug('projects', node)
 
-    // Since every project starts with a heading the element to extract from is the second item in the array
+    // The first slice is the normal rich text. That's why I chose body[0] here
+    // Since every project starts with a heading, the element to extract from is the second item in the array of the first slice (text[1])
     excerpt = ex(data.body[0].primary.text[1].text)
     createNodeField({ node, name: 'slug', value: slug })
     createNodeField({ node, name: 'excerpt', value: excerpt })
@@ -42,8 +43,17 @@ exports.onCreateNode = ({ node, actions }) => {
 
     slug = localizedSlug('blog', node)
 
-    // Use the first text block for the excerpt
-    excerpt = ex(data.body[0].primary.text[0].text)
+    // Check if the first slice (body[0]) has a text type
+    if (data.body[0].primary.text) {
+      // Use the first text node as an excerpt
+      excerpt = ex(data.body[0].primary.text[0].text)
+    } else if (!data.body[0].primary.text) {
+      // If the first slice is e.g. a note, use the second slice (body[1]) + text type
+      excerpt = ex(data.body[1].primary.text[0].text)
+    } else {
+      // If no excerpt can be extracted, give a default
+      excerpt = 'No excerpt available'
+    }
     TTR = timeToRead(allText)
     createNodeField({ node, name: 'slug', value: slug })
     createNodeField({ node, name: 'excerpt', value: excerpt })

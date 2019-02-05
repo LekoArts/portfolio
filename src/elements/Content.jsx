@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { prism } from 'styles'
-import { BodyText, CodeBlock, Image, Quote } from 'slices'
+import { BodyText, CodeBlock, Image, Note, Quote } from 'slices'
 import { SkipNavContent } from './SkipNavLink'
 
 const Wrapper = styled(SkipNavContent)`
@@ -73,6 +73,8 @@ const Content = ({ sliceZone }) => {
         return <Image key={s.id} input={s} />
       case 'quote':
         return <Quote key={s.id} input={s} />
+      case 'hinweis':
+        return <Note key={s.id} input={s} />
       default:
         return null
     }

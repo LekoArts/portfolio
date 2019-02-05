@@ -227,6 +227,16 @@ export const pageQuery = graphql`
               }
             }
           }
+          ... on PrismicBlogpostBodyHinweis {
+            slice_type
+            id
+            primary {
+              note_title
+              note_content {
+                html
+              }
+            }
+          }
           ... on PrismicBlogpostBodyCodeBlock {
             slice_type
             id
@@ -243,7 +253,6 @@ export const pageQuery = graphql`
             primary {
               quote {
                 html
-                text
               }
             }
           }

@@ -44,6 +44,7 @@ const tint = {
   black: rgba(colors.black.base, 0.1),
   white: rgba(colors.white.light, 0.85),
   blue: rgba(colors.primary.base, 0.35),
+  blueLight: rgba(colors.primary.base, 0.2),
   blueWhite: rgba(colors.white.blue, 0.7),
   orange: rgba(colors.secondary.base, 0.35),
 }
