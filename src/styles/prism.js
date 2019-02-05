@@ -158,14 +158,12 @@ const prism = css`
     pre[class='language-css']::before {
       content: 'css';
       background: #ff9800;
-      color: #fff;
       font-weight: 400;
     }
 
     pre[class='language-scss']::before {
       content: 'scss';
       background: #ff9800;
-      color: #fff;
       font-weight: 400;
     }
 
@@ -180,7 +178,7 @@ const prism = css`
 
     pre[class='language-json']::before {
       content: 'json';
-      background: linen;
+      background: #8bc34a;
     }
 
     pre[class='language-diff']::before {
@@ -190,6 +188,7 @@ const prism = css`
 
     pre[class='language-markdown']::before {
       content: 'md';
+      background: white;
     }
 
     pre[class='language-graphql']::before {
