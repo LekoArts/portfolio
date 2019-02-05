@@ -34,10 +34,12 @@ const htmlSerializer = (type, element, content) => {
     }
     case Elements.preformatted: {
       if (codeBlock.includes(element.label)) {
-        return `<pre class="language-${element.label}"><code class="language-${element.label}">${Prism.highlight(
+        return `<div class="lekoarts-highlight" data-language="${element.label}"><pre class="language-${
+          element.label
+        }"><code class="language-${element.label}">${Prism.highlight(
           element.text,
           Prism.languages[element.label]
-        )}</code></pre>`
+        )}</code></pre></div>`
       }
       return null
     }

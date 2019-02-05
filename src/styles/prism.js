@@ -35,7 +35,7 @@ const prism = css`
   }
 
   pre[class*='language-'] {
-    padding: 1em;
+    padding: 2em 1em;
     margin: 1.5rem 0;
     overflow: auto;
     border-radius: 0.3em;
@@ -127,6 +127,77 @@ const prism = css`
   }
   .token.entity {
     cursor: help;
+  }
+
+  .lekoarts-highlight {
+    position: relative;
+
+    pre[class*='language-'] {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    pre[class*='language-']::before {
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      padding: 2px 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-radius: 0 0 5px 5px;
+      color: #22222f;
+      background: #f0f0f0;
+    }
+
+    pre[class='language-javascript']::before {
+      content: 'js';
+      background: #f7df1e;
+    }
+
+    pre[class='language-css']::before {
+      content: 'css';
+      background: #ff9800;
+      color: #fff;
+      font-weight: 400;
+    }
+
+    pre[class='language-scss']::before {
+      content: 'scss';
+      background: #ff9800;
+      color: #fff;
+      font-weight: 400;
+    }
+
+    pre[class='language-jsx']::before {
+      content: 'jsx';
+      background: #61dafb;
+    }
+
+    pre[class='language-bash']::before {
+      content: 'sh';
+    }
+
+    pre[class='language-json']::before {
+      content: 'json';
+      background: linen;
+    }
+
+    pre[class='language-diff']::before {
+      content: 'diff';
+      background: #e6ffed;
+    }
+
+    pre[class='language-markdown']::before {
+      content: 'md';
+    }
+
+    pre[class='language-graphql']::before {
+      content: 'GraphQL';
+      background: #e10098;
+      color: #fff;
+      font-weight: 400;
+    }
   }
 `
 
