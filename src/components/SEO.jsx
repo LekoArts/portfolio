@@ -16,7 +16,8 @@ const Head = props => {
   const URL = `${config.siteUrl}${replaceTrailing(pathname)}`
   const isBlog = URL === `${homeURL}/blog`
   const slicedPathname = pathname === '/en' ? '/' : `${pathname}`.slice(3)
-  const alternateURL = isGerman ? replaceTrailing(`/en${pathname}`) : replaceTrailing(slicedPathname)
+  const alternate = isGerman ? replaceTrailing(`/en${pathname}`) : replaceTrailing(slicedPathname)
+  const alternateURL = `${config.siteUrl}${alternate}`
 
   let title
   let description
@@ -202,10 +203,9 @@ const Head = props => {
     <Helmet>
       <html lang={i18n.htmlLang} />
       <title>{title}</title>
-      {!article && (
-        <link rel="alternate" hrefLang={isGerman ? 'en-gb' : 'de'} href={`${config.siteUrl}${alternateURL}`} />
-      )}
-      <link rel="alternate" hrefLang="x-default" href={URL} />
+      <link rel="alternate" hrefLang="x-default" href={isGerman ? alternateURL : URL} />
+      {!article && <link rel="alternate" hrefLang={isGerman ? 'de' : 'en'} href={URL} />}
+      {!article && <link rel="alternate" hrefLang={isGerman ? 'en' : 'de'} href={alternateURL} />}
       <meta httpEquiv="content-language" content={i18n.locale} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />

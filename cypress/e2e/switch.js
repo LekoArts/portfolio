@@ -1,7 +1,9 @@
 describe('Switch', () => {
-  it('Language Switch works', () => {
+  beforeEach(() => {
     cy.visit('/')
-      .getByText('Englisch')
+  })
+  it('Language Switch works', () => {
+    cy.getByText('Englisch')
       .click()
       .assertRoute('/en')
       .getByText('German')
