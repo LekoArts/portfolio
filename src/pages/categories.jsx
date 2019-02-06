@@ -3,8 +3,7 @@ import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
-import { animated, config as springConfig, Spring } from 'react-spring'
-import { Container, Layout, SkipNavContent } from 'elements'
+import { Container, Layout, SkipNavContent, FadeIn } from 'elements'
 import { Footer, Header, Tags } from 'components'
 import { LocaleConsumer } from '../elements/Layout'
 import config from '../../config/website'
@@ -30,15 +29,11 @@ const Categories = ({ data: { categories, posts }, pageContext: { locale }, loca
               {posts.totalCount} {i18n.page_categories_one} {categories.totalCount} {i18n.page_categories_two}
             </Header>
             <SkipNavContent>
-              <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
-                {props => (
-                  <animated.div style={props}>
-                    <CategoriesContainer>
-                      <Tags tags={allCategories} linkPrefix="categories" />
-                    </CategoriesContainer>
-                  </animated.div>
-                )}
-              </Spring>
+              <FadeIn>
+                <CategoriesContainer>
+                  <Tags tags={allCategories} linkPrefix="categories" />
+                </CategoriesContainer>
+              </FadeIn>
             </SkipNavContent>
             <Footer />
           </>

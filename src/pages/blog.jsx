@@ -2,9 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
-import { Spring, animated, config as springConfig } from 'react-spring'
 import styled from 'styled-components'
-import { Container, Layout, SkipNavContent } from 'elements'
+import { Container, Layout, SkipNavContent, FadeIn } from 'elements'
 import { ItemBlog, Footer, Header } from 'components'
 import config from '../../config/website'
 
@@ -27,26 +26,22 @@ const Blog = ({
     <Helmet title={`${b.title.text} | ${config.siteTitleAlt}`} />
     <Header title={b.title.text}>{b.description.text}</Header>
     <SkipNavContent>
-      <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
-        {props => (
-          <animated.div style={props}>
-            <Base type="big">
-              {blogposts.map(({ node }) => (
-                <ItemBlog
-                  key={node.uid}
-                  path={node.fields.slug}
-                  cover={node.data.cover.localFile.childImageSharp.fluid}
-                  title={node.data.title.text}
-                  date={node.data.date}
-                  category={node.data.category.document[0].data.kategorie}
-                  timeToRead={node.fields.timeToRead}
-                  excerpt={node.fields.excerpt}
-                />
-              ))}
-            </Base>
-          </animated.div>
-        )}
-      </Spring>
+      <FadeIn>
+        <Base type="big">
+          {blogposts.map(({ node }) => (
+            <ItemBlog
+              key={node.uid}
+              path={node.fields.slug}
+              cover={node.data.cover.localFile.childImageSharp.fluid}
+              title={node.data.title.text}
+              date={node.data.date}
+              category={node.data.category.document[0].data.kategorie}
+              timeToRead={node.fields.timeToRead}
+              excerpt={node.fields.excerpt}
+            />
+          ))}
+        </Base>
+      </FadeIn>
     </SkipNavContent>
     <Footer />
   </Layout>

@@ -1,6 +1,7 @@
 import Button from './Button'
 import Container from './Container'
 import Content from './Content'
+import FadeIn from './FadeIn'
 import Hero from './Hero'
 import InfoText from './InfoText'
 import Layout from './Layout'
@@ -13,6 +14,7 @@ export {
   Button,
   Container,
   Content,
+  FadeIn,
   Hero,
   InfoText,
   Layout,

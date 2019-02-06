@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
-import { Spring, animated } from 'react-spring'
+import { useSpring, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
@@ -63,24 +63,23 @@ const Card = styled(Link)`
 
 const Wrapper = animated(Card)
 
-const ItemProject = ({ cover, path, customer, title, delay }) => (
-  <Spring
-    native
-    delay={100 * delay}
-    from={{ opacity: 0, transform: 'translate3d(0, 30px, 0)' }}
-    to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
-  >
-    {props => (
-      <Wrapper to={path} style={props}>
-        <Img fluid={cover} />
-        <Overlay>
-          <div>{customer}</div>
-          <h2>{title}</h2>
-        </Overlay>
-      </Wrapper>
-    )}
-  </Spring>
-)
+const ItemProject = ({ cover, path, customer, title, delay }) => {
+  const itemProps = useSpring({
+    delay: 100 * delay,
+    from: { opacity: 0, transform: 'translate3d(0, 30px, 0)' },
+    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+  })
+
+  return (
+    <Wrapper to={path} style={itemProps}>
+      <Img fluid={cover} />
+      <Overlay>
+        <div>{customer}</div>
+        <h2>{title}</h2>
+      </Overlay>
+    </Wrapper>
+  )
+}
 
 export default ItemProject
 

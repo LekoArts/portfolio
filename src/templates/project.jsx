@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
-import { Spring, animated } from 'react-spring'
+import { useSpring, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 import { Container, Content, Line, Wave, Layout, Hero, InfoText, LocalizedLink, Button } from 'elements'
@@ -78,6 +78,12 @@ const CardWrapper = styled.div`
 const Project = ({ pageContext: { left, right, locale }, data: { prismicProjekt: projektNode }, location }) => {
   const projekt = projektNode.data
   const { fluid } = projekt.cover.localFile.childImageSharp
+
+  const titleProps = useSpring({
+    from: { opacity: 0, transform: 'translate3d(0, -30px, 0)' },
+    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+  })
+
   return (
     <Layout locale={locale} pathname={location.pathname} customSEO>
       <LocaleConsumer>
@@ -86,13 +92,7 @@ const Project = ({ pageContext: { left, right, locale }, data: { prismicProjekt:
             <SEO i18n={i18n} postNode={projektNode} pathname={location.pathname} article project />
             <Wrapper>
               <Hero>
-                <Spring
-                  native
-                  from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
-                  to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
-                >
-                  {props => <animated.h1 style={props}>{projekt.title.text}</animated.h1>}
-                </Spring>
+                <animated.h1 style={titleProps}>{projekt.title.text}</animated.h1>
               </Hero>
               <Wave />
               <Img fluid={fluid} />
