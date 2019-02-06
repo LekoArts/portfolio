@@ -4,6 +4,7 @@ const typography = new Typography({
   title: 'LekoArts',
   baseFontSize: '18px',
   baseLineHeight: 1.45,
+  includeNormalize: false,
   /* Use the system font stack as fallback */
   headerFontFamily: [
     'Montserrat',
