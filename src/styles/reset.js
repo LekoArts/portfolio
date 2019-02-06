@@ -15,7 +15,6 @@ const reset = css`
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     @media (max-width: ${theme.breakpoints.m}), (max-device-width: ${theme.breakpoints.m}) {
       font-size: 16px !important;
@@ -99,7 +98,6 @@ const reset = css`
   textarea {
     font-family: inherit;
     font-size: 100%;
-    line-height: 1.15;
     margin: 0;
   }
   button,
@@ -128,9 +126,6 @@ const reset = css`
   [type='reset']:-moz-focusring,
   [type='submit']:-moz-focusring {
     outline: 1px dotted ButtonText;
-  }
-  fieldset {
-    padding: 0.35em 0.75em 0.625em;
   }
   legend {
     box-sizing: border-box;
@@ -171,11 +166,6 @@ const reset = css`
     height: 0;
     overflow: visible;
   }
-  pre {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    overflow: auto;
-  }
   a {
     background-color: transparent;
   }
@@ -192,7 +182,6 @@ const reset = css`
   kbd,
   samp {
     font-family: monospace, monospace;
-    font-size: 1em;
   }
   small {
     font-size: 80%;
