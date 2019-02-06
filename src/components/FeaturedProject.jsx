@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import { Spring, animated } from 'react-spring'
+import { useSpring, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
@@ -148,27 +148,26 @@ const Title = styled.h2`
   color: ${props => props.theme.colors.white.light};
 `
 
-const FeaturedProject = ({ cover, path, customer, title, testid, delay }) => (
-  <Spring
-    native
-    delay={100 * delay}
-    from={{ opacity: 0, transform: 'translate3d(0, 30px, 0)' }}
-    to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
-  >
-    {props => (
-      <Wrapper data-testid={testid} style={props}>
-        <Image>
-          <Img fluid={cover} />
-        </Image>
-        <StyledLink to={path}>
-          <Customer>{customer}</Customer>
-          <Title>{title}</Title>
-        </StyledLink>
-        <ImageOverlay />
-      </Wrapper>
-    )}
-  </Spring>
-)
+const FeaturedProject = ({ cover, path, customer, title, testid, delay }) => {
+  const fp = useSpring({
+    delay: 100 * delay,
+    from: { opacity: 0, transform: 'translate3d(0, 30px, 0)' },
+    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+  })
+
+  return (
+    <Wrapper data-testid={testid} style={fp}>
+      <Image>
+        <Img fluid={cover} />
+      </Image>
+      <StyledLink to={path}>
+        <Customer>{customer}</Customer>
+        <Title>{title}</Title>
+      </StyledLink>
+      <ImageOverlay />
+    </Wrapper>
+  )
+}
 
 export default FeaturedProject
 

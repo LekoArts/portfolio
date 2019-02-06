@@ -3,8 +3,7 @@ import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
-import { animated, config as springConfig, Spring } from 'react-spring'
-import { Container, Layout, SkipNavContent } from 'elements'
+import { Container, Layout, SkipNavContent, FadeIn } from 'elements'
 import { Footer, Header, Tags } from 'components'
 import config from '../../config/website'
 import { LocaleConsumer } from '../elements/Layout'
@@ -31,15 +30,11 @@ const TagsPage = ({ data: { tags, posts }, pageContext: { locale }, location }) 
         )}
       </LocaleConsumer>
       <SkipNavContent>
-        <Spring native config={springConfig.slow} from={{ opacity: 0 }} to={{ opacity: 1 }}>
-          {props => (
-            <animated.div style={props}>
-              <TagsContainer>
-                <Tags tags={allTags} linkPrefix="tags" />
-              </TagsContainer>
-            </animated.div>
-          )}
-        </Spring>
+        <FadeIn>
+          <TagsContainer>
+            <Tags tags={allTags} linkPrefix="tags" />
+          </TagsContainer>
+        </FadeIn>
       </SkipNavContent>
       <Footer />
     </Layout>

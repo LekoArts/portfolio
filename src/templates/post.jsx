@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
-import { Spring, config, animated } from 'react-spring'
+import { useSpring, config, animated } from 'react-spring'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
@@ -110,6 +110,12 @@ const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: p
     language: locale === 'de-de' ? 'de' : 'en',
   }
 
+  const titleProps = useSpring({
+    from: { opacity: 0, transform: 'translate3d(0, -30px, 0)' },
+    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+  })
+  const infoProps = useSpring({ config: config.slow, delay: 300, from: { opacity: 0 }, to: { opacity: 1 } })
+
   return (
     <Layout locale={locale} pathname={location.pathname} customSEO>
       <LocaleConsumer>
@@ -118,22 +124,12 @@ const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: p
             <SEO i18n={i18n} postNode={postNode} pathname={location.pathname} article />
             <Wrapper>
               <Hero>
-                <Spring
-                  native
-                  from={{ opacity: 0, transform: 'translate3d(0, -30px, 0)' }}
-                  to={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
-                >
-                  {props => <animated.h1 style={props}>{post.title.text}</animated.h1>}
-                </Spring>
-                <Spring native config={config.slow} delay={300} from={{ opacity: 0 }} to={{ opacity: 1 }}>
-                  {props => (
-                    <Information style={props}>
-                      {localizedDate(post.date, locale)} &mdash; {postNode.fields.timeToRead} {i18n.minutes}{' '}
-                      {i18n.reading_time} &mdash; <Cat>{i18n.category}: </Cat>
-                      <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
-                    </Information>
-                  )}
-                </Spring>
+                <animated.h1 style={titleProps}>{post.title.text}</animated.h1>
+                <Information style={infoProps}>
+                  {localizedDate(post.date, locale)} &mdash; {postNode.fields.timeToRead} {i18n.minutes}{' '}
+                  {i18n.reading_time} &mdash; <Cat>{i18n.category}: </Cat>
+                  <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
+                </Information>
               </Hero>
               <Wave />
               <Img fluid={fluid} />
