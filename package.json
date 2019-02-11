@@ -30,7 +30,7 @@
     "polished": "^2.3.3",
     "prismic-reactjs": "^0.3.2",
     "prismjs": "^1.15.0",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.7.1",
     "react": "^16.8.0",
     "react-disqus-comments": "^1.4.0",
     "react-dom": "^16.8.0",
