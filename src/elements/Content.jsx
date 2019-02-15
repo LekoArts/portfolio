@@ -60,6 +60,33 @@ const Wrapper = styled(SkipNavContent)`
       height: 100%;
     }
   }
+  h2,
+  h3,
+  h4 {
+    position: relative;
+  }
+  h2 .anchor,
+  h3 .anchor,
+  h4 .anchor {
+    display: inline-block;
+    position: absolute;
+    left: -2rem;
+    box-shadow: none;
+    border-bottom: none;
+    color: ${props => props.theme.tint.blue};
+    visibility: hidden;
+  }
+  h2:hover .anchor,
+  h3:hover .anchor,
+  h4:hover .anchor {
+    visibility: visible;
+  }
+  h2 .anchor:hover,
+  h3 .anchor:hover,
+  h4 .anchor:hover {
+    color: ${props => props.theme.colors.primary.base};
+    background: none;
+  }
 `
 
 const Content = ({ sliceZone }) => {

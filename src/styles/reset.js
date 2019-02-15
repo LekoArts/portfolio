@@ -77,6 +77,9 @@ const reset = css`
       outline: 0;
     }
   }
+  .anchor {
+    display: none;
+  }
   blockquote {
     border-left: 5px solid ${theme.colors.primary.base};
     padding-left: 1rem !important;

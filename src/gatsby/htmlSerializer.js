@@ -1,5 +1,6 @@
 const { RichText } = require('prismic-reactjs')
 const Prism = require('prismjs')
+const _ = require('lodash')
 require('prismjs/components/prism-javascript')
 require('prismjs/components/prism-css')
 require('prismjs/components/prism-scss')
@@ -42,6 +43,21 @@ const htmlSerializer = (type, element, content) => {
         )}</code></pre></div>`
       }
       return null
+    }
+    case Elements.heading2: {
+      return `<h2 id="${_.kebabCase(element.text)}"><a href="#${_.kebabCase(element.text)}" aria-label="${
+        element.text
+      } permalink" class="anchor">#</a>${element.text}</h2>`
+    }
+    case Elements.heading3: {
+      return `<h3 id="${_.kebabCase(element.text)}"><a href="#${_.kebabCase(element.text)}" aria-label="${
+        element.text
+      } permalink" class="anchor">#</a>${element.text}</h3>`
+    }
+    case Elements.heading4: {
+      return `<h4 id="${_.kebabCase(element.text)}"><a href="#${_.kebabCase(element.text)}" aria-label="${
+        element.text
+      } permalink" class="anchor">#</a>${element.text}</h4>`
     }
     default: {
       return null
