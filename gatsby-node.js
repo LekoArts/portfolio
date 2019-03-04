@@ -11,7 +11,15 @@ const replaceBoth = _path => _path.replace(/^\/|\/$/g, '')
 // If the "lang" is the default language, don't create a prefix. Otherwise add a "/en" before the slug (defined in "locales")
 const localizedSlug = (_page, node) =>
   locales[node.lang].default ? `/${_page}/${node.uid}` : `/${locales[node.lang].path}/${_page}/${node.uid}`
-const wrapper = promise => promise.then(result => ({ result, error: null })).catch(error => ({ error, result: null }))
+
+// graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
+const wrapper = promise =>
+  promise.then(result => {
+    if (result.errors) {
+      throw result.errors
+    }
+    return result
+  })
 
 // Insert additional info into the nodes for queries
 exports.onCreateNode = ({ node, actions }) => {
@@ -102,7 +110,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const categoryTemplate = require.resolve('./src/templates/category.jsx')
   const tagTemplate = require.resolve('./src/templates/tag.jsx')
 
-  const { error, result } = await wrapper(
+  const result = await wrapper(
     graphql(`
       {
         ${gatsbyNodeGraphQL}
@@ -110,15 +118,11 @@ exports.createPages = async ({ graphql, actions }) => {
     `)
   )
 
-  if (!error) {
-    // Programatically create pages with templates
-    createPosts(result.data.posts.edges, createPage, postTemplate)
-    createProjects(result.data.projects.edges, createPage, projectTemplate)
-    createCategories(result.data.categories.edges, createPage, categoryTemplate)
-    createTags(result.data.tags.edges, createPage, tagTemplate)
-    return
-  }
-  console.log(error)
+  // Programmatically create pages with templates and helper functions
+  createPosts(result.data.posts.edges, createPage, postTemplate)
+  createProjects(result.data.projects.edges, createPage, projectTemplate)
+  createCategories(result.data.categories.edges, createPage, categoryTemplate)
+  createTags(result.data.tags.edges, createPage, tagTemplate)
 }
 
 // Allow me to use something like: import { X } from 'directory' instead of '../../folder/directory'
