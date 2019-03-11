@@ -2,7 +2,7 @@ const BlogTitle = 'Quicktipp: Netlify & Discord Webhooks'
 
 describe('Blog', () => {
   beforeEach(() => {
-    cy.visit('/blog')
+    cy.visit('/blog').waitForRouteChange()
   })
   it('Cover links to Blogpost', () => {
     cy.getByTitle(BlogTitle)

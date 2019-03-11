@@ -3,7 +3,7 @@ import i18n from '../../config/i18n'
 
 describe('SEO German', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/').waitForRouteChange()
   })
   it('Contains general title tag', () => {
     cy.get('head title').should('contain', i18n['de-de'].siteTitle)

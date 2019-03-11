@@ -1,6 +1,6 @@
 describe('Home German', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/').waitForRouteChange()
   })
   it('Index button (Projects) work', () => {
     cy.get('a[type="primary"]')
