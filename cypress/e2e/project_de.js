@@ -4,15 +4,13 @@ describe('Project', () => {
   beforeEach(() => {
     cy.visit('/projects/krotus-computer-produktion-einer-eigenen-tastatur')
   })
-  it('Suggestions work', () => {
-    cy.getByTestId('suggestion-left')
-      .click({ force: true })
-      .getByTestId('suggestion-right')
-      .click({ force: true })
+  it('Suggestions show', () => {
+    cy.getByTestId('suggestion-left').getByTestId('suggestion-right')
   })
   it('Footer links to Contact', () => {
     cy.getByText('Projekt starten')
       .click()
+      .waitForRouteChange()
       .assertRoute('/contact')
   })
   it('Contains specific title tag', () => {

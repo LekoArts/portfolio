@@ -3,10 +3,29 @@
   "description": "Personal Portfolio of LekoArts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LeKoArts/portfolio"
+    "url": "https://github.com/LekoArts/portfolio"
   },
   "version": "2.0.0",
+  "private": true,
   "author": "LekoArts <hello@lekoarts.de>",
+  "scripts": {
+    "dev": "gatsby develop -o",
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:ci": "cypress run --reporter junit --reporter-options 'mochaFile=results/cypress/result.xml'",
+    "format": "prettier \"**/*.{md,mdx,yml} \" --write",
+    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
+    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
+    "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
+    "test": "jest",
+    "test:e2e:dev": "cross-env CYPRESS_SUPPORT=y start-server-and-test dev http://localhost:8000 cy:open",
+    "test:e2e:run": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run",
+    "test:e2e:ci": "cross-env CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run:ci",
+    "test:lighthouse": "start-server-and-test serve http://localhost:9000 test"
+  },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "date-fns": "^1.30.1",
@@ -49,6 +68,7 @@
     "babel-preset-env": "^1.7.0",
     "chrome-launcher": "^0.10.5",
     "cli-table": "^0.3.1",
+    "cross-env": "^5.2.0",
     "cypress": "^3.1.5",
     "cypress-testing-library": "^2.3.6",
     "dotenv": "^6.2.0",
@@ -59,6 +79,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "gatsby-cypress": "^0.1.5",
     "jest": "^24.3.1",
     "lighthouse": "^4.2.0",
     "prettier": "^1.16.4",
@@ -71,23 +92,5 @@
     "prismic"
   ],
   "license": "UNLICENSED",
-  "main": "n/a",
-  "scripts": {
-    "dev": "gatsby develop -o",
-    "develop": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "cy:run:ci": "cypress run --reporter junit --reporter-options 'mochaFile=results/cypress/result.xml'",
-    "format": "prettier \"**/*.{md,mdx,yml} \" --write",
-    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
-    "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
-    "test": "jest",
-    "test:e2e:dev": "start-server-and-test dev http://localhost:8000 cy:open",
-    "test:e2e:run": "start-server-and-test develop http://localhost:8000 cy:run",
-    "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run:ci",
-    "test:lighthouse": "start-server-and-test serve http://localhost:9000 test"
-  }
+  "main": "n/a"
 }
