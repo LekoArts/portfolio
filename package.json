@@ -20,8 +20,8 @@
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
     "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
     "test": "jest",
-    "serve-and-run": "cross-env CYPRESS_SUPPORT=y start-server-and-test serve http://localhost:9000 cy:run",
-    "test:e2e": "yarn build && yarn serve-and-run",
+    "serve-and-run": "start-server-and-test serve http://localhost:9000 cy:run",
+    "test:e2e": "cross-env CYPRESS_SUPPORT=y yarn build && yarn serve-and-run",
     "test:lighthouse": "start-server-and-test serve http://localhost:9000 test"
   },
   "dependencies": {
