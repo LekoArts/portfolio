@@ -66,10 +66,11 @@
 - i18n (German & English)
 - Integration of _nearly all_ Prismic features (slices, content relationships, single/repeatable type, labels)
 - Gatsby-Image (Responsive images) & PrismJS highlighting (using slices and labels)
--       Tags & Categories
+- Tags & Categories
 - Suggestions for further reading below project/blogpost
 - PWA
 - SEO (sitemap, schema.org data, OpenGraph & Twitter tags)
+- Husky + Lint-Staged
 
 ## Tech Stack
 
