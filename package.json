@@ -14,7 +14,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "cy:open": "cypress open",
-    "cy:run": "CYPRESS_BASE_URL=http://localhost:9000 cypress run --browser chrome --reporter junit --reporter-options 'mochaFile=results/cypress/result.xml'",
+    "cy:run": "CYPRESS_baseUrl=http://localhost:9000 cypress run --browser chrome --reporter junit --reporter-options 'mochaFile=results/cypress/result.xml'",
     "format": "prettier \"**/*.{md,mdx,yml} \" --write",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
