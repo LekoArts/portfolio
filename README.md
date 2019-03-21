@@ -70,6 +70,7 @@
 - Suggestions for further reading below project/blogpost
 - PWA
 - SEO (sitemap, schema.org data, OpenGraph & Twitter tags)
+- Husky + Lint-Staged
 
 ## Tech Stack
 
