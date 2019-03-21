@@ -1,11 +1,39 @@
 import { css } from 'styled-components'
 import theme from '../../config/theme'
 
+const COLORS = {
+  white: '#f0f0f0',
+  black: '#22222f',
+}
+
+const lables = [
+  { lang: 'javascript', tag: 'js', bg: '#f7df1e' },
+  { lang: 'css', tag: 'css', bg: '#ff9800' },
+  { lang: 'scss', tag: 'scss', bg: '#ff9800' },
+  { lang: 'jsx', tag: 'jsx', bg: '#61dafb' },
+  { lang: 'bash', tag: 'sh' },
+  { lang: 'json', tag: 'json', bg: '#8bc34a' },
+  { lang: 'diff', tag: 'diff', bg: '#e6ffed' },
+  { lang: 'markdown', tag: 'md', bg: 'white' },
+  { lang: 'graphql', tag: 'GraphQL', bg: '#e10098', color: '#fff' },
+]
+
+const lablesStyles = lables
+  .map(
+    ({ lang, tag, bg = COLORS.white, color = COLORS.black }) =>
+      `.lekoarts-highlight[data-language="${lang}"]::before {
+      content: '${tag}';
+      ${bg && `background: ${bg};`}
+      ${color && `color: ${color};`}
+    }`
+  )
+  .join(`\n`)
+
 const prism = css`
   p > code,
   li > code {
-    color: #f8f8f2;
-    background: #22222f;
+    color: ${COLORS.white};
+    background: ${COLORS.black};
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     text-align: left;
     word-spacing: normal;
@@ -22,7 +50,7 @@ const prism = css`
 
   code[class*='language-'],
   pre[class*='language-'] {
-    color: #f8f8f2;
+    color: ${COLORS.white};
     background: none;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     text-align: left;
@@ -36,7 +64,7 @@ const prism = css`
 
   pre[class*='language-'] {
     padding: 2em 1em;
-    margin: 1.5rem 0;
+    margin-bottom: 1.5rem;
     overflow: auto;
     border-radius: 0.3em;
     &::-webkit-scrollbar-thumb {
@@ -52,7 +80,7 @@ const prism = css`
   }
 
   pre[class*='language-'] {
-    background: #22222f;
+    background: ${COLORS.black};
   }
 
   p > code[class*='language-'],
@@ -131,73 +159,23 @@ const prism = css`
 
   .lekoarts-highlight {
     position: relative;
-
-    pre[class*='language-'] {
-      -webkit-overflow-scrolling: touch;
-    }
-
-    pre[class*='language-']::before {
-      position: absolute;
-      top: 0;
-      right: 1rem;
-      padding: 2px 10px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      border-radius: 0 0 5px 5px;
-      color: #22222f;
-      background: #f0f0f0;
-    }
-
-    pre[class='language-javascript']::before {
-      content: 'js';
-      background: #f7df1e;
-    }
-
-    pre[class='language-css']::before {
-      content: 'css';
-      background: #ff9800;
-      font-weight: 400;
-    }
-
-    pre[class='language-scss']::before {
-      content: 'scss';
-      background: #ff9800;
-      font-weight: 400;
-    }
-
-    pre[class='language-jsx']::before {
-      content: 'jsx';
-      background: #61dafb;
-    }
-
-    pre[class='language-bash']::before {
-      content: 'sh';
-    }
-
-    pre[class='language-json']::before {
-      content: 'json';
-      background: #8bc34a;
-    }
-
-    pre[class='language-diff']::before {
-      content: 'diff';
-      background: #e6ffed;
-    }
-
-    pre[class='language-markdown']::before {
-      content: 'md';
-      background: white;
-    }
-
-    pre[class='language-graphql']::before {
-      content: 'GraphQL';
-      background: #e10098;
-      color: #fff;
-      font-weight: 400;
-    }
+    overflow: auto;
   }
+
+  .lekoarts-highlight[data-language]::before {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    padding: 2px 10px;
+    font-size: 0.7rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border-radius: 0 0 5px 5px;
+    color: ${COLORS.black};
+    background: ${COLORS.white};
+  }
+
+  ${lablesStyles}
 `
 
 export default prism
