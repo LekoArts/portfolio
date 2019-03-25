@@ -677,7 +677,7 @@
     core-js "^2.6.5"
     regenerator-runtime "^0.13.2"
 
-"@babel/preset-env@^7.0.0":
+"@babel/preset-env@^7.4.1":
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.4.2.tgz#2f5ba1de2daefa9dcca653848f96c7ce2e406676"
   integrity sha512-OEz6VOZaI9LW08CWVS3d9g/0jZA6YCn1gsKIy/fut7yZCJti5Lm1/Hi+uo/U+ODm7g4I6gULrCP+/+laT8xAsA==
@@ -2423,15 +2423,15 @@ babel-preset-fbjs@^3.1.2:
     "@babel/plugin-transform-template-literals" "^7.0.0"
     babel-plugin-syntax-trailing-function-commas "^7.0.0-beta.0"
 
-babel-preset-gatsby@^0.1.9:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.1.9.tgz#b308b983e446cc1e84ad125dbaeb83326b2b3dcb"
-  integrity sha512-pXDuxw4XUUcWM7TejB3mTOP4FvADc8sQsJ7aaU2eG+aeI1CRn5jVIAKxoQwL0yI7Pr/n4USTAiiuix8BDrStKA==
+babel-preset-gatsby@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.1.10.tgz#5197bfcd350139beb49f2d305481944c556db67b"
+  integrity sha512-Fe85p1k6B6wJFrlZaD8DYyHBxN3y+91s3vFuRxR/HkYeMtf17o3dTGn1vgJ7ANa+sPAIV3hlO94EgP1rhcV2pg==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.0.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
     "@babel/plugin-transform-runtime" "^7.0.0"
-    "@babel/preset-env" "^7.0.0"
+    "@babel/preset-env" "^7.4.1"
     "@babel/preset-react" "^7.0.0"
     babel-plugin-macros "^2.4.2"
 
@@ -3149,23 +3149,7 @@ cheerio@^1.0.0-rc.2:
     lodash "^4.15.0"
     parse5 "^3.0.1"
 
-chokidar@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
-  integrity sha1-eY5ol3gVHIB2tLNg5e3SjNortGg=
-  dependencies:
-    anymatch "^1.3.0"
-    async-each "^1.0.0"
-    glob-parent "^2.0.0"
-    inherits "^2.0.1"
-    is-binary-path "^1.0.0"
-    is-glob "^2.0.0"
-    path-is-absolute "^1.0.0"
-    readdirp "^2.0.0"
-  optionalDependencies:
-    fsevents "^1.0.0"
-
-chokidar@^2.0.0, chokidar@^2.0.2, chokidar@^2.1.2:
+chokidar@2.1.2, chokidar@^2.0.0, chokidar@^2.0.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.1.2.tgz#9c23ea40b01638439e0513864d362aeacc5ad058"
   integrity sha512-IwXUx0FXc5ibYmPC2XeEj5mpXoV66sR+t3jqu2NS2GYwCktt3KF1/Qqjws/NkegajBA4RbZ5+DDwlOiJsxDHEg==
@@ -3183,6 +3167,22 @@ chokidar@^2.0.0, chokidar@^2.0.2, chokidar@^2.1.2:
     upath "^1.1.0"
   optionalDependencies:
     fsevents "^1.2.7"
+
+chokidar@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
+  integrity sha1-eY5ol3gVHIB2tLNg5e3SjNortGg=
+  dependencies:
+    anymatch "^1.3.0"
+    async-each "^1.0.0"
+    glob-parent "^2.0.0"
+    inherits "^2.0.1"
+    is-binary-path "^1.0.0"
+    is-glob "^2.0.0"
+    path-is-absolute "^1.0.0"
+    readdirp "^2.0.0"
+  optionalDependencies:
+    fsevents "^1.0.0"
 
 chownr@^1.0.1, chownr@^1.1.1:
   version "1.1.1"
@@ -6000,7 +6000,7 @@ gatsby-cli@^2.4.17:
     yargs "^12.0.5"
     yurnalist "^1.0.2"
 
-gatsby-cypress@^0.1.6:
+gatsby-cypress@^0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/gatsby-cypress/-/gatsby-cypress-0.1.7.tgz#3c7ba06af0abf43f29c1c850eee4bea7736b045b"
   integrity sha512-IzMdYhEF6mSXvJ6V/gbdl0SR/WHBbBZBICps95iK/Eh4u7Cfg4b3vL1FqaEYLNh/7vEqVx7t9LWkvXPTj9UCVA==
@@ -6096,14 +6096,14 @@ gatsby-plugin-offline@^2.0.25:
     lodash "^4.17.10"
     workbox-build "^3.6.3"
 
-gatsby-plugin-page-creator@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-2.0.10.tgz#5ad313242afaa21e3aefb5b570d7d10c1faa7665"
-  integrity sha512-+hRy+syKHcMcl/nqeB0PuDFF4ZzIgGkKS6htOuhjtsyNNiYebFYbzTLNsCvgdWYWZosmt0Rtjg/PfSry4cOV7A==
+gatsby-plugin-page-creator@^2.0.11:
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-2.0.11.tgz#fa21e8911c75c5810bd15f3b1f27ab23abee6238"
+  integrity sha512-ydvayo170L36JOJH+Y2GuwwTC9JEDO6EdQfpg217eEwIpZ24NKDRiMGA3rLIKEGlDShIXPNjZhHloStzBcGoAw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
-    chokidar "^2.1.2"
+    chokidar "2.1.2"
     fs-exists-cached "^1.0.0"
     glob "^7.1.1"
     lodash "^4.17.10"
@@ -6118,7 +6118,7 @@ gatsby-plugin-react-helmet@^3.0.10:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-gatsby-plugin-sharp@^2.0.29:
+gatsby-plugin-sharp@^2.0.30:
   version "2.0.30"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.0.30.tgz#a28177580a4bd6a4d7693383edb02b377432da6d"
   integrity sha512-SKgxTSZ6q0Q9OWfN1ygUGLUcF8OQhE3uK9HG+LmcuZjIIwHkHn5fezwBa43fZBNfXGLQw19Z2WPrZHA99nBvsg==
@@ -6216,10 +6216,10 @@ gatsby-transformer-sharp@^2.1.17:
     probe-image-size "^4.0.0"
     sharp "^0.21.3"
 
-gatsby@^2.1.37:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.2.5.tgz#0c4220c634ee69b9af1b35318019eb10d60e7a69"
-  integrity sha512-gc2d8bbcV/AF06pk1XDn7YzE/4fz2jC0PePKq6Wr/eOM9n2PSyimzBcxRon95HzGsgmXDT4pnS3KNrvlQkkbRw==
+gatsby@^2.2.9:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.2.9.tgz#bc6de1b8f24ab6f554cb6c940c6ff2e287ddc482"
+  integrity sha512-LUJV8Ta41MNvN+jkgEiVgiiAscGxRYqEBa9vMKuLUuThNhe8jjRLOZwyCWdZDgN2GI1ry9qmDTTdp16MruSjOw==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6238,7 +6238,7 @@ gatsby@^2.1.37:
     babel-plugin-add-module-exports "^0.2.1"
     babel-plugin-dynamic-import-node "^1.2.0"
     babel-plugin-remove-graphql-queries "^2.6.2"
-    babel-preset-gatsby "^0.1.9"
+    babel-preset-gatsby "^0.1.10"
     better-opn "0.1.4"
     better-queue "^3.8.6"
     bluebird "^3.5.0"
@@ -6246,7 +6246,7 @@ gatsby@^2.1.37:
     cache-manager "^2.9.0"
     cache-manager-fs-hash "^0.0.6"
     chalk "^2.3.2"
-    chokidar "^2.0.2"
+    chokidar "2.1.2"
     common-tags "^1.4.0"
     compression "^1.7.3"
     convert-hrtime "^2.0.0"
@@ -6277,7 +6277,7 @@ gatsby@^2.1.37:
     fs-extra "^5.0.0"
     gatsby-cli "^2.4.17"
     gatsby-link "^2.0.16"
-    gatsby-plugin-page-creator "^2.0.10"
+    gatsby-plugin-page-creator "^2.0.11"
     gatsby-react-router-scroll "^2.0.6"
     glob "^7.1.1"
     graphql "^14.1.1"
