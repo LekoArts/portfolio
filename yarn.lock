@@ -11577,7 +11577,7 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-spring@^8.0.15:
+react-spring@^8.0.18:
   version "8.0.18"
   resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.18.tgz#f6fa09ab5acdeb37618c0e340d59830171b95c33"
   integrity sha512-gb1Rtsnez2gxIHtbrbwQsAjE4ir/62m+gI+eT+1E0Uky5L1PbLccbywRIdIpK3W5jiNmU6OlEazVk0tfI8pZrA==
