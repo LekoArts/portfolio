@@ -1,7 +1,3 @@
 User-agent: *
-Disallow: /imprint/
-Disallow: /privacy/
-Disallow: /en/imprint/
-Disallow: /en/privacy/
 
 sitemap: https://www.lekoarts.de/sitemap.xml

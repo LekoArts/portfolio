@@ -14,7 +14,9 @@ const Privacy = ({
   location,
 }) => (
   <Layout locale={locale} pathname={location.pathname}>
-    <Helmet title={`${p.title.text} | ${config.siteTitleAlt}`} />
+    <Helmet title={`${p.title.text} | ${config.siteTitleAlt}`}>
+      <meta name="robots" content="noindex, follow" />
+    </Helmet>
     <Header title={p.title.text}>{p.description.text}</Header>
     <div style={{ marginTop: '3rem' }}>
       <Container type="article">
