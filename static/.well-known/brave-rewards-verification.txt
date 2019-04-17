@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: lekoarts.de
+Token: 2122657ce3aded6707068061ee9c0740ac328a6c769a35a3ffef04191b382a5e
