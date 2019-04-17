@@ -40,7 +40,8 @@
       }
     ],
     "no-unused-expressions": [
-      1, {
+      1,
+      {
         "allowTaggedTemplates": true
       }
     ],
@@ -53,6 +54,7 @@
     "func-names": 0,
     "import/no-extraneous-dependencies": 0,
     "import/prefer-default-export": 0,
+    "import/no-cycle": 0,
     "space-before-function-paren": 0,
     "import/extensions": 0,
     "react/no-danger": 0,
@@ -75,7 +77,7 @@
         "allowTemplateLiterals": true
       }
     ],
-    "indent": ["error", 2, {"SwitchCase": 1}],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "prettier/prettier": [
       "error",
       {
