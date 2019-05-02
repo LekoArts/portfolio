@@ -3,11 +3,13 @@ describe('Navigation English', () => {
     cy.visit('/en').waitForRouteChange()
   })
   it('in the header works', () => {
-    cy.getByText('Projects')
-      .click({ force: true })
-      .waitForRouteChange()
-      .assertRoute('/en/projects')
-      .getByText('Blog')
+    cy.get('nav').within(() => {
+      cy.getByText('Projects')
+        .click({ force: true })
+        .waitForRouteChange()
+        .assertRoute('/en/projects')
+    })
+    cy.getByText('Blog')
       .click({ force: true })
       .waitForRouteChange()
       .assertRoute('/en/blog')

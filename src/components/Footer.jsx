@@ -147,7 +147,7 @@ const Footer = ({ children }) => {
         <Wrapper>
           <Wave orientation="top" />
           <Container>
-            {children && <OptionalContent>{children}</OptionalContent>}
+            {children && <OptionalContent data-testid="optional-content">{children}</OptionalContent>}
             <Content>
               <Left>
                 <Important>

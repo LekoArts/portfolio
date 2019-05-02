@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "gatsby develop -o",
     "develop": "gatsby develop",
+    "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "cy:open": "cypress open",
@@ -22,6 +23,7 @@
     "test": "jest",
     "serve-and-run": "start-server-and-test serve http://localhost:9000 cy:run",
     "test:e2e": "cross-env CYPRESS_SUPPORT=y yarn build && yarn serve-and-run",
+    "test:e2e:dev": "start-server-and-test develop:cypress http://localhost:8000 cy:open",
     "test:lighthouse": "start-server-and-test serve http://localhost:9000 test"
   },
   "husky": {
