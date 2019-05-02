@@ -238,6 +238,18 @@ const Head = props => {
       <meta name="twitter:image:alt" content={description} />
       <meta name="twitter:image:width" content={imageWidth} />
       <meta name="twitter:image:height" content={imageHeight} />
+      {article && <meta name="twitter:label1" value={project ? 'Customer' : 'Time To Read'} />}
+      {article && (
+        <meta name="twitter:data1" value={project ? postNode.data.customer : `${postNode.fields.timeToRead} Minutes`} />
+      )}
+      {article && <meta name="twitter:label2" value={project ? 'Task' : 'Category'} />}
+      {article && (
+        <meta
+          name="twitter:data2"
+          value={project ? postNode.data.task : postNode.data.category.document[0].data.kategorie}
+        />
+      )}
+      {article && <meta name="article:published_time" content={postNode.first_publication_date} />}
       <link type="text/plain" href={`${config.siteUrl}/humans.txt`} rel="author" />
       {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
       {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
