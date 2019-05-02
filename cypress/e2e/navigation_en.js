@@ -30,7 +30,7 @@ describe('Navigation English', () => {
       .waitForRouteChange()
       .assertRoute('/en/categories/freebie')
       .getByText('Tutorials')
-      .click()
+      .click({ force: true })
       .waitForRouteChange()
       .assertRoute('/en/categories/tutorial')
   })

@@ -15,7 +15,6 @@ describe('Navigation German', () => {
       .click({ force: true })
       .waitForRouteChange()
       .assertRoute('/contact')
-      .getByText('LekoArts')
   })
   it('to external sites in the footer works', () => {
     cy.getByText('Behance')
