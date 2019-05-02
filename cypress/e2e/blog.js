@@ -21,7 +21,6 @@ describe('Blog', () => {
       .click()
       .waitForRouteChange()
       .getByTestId('header-title')
-      .getByText('Quicktipp')
       .getByText(BlogTitle)
   })
   it('Tag in the Blogpost links to overview of that Tag', () => {

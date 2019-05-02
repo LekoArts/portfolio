@@ -119,6 +119,7 @@ const translationQuery = graphql`
         behance
         youtube
         document_name
+        tagged_with
       }
     }
     en_gb: prismicTranslations(lang: { eq: "en-gb" }) {
@@ -164,6 +165,7 @@ const translationQuery = graphql`
         behance
         youtube
         document_name
+        tagged_with
       }
     }
   }

@@ -11,6 +11,7 @@ import { hide } from 'styles'
 import { SEO, Tags, Suggestions, Footer } from 'components'
 import { localizedDate } from 'utilities'
 import { LocaleConsumer } from '../elements/Layout'
+import { Tag } from '../components/Tags'
 
 const pulse = keyframes`
   0% {
@@ -89,6 +90,32 @@ const Cat = styled.span`
   ${hide}
 `
 
+const TagsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+`
+
+const TagsInnerContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  > div {
+    margin: 0;
+  }
+  > div:first-child {
+    margin-right: 0.5rem;
+  }
+`
+
+const StyledTag = styled(Tag)`
+  background: ${props => props.theme.colors.secondary.light};
+  font-weight: 600;
+`
+
 const Outbound = Button.withComponent('a')
 
 const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: postNode, site }, location }) => {
@@ -136,12 +163,19 @@ const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: p
             </Wrapper>
             <Content sliceZone={postNode.data.body} />
             <Container type="article">
-              <Line aria-hidden="true" />
-              {tags && <Tags linkPrefix="tags" tags={tags} />}
+              {tags && (
+                <TagsContainer>
+                  <TagsInnerContainer>
+                    <div>{i18n.tagged_with}</div> <Tags linkPrefix="tags" tags={tags} />
+                  </TagsInnerContainer>
+                  <StyledTag to="/tags">{i18n.all} Tags</StyledTag>
+                </TagsContainer>
+              )}
               <Note>
                 <Bold>{i18n.interest}</Bold> {i18n.read_posts}{' '}
                 <LocalizedLink to={`/categories/${kebabCase(kategorie)}`}>{kategorie}</LocalizedLink>
               </Note>
+              <Line aria-hidden="true" />
             </Container>
             <DisqusContainer type="article">
               <ReactDisqusComments
@@ -151,6 +185,7 @@ const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: p
                 title={disqus.title}
                 language={disqus.language}
               />
+              <Line aria-hidden="true" />
             </DisqusContainer>
             <Container>
               <InfoText>

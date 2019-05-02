@@ -6,6 +6,8 @@ describe('Blogpost', () => {
     cy.getByTestId('suggestion-left').getByTestId('suggestion-right')
   })
   it('Blogpost footer links to patreon', () => {
-    cy.getByText('Patreon').should('have.prop', 'href', 'https://www.patreon.com/lekoarts')
+    cy.get('[data-testid="optional-content"]').within(() => {
+      cy.getByText('Patreon').should('have.prop', 'href', 'https://www.patreon.com/lekoarts')
+    })
   })
 })
