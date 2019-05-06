@@ -59,7 +59,7 @@
     "react-disqus-comments": "^1.4.0",
     "react-dom": "^16.8.6",
     "react-headroom": "^2.2.8",
-    "react-helmet": "^5.2.0",
+    "react-helmet": "^5.2.1",
     "react-spring": "^8.0.19",
     "react-typography": "^0.16.19",
     "styled-components": "^4.2.0",
