@@ -3,7 +3,7 @@ executors:
     parameters:
       image:
         type: string
-        default: "10"
+        default: "lts"
     docker:
       - image: circleci/node:<< parameters.image >>
         environment:
@@ -78,7 +78,7 @@ jobs:
   lighthouse:
     executor:
       name: node
-      image: "10-browsers"
+      image: "lts-browsers"
     steps:
       - checkout
       - <<: *restore_cache
