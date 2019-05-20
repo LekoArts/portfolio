@@ -87,7 +87,7 @@
     "husky": "^2.3.0",
     "jest": "^24.8.0",
     "lighthouse": "^5.0.0",
-    "lint-staged": "^8.1.6",
+    "lint-staged": "^8.1.7",
     "prettier": "^1.17.1",
     "start-server-and-test": "^1.9.0"
   },
