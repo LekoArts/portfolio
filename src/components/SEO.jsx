@@ -241,7 +241,7 @@ const Head = props => {
       {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
       {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
       {projectOrArticle && <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>}
-      <script type="application/ld+json">{JSON.stringify(siteNav)}</script>
+      {!projectOrArticle && <script type="application/ld+json">{JSON.stringify(siteNav)}</script>}
       <script type="application/ld+json">{JSON.stringify(orgaCreator('identity'))}</script>
       <script type="application/ld+json">{JSON.stringify(orgaCreator('creator'))}</script>
     </Helmet>
