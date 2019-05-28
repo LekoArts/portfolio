@@ -19,6 +19,8 @@ const Head = props => {
   const alternate = isGerman ? replaceTrailing(`/en${pathname}`) : replaceTrailing(slicedPathname)
   const alternateURL = `${config.siteUrl}${alternate}`
 
+  const projectOrArticle = !!(project || article)
+
   let title
   let description
   let image
@@ -120,38 +122,14 @@ const Head = props => {
     {
       '@type': 'ListItem',
       item: {
-        '@id': homeURL,
-        name: 'Homepage',
+        '@id': project ? `${homeURL}/projects` : `${homeURL}/blog`,
+        name: project ? locales[i18n.locale].projects : 'Blog',
       },
       position: 1,
     },
-    {
-      '@type': 'ListItem',
-      item: {
-        '@id': `${homeURL}/projects`,
-        name: 'Projects',
-      },
-      position: 2,
-    },
-    {
-      '@type': 'ListItem',
-      item: {
-        '@id': `${homeURL}/blog`,
-        name: 'Blog',
-      },
-      position: 3,
-    },
-    {
-      '@type': 'ListItem',
-      item: {
-        '@id': `${homeURL}/contact`,
-        name: 'Contact',
-      },
-      position: 4,
-    },
   ]
 
-  if (article) {
+  if (projectOrArticle) {
     schemaArticle = {
       '@context': 'http://schema.org',
       '@type': 'Article',
@@ -172,6 +150,8 @@ const Head = props => {
       dateModified: postNode.last_publication_date,
       description,
       headline: title,
+      articleBody: description,
+      articleSection: project ? postNode.data.task : postNode.data.category.document[0].data.kategorie,
       inLanguage: i18n.htmlLang,
       url: URL,
       name: title,
@@ -187,7 +167,7 @@ const Head = props => {
         '@id': URL,
         name: title,
       },
-      position: 5,
+      position: 2,
     })
   }
 
@@ -197,6 +177,13 @@ const Head = props => {
     description: 'Breadcrumbs list',
     name: 'Breadcrumbs',
     itemListElement,
+  }
+
+  const siteNav = {
+    '@context': 'http://schema.org',
+    '@type': 'SiteNavigationElement',
+    name: ['Home', locales[i18n.locale].projects, 'Blog', locales[i18n.locale].contact],
+    url: [`${homeURL}`, `${homeURL}/projects`, `${homeURL}/blog`, `${homeURL}/contact`],
   }
 
   return (
@@ -253,7 +240,8 @@ const Head = props => {
       <link type="text/plain" href={`${config.siteUrl}/humans.txt`} rel="author" />
       {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
       {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
-      <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
+      {projectOrArticle && <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>}
+      <script type="application/ld+json">{JSON.stringify(siteNav)}</script>
       <script type="application/ld+json">{JSON.stringify(orgaCreator('identity'))}</script>
       <script type="application/ld+json">{JSON.stringify(orgaCreator('creator'))}</script>
     </Helmet>

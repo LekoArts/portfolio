@@ -7,6 +7,7 @@ import { Container, Layout, LocalizedLink, SkipNavContent, FadeIn } from 'elemen
 import { Footer, Header, ItemTagCategory } from 'components'
 import config from '../../config/website'
 import { LocaleConsumer } from '../elements/Layout'
+import locales from '../../config/i18n'
 
 const StyledLink = styled(LocalizedLink)`
   color: ${props => props.theme.colors.white.light};
@@ -21,38 +22,68 @@ const Category = ({
 }) => (
   <Layout locale={locale} pathname={location.pathname}>
     <LocaleConsumer>
-      {({ i18n }) => (
-        <>
-          <Helmet title={`${i18n.category}: ${category} | ${config.siteTitleAlt}`} />
-          <Header title={category}>
-            {totalCount} {totalCount === 1 ? i18n.post : i18n.posts} {totalCount === 1 ? i18n.belongs : i18n.belong}{' '}
-            {i18n.page_category_one} "{category}" {i18n.page_category_two === '-' ? null : i18n.page_category_two}{' '}
-            <br />
-            <StyledLink to="/categories">
-              {i18n.all} {i18n.categories}
-            </StyledLink>
-          </Header>
-          <SkipNavContent>
-            <FadeIn>
-              <Container>
-                {edges.map(edge => (
-                  <ItemTagCategory
-                    key={edge.node.uid}
-                    title={edge.node.data.title.text}
-                    category={edge.node.data.category.document[0].data.kategorie}
-                    path={edge.node.fields.slug}
-                    date={edge.node.data.date}
-                    timeToRead={edge.node.fields.timeToRead}
-                    inputTags={edge.node.data.tags}
-                    excerpt={edge.node.fields.excerpt}
-                  />
-                ))}
-              </Container>
-            </FadeIn>
-          </SkipNavContent>
-          <Footer />
-        </>
-      )}
+      {({ i18n }) => {
+        const breadcrumb = {
+          '@context': 'http://schema.org',
+          '@type': 'BreadcrumbList',
+          description: 'Breadcrumbs list',
+          name: 'Breadcrumbs',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              item: {
+                '@id':
+                  locale === 'de-de' ? 'https://www.lekoarts.de/categories' : 'https://www.lekoarts.de/en/categories',
+                name: locale === 'de-de' ? 'Kategorien' : 'Categories',
+              },
+              position: 1,
+            },
+            {
+              '@type': 'ListItem',
+              item: {
+                '@id': location.pathname,
+                name: category,
+              },
+              position: 2,
+            },
+          ],
+        }
+
+        return (
+          <>
+            <Helmet title={`${i18n.category}: ${category} | ${config.siteTitleAlt}`}>
+              <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
+            </Helmet>
+            <Header title={category}>
+              {totalCount} {totalCount === 1 ? i18n.post : i18n.posts} {totalCount === 1 ? i18n.belongs : i18n.belong}{' '}
+              {i18n.page_category_one} "{category}" {i18n.page_category_two === '-' ? null : i18n.page_category_two}{' '}
+              <br />
+              <StyledLink to="/categories">
+                {i18n.all} {i18n.categories}
+              </StyledLink>
+            </Header>
+            <SkipNavContent>
+              <FadeIn>
+                <Container>
+                  {edges.map(edge => (
+                    <ItemTagCategory
+                      key={edge.node.uid}
+                      title={edge.node.data.title.text}
+                      category={edge.node.data.category.document[0].data.kategorie}
+                      path={edge.node.fields.slug}
+                      date={edge.node.data.date}
+                      timeToRead={edge.node.fields.timeToRead}
+                      inputTags={edge.node.data.tags}
+                      excerpt={edge.node.fields.excerpt}
+                    />
+                  ))}
+                </Container>
+              </FadeIn>
+            </SkipNavContent>
+            <Footer />
+          </>
+        )
+      }}
     </LocaleConsumer>
   </Layout>
 )

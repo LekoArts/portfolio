@@ -21,35 +21,64 @@ const Tag = ({
 }) => (
   <Layout locale={locale} pathname={location.pathname}>
     <LocaleConsumer>
-      {({ i18n }) => (
-        <>
-          <Helmet title={`Tag: ${tag} | ${config.siteTitleAlt}`} />
-          <Header title={tag}>
-            {totalCount} {totalCount === 1 ? i18n.post : i18n.posts} {totalCount === 1 ? i18n.was : i18n.were}{' '}
-            {i18n.page_tag_one} "{tag}" {i18n.page_tag_two === '-' ? null : i18n.page_tag_two} <br />
-            <StyledLink to="/tags">{i18n.all} Tags</StyledLink>
-          </Header>
-          <SkipNavContent>
-            <FadeIn>
-              <Container>
-                {edges.map(edge => (
-                  <ItemTagCategory
-                    key={edge.node.uid}
-                    title={edge.node.data.title.text}
-                    category={edge.node.data.category.document[0].data.kategorie}
-                    path={edge.node.fields.slug}
-                    date={edge.node.data.date}
-                    timeToRead={edge.node.fields.timeToRead}
-                    inputTags={edge.node.data.tags}
-                    excerpt={edge.node.fields.excerpt}
-                  />
-                ))}
-              </Container>
-            </FadeIn>
-          </SkipNavContent>
-          <Footer />
-        </>
-      )}
+      {({ i18n }) => {
+        const breadcrumb = {
+          '@context': 'http://schema.org',
+          '@type': 'BreadcrumbList',
+          description: 'Breadcrumbs list',
+          name: 'Breadcrumbs',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              item: {
+                '@id': locale === 'de-de' ? 'https://www.lekoarts.de/tags' : 'https://www.lekoarts.de/en/tags',
+                name: 'Tags',
+              },
+              position: 1,
+            },
+            {
+              '@type': 'ListItem',
+              item: {
+                '@id': location.pathname,
+                name: tag,
+              },
+              position: 2,
+            },
+          ],
+        }
+
+        return (
+          <>
+            <Helmet title={`Tag: ${tag} | ${config.siteTitleAlt}`}>
+              <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
+            </Helmet>
+            <Header title={tag}>
+              {totalCount} {totalCount === 1 ? i18n.post : i18n.posts} {totalCount === 1 ? i18n.was : i18n.were}{' '}
+              {i18n.page_tag_one} "{tag}" {i18n.page_tag_two === '-' ? null : i18n.page_tag_two} <br />
+              <StyledLink to="/tags">{i18n.all} Tags</StyledLink>
+            </Header>
+            <SkipNavContent>
+              <FadeIn>
+                <Container>
+                  {edges.map(edge => (
+                    <ItemTagCategory
+                      key={edge.node.uid}
+                      title={edge.node.data.title.text}
+                      category={edge.node.data.category.document[0].data.kategorie}
+                      path={edge.node.fields.slug}
+                      date={edge.node.data.date}
+                      timeToRead={edge.node.fields.timeToRead}
+                      inputTags={edge.node.data.tags}
+                      excerpt={edge.node.fields.excerpt}
+                    />
+                  ))}
+                </Container>
+              </FadeIn>
+            </SkipNavContent>
+            <Footer />
+          </>
+        )
+      }}
     </LocaleConsumer>
   </Layout>
 )
