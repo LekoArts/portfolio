@@ -8923,10 +8923,10 @@ lighthouse-logger@^1.0.0, lighthouse-logger@^1.2.0:
     debug "^2.6.8"
     marky "^1.2.0"
 
-lighthouse@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/lighthouse/-/lighthouse-5.0.0.tgz#bca0f2a3ca36877d44bef5ba6478b135820d1cfb"
-  integrity sha512-s9S2ZujnAYF+F5EqKKGL72H1PQ1tPf7YxEl79LmvF9QHXElrITjQfYgi+8ZmHrNrCkKra5aKPzKRN3IIfF5Q9w==
+lighthouse@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/lighthouse/-/lighthouse-5.1.0.tgz#f4f9a1f46f653cb3e53b0895a8a92162dd84a4a7"
+  integrity sha512-T+6VYefgRgSRHCgWhSQzsS1Jyu6JJ5I3cnrH/Q7BvwoJwnMhHME+JQ4ib5Oek2ZTfOakoarLDqrFPDtYNxk0KA==
   dependencies:
     axe-core "3.2.2"
     chrome-launcher "^0.10.7"
