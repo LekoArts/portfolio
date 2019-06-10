@@ -60,7 +60,7 @@
     "react-dom": "^16.8.6",
     "react-headroom": "^2.2.8",
     "react-helmet": "^5.2.1",
-    "react-spring": "^8.0.20",
+    "react-spring": "^8.0.23",
     "react-typography": "^0.16.19",
     "styled-components": "^4.2.1",
     "styled-theming": "^2.2.0",
