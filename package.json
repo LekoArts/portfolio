@@ -69,7 +69,7 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.0.2",
     "babel-preset-env": "^1.7.0",
     "chrome-launcher": "^0.10.7",
     "cli-table": "^0.3.1",
