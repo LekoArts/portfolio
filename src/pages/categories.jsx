@@ -47,9 +47,12 @@ export default Categories
 
 Categories.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.array.isRequired,
+    categories: PropTypes.shape({
+      totalCount: PropTypes.number.isRequired,
       edges: PropTypes.array.isRequired,
+    }),
+    posts: PropTypes.shape({
+      totalCount: PropTypes.number.isRequired,
     }),
   }).isRequired,
   pageContext: PropTypes.shape({

@@ -14,7 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import 'cypress-testing-library/add-commands'
+import '@testing-library/cypress'
 import 'gatsby-cypress/commands'
 import './commands'
 

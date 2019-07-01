@@ -223,6 +223,11 @@ Post.propTypes = {
   }).isRequired,
   data: PropTypes.shape({
     prismicBlogpost: PropTypes.object.isRequired,
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        siteUrl: PropTypes.string.isRequired,
+      }),
+    }),
   }).isRequired,
   location: PropTypes.object.isRequired,
 }
