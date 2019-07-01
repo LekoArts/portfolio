@@ -54,6 +54,19 @@ Projects.propTypes = {
     allPrismicProjekt: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
+    content: PropTypes.shape({
+      data: PropTypes.shape({
+        title: PropTypes.shape({
+          text: PropTypes.string.isRequired,
+        }),
+        description: PropTypes.shape({
+          text: PropTypes.string.isRequired,
+        }),
+        content: PropTypes.shape({
+          html: PropTypes.string,
+        }),
+      }),
+    }),
   }).isRequired,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,

@@ -51,8 +51,21 @@ export default Blog
 
 Blog.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allPrismicBlogpost: PropTypes.shape({
       edges: PropTypes.array.isRequired,
+    }),
+    content: PropTypes.shape({
+      data: PropTypes.shape({
+        title: PropTypes.shape({
+          text: PropTypes.string.isRequired,
+        }),
+        description: PropTypes.shape({
+          text: PropTypes.string.isRequired,
+        }),
+        content: PropTypes.shape({
+          html: PropTypes.string,
+        }),
+      }),
     }),
   }).isRequired,
   pageContext: PropTypes.shape({

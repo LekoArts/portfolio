@@ -1,4 +1,4 @@
-const { RichText } = require('prismic-reactjs')
+const { RichText } = require('prismic-dom')
 const Prism = require('prismjs')
 const _ = require('lodash')
 require('prismjs/components/prism-javascript')

@@ -105,8 +105,18 @@ export default Contact
 
 Contact.propTypes = {
   data: PropTypes.shape({
-    allPrismicSeite: PropTypes.shape({
-      edges: PropTypes.array.isRequired,
+    content: PropTypes.shape({
+      data: PropTypes.shape({
+        title: PropTypes.shape({
+          text: PropTypes.string.isRequired,
+        }),
+        description: PropTypes.shape({
+          text: PropTypes.string.isRequired,
+        }),
+        content: PropTypes.shape({
+          html: PropTypes.string.isRequired,
+        }),
+      }),
     }),
   }).isRequired,
   pageContext: PropTypes.shape({

@@ -7,7 +7,6 @@ import { Container, Layout, LocalizedLink, SkipNavContent, FadeIn } from 'elemen
 import { Footer, Header, ItemTagCategory } from 'components'
 import config from '../../config/website'
 import { LocaleConsumer } from '../elements/Layout'
-import locales from '../../config/i18n'
 
 const StyledLink = styled(LocalizedLink)`
   color: ${props => props.theme.colors.white.light};
@@ -98,6 +97,7 @@ Category.propTypes = {
   data: PropTypes.shape({
     allPrismicBlogpost: PropTypes.shape({
       edges: PropTypes.array.isRequired,
+      totalCount: PropTypes.number.isRequired,
     }),
   }).isRequired,
   location: PropTypes.object.isRequired,

@@ -6,9 +6,7 @@ import { Container } from 'elements'
 const Wrapper = styled(Container)`
   ${props =>
     props.hasFilename &&
-    `pre { margin-top: 0!important; border-radius: 0 0 ${props.theme.borderRadius.default} ${
-      props.theme.borderRadius.default
-    } !important; }`};
+    `pre { margin-top: 0!important; border-radius: 0 0 ${props.theme.borderRadius.default} ${props.theme.borderRadius.default} !important; }`};
 `
 
 const Title = styled.div`

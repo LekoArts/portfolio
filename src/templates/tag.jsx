@@ -93,6 +93,7 @@ Tag.propTypes = {
   data: PropTypes.shape({
     allPrismicBlogpost: PropTypes.shape({
       edges: PropTypes.array.isRequired,
+      totalCount: PropTypes.number.isRequired,
     }),
   }).isRequired,
   location: PropTypes.object.isRequired,
