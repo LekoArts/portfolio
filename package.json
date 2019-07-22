@@ -65,7 +65,7 @@
     "styled-components": "^4.3.2",
     "styled-theming": "^2.2.0",
     "typeface-istok-web": "^0.0.71",
-    "typeface-montserrat": "^0.0.54",
+    "typeface-montserrat": "^0.0.75",
     "typography": "^0.16.19"
   },
   "devDependencies": {
