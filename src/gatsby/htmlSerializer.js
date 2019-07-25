@@ -15,7 +15,7 @@ const { Elements } = RichText
 
 // Arrays of the labels I use on Prismic.io
 const codeInline = ['text']
-const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql']
+const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql', 'yaml']
 
 const htmlSerializer = (type, element, content) => {
   switch (type) {

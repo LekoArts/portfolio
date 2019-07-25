@@ -13,6 +13,7 @@ const lables = [
   { lang: 'jsx', tag: 'jsx', bg: '#61dafb' },
   { lang: 'bash', tag: 'sh' },
   { lang: 'json', tag: 'json', bg: '#8bc34a' },
+  { lang: 'yaml', tag: 'yaml', bg: '#8bc34a' },
   { lang: 'diff', tag: 'diff', bg: '#e6ffed' },
   { lang: 'markdown', tag: 'md', bg: 'white' },
   { lang: 'graphql', tag: 'GraphQL', bg: '#e10098', color: '#fff' },
