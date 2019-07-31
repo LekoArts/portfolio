@@ -169,7 +169,7 @@ export const pageQuery = graphql`
         cover {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#5ABDFF", shadow: "#4768b4" }) {
+              fluid(maxWidth: 1920, quality: 95, duotone: { highlight: "#5ABDFF", shadow: "#4768b4" }) {
                 ...GatsbyImageSharpFluid_withWebp
               }
               resize(width: 1200, quality: 90) {
@@ -206,7 +206,7 @@ export const pageQuery = graphql`
               image {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 1200, quality: 90) {
+                    fluid(maxWidth: 1200, quality: 95) {
                       ...GatsbyImageSharpFluid_withWebp
                     }
                   }
