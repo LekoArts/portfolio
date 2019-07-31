@@ -7,6 +7,7 @@ require('prismjs/components/prism-scss')
 require('prismjs/components/prism-jsx')
 require('prismjs/components/prism-bash')
 require('prismjs/components/prism-json')
+require('prismjs/components/prism-yaml')
 require('prismjs/components/prism-diff')
 require('prismjs/components/prism-markdown')
 require('prismjs/components/prism-graphql')
@@ -15,7 +16,7 @@ const { Elements } = RichText
 
 // Arrays of the labels I use on Prismic.io
 const codeInline = ['text']
-const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql']
+const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql', 'yaml']
 
 const htmlSerializer = (type, element, content) => {
   switch (type) {
