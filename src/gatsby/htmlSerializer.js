@@ -2,6 +2,7 @@ const { RichText } = require('prismic-dom')
 const Prism = require('prismjs')
 const _ = require('lodash')
 require('prismjs/components/prism-javascript')
+require('prismjs/components/prism-typescript')
 require('prismjs/components/prism-css')
 require('prismjs/components/prism-scss')
 require('prismjs/components/prism-jsx')
@@ -16,7 +17,19 @@ const { Elements } = RichText
 
 // Arrays of the labels I use on Prismic.io
 const codeInline = ['text']
-const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql', 'yaml']
+const codeBlock = [
+  'javascript',
+  'typescript',
+  'css',
+  'scss',
+  'jsx',
+  'bash',
+  'json',
+  'diff',
+  'markdown',
+  'graphql',
+  'yaml',
+]
 
 const htmlSerializer = (type, element, content) => {
   switch (type) {
