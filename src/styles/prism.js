@@ -8,6 +8,7 @@ const COLORS = {
 
 const lables = [
   { lang: 'javascript', tag: 'js', bg: '#f7df1e' },
+  { lang: 'typescript', tag: 'ts', bg: '#007ACC', color: '#fff' },
   { lang: 'css', tag: 'css', bg: '#ff9800' },
   { lang: 'scss', tag: 'scss', bg: '#ff9800' },
   { lang: 'jsx', tag: 'jsx', bg: '#61dafb' },
