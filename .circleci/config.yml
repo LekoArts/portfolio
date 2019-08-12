@@ -75,26 +75,9 @@ jobs:
       - store_artifacts:
           path: cypress/screenshots
 
-  lighthouse:
-    executor:
-      name: node
-      image: "lts-browsers"
-    steps:
-      - checkout
-      - <<: *restore_cache
-      - <<: *install_node_modules
-      - <<: *save_cache
-      - run:
-          name: Build Gatsby site
-          command: yarn build
-      - run:
-          name: Test Lighthouse scores
-          command: yarn test:lighthouse
-
 workflows:
   version: 2
   lint-test:
     jobs:
       - lint
       - e2e_cypress
-      - lighthouse
