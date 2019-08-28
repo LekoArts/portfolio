@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import format from 'date-fns/format'
+import { format } from 'date-fns'
 import styled from 'styled-components'
 import { Wave, Container, LocalizedLink } from 'elements'
 import { LocaleConsumer } from 'elements/Layout'
@@ -140,7 +140,7 @@ const LanguageBox = styled.div`
 `
 
 const Footer = ({ children }) => {
-  const date = format(new Date(), 'YYYY')
+  const date = format(new Date(), 'yyyy')
   return (
     <LocaleConsumer>
       {({ i18n, locale }) => (

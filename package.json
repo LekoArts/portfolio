@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
-    "date-fns": "^1.30.1",
+    "date-fns": "^2.0.1",
     "gatsby": "^2.13.83",
     "gatsby-image": "^2.2.14",
     "gatsby-plugin-catch-links": "^2.1.5",

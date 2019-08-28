@@ -1,5 +1,5 @@
-const format = require('date-fns/format')
-const locales = require('../../config/i18n')
+import { format, parseISO } from 'date-fns'
+import locales from '../../config/i18n'
 
 /**
  * Output a formatted date with a given locale
@@ -8,6 +8,6 @@ const locales = require('../../config/i18n')
  * @returns {string}
  */
 
-const localizedDate = (date, locale) => format(date, locales[locale].dateFormat)
+const localizedDate = (date, locale) => format(parseISO(date), locales[locale].dateFormat)
 
-module.exports = localizedDate
+export default localizedDate
