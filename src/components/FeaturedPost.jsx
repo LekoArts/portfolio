@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
-import { localizedDate } from 'utilities'
+import localizedDate from 'utilities/localizedDate'
 import { LocaleConsumer } from 'elements/Layout'
 
 const ImageOverlay = styled.div`

@@ -6,7 +6,7 @@ import Img from 'gatsby-image'
 import kebabCase from 'lodash/kebabCase'
 import { LocalizedLink } from 'elements'
 import { hide } from 'styles'
-import { localizedDate } from 'utilities'
+import localizedDate from 'utilities/localizedDate'
 import { LocaleConsumer } from 'elements/Layout'
 
 const Wrapper = styled.article`

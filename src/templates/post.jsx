@@ -9,7 +9,7 @@ import ReactDisqusComments from 'react-disqus-comments'
 import { Container, Content, Wave, Line, Layout, Hero, InfoText, LocalizedLink, Button } from 'elements'
 import { hide } from 'styles'
 import { SEO, Tags, Suggestions, Footer } from 'components'
-import { localizedDate } from 'utilities'
+import localizedDate from 'utilities/localizedDate'
 import { LocaleConsumer } from '../elements/Layout'
 import { Tag } from '../components/Tags'
 
