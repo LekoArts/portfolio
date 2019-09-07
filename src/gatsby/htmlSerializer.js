@@ -12,6 +12,7 @@ require('prismjs/components/prism-yaml')
 require('prismjs/components/prism-diff')
 require('prismjs/components/prism-markdown')
 require('prismjs/components/prism-graphql')
+require('prismjs/components/prism-markup')
 
 const { Elements } = RichText
 
@@ -29,7 +30,6 @@ const codeBlock = [
   'markdown',
   'graphql',
   'yaml',
-  'text',
 ]
 
 const htmlSerializer = (type, element, content) => {
@@ -57,7 +57,11 @@ const htmlSerializer = (type, element, content) => {
           Prism.languages[element.label]
         )}</code></pre></div>`
       }
-      return null
+
+      return `<div class="lekoarts-highlight" data-language="markup"><pre class="language-markup"><code class="language-markup">${Prism.highlight(
+        element.text,
+        Prism.languages.markup
+      )}</code></pre></div>`
     }
     case Elements.heading2: {
       return `<h2 id="${_.kebabCase(element.text)}"><a href="#${_.kebabCase(element.text)}" aria-label="${
