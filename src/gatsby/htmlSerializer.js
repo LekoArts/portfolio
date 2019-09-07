@@ -29,6 +29,7 @@ const codeBlock = [
   'markdown',
   'graphql',
   'yaml',
+  'text',
 ]
 
 const htmlSerializer = (type, element, content) => {
