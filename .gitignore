@@ -68,3 +68,7 @@ bundle-stats.json
 # Cypress
 cypress/videos
 cypress/screenshots
+
+.idea
+.vscode
+.DS_Store

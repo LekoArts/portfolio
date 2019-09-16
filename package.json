@@ -13,6 +13,7 @@
     "develop": "gatsby develop",
     "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
     "build": "gatsby build",
+    "build:cypress": "cross-env CYPRESS_SUPPORT=y gatsby build",
     "serve": "gatsby serve",
     "cy:open": "cypress open",
     "cy:run": "CYPRESS_baseUrl=http://localhost:9000 cypress run --browser chrome --reporter junit --reporter-options 'mochaFile=results/cypress/result.xml'",
@@ -21,7 +22,7 @@
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
     "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
     "serve-and-run": "start-server-and-test serve http://localhost:9000 cy:run",
-    "test:e2e": "cross-env CYPRESS_SUPPORT=y yarn build && yarn serve-and-run",
+    "test:e2e": "yarn build:cypress && yarn serve-and-run",
     "test:e2e:dev": "start-server-and-test develop:cypress http://localhost:8000 cy:open"
   },
   "husky": {
@@ -67,7 +68,7 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
-    "@testing-library/cypress": "^4.2.0",
+    "@testing-library/cypress": "^5.0.0",
     "babel-eslint": "^10.0.3",
     "babel-preset-env": "^1.7.0",
     "cross-env": "^5.2.1",

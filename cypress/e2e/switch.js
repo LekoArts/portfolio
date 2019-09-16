@@ -2,11 +2,11 @@ describe('Switch', () => {
   it('Language Switch works', () => {
     cy.visit('/')
       .waitForRouteChange()
-      .getByText('Englisch')
+      .findByText('Englisch')
       .click()
       .waitForRouteChange()
       .assertRoute('/en')
-      .getByText('German')
+      .findByText('German')
       .click()
       .waitForRouteChange()
       .assertRoute('/')
