@@ -1,6 +1,6 @@
 describe('Navigation English', () => {
   beforeEach(() => {
-    cy.visit('/en').waitForRouteChange()
+    cy.visit('/en')
   })
   it('in the header works', () => {
     cy.get('nav').within(() => {

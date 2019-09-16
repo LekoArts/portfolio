@@ -2,7 +2,7 @@ import config from '../../config/website'
 
 describe('Project', () => {
   beforeEach(() => {
-    cy.visit('/projects/krotus-computer-produktion-einer-eigenen-tastatur').waitForRouteChange()
+    cy.visit('/projects/krotus-computer-produktion-einer-eigenen-tastatur')
   })
   it('Suggestions show', () => {
     cy.findByTestId('suggestion-left').findByTestId('suggestion-right')

@@ -1,6 +1,6 @@
 describe('Blogpost', () => {
   beforeEach(() => {
-    cy.visit('/blog/quicktipp-netlify-discord-webhooks').waitForRouteChange()
+    cy.visit('/blog/quicktipp-netlify-discord-webhooks')
   })
   it('Suggestions show', () => {
     cy.findByTestId('suggestion-left').findByTestId('suggestion-right')
