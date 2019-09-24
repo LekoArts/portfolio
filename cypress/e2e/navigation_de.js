@@ -2,21 +2,21 @@ describe('Navigation German', () => {
   beforeEach(() => {
     cy.visit('/').waitForRouteChange()
   })
-  it('in the header works', () => {
+  it('in the nav works', () => {
     cy.get('nav').within(() => {
       cy.findByText('Projekte')
-        .click({ force: true })
-        .waitForRouteChange()
-        .assertRoute('/projects')
+        .should('have.attr', 'href')
+        .and('include', '/projects')
+        .findByText('Blog')
+        .should('have.attr', 'href')
+        .and('include', '/blog')
+        .findByText('Kontakt')
+        .should('have.attr', 'href')
+        .and('include', '/contact')
     })
-    cy.findByText('Blog')
-      .click({ force: true })
-      .waitForRouteChange()
-      .assertRoute('/blog')
-      .findByText('Kontakt')
-      .click({ force: true })
-      .waitForRouteChange()
-      .assertRoute('/contact')
+  })
+  it('in the logo works', () => {
+    cy.visit(`/blog`)
       .findByLabelText(/LekoArts, Back to homepage/)
       .click({ force: true })
       .waitForRouteChange()
