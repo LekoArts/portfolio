@@ -61,7 +61,7 @@
     "react-helmet": "^5.2.1",
     "react-spring": "^8.0.27",
     "react-typography": "^0.16.19",
-    "styled-components": "^4.3.2",
+    "styled-components": "^4.4.0",
     "styled-theming": "^2.2.0",
     "typeface-istok-web": "^0.0.71",
     "typeface-montserrat": "^0.0.75",
