@@ -82,7 +82,7 @@
     "eslint-plugin-react": "^7.16.0",
     "gatsby-cypress": "^0.2.11",
     "husky": "^3.0.7",
-    "lint-staged": "^9.4.0",
+    "lint-staged": "^9.4.1",
     "prettier": "^1.18.2",
     "start-server-and-test": "^1.10.2"
   },
