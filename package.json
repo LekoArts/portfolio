@@ -50,7 +50,7 @@
     "gatsby-source-prismic": "^2.2.0",
     "gatsby-transformer-sharp": "^2.3.0",
     "lodash": "^4.17.15",
-    "polished": "^3.4.1",
+    "polished": "^3.4.2",
     "prismic-dom": "^2.1.0",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
