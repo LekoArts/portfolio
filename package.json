@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
-    "date-fns": "^2.8.1",
+    "date-fns": "^2.9.0",
     "gatsby": "^2.19.10",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-catch-links": "^2.1.24",
