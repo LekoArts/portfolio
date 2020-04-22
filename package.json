@@ -71,7 +71,7 @@
     "@testing-library/cypress": "^5.1.2",
     "babel-eslint": "^10.1.0",
     "babel-preset-env": "^1.7.0",
-    "cross-env": "^7.0.0",
+    "cross-env": "^7.0.2",
     "cypress": "^3.8.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
