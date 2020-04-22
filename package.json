@@ -84,7 +84,7 @@
     "husky": "^4.2.3",
     "lint-staged": "^10.1.7",
     "prettier": "^1.19.1",
-    "start-server-and-test": "^1.10.8"
+    "start-server-and-test": "^1.11.0"
   },
   "keywords": [
     "gatsby",
