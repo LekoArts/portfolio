@@ -51,7 +51,7 @@
     "gatsby-transformer-sharp": "^2.5.0",
     "lodash": "^4.17.15",
     "polished": "^3.5.2",
-    "prismic-dom": "^2.1.0",
+    "prismic-dom": "^2.2.3",
     "prismjs": "^1.19.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

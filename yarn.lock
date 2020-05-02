@@ -12526,10 +12526,24 @@ prismic-dom@^2.1.0:
     prismic-helpers "^1.0.0"
     prismic-richtext "^0.4.2"
 
+prismic-dom@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/prismic-dom/-/prismic-dom-2.2.3.tgz#803925eebe58a4dd147529f50b71c0853eb3d744"
+  integrity sha512-7jwRBbqkll9BPkS4QAQttRaENmAWR9s4PWGGmi7ifobs1J0kYDCrn8PxJ99cywQJQea0jWgAVzOfJhkMmIF8wQ==
+  dependencies:
+    escape-html "1.0.3"
+    prismic-helpers "^1.0.3"
+    prismic-richtext "^1.0.3"
+
 prismic-helpers@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/prismic-helpers/-/prismic-helpers-1.0.0.tgz#8337420cf187f55fb7b7a8be755523c8696fc329"
   integrity sha1-gzdCDPGH9V+3t6i+dVUjyGlvwyk=
+
+prismic-helpers@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/prismic-helpers/-/prismic-helpers-1.0.3.tgz#cc1aa184f8791ed6b0a1775a9eb68a74a83f741e"
+  integrity sha512-eGCSflFwsWeXe7BdqWWGjjoaq1SPr61Y55xIUkgYumKFmfJsK9TVcSkRp0rdwW0hGnnDSRvjJwIo2kkDwG7KxA==
 
 prismic-javascript@^1.1.5:
   version "1.5.1"
@@ -12546,6 +12560,14 @@ prismic-richtext@^0.4.2:
   dependencies:
     ramda "^0.25.0"
     uuid "^3.1.0"
+
+prismic-richtext@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/prismic-richtext/-/prismic-richtext-1.0.3.tgz#ce8c8c18d65b01f1036f222b993ad2de700199fe"
+  integrity sha512-ZM45dVPL713+oDpt8ysWRY2pw3esBxRrqBlUO+q/T0WK0SNVSq29tQYhVdIALd8hRfF7X1lfpW0Q0YymEdh0AA==
+  dependencies:
+    ramda "^0.26.1"
+    uuid "^3.3.2"
 
 prismjs@^1.19.0:
   version "1.19.0"
@@ -12784,7 +12806,7 @@ raf@^3.3.0:
   dependencies:
     performance-now "^2.1.0"
 
-ramda@0.26.1:
+ramda@0.26.1, ramda@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
   integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
