@@ -3,7 +3,8 @@ describe('Blogpost', () => {
     cy.visit('/blog/quicktipp-netlify-discord-webhooks').waitForRouteChange()
   })
   it('Suggestions show', () => {
-    cy.findByTestId('suggestion-left').findByTestId('suggestion-right')
+    cy.findByTestId('suggestion-left')
+    cy.findByTestId('suggestion-right')
   })
   it('Blogpost footer links to patreon', () => {
     cy.get('[data-testid="optional-content"]').within(() => {

@@ -5,7 +5,8 @@ describe('Project', () => {
     cy.visit('/projects/krotus-computer-produktion-einer-eigenen-tastatur').waitForRouteChange()
   })
   it('Suggestions show', () => {
-    cy.findByTestId('suggestion-left').findByTestId('suggestion-right')
+    cy.findByTestId('suggestion-left')
+    cy.findByTestId('suggestion-right')
   })
   it('Footer links to Contact', () => {
     cy.findByText('Projekt starten').click().waitForRouteChange().assertRoute('/contact')
