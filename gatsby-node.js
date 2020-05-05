@@ -5,16 +5,16 @@ const gatsbyNodeGraphQL = require('./src/gatsby/gatsbyNodeGraphQL')
 const locales = require('./config/i18n')
 
 // Remove trailing slashes unless it's only "/", then leave it as it is
-const replaceTrailing = _path => (_path === `/` ? _path : _path.replace(/\/$/, ``))
+const replaceTrailing = (_path) => (_path === `/` ? _path : _path.replace(/\/$/, ``))
 // Remove slashes at the beginning and end
-const replaceBoth = _path => _path.replace(/^\/|\/$/g, '')
+const replaceBoth = (_path) => _path.replace(/^\/|\/$/g, '')
 // If the "lang" is the default language, don't create a prefix. Otherwise add a "/en" before the slug (defined in "locales")
 const localizedSlug = (_page, node) =>
   locales[node.lang].default ? `/${_page}/${node.uid}` : `/${locales[node.lang].path}/${_page}/${node.uid}`
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
-const wrapper = promise =>
-  promise.then(result => {
+const wrapper = (promise) =>
+  promise.then((result) => {
     if (result.errors) {
       throw result.errors
     }
@@ -81,7 +81,7 @@ exports.onCreatePage = ({ page, actions }) => {
   // First delete the pages so we can re-create them
   deletePage(page)
 
-  Object.keys(locales).map(lang => {
+  Object.keys(locales).map((lang) => {
     // Remove the trailing slash from the path, e.g. --> /blog
     page.path = replaceTrailing(page.path)
 

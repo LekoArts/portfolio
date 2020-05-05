@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import locales from '../../config/i18n'
 
-const replaceTrailing = _path => _path.replace(/\/$/, ``)
+const replaceTrailing = (_path) => _path.replace(/\/$/, ``)
 
-const Head = props => {
+const Head = (props) => {
   const { i18n, postNode, pathname, article, project, data } = props
   const { buildTime, config } = data.site
 
@@ -46,7 +46,7 @@ const Head = props => {
     imageHeight = config.siteBannerHeight
   }
 
-  const orgaCreator = input => ({
+  const orgaCreator = (input) => ({
     '@context': 'http://schema.org',
     '@id': `${config.siteUrl}/#${input}`,
     '@type': 'Organization',
@@ -248,7 +248,7 @@ const Head = props => {
   )
 }
 
-const SEO = props => <StaticQuery query={querySEO} render={data => <Head {...props} data={data} />} />
+const SEO = (props) => <StaticQuery query={querySEO} render={(data) => <Head {...props} data={data} />} />
 
 export default SEO
 

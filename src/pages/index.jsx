@@ -24,13 +24,13 @@ const PostsWrapper = styled.div`
 
 const Text = styled.p`
   text-align: center;
-  font-family: ${props => props.theme.fontFamily.heading};
+  font-family: ${(props) => props.theme.fontFamily.heading};
   font-weight: 700;
   font-size: 1.8rem;
   line-height: 2.5rem;
   max-width: 860px;
   margin: 5rem auto;
-  text-shadow: ${props => props.theme.shadow.text.big};
+  text-shadow: ${(props) => props.theme.shadow.text.big};
 `
 
 const LocalizedButton = Button.withComponent(LocalizedLink)

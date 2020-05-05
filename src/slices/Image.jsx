@@ -8,11 +8,11 @@ const Wrapper = styled(Container)`
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   .gatsby-image-outer-wrapper {
-    box-shadow: ${props => props.theme.shadow.image};
-    border-radius: ${props => props.theme.borderRadius.default};
+    box-shadow: ${(props) => props.theme.shadow.image};
+    border-radius: ${(props) => props.theme.borderRadius.default};
   }
   img {
-    border-radius: ${props => props.theme.borderRadius.default};
+    border-radius: ${(props) => props.theme.borderRadius.default};
   }
 `
 

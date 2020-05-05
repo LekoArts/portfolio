@@ -8,10 +8,7 @@ describe('Project', () => {
     cy.findByTestId('suggestion-left').findByTestId('suggestion-right')
   })
   it('Footer links to Contact', () => {
-    cy.findByText('Projekt starten')
-      .click()
-      .waitForRouteChange()
-      .assertRoute('/contact')
+    cy.findByText('Projekt starten').click().waitForRouteChange().assertRoute('/contact')
   })
   it('Contains specific title tag', () => {
     cy.get('head title').should(

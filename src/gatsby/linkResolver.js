@@ -1,6 +1,6 @@
 const i18n = require('../../config/i18n')
 
-const linkResolver = doc => {
+const linkResolver = (doc) => {
   // Give the project/blog links the appropriate language path
   const prefix = i18n[doc.lang].default ? `/` : `/${i18n[doc.lang].path}/`
 

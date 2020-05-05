@@ -22,13 +22,13 @@ const Wrapper = styled(SkipNavContent)`
   }
   a:not(.gatsby-resp-image-link) {
     color: black;
-    box-shadow: inset 0 -2px 0 ${props => props.theme.tint.blue};
-    border-bottom: 1px solid ${props => props.theme.tint.blue};
-    transition: ${props => props.theme.transitions.default.transition};
+    box-shadow: inset 0 -2px 0 ${(props) => props.theme.tint.blue};
+    border-bottom: 1px solid ${(props) => props.theme.tint.blue};
+    transition: ${(props) => props.theme.transitions.default.transition};
     text-decoration: none;
     &:hover,
     &:focus {
-      background: ${props => props.theme.tint.blue};
+      background: ${(props) => props.theme.tint.blue};
       color: black;
     }
   }
@@ -43,8 +43,8 @@ const Wrapper = styled(SkipNavContent)`
     margin-bottom: 2rem;
     text-align: center;
     img {
-      border-radius: ${props => props.theme.borderRadius.default};
-      box-shadow: ${props => props.theme.shadow.image};
+      border-radius: ${(props) => props.theme.borderRadius.default};
+      box-shadow: ${(props) => props.theme.shadow.image};
     }
   }
   [data-oembed-type='video'] {
@@ -73,7 +73,7 @@ const Wrapper = styled(SkipNavContent)`
     left: -2rem;
     box-shadow: none;
     border-bottom: none;
-    color: ${props => props.theme.tint.blue};
+    color: ${(props) => props.theme.tint.blue};
     visibility: hidden;
   }
   h2:hover .anchor,
@@ -84,13 +84,13 @@ const Wrapper = styled(SkipNavContent)`
   h2 .anchor:hover,
   h3 .anchor:hover,
   h4 .anchor:hover {
-    color: ${props => props.theme.colors.primary.base};
+    color: ${(props) => props.theme.colors.primary.base};
     background: none;
   }
 `
 
 const Content = ({ sliceZone }) => {
-  const slices = sliceZone.map(s => {
+  const slices = sliceZone.map((s) => {
     switch (s.slice_type) {
       case 'text':
         return <BodyText key={s.id} input={s} />

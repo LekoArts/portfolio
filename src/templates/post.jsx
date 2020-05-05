@@ -36,20 +36,20 @@ const Wrapper = styled.header`
   height: 600px;
   position: relative;
   overflow: hidden;
-  background: ${props => props.theme.colors.secondary.dark};
+  background: ${(props) => props.theme.colors.secondary.dark};
   .gatsby-image-wrapper {
     height: 600px;
     img {
       animation: ${pulse} 30s infinite;
     }
   }
-  @media (max-width: ${props => props.theme.breakpoints.m}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
     height: 500px;
     .gatsby-image-wrapper {
       height: 500px;
     }
   }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
     height: 400px;
     .gatsby-image-wrapper {
       height: 400px;
@@ -59,17 +59,17 @@ const Wrapper = styled.header`
 
 const Information = styled(animated.div)`
   margin-top: 2rem;
-  font-family: ${props => props.theme.fontFamily.heading};
+  font-family: ${(props) => props.theme.fontFamily.heading};
   a {
-    color: ${props => props.theme.colors.white.base};
+    color: ${(props) => props.theme.colors.white.base};
     transition: all 0.4s;
     border-bottom: 1px solid transparent;
     &:hover {
-      border-bottom: 1px solid ${props => props.theme.colors.white.base};
-      color: ${props => props.theme.colors.white.base};
+      border-bottom: 1px solid ${(props) => props.theme.colors.white.base};
+      color: ${(props) => props.theme.colors.white.base};
     }
     &:focus {
-      color: ${props => props.theme.colors.white.base};
+      color: ${(props) => props.theme.colors.white.base};
     }
   }
 `
@@ -112,7 +112,7 @@ const TagsInnerContainer = styled.div`
 `
 
 const StyledTag = styled(Tag)`
-  background: ${props => props.theme.colors.secondary.light};
+  background: ${(props) => props.theme.colors.secondary.light};
   font-weight: 600;
 `
 
@@ -125,7 +125,7 @@ const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: p
   const { fluid } = post.cover.localFile.childImageSharp
   let tags = false
   if (post.tags[0].tag) {
-    tags = post.tags.map(tag => tag.tag.document[0].data.tag)
+    tags = post.tags.map((tag) => tag.tag.document[0].data.tag)
   }
 
   // Disqus

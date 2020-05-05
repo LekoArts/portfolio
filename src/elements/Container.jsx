@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Wrapper = styled.section`
   margin: 0 auto;
   padding: 0 1.5rem;
-  max-width: ${props => props.theme.layout[props.type]};
+  max-width: ${(props) => props.theme.layout[props.type]};
 `
 
 const Container = ({ children, type, className }) => (

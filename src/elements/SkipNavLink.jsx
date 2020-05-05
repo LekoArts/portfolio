@@ -18,7 +18,7 @@ const StyledLink = styled.a`
     padding: 1rem 2.5rem;
     position: fixed;
     font-weight: 700;
-    border-radius: ${props => props.theme.borderRadius.default};
+    border-radius: ${(props) => props.theme.borderRadius.default};
     top: 5px;
     left: 5px;
     background: white;
@@ -26,7 +26,7 @@ const StyledLink = styled.a`
     height: auto;
     clip: auto;
     outline: none;
-    box-shadow: 0 0 0 5px ${props => props.theme.tint.blue};
+    box-shadow: 0 0 0 5px ${(props) => props.theme.tint.blue};
   }
 `
 
@@ -36,7 +36,7 @@ const SkipNavLink = ({ children, ...props }) => (
   </StyledLink>
 )
 
-const SkipNavContent = props => <main {...props} id={SkipNavID} />
+const SkipNavContent = (props) => <main {...props} id={SkipNavID} />
 
 export { SkipNavLink, SkipNavContent, SkipNavID }
 

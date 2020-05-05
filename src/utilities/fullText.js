@@ -6,11 +6,11 @@ const join = require('lodash/join')
  * @returns {string} - The content of the slice in text form
  */
 
-const fullText = input =>
-  input.body.map(slice => {
+const fullText = (input) =>
+  input.body.map((slice) => {
     if (slice.slice_type === 'text') {
       if (slice.primary.text) {
-        const content = slice.primary.text.map(t => t.text)
+        const content = slice.primary.text.map((t) => t.text)
         return join(content)
       }
     }
