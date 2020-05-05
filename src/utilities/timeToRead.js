@@ -6,7 +6,7 @@ const words = require('lodash/words')
  * @returns {number} - Time in minutes
  */
 
-const timeToRead = content => {
+const timeToRead = (content) => {
   let TTR
   const avgWPM = 240
   const wordCount = words(content).length

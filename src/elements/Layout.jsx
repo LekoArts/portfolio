@@ -33,7 +33,7 @@ const { Provider: LocaleProvider, Consumer: LocaleConsumer } = React.createConte
 const Layout = ({ children, locale, pathname, customSEO }) => (
   <StaticQuery
     query={translationQuery}
-    render={data => {
+    render={(data) => {
       // Grab the information from the static file
       const staticLocale = locales[locale]
       // Convert the incoming "de-de" to "de_de"

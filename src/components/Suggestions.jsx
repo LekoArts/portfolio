@@ -12,7 +12,7 @@ const Row = styled.div`
 `
 
 const ImageOverlay = styled.div`
-  border-radius: ${props => props.theme.borderRadius.default};
+  border-radius: ${(props) => props.theme.borderRadius.default};
   position: absolute;
   top: 0;
   right: 0;
@@ -20,8 +20,8 @@ const ImageOverlay = styled.div`
   left: 0;
   z-index: 2;
   opacity: 0;
-  transition: opacity ${props => props.theme.transitions.default.duration};
-  ${props =>
+  transition: opacity ${(props) => props.theme.transitions.default.duration};
+  ${(props) =>
     props.cardstyle === 'primary'
       ? `
       background-image: linear-gradient(
@@ -40,12 +40,12 @@ const ImageOverlay = styled.div`
 const Wrapper = styled.article`
   position: relative;
   z-index: 100;
-  border-radius: ${props => props.theme.borderRadius.default};
-  box-shadow: ${props => props.theme.shadow.feature.small.default};
-  transition: ${props => props.theme.transitions.boom.transition};
+  border-radius: ${(props) => props.theme.borderRadius.default};
+  box-shadow: ${(props) => props.theme.shadow.feature.small.default};
+  transition: ${(props) => props.theme.transitions.boom.transition};
   height: 15rem;
   &:hover {
-    box-shadow: ${props => props.theme.shadow.feature.small.hover};
+    box-shadow: ${(props) => props.theme.shadow.feature.small.hover};
     transform: translateY(-12px);
     ${ImageOverlay} {
       opacity: 0.9;
@@ -76,7 +76,7 @@ const StyledLink = styled(Link)`
   align-items: center;
   padding: 1rem;
   z-index: 3;
-  border-radius: ${props => props.theme.borderRadius.default};
+  border-radius: ${(props) => props.theme.borderRadius.default};
   &:after {
     content: '';
     position: absolute;
@@ -96,8 +96,8 @@ const StyledLink = styled(Link)`
       rgba(0, 0, 0, 0) 100%
     );
     z-index: -10;
-    border-radius: ${props => props.theme.borderRadius.default};
-    transition: opacity ${props => props.theme.transitions.default.duration};
+    border-radius: ${(props) => props.theme.borderRadius.default};
+    transition: opacity ${(props) => props.theme.transitions.default.duration};
   }
   &:hover {
     &:after {
@@ -106,7 +106,8 @@ const StyledLink = styled(Link)`
   }
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 5px ${props => (props.cardstyle === 'primary' ? props.theme.tint.blue : props.theme.tint.orange)};
+    box-shadow: 0 0 0 5px
+      ${(props) => (props.cardstyle === 'primary' ? props.theme.tint.blue : props.theme.tint.orange)};
   }
 `
 
@@ -118,9 +119,9 @@ const Image = styled.div`
   left: 0;
   bottom: 0;
   z-index: 1;
-  border-radius: ${props => props.theme.borderRadius.default};
+  border-radius: ${(props) => props.theme.borderRadius.default};
   img {
-    border-radius: ${props => props.theme.borderRadius.default};
+    border-radius: ${(props) => props.theme.borderRadius.default};
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -128,10 +129,10 @@ const Image = styled.div`
 `
 
 const Title = styled.h4`
-  color: ${props => props.theme.colors.white.base};
+  color: ${(props) => props.theme.colors.white.base};
   text-align: center;
   margin-bottom: 0;
-  text-shadow: ${props => props.theme.shadow.text.small};
+  text-shadow: ${(props) => props.theme.shadow.text.small};
 `
 
 const Suggestions = ({ left, right, cardstyle }) => (

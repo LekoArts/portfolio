@@ -5,8 +5,8 @@ import { Container } from 'elements'
 import { Info } from 'icons'
 
 const Wrapper = styled.div`
-  background-color: ${props => props.theme.tint.blueLight};
-  border-radius: ${props => props.theme.borderRadius.default};
+  background-color: ${(props) => props.theme.tint.blueLight};
+  border-radius: ${(props) => props.theme.borderRadius.default};
   padding: 1rem;
   position: relative;
   p {
@@ -27,10 +27,10 @@ const Wrapper = styled.div`
     height: 2rem;
     vertical-align: text-bottom;
     [data-name='info-primary'] {
-      fill: ${props => props.theme.colors.primary.base};
+      fill: ${(props) => props.theme.colors.primary.base};
     }
     [data-name='info-secondary'] {
-      fill: ${props => props.theme.colors.white.base};
+      fill: ${(props) => props.theme.colors.white.base};
     }
   }
 `

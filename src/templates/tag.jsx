@@ -9,7 +9,7 @@ import config from '../../config/website'
 import { LocaleConsumer } from '../elements/Layout'
 
 const StyledLink = styled(LocalizedLink)`
-  color: ${props => props.theme.colors.white.light};
+  color: ${(props) => props.theme.colors.white.light};
 `
 
 const Tag = ({
@@ -60,7 +60,7 @@ const Tag = ({
             <SkipNavContent>
               <FadeIn>
                 <Container>
-                  {edges.map(edge => (
+                  {edges.map((edge) => (
                     <ItemTagCategory
                       key={edge.node.uid}
                       title={edge.node.data.title.text}

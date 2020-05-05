@@ -32,20 +32,20 @@ const Wrapper = styled.header`
   height: 600px;
   position: relative;
   overflow: hidden;
-  background: ${props => props.theme.colors.primary.dark};
+  background: ${(props) => props.theme.colors.primary.dark};
   .gatsby-image-wrapper {
     height: 600px;
     img {
       animation: ${pulse} 30s infinite;
     }
   }
-  @media (max-width: ${props => props.theme.breakpoints.m}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
     height: 500px;
     .gatsby-image-wrapper {
       height: 500px;
     }
   }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
     height: 400px;
     .gatsby-image-wrapper {
       height: 400px;
@@ -60,7 +60,7 @@ const CardWrapper = styled.div`
   justify-content: space-between;
   margin-top: 4rem;
   ${Card} {
-    color: ${props => props.theme.colors.black.base} !important;
+    color: ${(props) => props.theme.colors.black.base} !important;
     margin-bottom: 2rem;
     text-align: center;
     flex-basis: calc(99.9% * 1 / 3 - 1rem);

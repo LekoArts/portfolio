@@ -17,7 +17,7 @@ const TagsContainer = styled(Container)`
 `
 
 const TagsPage = ({ data: { tags, posts }, pageContext: { locale }, location }) => {
-  const allTags = tags.edges.map(tag => tag.node.data.tag)
+  const allTags = tags.edges.map((tag) => tag.node.data.tag)
 
   return (
     <Layout locale={locale} pathname={location.pathname}>

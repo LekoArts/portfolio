@@ -17,7 +17,7 @@ const CategoriesContainer = styled(Container)`
 `
 
 const Categories = ({ data: { categories, posts }, pageContext: { locale }, location }) => {
-  const allCategories = categories.edges.map(category => category.node.data.kategorie)
+  const allCategories = categories.edges.map((category) => category.node.data.kategorie)
 
   return (
     <Layout locale={locale} pathname={location.pathname}>

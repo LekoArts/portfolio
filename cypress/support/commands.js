@@ -26,6 +26,6 @@
 
 /* globals Cypress */
 
-Cypress.Commands.add('assertRoute', route => {
+Cypress.Commands.add('assertRoute', (route) => {
   cy.url().should('equal', `${window.location.origin}${route}`)
 })

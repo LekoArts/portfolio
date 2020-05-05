@@ -5,20 +5,20 @@ import PropTypes from 'prop-types'
 import { Wave } from 'elements'
 
 const Wrapper = styled.header`
-  background: ${props => props.theme.gradient.rightToLeft};
-  height: ${props => (props.big ? '650px' : '450px')};
-  @media (max-width: ${props => props.theme.breakpoints.m}) {
-    height: ${props => (props.big ? '600px' : '400px')};
+  background: ${(props) => props.theme.gradient.rightToLeft};
+  height: ${(props) => (props.big ? '650px' : '450px')};
+  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
+    height: ${(props) => (props.big ? '600px' : '400px')};
   }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
-    height: ${props => (props.big ? '500px' : '325px')};
+  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
+    height: ${(props) => (props.big ? '500px' : '325px')};
   }
   position: relative;
   overflow: hidden;
 `
 
 const Text = styled.div`
-  color: ${props => props.theme.colors.white.base};
+  color: ${(props) => props.theme.colors.white.base};
   z-index: 1000;
   position: absolute;
   top: 50%;
@@ -28,7 +28,7 @@ const Text = styled.div`
   flex-direction: column;
   text-align: center;
   width: 100%;
-  max-width: ${props => props.theme.layout.base};
+  max-width: ${(props) => props.theme.layout.base};
   padding: 0 2rem;
   margin-bottom: 7rem;
   align-items: center;
@@ -36,7 +36,7 @@ const Text = styled.div`
 
 const Subtitle = styled(animated.p)`
   max-width: 650px;
-  color: ${props => props.theme.colors.white.blue};
+  color: ${(props) => props.theme.colors.white.blue};
 `
 
 const Header = ({ children, title, big, html }) => {
