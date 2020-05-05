@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { Container, Layout, SkipNavContent, FadeIn } from 'elements'
 import { ItemBlog, Footer, Header } from 'components'
