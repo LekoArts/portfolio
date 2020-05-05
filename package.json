@@ -83,7 +83,7 @@
     "gatsby-cypress": "^0.4.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.1.7",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.5",
     "start-server-and-test": "^1.11.0"
   },
   "keywords": [
